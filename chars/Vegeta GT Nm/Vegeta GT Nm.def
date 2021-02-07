@@ -1,0 +1,24 @@
+[Info]
+name         ="VegetaGT by teamSB"
+displayname  ="Vegeta GT"
+versiondate  =01,24,2012
+mugenversion =14,04,2002
+author       ="Team Bbz Sb"
+pal.defaults =1
+
+; Files for the player
+[Files]
+cmd=vegetagt.cmd
+cns=vegetagt.cns
+st=vegetagt.cns
+stcommon=common1.cns
+sprite=vegetagt.sff
+anim=vegetagt.air
+sound=vegetagt.snd
+pal1=1.act
+st1=basic.cns
+st2=supers.cns
+
+[Arcade]
+intro.storyboard =
+ending.storyboard=

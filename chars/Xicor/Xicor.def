@@ -1,0 +1,28 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name 		="Super Zaiko"
+displayname 	="Xicor"
+versiondate 	=06/08/2010 
+mugenversion 	=04,14,2002 
+author 		="b-gg19 & AmoralesDBAF"
+pal.defaults 	=1
+
+[Files]
+sprite 		=SuperZaiko.sff
+anim 		=SuperZaiko.air
+sound 		=SuperZaiko.snd
+cmd 		=SuperZaiko.cmd
+cns 		=SuperZaiko.cns
+stcommon 	=SuperZaiko-common.cns
+st 		=SuperZaiko.cns
+pal1=SuperZaiko.act
+st1=helpers.cns
+st2=SuperZaiko-AI.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

@@ -1,0 +1,21 @@
+[Info]
+name ="Krillin editado por Kaioh-SAMA1234"
+displayname ="Krillin Special "
+versiondate =10,03,12
+mugenversion =1.0
+author ="BroliDos e Ryon"
+localcoord = 320,240
+pal.defaults=1,2,3,4,5
+
+[Files]
+cmd     =Krillin.cmd
+cns     =Krillin.cns
+st      =Krillin.cns
+stcommon =common1.cns
+sprite  =Krillin.sff
+anim    =Krillin.air
+sound   =Krillin.snd
+pal1=Default.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

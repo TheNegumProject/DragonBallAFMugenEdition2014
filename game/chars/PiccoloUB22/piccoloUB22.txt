@@ -1,0 +1,204 @@
+Piccolo From UB22/27, for Winmugen (may work in DOS?)
+By supermystery
+
+Version 1.2
+
+Large sprites from UB22 to match up with street fighter and marvels sizing 
+
+Free flying ability
+
+Custom AI(Makes the fights harder)
+
+voice + snds (SS warriors, budokai III, UB22)
+
+Better super moves than UB22.
+
+All required sprites.
+
+100% moves from UB22 + extras
+
+Mixture of UB22 + Capcom fighting styles
+
+Balanced Moves
+
+Good Chain Combo + Air Combo System
+
+Special Move backgrounds
+
+================================================================
+Special Moves
+=================================================================
+;Dash Kick
+
+~D, DF, F, b
+
+;Rising Knee
+
+~D, DF, F, a
+
+;Hand Attack
+
+~b+y
+
+;Descending Drop Kick combo (in air)
+
+~D, DF, F, b
+
+;Arm Stretch Combo
+
+~D, DB, B, b
+
+Warp
+
+~B, F, y
+
+;Energy Shield
+
+~a+b
+
+;Fire Attack (power 50)
+
+~x+y
+
+;Electric Shock (power 50)
+
+~B, F, c
+
+Fireball (power 100)
+
+c button
+
+Power
+
+z button
+
+Fly 
+
+Start Button
+
+Grapple
+
+y button + fwd (close to opponent)
+====================================================================
+Supers, Hypers
+===================================================================
+;Special Beam Cannon (power 1000)
+
+~D, DF, F, x
+
+;Super Energy Ball (power 500)
+
+~D, DF, F, y
+
+;Hyper Special Beam Cannon (power 2000)
+
+~D, DF, F, x+y
+
+;Homing Fireballs (power 1500)
+
+~D, DB, B, x+y
+
+;Super Beam (power 1000)
+
+~D, DB, B, y
+
+;Hypermove
+
+~D, DB, B, a
+
+
+================================================
+Advice when fighting piccolo
+================================================
+
+Never try to jump on top of piccolo because you end up staying in his electric header
+
+Be the first one to connect with combos and projectiles
+
+
+=====================================================================
+Advice when using piccolo
+=====================================================================
+
+Chain combos and supers
+
+Use the hypermove and arm stretch on mid-range characters!
+
+some combos do not work while flying
+
+Air combos:
+after the uppercut crouch punch has hit quickly tap up to go into a super jump and attack.
+the AI can show you examples in watch mode
+=====================================================================
+Notes
+=====================================================================
+
+Please give me credit and notify if you use this character again for any of your creations.
+
+My email address paul011@hotmail.co.uk
+
+my website www.angelfire.com/moon2/ned or www.freewebtown.com/oknat
+
+Above all please give me some feedback on my characters i want to know what you think 
+and (most importantly) if this character is fun to use! (NO lamers/haters).
+
+
+====================================================================
+Special thanks
+-------------------------------------------------------------------
+JESUS + GOD!
+
+===================================================================================
+General Thanks to...
+-----------------------------------------------------------------------------------
+gohanssm2 for inspiring me to make characters + fireball shower code for buu
+
+Sés for MCM 2.0b dev3.56
+
+vincej18 for inspiring me to make characters (Krillin was so bad)
+
+mugenbr for their forum (+ some good people)
+
+whoever did the ai auto guard code
+
+necromancer for making characters fly and making them have custom AI when flying + homing fireball coding
+
+mugen fighters guild site for their character making advice
+
+Winane + contributers for AI activation method
+
+O Ilusionista for pal fx
+
+electbyte for making mugen + kfm
+
+whoever made the windowsmugen version of Dragon Ball vs Streetfighter
+
+whoever made the dosmugen version of Dragon Ball vs Streetfighter
+
+dbz bandai and co
+
+windom for inspiration + email address
+
+Pioupiou for inspiring me to make UB22 characters 
+
+gokkuhyper for inspiration 
+
+ssonic for inspiration 
+
+ribero for inspiration 
+
+dbz creators
+
+snk + capcom and dbz bandai for fx,projectiles and ideas
+
+all others who showed positive interest in my characters
+
+mugenfury for keeping this site alive
+
+makers of mame, zsnes ,snes9x, epsxe (UB22) and sound recorder win98
+
+me for making mugen characters 
+
+and you for downloading him... 
+
+(thanks to any others that i may of missed)

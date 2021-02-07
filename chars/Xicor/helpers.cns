@@ -1,0 +1,1378 @@
+;-------------------------------------------------------------------------
+;----------------------|PROGRAMADO EN JUTIAPA (GUATEMALA)|----------------
+;----------------------------|PROGRAMADO POR: b-gg19|---------------------
+;--------------------------|e-mail: b-gg19@hotmail.com|-------------------
+
+;-----------------------------|Sheet: AmoralesDBAF|-----------------------
+
+;Helper Spark 1
+[Statedef 3333]
+type    = S
+anim = 8006
+sprpriority = 2
+supermove = 1
+supermovetime = 15
+pausemovetime = 15
+
+[State 3333, Explod]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 8008
+ID = 3331
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 22
+supermovetime= 9999
+pausemovetime= 9999
+scale = .4,.4
+sprpriority = 2
+
+[State 3333, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+;Helper Spark 2
+[Statedef 3334]
+type    = S
+anim = 8007
+sprpriority = 2
+supermove = 1
+supermovetime = 15
+pausemovetime = 15
+
+[State 3334, Explod]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 8008
+ID = 3331
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = 22
+supermovetime= 9999
+pausemovetime= 9999
+scale = .4,.4
+sprpriority = 2
+
+[State 3334, DestroySelf]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+;Helper Campo de Fuerza del Ki
+[Statedef 731]
+type            = S
+movetype        = A
+physics         = S
+anim            = 8000
+ctrl            = 0
+juggle          = 0
+facep2          = 0
+hitdefpersist   = 0
+movehitpersist  = 0
+hitcountpersist = 0
+sprpriority     = 5
+
+[State 731, VelSet]
+type = VelSet
+trigger1 = 1
+x = 3
+
+[State 731, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 731, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 731, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;Helper Levitacion de rocas con el Ki-------------------------------------
+;Piedra 1
+[Statedef 1230]
+type = S
+movetype= I
+physics	= N
+anim= 8009
+ctrl= 0
+poweradd= 0
+juggle= 0
+facep2	= 0
+pausemove = 1
+hitdefpersist= 0
+movehitpersist= 0
+hitcountpersist= 0
+sprpriority= 0
+
+[State 1230]
+type= SprPriority
+trigger1= (!Time)
+value= (IfElse(Random <= 499,3,-3))
+
+[State 1230]
+type = VelAdd
+trigger1  = (vel y < 0)
+x = ifelse(parentdist x<=0,-3,3)
+y = ifelse(random>500,-0.05,ifelse(random>500,-0.04,ifelse(random>500,-0.03,-0.02)))
+
+[State 1230]
+type= VarRandom
+trigger1= (!Time)
+v= 0
+range= -200,200
+
+[State 1230]
+type= VarSet
+trigger1= (!Time)
+var(1) = (Parent, StateNo)
+
+[State 1230]
+type= PosSet
+trigger1= (!Time)
+x= var(0)
+y= 0
+
+[State 1230]
+type= VelSet
+trigger1= (Time = 1)
+x  = (IfElse(Random <= 799,0,IfElse((Random = [800,900]),-0.2,0.2)))
+y= (IfElse(Random <= 499,-.5,-1))
+
+[State 1230]
+type= VelAdd
+trigger1= (Parent, StateNo != Var(1))
+y= .5
+
+[State 1230]
+type= PlaySnd
+trigger1= (!Time) && (Const(Size.XScale) <= 1)
+value= S0,3
+
+[State 1230]
+type= PlaySnd
+trigger1= (!Time) && (Const(Size.XScale) > 1)
+value= S0,1
+
+[State 1230]
+type= PlaySnd
+trigger1= (Pos Y >= 1)
+value= S0,2
+
+[State 1230]
+type= AfterImage
+trigger1 = (!Time)
+time = 15
+timegap	 = 1
+framegap = 2
+length  = 10
+paladd = 0, 0, 0
+palmul 	= .50, .50, .50
+palcontrast = 110,110,110
+trans = add
+
+[State 1230]
+type= DestroySelf
+trigger1= (Pos Y < -210) || (Pos Y >= 1) || (!AnimTime)
+
+;Piedra 2
+[Statedef 1231]
+type = S
+movetype= I
+physics	 = N
+anim= 8010
+ctrl= 0
+poweradd= 0
+juggle = 0
+facep2= 0
+pausemove = 1
+hitdefpersist= 0
+movehitpersist= 0
+hitcountpersist= 0
+sprpriority= 0
+
+[State 1231]
+type= SprPriority
+trigger1= (!Time)
+value= (IfElse(Random <= 499,3,-3))
+
+[State Spinning the Rocks]
+type = VelAdd
+trigger1  = (vel y < 0)
+x = ifelse(parentdist x<=0,-3,3)
+y = ifelse(random>500,-0.05,ifelse(random>500,-0.04,ifelse(random>500,-0.03,-0.02)))
+
+[State 1231]
+type= VarRandom
+trigger1= (!Time)
+v = 0
+range= -200,200
+
+[State 1231]
+type= VarSet
+trigger1= (!Time)
+var(1)= (Parent, StateNo)
+
+[State 1231]
+type= PosSet
+trigger1= (!Time)
+x= var(0)
+y= 0
+
+[State 1231]
+type= VelSet
+trigger1= (Time = 1)
+x= (IfElse(Random <= 799,0,IfElse((Random = [800,900]),-0.2,0.2)))
+y= (IfElse(Random <= 499,-1.5,-2.5))
+
+[State 1231]
+type= VelAdd
+trigger1= (Parent, StateNo != Var(1))
+y= .1
+
+[State 1231]
+type= AfterImage
+trigger1 = (!Time)
+time = 15
+timegap	= 1
+framegap = 2
+length = 10
+paladd 	= 0, 0, 0
+palmul 	= .50, .50, .50
+palcontrast = 110,110,110
+trans = add
+
+[State 1231]
+type= DestroySelf
+trigger1= (Pos Y < -210) || (Pos Y >= 1) || (!AnimTime)
+
+;Piedra 3
+[Statedef 1232]
+type = S
+movetype= I
+physics= N
+anim= 8011
+ctrl= 0
+pausemove = 1
+poweradd= 0
+juggle = 0
+facep2 = 0
+hitdefpersist= 0
+movehitpersist= 0
+hitcountpersist	= 0
+sprpriority= 0
+
+[State 1232]
+type= SprPriority
+trigger1= (!Time)
+value= (IfElse(Random <= 499,3,-3))
+
+[State 1232]
+type = VelAdd
+trigger1= (vel y < 0)
+x = ifelse(parentdist x<=0,-3,3)
+y = ifelse(random>500,-0.05,ifelse(random>500,-0.04,ifelse(random>500,-0.03,-0.02)))
+
+[State 1232]
+type= VarRandom
+trigger1= (!Time)
+v= 0
+range= -200,200
+
+[State 1232]
+type= VarSet
+trigger1= (!Time)
+var(1)= (Parent, StateNo)
+
+[State 1232]
+type= PosSet
+trigger1= (!Time)
+x= var(0)
+y= 0
+
+[State 1232]
+type= PosSet
+trigger1= (!Time)
+y= 0
+
+[State 1232]
+type= VelSet
+trigger1= (Time = 1)
+x= (IfElse(Random <= 799,0,IfElse((Random = [800,900]),-0.2,0.2)))
+y= (IfElse(Random <= 499,-2,-3))
+
+[State 1232]
+type= VelAdd
+trigger1= (Parent, StateNo != Var(1))
+y= .1
+
+[State 1232]
+type= AfterImage
+trigger1 = (!Time)
+time = 15
+timegap	= 1
+framegap = 2
+length 	= 10
+paladd 	= 0, 0, 0
+palmul 	= .50, .50, .50
+palcontrast = 110,110,110
+trans 	= add
+
+[State 1232]
+type	= DestroySelf
+trigger1= (Pos Y < -210) || (Pos Y >= 1) || (!AnimTime)
+
+;---------------------------------------------------------------------------
+;Fireball Helper
+
+[Statedef 905]
+movetype= A
+physics = S
+juggle = 1
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 905
+poweradd = -100
+sprpriority = 2
+
+[State 905: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 905,4]
+type = VelSet
+trigger1 = time >= 0
+x = 9
+y = IfElse(Random < 600,0.6,-0.6)
+
+[State 905,3]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 5
+freq = 300
+
+[State 905, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 50
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8012
+guard.sparkno = S8012
+guardsound = S915,0
+sparkxy = -10,-5
+hitsound   = S915,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity = -3
+air.velocity = -3,-2
+
+[State 905, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+;---------------------------------------------------------------------------
+;Combo Fireballs Helper
+
+[Statedef 906]
+movetype= A
+physics = S
+juggle = 1
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 906
+poweradd = -100
+sprpriority = 2
+
+[State 906: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 906,4]
+type = VelSet
+trigger1 = time >= 0
+x = 9
+y = 0.2
+
+[State 906,3]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 5
+freq = 300
+
+[State 906, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 50
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8014
+guard.sparkno = S8014
+guardsound = S915,0
+sparkxy = -25,-5
+hitsound   = S915,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity = -3
+air.velocity = -3,-2
+
+[State 906, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+;---------------------------------------------------------------------------
+;Bola Azul Helper
+
+[Statedef 907]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8016
+sprpriority = 2
+
+[State 907,4]
+type = VelSet
+trigger1 = time >= 0
+x = 12
+y = 5
+
+[State 907]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 10
+freq = 500
+
+[State 907: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 907, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 500
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8017
+guard.sparkno = S8017
+guardsound = S916,0
+sparkxy = -25,-5
+hitsound   = S916,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity	= -5, -5
+air.velocity = -3,-2
+fall = 1
+
+[State 907, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+;---------------------------------------------------------------------------
+;Kame (100x) Helper
+
+[Statedef 908]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8019
+sprpriority = 2
+
+[State 908: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 908]
+type = HitDef
+trigger1 = 1
+attr = S, HP
+animtype  = Hard
+Damage = 4,0
+guardflag = MA
+pausetime = 1,1
+sparkno = -1
+sparkxy = -5,0
+numhits = 2
+hitsound   = -1
+guardsound = -1
+guard.sparkno = S8032
+getpower = 0
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+ground.velocity = -25, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+air.velocity = -25, -4
+fall = 1
+fall.recover = 1
+
+[State 908, Explod]
+type = Explod
+trigger1 = movehit & animelem = 46
+anim =  8017
+ID =  4831
+pos = -10,-30
+postype = p2
+bindtime = 5
+supermovetime= 9999
+pausemovetime= 9999
+removetime = 52
+scale = 1,1
+sprpriority = 5
+
+[State 908, PlaySnd]
+type = PlaySnd
+trigger1 = movehit & animelem = 46
+value = S289,0
+volume = 255
+
+[State 908, DestroySelf]
+type = DestroySelf
+trigger1 = Time = 158
+
+;---------------------------------------------------------------------------
+;Ondas Kame (100x) Helper
+
+[Statedef 911]
+type = S
+movetype = I
+physics = N
+anim = 8024
+velset = 0,0
+ctrl = 0
+poweradd = 0
+juggle = 0
+sprpriority = 5
+
+[State 911: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 911]
+type = BindToParent
+trigger1 = time = 0
+time = -1
+pos = -16,-42
+
+[State 911: DestroySelf]
+type = DestroySelf
+trigger1 = time = 200
+
+;---------------------------------------------------------------------------
+;Kame (100x) Inicio Helper
+
+[Statedef 912]
+type = S
+movetype = I
+physics = N
+anim = 8018
+velset = 0,0
+ctrl = 0
+poweradd = 0
+juggle = 0
+sprpriority = 5
+
+[State 912]
+type = BindToParent
+trigger1 = time = 0
+time = -1
+pos = -15,-42
+
+[State 912: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 912: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = 250
+framegap = 4
+length = 20
+paladd = 0, 0, 0
+palmul = .20, .20, .20
+palcontrast = 100, 100, 100
+trans = add
+
+[State 912: DestroySelf]
+type = DestroySelf
+trigger1 = time = 200
+
+;---------------------------------------------------------------------------
+;Bola Roja Helper
+
+[Statedef 909]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8021
+sprpriority = 2
+
+[State 909,4]
+type = VelSet
+trigger1 = time >= 0
+x = 12
+y = 3
+
+[State 909]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 10
+freq = 500
+
+[State 909: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 909, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 1000
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8017
+guard.sparkno = S8017
+guardsound = S916,0
+sparkxy = -25,-5
+hitsound   = S916,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity	= -5, -5
+air.velocity = -3,-2
+fall = 1
+
+[State 909, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+;---------------------------------------------------------------------------
+;Kame (50x) Helper
+
+[Statedef 910]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8023
+sprpriority = 2
+
+[State 910: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 910]
+type = HitDef
+trigger1 = 1
+attr = S, HP
+animtype  = Hard
+Damage = 3,0
+guardflag = MA
+pausetime = 1,1
+sparkno = -1
+sparkxy = -5,0
+numhits = 1
+hitsound   = -1
+guardsound = -1
+guard.sparkno = S8032
+getpower = 0
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+ground.velocity = -25, -4
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+air.velocity = -25, -4
+fall = 1
+fall.recover = 1
+
+[State 910, Explod]
+type = Explod
+trigger1 = movehit & animelem = 55
+anim =  8017
+ID =  4831
+pos = -10,-30
+postype = p2
+bindtime = 5
+supermovetime= 9999
+pausemovetime= 9999
+removetime = 52
+scale = .8,.8
+sprpriority = 5
+
+[State 910, PlaySnd]
+type = PlaySnd
+trigger1 = movehit & animelem = 55
+value = S289,0
+volume = 255
+
+[State 910, DestroySelf]
+type = DestroySelf
+trigger1 = Time = 180
+
+;---------------------------------------------------------------------------
+;Ondas Kame (50x) Helper
+
+[Statedef 914]
+type = S
+movetype = I
+physics = N
+anim = 8024
+velset = 0,0
+ctrl = 0
+poweradd = 0
+juggle = 0
+sprpriority = 5
+
+[State 914: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 914]
+type = BindToParent
+trigger1 = time = 0
+time = -1
+pos = -16,-42
+
+[State 914: DestroySelf]
+type = DestroySelf
+trigger1 = time = 150
+
+
+;---------------------------------------------------------------------------
+;Kame (50x) Inicio Helper
+
+[Statedef 915]
+type = S
+movetype = I
+physics = N
+anim = 8018
+velset = 0,0
+ctrl = 0
+poweradd = 0
+juggle = 0
+sprpriority = 5
+
+[State 915]
+type = BindToParent
+trigger1 = time = 0
+time = -1
+pos = -15,-42
+
+[State 915: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 915: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = 250
+framegap = 4
+length = 20
+paladd = 0, 0, 0
+palmul = .20, .20, .20
+palcontrast = 100, 100, 100
+trans = add
+
+[State 915: DestroySelf]
+type = DestroySelf
+trigger1 = time = 150
+
+;---------------------------------------------------------------------------
+;Viento Kame (50x) Helper
+
+[Statedef 917]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8029
+sprpriority = 2
+
+[State 917: No Shadow]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = NoShadow
+
+[State 917, DestroySelf]
+type = DestroySelf
+trigger1 = Time = 180
+
+;---------------------------------------------------------------------------
+;Super K.O
+
+[Statedef 913]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 913: Pause]
+type = Pause
+trigger1 = !Time
+time = 12
+movetime = 12
+
+[State 913: EnvShake]
+type = EnvShake
+trigger1 = !Time
+time = 12
+freq = 120
+ampl = -3
+phase = 90
+
+[State 913]
+type = AllPalFX
+trigger1 = time =[0,40]
+time = 50
+add = 0,0,0
+mul = 250,250,250
+sinadd = 0,0,0,1
+invertall = 0
+color = time*2
+ignorehitpause = 1
+
+[State 913, PlaySND]
+type = PlaySnd
+trigger1 = Time = 0
+value = 290,0
+volume = 255
+channel = 1
+
+;---------------------------------------------------
+;Teletransporte Helper 1
+[Statedef 919]
+type=S
+movetype=I
+physics=N
+velset=ifelse(parent,stateno=1056,-7,-1),0
+sprpriority=0
+ctrl=0
+
+[State 919]
+type=PlaySnd
+trigger1= time = 10
+value=4,18
+
+[State 919]
+type=ChangeAnim
+trigger1=!time
+value=parent,anim
+elem=parent,animelemno(0)
+
+[State 919]
+type=NotHitBy
+trigger1=1
+value=SCA
+time=1
+
+[State 919]
+type=AssertSpecial
+trigger1=1
+flag=noshadow
+flag2=invisible
+ignorehitpause=1
+
+[State 919]
+type=AfterImage
+trigger1=gametime%8=0
+time=4
+length=4
+palcolor=256
+palcontrast=120,120,120
+palmul=.35,.35,.35
+timegap=1
+framegap=1
+trans=add
+ignorehitpause=1
+
+[State 919]
+type=DestroySelf
+trigger1=time>15
+ignorehitpause=1
+;------------------------------------------------------------
+;Teletransporte Helper 2
+[Statedef 920]
+type=S
+movetype=I
+physics=N
+velset=ifelse(parent,stateno=1056,7,1),0
+sprpriority=0
+ctrl=0
+
+[State 920]
+type=ChangeAnim
+trigger1=!time
+value=parent,anim
+elem=parent,animelemno(0)
+
+[State 920]
+type=NotHitBy
+trigger1=1
+value=SCA
+time=1
+
+[State 920]
+type=AssertSpecial
+trigger1=1
+flag=noshadow
+flag2=invisible
+ignorehitpause=1
+
+[State 920]
+type=AfterImage
+trigger1=gametime%8=0
+time=4
+length=4
+palcolor=256
+palcontrast=120,120,120
+palmul=.35,.35,.35
+timegap=1
+framegap=1
+trans=add
+ignorehitpause=1
+
+[State 920]
+type=DestroySelf
+trigger1=time>15
+ignorehitpause=1
+
+;--------------------------------------------------------------
+;Cine
+[Statedef 921]
+type = S
+movetype = I
+physics = N
+juggle = 0
+ctrl = 0
+anim = 9998
+facing = 1
+sprpriority = 10
+ontop = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = Time = 1
+anim = 9997
+ID = 9997
+pos = 120,0
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,1
+removetime = 30
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = Time = 1
+anim = 9997
+ID = 9996
+pos = 120,355
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,-1
+removetime = 30
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = Time = 30
+anim = 9997
+ID = 9997
+pos = 120,30
+postype = left
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+removetime = -1
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = Time = 30
+anim = 9997
+ID = 9996
+pos = 120,325
+postype = left
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+removetime = -1
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, RemoveExplod]
+type = RemoveExplod
+trigger1 = parent, AnimTime = 0
+id = 9997
+ignorehitpause = 1
+
+[State 921, RemoveExplod]
+type = RemoveExplod
+trigger1 = parent, AnimTime = 0
+id = 9996
+ignorehitpause = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = parent, AnimTime = 0
+anim = 9997
+ID = 9996
+pos = 120,30
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,-1
+removetime = 30
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, Explod]
+type = Explod
+trigger1 = parent, AnimTime = 0
+anim = 9997
+ID = 9997
+pos = 120,325
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,1
+removetime = 30
+scale = 1,1
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+[State 921, DestroySelf]
+type = DestroySelf
+trigger1 = parent, AnimTime = 0
+ignorehitpause = 1
+
+
+;---------------------------------------------------------------------------
+;Combo Bolas Helper 1
+
+[Statedef 8319]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8016
+sprpriority = 2
+
+[State 8319]
+type = VelSet
+trigger1 = time >= 0
+x = 12
+y = 3
+
+[State 8319]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 10
+freq = 500
+
+[State 8319: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 8319, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 100
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8017
+guard.sparkno = S8017
+guardsound = S916,0
+sparkxy = -25,-5
+hitsound   = S916,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity	= -5, -5
+air.velocity = -3,-2
+p2stateno = 9546
+
+[State 8319, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+;---------------------------------------------------------------------------
+;Combo Bolas Helper 2
+
+[Statedef 8320]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd= -100
+ctrl = 0
+anim = 8016
+sprpriority = 2
+
+[State 8320]
+type = VelSet
+trigger1 = time >= 0
+x = 12
+y = 3
+
+[State 8320]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 10
+freq = 500
+
+[State 8320: AfterImage]
+type = AfterImage
+trigger1 = (!Time)
+time = -1
+framegap = 1
+length = 50
+paladd = 0, 0, 0
+palmul = .90, .90, .90
+palcontrast = 100, 100, 100
+trans=add
+
+[State 8320, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 500
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = S8017
+guard.sparkno = S8017
+guardsound = S916,0
+sparkxy = -25,-5
+hitsound   = S916,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity	= -5, -5
+air.velocity = -3,-2
+fall = 1
+
+[State 8320, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+
+
+;---------------------------------------------------------------------------
+;Rafaga Ki
+
+[Statedef 922]
+movetype= A
+physics = S
+juggle = 1
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 8044
+poweradd = -100
+sprpriority = 2
+
+[State 922]
+type = VelSet
+trigger1 = time >= 0
+x = 9
+y = 0
+
+[State 922]
+type = Envshake
+trigger1 = movecontact = 1
+time = 20
+ampl = 5
+freq = 300
+
+[State 922: MakeDust]
+type = MakeDust
+trigger1 = 1
+pos = 10, 60
+spacing = 3
+
+[State 922, HitDef]
+type = HitDef
+trigger1 = Time >= 0
+attr = S, HA
+animtype  = Hard
+velocity = 0,-2.7
+accel = 0,0.2
+damage    = 60
+numhits = 1
+guardflag = MA
+pausetime = 1,5
+getpower = 0
+sparkno = -1
+guard.sparkno = S8032
+guardsound = S293,0
+sparkxy = -1
+hitsound   = S915,0
+ground.type = Hard
+ground.slidetime = 22
+ground.hittime  = 11
+ground.velocity = -3
+air.velocity = -3,-2
+
+[State 910, Explod]
+type = Explod
+trigger1 = movehit
+anim =  8045
+ID =  1
+pos = 0,-50
+postype = p2
+bindtime = -1
+supermovetime= 9999
+pausemovetime= 9999
+removetime = 11
+scale = .5,.5
+sprpriority = 5
+
+[State 922, DestroySelf]
+type = DestroySelf
+trigger1 = MoveContact
+

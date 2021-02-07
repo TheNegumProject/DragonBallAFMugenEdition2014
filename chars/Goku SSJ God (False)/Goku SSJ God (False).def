@@ -1,0 +1,22 @@
+
+[Info]
+name="Goku"
+displayname="Goku SSJ God (False)"
+mugenversion=
+author="FRS GAMES > Franciynaldo"
+versiondate=9/19/2006
+pal.defaults=1,2
+
+[Files]
+cns=CNS.cns
+st=CNS.cns
+cmd=CMD.cmd
+stcommon=common1.cns
+sprite=Sprite.sff
+anim=Air.air
+sound=Sound.snd
+pal1=paleta/1.act
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

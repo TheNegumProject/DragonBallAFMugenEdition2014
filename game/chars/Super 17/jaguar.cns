@@ -1,0 +1,221 @@
+;--------Special_Moves---------------------------------------------------
+;Jaguar_Kick_a
+[Statedef 1001]
+type = A
+movetype = A
+physics = N
+juggle = 1
+poweradd = 80
+velset = 0, 0
+ctrl = 0
+anim = 1001
+
+[State 1211, 0]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 500,3
+channel = 0
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time >= 10
+y = 0.43
+
+[State 1252, 6]
+type = Velset
+trigger1 = Animelem = 2
+x = 7
+y = -4.5
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [16,26]
+y = 0.7
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [20,22]
+x = -0.3
+
+[State 1211,4]
+type = HitDef
+trigger1 = AnimElem = 6
+attr = A, SA
+damage = 120, 30
+animtype = heavy
+priority = 5
+hitflag = MAF
+guardflag = MAF
+pausetime = 5,6
+hitsound = s500, 4     
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = high
+ground.slidetime = 15
+ground.hittime = 15
+ground.velocity = -4
+air.velocity = -4, 2
+air.fall = 1
+fall = 0
+
+[State 1021, 2]
+type = velset 
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+x = 0
+
+[State 1021, 2]
+type = ChangeState
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+value = 50
+ctrl = 1
+
+:------------------------------------------------------------------------------------------
+;Jaguar_Kick_b 
+[Statedef 1101]
+type = A
+movetype = A
+physics = N
+juggle = 1
+poweradd = 80
+velset = 0, 0
+ctrl = 0
+anim = 1001
+
+[State 1211, 0]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 500, 3
+channel = 0
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time >= 10
+y = 0.43
+
+[State 1252, 6]
+type = Velset
+trigger1 = Animelem = 2
+x = 7
+y = -4.5
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [16,26]
+y = 0.7
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [20,22]
+x = -0.3
+
+[State 1211,4]
+type = HitDef
+trigger1 = AnimElem = 6
+attr = A, SA
+damage = 150, 38
+animtype = heavy
+priority = 5
+hitflag = MAF
+guardflag = MAF
+pausetime = 5,6
+hitsound = s500, 4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = high
+ground.slidetime = 15
+ground.hittime = 15
+ground.velocity = -4
+air.velocity = -4, 2
+air.fall = 1
+fall = 0
+
+[State 1021, 2]
+type = velset 
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+x = 0
+
+[State 1021, 2]
+type = ChangeState
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+value = 50
+ctrl = 1
+
+:------------------------------------------------------------------------------------------
+;Jaguar_Kick_c 
+[Statedef 1201]
+type = A
+movetype = A
+physics = N
+juggle = 1
+poweradd = 80
+velset = 0, 0
+ctrl = 0
+anim = 1001
+
+[State 1211, 0]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 500, 3
+channel = 0
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time >= 10
+y = 0.43
+
+[State 1252, 6]
+type = Velset
+trigger1 = Animelem = 2
+x = 7
+y = -4.5
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [16,26]
+y = 0.7
+
+[State 1211, 1]
+type = Veladd
+trigger1 = time = [20,22]
+x = -0.3
+
+[State 1211,4]
+type = HitDef
+trigger1 = AnimElem = 6
+attr = A, SA
+damage = 180, 45
+animtype = heavy
+priority = 5
+hitflag = MAF
+guardflag = MAF
+pausetime = 5,6
+hitsound = s500,4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = high
+ground.slidetime = 15
+ground.hittime = 15
+ground.velocity = -4
+air.velocity = -4, 2
+air.fall = 1
+fall = 0
+
+[State 1021, 2]
+type = velset 
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+x = 0
+
+[State 1021, 2]
+type = ChangeState
+trigger1 = pos Y >= 0
+trigger1 = time >= 10
+value = 50
+ctrl = 1

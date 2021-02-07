@@ -1,0 +1,36 @@
+;.............................................................................................
+[Info]
+name ="trunks do futuro by FRS GAMES"
+displayname ="trunks do futuro"
+versiondate =12,09,2007
+mugenversion =06,14,2003
+author ="FRS GAMES"
+pal.defaults =1,2,3,4,5,6,7
+
+; Files for the player
+[Files]
+cmd     =trunks.cmd
+cns     =trunks.cns
+st      =trunks.cns
+stcommon =common1.cns
+sprite  =trunks.sff
+anim    =trunks.air
+sound   =trunks.snd
+pal1=trunks.act
+pal2=trunks2.act
+pal3=trunks3.act
+pal4=trunks4.act
+pal5=trunks5.act
+pal6=trunks6.act
+pal7=trunks7.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard=final/final.def
+;...........................................................................................
+
+                                ; Feito no Brasil           
+;                              Autor: equipe FRS GAMES
+
+;[[[[[[[[[[[[[[[[[[[[[[E-mail& msn: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

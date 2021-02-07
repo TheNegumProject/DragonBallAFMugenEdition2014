@@ -1,0 +1,8 @@
+Broly LSSJ3 v1.0
+
+Ki Ball: Down,a
+Jump Attack: Down,b
+Green Wave: Down,,c
+Dash Attack: Dwon,x
+Ultimate Ki Ball: Down,y
+Barrier: c

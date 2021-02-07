@@ -1,0 +1,35 @@
+[Info]
+Name          = "Legendary Super Saiyan"
+DisplayName   = "Broly SSJ4"
+Author        = "kamase"
+Pal.Defaults  = 1,2
+
+[Files]
+Cmd           = broly_command.cns
+Cns           = broly_data.cns
+Sprite        = broly.sff
+Anim          = broly.air
+Sound         = broly.snd
+Stcommon      = broly_common.cns
+St            = broly_-2,-3.cns
+St1           = broly_1.cns
+St2           = broly_data.cns
+St3           = broly_helper.cns
+St4           = broly_enemy.cns
+St5           = broly_target.cns
+St6           = broly_2.cns
+St7           = broly_3.cns
+St8           = broly_4.cns
+
+pal1          = ACT/broly2.act
+pal2          = ACT/broly4.act
+pal3          = ACT/broly3.act
+pal4          = ACT/broly.act
+pal5          = ACT/broly9.act
+pal6          = ACT/broly13.act
+pal7          = ACT/broly7.act
+pal8          = ACT/broly8.act
+pal9          = ACT/broly6.act
+pal10         = ACT/broly10.act
+pal11         = ACT/broly11.act
+pal12         = ACT/broly5.act

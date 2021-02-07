@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************     http://virtualltek.mgbr.net     *******************;
+;***************************************************************************;
+
+[Info]
+name ="MajinVedita"
+displayname ="Majin Vedita"
+versiondate = 
+mugenversion = 
+author ="Coração Bandido"
+pal.defaults =1,2,3
+
+[Files]
+sprite =MajinVedita.sff
+anim =MajinVedita.air
+sound =MajinVedita.snd
+cmd =MajinVedita.cmd
+cns =MajinVedita.cns
+stcommon =common1.cns
+st =MajinVedita.cns
+pal1=MajinVedita.act
+pal2=MajinVedita1.act
+pal3=MajinVedita2.act
+st1=Ferido.cns
+st2=Especias.cns
+st3=Basico.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

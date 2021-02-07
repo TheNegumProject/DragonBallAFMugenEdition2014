@@ -1,0 +1,29 @@
+; Definition file for Recoome by Chrono_Strife and Neocide
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Recoome"
+displayname ="Recoome"
+versiondate =2009.10.29
+mugenversion =2002.04.14
+author ="Chrono_Strife"
+pal.defaults =1,2
+
+; Files for the player
+[Files]
+cmd      =coding/RecoomeCMD.cmd
+cns      =coding/RecoomeCNS.cns
+st       =coding/RecoomeCNS.cns
+stcommon =coding/commonCNS.cns
+sprite   =graphical/RecoomeSFF.sff
+anim     =coding/RecoomeAIR.air
+sound    =audio/RecoomeSND.snd
+pal1=graphical/RecoomeACT.act
+pal2=graphical/RecoomeACT2.act
+
+st1=coding/Helper.st
+st2=coding/P2Custom.st
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def

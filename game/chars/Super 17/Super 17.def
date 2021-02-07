@@ -1,0 +1,46 @@
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Super C-17"
+displayname ="Super 17"
+author ="vanquish3000, Squall"
+pal.defaults=1,2
+versiondate=02/07/2007
+mugenversion=
+;pal.defaults = 3   	;Default palettes in order of preference
+
+; Files for the player
+[Files]
+stcommon =common2.cns
+sprite   =Sc17.sff
+anim     =Sc17.air
+cmd      =Sc17.cmd
+cns      =constant.cns
+sound   =C17.snd
+
+st       =basic.cns
+pal1=S17Red.act
+pal2=S_172.act
+st1=hyper1.cns
+st2=throw.cns
+st3=charge.cns
+st4=allkiblasts.cns
+st5=jaguar.cns
+st6=zanzoken.cns
+st7=shoryuken2.cns
+st8=Hypers2x3.cns
+st9=parry4.cns
+
+;pal3	 = new.act
+
+
+
+
+; Arcade mode
+;[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

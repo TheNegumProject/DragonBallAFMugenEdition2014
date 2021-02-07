@@ -1,0 +1,35 @@
+
+　　　　　　        　AIレベル設定
+
+このキャラはＡＩレベルを０～２の間で調節することができます。
+piccolo.cmdをノートパッドで開き、一番下にある;
+
+[State -1, AI Level]
+type     = VarSet
+triggerall = !var(59)
+triggerall = RoundState = 2
+trigger1 = (command="cpu1")||(command="cpu2")
+trigger2 = (command="cpu3")||(command="cpu4")
+trigger3 = (command="cpu5")||(command="cpu6")
+trigger4 = (command="cpu7")||(command="cpu8")
+trigger5 = (command="cpu9")||(command="cpu10")
+trigger6 = (command="cpu11")||(command="cpu12")
+trigger7 = (command="cpu13")||(command="cpu14")
+trigger8 = (command="cpu15")||(command="cpu16")
+trigger9 = (command="cpu17")||(command="cpu18")
+trigger10 = (command="cpu19")||(command="cpu20")
+trigger11 = (command="cpu21")||(command="cpu22")
+trigger12 = (command="cpu23")||(command="cpu24")
+trigger13 = (command="cpu25")||(command="cpu26")
+trigger14 = (command="cpu27")||(command="cpu28")
+trigger15 = (command="cpu29")||(command="cpu30")
+trigger16 = NumHelper(9741)
+trigger16 = Helper(9741),var(59)
+var(59) = 1 ; AI Level 0-2
+;0 = AIなし
+;1 = Normal
+;2 = Hard
+
+
+
+で、『var(59) = 1』の「1」を0に変えるとイージー、2に変えるとハードになります。

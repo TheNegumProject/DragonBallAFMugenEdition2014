@@ -1,0 +1,108 @@
+
+;----------------------------------------------------------------------------
+; Char = " Goku SSJ3 Kid "  
+; Criado por = " Future_Vegetto "  
+  
+; ## Nós não Temos Nenhuma Responsabilidade por esse char ##             
+;----------------------------------------------------------------------------
+
+;----------------------------------------------------------------------------
+; Divulgue seu Char em nosso Site Gratuitamente !!!!!!!!!!!
+; Mais Informações www.mzpex.rg3.net  ou www.mugenzpower.hpg.com.br
+;----------------------------------------------------------------------------
+
+;----------------------------------------------------------------------------
+; Esse Char foi pego no Site MugenZPower www.mzpex.rg3.net
+; Se você pegou esse char em outro site com o nosso link, porfavor nos avise.
+;----------------------------------------------------------------------------
+
+:=============================================================================================
+;Distribuido pela = "MugenZPower"							      
+;URL  = WWW.MZPEX.RG3.NET      OU   WWW.MUGENZPOWER.RG3.NET   OU  WWW.MUGENZPOWER.HPG.COM.BR  
+;=============================================================================================
+
+; Ending cutscene for KFM's story.
+
+; Like the intro, this storyboard has multiple scenes.
+; Each scene uses two overlay anims, one for the picture, and
+; another for the text.
+; The fadein and fadeout parameters are used to fade one screen
+; to the next.
+
+[SceneDef]
+spr = ending.sff
+startscene = 0         ;Starting scene number (for debugging)
+
+;------------------------------------
+[Scene 0]
+; Fade
+fadein.time = 80       ;Time to take for fading in
+fadein.col = 0,0,0     ;Use 255,255,255 for white-fade
+fadeout.time = 60
+fadeout.col = 0,0,0
+; Screen color
+clearcolor = 0,0,0
+; Overlay Anims (from 0 to 9)
+layerall.pos = 160,0   ;Default position for all layers
+layer0.anim =  0       ;Anim action number
+layer0.offset = 0,32   ;Position offset
+layer0.starttime = 0   ;Time to start display
+layer1.anim =  1
+layer1.offset = -160,0
+; Music
+bgm = ending.mp3       ;Name of music file to play
+bgm.loop = 0
+; Total time
+end.time = 700
+
+;------------------------------------
+
+
+[Begin Action 1]
+0,0, 0,0, 80
+0,1, 0,0, 20
+0,2, 0,0, 20
+0,3, 0,0, 15
+0,4, 0,0, 15
+0,3, 0,0, 15
+0,4, 0,0, 15
+0,3, 0,0, 15
+0,4, 0,0, 15
+0,5, 0,0, 35
+0,6, 0,0, 18
+0,7, 0,0, 18
+0,8, 0,0, 25
+0,10, 0,0, 20
+0,11, 0,0, 12
+0,12, 0,0, 12
+0,14, 0,0, 12
+0,11, 0,0, 12
+0,12, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,11, 0,0, 12
+0,12, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,11, 0,0, 12
+0,12, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+0,14, 0,0, 12
+0,12, 0,0, 12
+0,11, 0,0, 12
+

@@ -1,0 +1,28 @@
+; Character information
+
+[Info]
+
+name    ="Paikuhan by Kurihan and Cypher"
+displayname ="Pikkon"
+versiondate =07,31,2000
+mugenversion =07,31,2000
+author ="Kurihan & Cypher"
+pal.defaults=1,2
+
+
+[Files]
+
+cmd     =paikuhan.cmd
+cns     =paikuhan.cns
+st      =paikuhan.cns
+stcommon =common1.cns
+sprite  =paikuhan.sff
+anim    =paikuhan.air
+sound   =paikuhan.snd
+pal1=paikuhan.act
+pal2=paikuhan.act
+
+[Arcade]
+
+intro.storyboard =intro.def
+ending.storyboard=

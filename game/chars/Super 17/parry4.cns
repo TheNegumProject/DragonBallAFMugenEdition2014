@@ -1,0 +1,300 @@
+;---------------------------------------------------------------------------
+; Parry (Stand)
+[Statedef 1900]
+type    = S
+movetype = I
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 830
+
+[State 1900, snd]
+type = PlaySnd
+Trigger1 = AnimElem = 2
+value = 500, 10
+;volume = 200
+
+[State 1900, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 1900, Width]
+type = Width
+trigger1 = AnimElem = 3, < 0
+value = 15,0
+
+[State 1900, Width]
+type = Width
+trigger1 = AnimElem = 3, >= 0
+trigger1 = AnimElem = 3, < 4
+value = 10,0
+
+[State 1900, 1]
+type = PalFX
+trigger1 = AnimElem = 1
+add = 0, 100, 200
+time = 2
+ignorehitpause = 1
+
+[State 1900, 2]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 9, 1
+
+;[State 1900, 3]
+;type = Explod
+;trigger1 = AnimElem = 1
+;anim = 831	;Counter Spark
+;pos = 0,0
+;postype = p1
+;bindtime = -1
+;persistent = 0
+;pausemovetime = -1
+;ownpal = 1
+
+[State 1900, 3]
+type = Pause
+trigger1 = Time = 0
+movetime = 15
+time = 15
+
+[State 1900, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Parry (Crouch)
+[Statedef 1920]
+type    = C
+movetype = I
+physics = C
+ctrl = 0
+velset = 0,0
+anim = 830
+
+[State 1920, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 1920, 1]
+type = PalFX
+trigger1 = AnimElem = 1
+add = 0, 100, 200
+time = 2
+ignorehitpause = 1
+
+[State 1920, 2]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 9, 1
+
+;[State 1920, 3]
+;type = Explod
+;trigger1 = AnimElem = 1
+;anim = 831	;Counter Spark
+;pos = 0,0
+;postype = p1
+;bindtime = -1
+;persistent = 0
+;pausemovetime = -1
+;ownpal = 1
+
+[State 1920, 3]
+type = Pause
+trigger1 = Time = 0
+movetime = 15
+time = 15
+
+[State 1920, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Parry (Air)
+[Statedef 1940]
+type    = A
+movetype = I
+physics = A
+ctrl = 0
+anim = 830
+
+[State 1940, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 1940, 1]
+type = VarSet
+trigger1 = Time <= 0
+fvar(0) = Vel Y
+
+[State 1940, 1]
+type = VarSet
+trigger1 = Time <= 0
+trigger1 = Vel X = 0
+sysvar(1) = 0
+
+[State 1940, 1]
+type = VarSet
+trigger1 = Time <= 0
+trigger1 = Vel X > 0
+sysvar(1) = 1
+
+[State 1940, 1]
+type = VarSet
+trigger1 = Time <= 0
+trigger1 = Vel X < 0
+sysvar(1) = -1
+
+[State 1940, 0]
+type = VelSet
+trigger1 = Time > 0
+trigger1 = Time < 15
+x = 0
+y = 0
+
+[State 1940, 1]
+type = PalFX
+trigger1 = AnimElem = 1
+add = 0, 100, 200
+time = 2
+ignorehitpause = 1
+
+[State 1940, 2]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 9, 1
+
+;[State 1940, 3]
+;type = Explod
+;trigger1 = AnimElem = 1
+;anim = 831	;Counter Spark
+;pos = 0,0
+;postype = p1
+;bindtime = -1
+;persistent = 0
+;pausemovetime = -1
+;ownpal = 1
+
+[State 1940, 4]
+type = Pause
+trigger1 = Time = 0
+movetime = 15
+time = 15
+
+[State 1940, 5]
+type = VelSet
+triggerall = AnimTime = 0
+trigger1 = SysVar(1) = 0
+y = fvar(0)
+
+[State 1940, 5]
+type = VelSet
+triggerall = AnimTime = 0
+trigger1 = SysVar(1) = -1
+x = const(velocity.jump.back.x)
+y = fvar(0)
+
+[State 1940, 5]
+type = VelSet
+triggerall = AnimTime = 0
+trigger1 = SysVar(1) = 1
+x = const(velocity.jump.fwd.x)
+y = fvar(0)
+
+[State 1940, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+[Statedef -2]
+;=====Parry=====
+;-----Variables-----
+[State -2, Parry]
+type = VarAdd
+triggerall = Var(50) = 0
+triggerall = Command = "fwd" || Command = "down"
+trigger1 = StateNo = 10
+trigger2 = StateNo = 20
+trigger3 = StateNo = 50
+trigger3 = Time >= 5
+priority = 100
+v = 50
+value = 1
+
+[State -2, Parry]
+type = VarAdd
+trigger1 = Var(50) != 0
+v = 51
+value = 1
+
+[State -2, Parry]
+type = VarSet
+trigger1 = var(50) = 0
+v = 51
+value = 0
+
+[State -2, Parry]
+type = VarSet
+trigger1 = Var(50) != 0
+trigger1 = Var(51) > 5
+trigger2 = StateNo != 10
+trigger2 = StateNo != 11
+trigger2 = StateNo != 20
+trigger2 = StateNo != 50
+priority = 100
+v = 50
+value = 0
+
+;-----Override-----
+[State -2, Parry]
+type = HitOverride
+triggerall = Var(50) = 1
+triggerall = command = "holdfwd"
+triggerall = command != "holddown"
+trigger1 = StateType = S
+trigger1 = ctrl
+priority = 100
+slot = 0
+stateno = 1900
+attr = SA, AA, AP
+time = 5
+
+[State -2, Parry]
+type = HitOverride
+triggerall = Var(50) = 1
+triggerall = command = "holddown"
+triggerall = command != "holdfwd"
+trigger1 = StateType = C
+trigger1 = ctrl
+priority = 100
+slot = 0
+stateno = 1920
+attr = SC, AA, AP
+time = 5
+
+[State -2, Parry]
+type = HitOverride
+triggerall = Var(50) = 1
+triggerall = command = "holdfwd"
+triggerall = command != "holddown"
+trigger1 = StateType = A
+trigger1 = ctrl
+priority = 100
+slot = 0
+stateno = 1940
+attr = SA, AA, AP
+time = 5
+;---------------
+;===============
+

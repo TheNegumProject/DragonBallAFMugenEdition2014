@@ -1,0 +1,642 @@
+;====================TEAM-GZ  Turles GZ by zero liger ============================================
+
+;Combo Automatico
+[StateDef 900]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 30,0
+ctrl = 0
+anim = 900
+poweradd = 20
+sprpriority = 2
+
+[State 250, Explod]
+type = Explod
+trigger1 = (time%8)=0
+anim = 6000
+ID = 6000
+pos = -80,11
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 15
+supermove
+pausemove
+scale = 1,1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+;ignorehitpause =
+;persistent =
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Time =1
+value = S100,0
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Time =1
+value = S100,1
+volume = 0
+channel = -1
+
+
+[State 900, 1]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+damage = 0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+pausetime = 1, 4
+sparkno = S6011
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 900, end]
+type = ChangeState
+trigger1 = movecontact =1
+value = 901
+ctrl = 1
+
+[State 900, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+; Auto 2
+
+[StateDef 901]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 901
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) +65
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = time>0
+;ignorehitpause =
+;persistent =
+
+
+[State 901, 1]
+type = HitDef
+trigger1 =animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4,-2
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 901, end]
+type = ChangeState
+trigger1 = animelem = 9 && movecontact
+value = 902
+ctrl = 1
+
+[State 901, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+[StateDef 902]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 902
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) +65
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = time>0
+;ignorehitpause =
+;persistent =
+
+
+[State 902, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4,-2
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 902, end]
+type = ChangeState
+trigger1 = animelem = 12 && movecontact
+value = 903
+ctrl = 1
+
+[State 902, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[StateDef 903]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 903
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) +65
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = time>0
+;ignorehitpause =
+;persistent =
+
+[State 903, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 903, end]
+type = ChangeState
+trigger1 = animelem = 12 && movecontact
+value = 904
+ctrl = 1
+
+[State 903, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[StateDef 904]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 904
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) +65
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = time>0
+;ignorehitpause =
+;persistent =
+
+
+[State 904, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -10
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+
+[State 904, ChangeState]
+type = ChangeState
+triggerall = command = "x"
+trigger1 = Animelem = 2, > 1 && Animelem = 3, <= 20  && movecontact
+ignorehitpause
+value =1004
+
+[State 904, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;Combo Automatico 2
+[StateDef 905]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 30,0
+ctrl = 0
+anim = 900
+poweradd = 20
+sprpriority = 2
+
+[State 250, Explod]
+type = Explod
+trigger1 = (time%8)=0
+anim = 6000
+ID = 6000
+pos = -80,11
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 15
+supermove
+pausemove
+scale = 1,1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 1
+;ignorehitpause =
+;persistent =
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Time =1
+value = S100,0
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = Time =1
+value = S100,1
+volume = 0
+channel = -1
+
+
+[State 905, 1]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+damage = 0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+pausetime = 1, 4
+sparkno = S6011
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 905, end]
+type = ChangeState
+trigger1 = movecontact =1
+value = 906
+ctrl = 1
+
+[State 905, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[StateDef 906]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 901
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) -45
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+
+[State 906, 1]
+type = HitDef
+trigger1 =animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 906, end]
+type = ChangeState
+trigger1 = animelem = 9 && movecontact
+value = 907
+ctrl = 1
+
+[State 906, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+[StateDef 907]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 902
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) -45
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+
+[State 907, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 907, end]
+type = ChangeState
+trigger1 = animelem = 12 && movecontact
+value = 908
+ctrl = 1
+
+[State 907, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[StateDef 908]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 903
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) -45
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 908, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 908, end]
+type = ChangeState
+trigger1 = animelem = 12 && movecontact
+value = 909
+ctrl = 1
+
+[State 908, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[StateDef 909]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 904
+poweradd = 20
+sprpriority = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time>0
+x = floor (p2dist x) -45
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 909, 1]
+type = HitDef
+trigger1 = animelem =1 ||animelem =2||animelem =3||animelem =4||animelem =5||animelem =6||animelem =7||animelem =8||animelem =9||animelem =10||animelem =11||animelem =12
+attr = S, NA
+damage = 15,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 4
+sparkno = 0
+sparkxy = -30, -71
+hitsound = S5, 0
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -10
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 909, ChangeState]
+type = ChangeState
+triggerall = command = "y"
+trigger1 = Animelem = 2, > 1 && Animelem = 3, <= 20  && movecontact
+ignorehitpause
+value =1005
+
+[State 909, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

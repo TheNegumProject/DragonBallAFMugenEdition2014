@@ -1,0 +1,169 @@
+----====Guldo====----
+
+Version 0.9
+
+Proudly presented by: Redneck *cough cough*
+
+
+---===Character information===---
+
+	Name		: Guldo
+	Race		: Bas-Jin
+	Sex		: Male
+	Home Planet	: Probably Planet Freeza 13(Dunno if it's right.)
+	Relatives	: No idea
+
+
+---===Story===---:
+
+
+Guldo is a short, pudgy, four-eyed creature.
+He makes up for his lack of strength with his ability to manipulate space and time.
+Able to read minds, control objects, and stop time, Guldo can easily conquer a much stronger foe.
+Guldo is a member of the Ginew Force. He gets killed by Vegeta on Namek.
+
+
+---===Move list===---
+
+***(P) = x/y/x+y
+***(K) = a/b/a+b
+
+Normal Stuff:
+
+	a -> Weak Kick
+	b -> Hard Kick
+	x -> Weak Punch
+	y -> Hard Punch
+	D, UF/UB -> Long Jump
+	F, F/B, B -> Dash Jump(Hop)
+	hold a+x -> Charge; Not very fast, because it's Guldo.=P
+
+Specials:
+
+	QCF, (P)\
+		 -> rock(s)
+	QCB, (P)/
+
+	LVL = number of rocks
+	QCF: rocks come from behind Guldo
+	QCB: rocks come from behind enemy
+
+	Description: Guldo uses his telekinetic skills to move some rocks into the fighting area, which can damage
+		     his enemies.
+
+	HCF, (P) -> Psythrow ; mash (P) if it connects!
+
+	LVL1: near Guldo
+	LVL2: away from Guldo
+	LVL3: big area, enemy caught if within this area
+
+	Description: Guldo creates a little energy circle on the ground. After some time the circle transforms into
+		     an energy pillar. If it hits, Guldo uses his telekinetic powers to catch the opponent and
+		     swirl him around.
+
+	DP, (P) -> Psychoball
+
+	the bigger the LVL, the bigger is the ball
+
+	Description: Guldo forms a big energy orb with his hands.
+
+	QCB, (K) -> Knee Attack
+
+	the bigger the LVL, the farer he jumps
+
+	Description: Guldo jumps forward, trying to hit the enemy with his knee.
+
+	QCF, (K) -> Psycho Clone
+
+	LVL1: not very high, normal range
+	LVL2: a bit higher, less range
+	LVL3: very high, very few range
+
+	Description: Guldo summons a clone of himself that performs an attack and explodes on impact, because
+		     of the instability of its energy.
+
+	*air* QCF, (P) -> Psycho Gun
+
+	the bigger the LVL, the bigger is the damage
+
+	Description: Guldo charges some energy in his hands and unleashes it in an explosion.
+
+Supers:
+
+	2xQCF, (P) -> Rock Super
+
+	LVL1: 5 rocks from behind Guldo
+	LVL2: 7 rocks from behind enemy
+	LVL3: 5 rocks from the left, 5 from the right
+
+	Description: Like the special move.
+
+	2xQCB, (P) -> Psycho Field
+
+	mash (P) [OTG!!!]: LVL1: Guldo becomes a "lightning conductor" for his own energy
+		  	   LVL2: small uncontrolled discharges
+		  	   LVL3: controlled discharges with focused power in one lightning beam, random range
+		  		 (x for left, y for right; if standing on the left side of the battle field)
+
+	Description: Guldo floats a little bit and creates an energy field that surrounds him.
+
+Combos:
+
+ -> Chains
+ -> 2in1's
+ -> Cancels
+ -> Juggels
+
+	Find them out yourself. They're not hard to do.=P
+
+---===What's needed?===---
+
+	- Time Freeze (ideas already written down, system worked out, pauses+var stuff = !!!BIGSUCKAGE!!!)
+	- Maybe one or two more specials
+	- Bug fixes
+	- Maybe a Clone Super(You control the clone etc., dunno...); idea almost trashed
+	- A reversaldef Special to have his read minds thingy being used(he's like blocking, gets hit, but strikes back)
+	- Shall I add flying too?
+	- Kanashibari no Jyutsu(Whatever that is.)
+	- Paralysis(If ^ isn't said thing, but I think it is.)
+
+---===Thanks to===---
+
+	Akira Toriyama	- for creating Dragonball and DragonballZ
+	Bandai		- for creating the DBZ RPG - "Legends Of The Sayans"
+	Elecbyte	- for creating M.U.G.E.N.
+	Pextin		- for bug reports(? =])
+			- for keeping the connection up =P
+	Toad		- for so much GFX from SB4 or his Broli =P
+	Reika		- for CvS2 SFX
+	FlowaGirl	- for CvS GFX
+	You		- for downloading Guldo
+
+	Beta testers:	Pextin, Toad, Dark Roken(?), Me
+
+---===Contact===---
+
+	It's not very hard to contact me... =)
+	If you want to give feedback or bug reports...or if you can tell me what "Kanashibari no Jyutsu" means.=P
+	In case you want to help improving this character send me decent voice samples if you have some.
+	No money or cookies, sorry. I accept only gratis services.
+
+	ICQ	: 216841939
+	AIM	: redneckKBP
+	MSN	: redneck2001@gmx.net
+	Email	: GrampaRedneck@gmail.com
+	IRC	: #mugen on Sorcery
+
+	You can contact me if you want to use any codes from this character, but I actually don’t care.
+	Just use them, no need for my name in your readme, credit is not necessary.
+	Since I ripped/edited the sprites they're free for use too.
+
+
+---===THE END===---
+
+	Press ALT+F4 to close this IGNOREME file!
+
+
+
+made by BKV Productions®
+a member of Wootsy Pootsy Corp.©

@@ -1,0 +1,71 @@
+;==============
+;Super-Vegetto 
+;==============
+
+;------------------------------------------------------
+;Author:	Wasaby Aka Pierrot -Pierrot the fast-
+;------------------------------------------------------
+
+;A french project
+
+
+;=============================================================
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name ="Super Vegetto by [Wasaby]"        
+displayname ="Vegetto SSJ" 
+versiondate =01.18.2005   
+;mugenversion =04.14.2002   
+author ="Wasaby"         
+pal.defaults =1,2
+
+
+;---------------------
+;Character Files
+;---------------------
+
+;=====================
+[Files]
+;=====================
+
+;---------------------
+;Command Set
+;---------------------
+cmd     =VegettoCMD.cmd
+
+;---------------------
+;State Files
+;---------------------
+cns     =VegettoCNS.cns
+st      =VegettoCNS.cns
+stcommon =common1.cns
+
+;---------------------
+;Sprite/Sound
+;---------------------
+sprite  =VegettoSFF.sff
+anim    =VegettoAIR.air
+sound   =VegettoSND.snd
+pal1=Vegetto.act
+pal2=Vegetto.act
+st1=basic.cns
+st2=supers.cns
+
+
+;---------------------
+;Palletes
+;---------------------
+
+;Arcade mode
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+
+;----------------------------------
+pierrothefast@hotmail.com
+;----------------------------------

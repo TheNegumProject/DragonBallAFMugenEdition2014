@@ -1,0 +1,33 @@
+; Definition file for gokussj3AF
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="ssjsongoku"
+displayname ="Goku SSj3"
+versiondate =04,14,2002
+mugenversion =04,14,2002
+author ="ssjsongoku, Squall, geh"
+;Squall - Programmer
+;ssjsongoku - Co-Programmer and English sound
+;geh - italian sounds
+pal.defaults =1
+
+; Files for the player
+[Files]
+cmd     =Gokussj3.cmd
+cns     =Gokussj3.cns
+st      =Gokussj3.cns
+stcommon =common.cns
+sprite  =Gokussj3.sff
+anim    =Gokussj3.air
+sound   =Gokussj3.snd
+pal1=Gokussj3.act
+st1=flight.st
+st2=
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard =

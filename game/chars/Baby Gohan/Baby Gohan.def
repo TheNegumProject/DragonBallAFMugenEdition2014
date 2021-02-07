@@ -1,0 +1,28 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Gohan"
+displayname ="Gohan GT"
+versiondate =05,26,2011
+mugenversion =1.0
+author ="Yugi-X [[MugenMundo]]"
+pal.defaults =1
+
+[Files]
+sprite =SSJGohan.sff
+anim =SSJGohan.air
+sound =SSJGohan.snd
+cmd =SSJGohan.cmd
+cns =SSJGohan.cns
+stcommon =common1.cns
+st =SSJGohan.cns
+pal1=SSJ.act
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=
+;intro.storyboard = 
+;ending.storyboard = 

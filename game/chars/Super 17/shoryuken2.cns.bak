@@ -1,0 +1,394 @@
+;---------------------------------------------------------------------------
+; Light Shoryuken
+[Statedef 1010]
+type    = S
+movetype= A
+physics = S
+poweradd= 100
+ctrl = 0
+velset = 0,0
+anim = 1010
+
+[State 1010, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NP, SP
+time = 20
+
+[State 1010, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500,3
+
+[State 1010, 2]
+type = PlaySnd
+triggerall = PalNo < 7
+trigger1 = AnimElem = 2
+value = 320, 0
+channel = 0
+
+[State 1010, 2]
+type = PlaySnd
+triggerall = PalNo > 6
+trigger1 = AnimElem = 2
+value = 320, 2
+channel = 0
+
+[State 1010, 3]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, SA
+damage = 120, 30 
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = s500,4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeState
+trigger1 = AnimElem = 3
+value = 1011
+
+;---------------------------------------------------------------------------
+; Light Shoryuken - Rising
+[Statedef 1011]
+type    = A
+movetype= A
+physics = A
+velset = 4,-6
+
+[State 1011, 0]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500,3
+
+[State 1010, 1]
+type = VelMul
+trigger1 = 1
+x = .9
+
+[State 1010, 2]
+type = VelSet
+trigger1 = Vel Y > 0
+x = 0
+
+[State 1010, 3]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = A, SA
+damage = 50, 10
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = s500,4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeAnim
+triggerall = Anim = 1010
+trigger1 = Vel Y > 0
+value = 1011
+
+[State 1010, 5]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= -5
+value = 1040
+
+;---------------------------------------------------------------------------
+; Medium Shoryuken
+
+[Statedef 1020]
+type    = S
+movetype= A
+physics = S
+poweradd= 100
+ctrl = 0
+velset = 0,0
+anim = 1010
+
+[State 1020, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NP, SP
+time = 20
+
+[State 1020, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500, 3
+
+[State 1020, 2]
+type = PlaySnd
+triggerall = PalNo < 7
+trigger1 = AnimElem = 2
+value = 320, 0
+channel = 0
+
+[State 1020, 2]
+type = PlaySnd
+triggerall = PalNo > 6
+trigger1 = AnimElem = 2
+value = 320, 2
+channel = 0
+
+[State 1020, 3]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, SA
+damage = 150, 38
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = S500, 4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeState
+trigger1 = AnimElem = 3
+value = 1021
+
+;---------------------------------------------------------------------------
+; Medium Shoryuken - Rising
+[Statedef 1021]
+type    = A
+movetype= A
+physics = A
+velset = 4,-6
+
+[State 1021, 0]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500, 3
+
+[State 1021, 1]
+type = VelMul
+trigger1 = 1
+x = .9
+
+[State 1021, 2]
+type = VelSet
+trigger1 = Vel Y > 0
+x = 0
+
+[State 1021, 3]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = A, SA
+damage = 50, 10
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = s500,4         
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeAnim
+triggerall = Anim = 1010
+trigger1 = Vel Y > 0
+value = 1011
+
+[State 1010, 5]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= -5
+value = 1040
+
+;---------------------------------------------------------------------------
+; Hard Shoryuken
+[Statedef 1030]
+type    = S
+movetype= A
+physics = S
+poweradd= 100
+ctrl = 0
+velset = 0,0
+anim = 1010
+
+[State 1010, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA, NP, SP
+time = 20
+
+[State 1010, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500, 3
+
+[State 1010, 2]
+type = PlaySnd
+triggerall = PalNo < 7
+trigger1 = AnimElem = 2
+value = 320, 0
+channel = 0
+
+[State 1010, 2]
+type = PlaySnd
+triggerall = PalNo > 6
+trigger1 = AnimElem = 2
+value = 320, 2
+channel = 0
+
+[State 1010, 3]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, SA
+damage = 180, 45
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = s500,4        
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+guardsound = S2,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeState
+trigger1 = AnimElem = 3
+value = 1031
+
+;---------------------------------------------------------------------------
+; Hard Shoryuken - Rising
+[Statedef 1031]
+type    = A
+movetype= A
+physics = A
+velset = 4,-6
+
+[State 1031, 0]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 500, 3
+
+[State 1010, 1]
+type = VelMul
+trigger1 = 1
+x = .9
+
+[State 1010, 2]
+type = VelSet
+trigger1 = Vel Y > 0
+x = 0
+
+[State 1010, 3]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = A, SA
+damage = 50, 10
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 12,12      
+hitsound = s500,4        
+guardsound = 6,0       
+sparkxy = -20,-100
+sparkno = s15001
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -3,-6
+air.type = High
+air.velocity = -3,-6
+air.hittime = 12
+fall = 1
+air.fall = 1
+
+[State 1010, 4]
+type = ChangeAnim
+triggerall = Anim = 1010
+trigger1 = Vel Y > 0
+value = 1011
+
+[State 1010, 5]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= -5
+value = 1040
+
+;---------------------------------------------------------------------------
+; All Shoryukens - Land
+[Statedef 1040]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = 0,0
+anim = 1012
+
+[State 1040, 0]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1040, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

@@ -1,0 +1,39 @@
+[Info]
+name = "Songoku"
+displayname = "Super3 Goku"
+versiondate = 07,23,2009
+mugenversion =
+author = "SANKITI"
+pal.defaults = 4,1,5,2,3,6
+
+; Files for the player
+[Files]
+cmd      = ssjsongoku.cmd	;Other config
+cns      = ssjsongoku.cns	;Constants
+st       = ssjsongoku.cns	;States
+st1      = attacks.cns		;States
+st2      = specials.cns		;States
+st3      = hypers.cns		;States
+st4      = misc.cns		;States
+stcommon = common1.cns		;Common states
+sprite   = ssjsongoku.sff	;Sprite
+anim     = ssjsongoku.air	;Animation
+sound    = ssjsongoku.snd	;Sound
+pal1     = 1.act		;Normal palette
+pal2     = 2.act		;2nd palette
+pal3     = 3.act
+pal4     = 4.act
+pal5     = 5.act
+pal6     = 6.act
+pal7     = 7.act
+pal8     = 8.act
+pal9     = 9.act
+pal10     = 10.act
+pal11     = 11.act
+pal12     = 12.act
+
+
+; Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

@@ -1,0 +1,38 @@
+[info]
+name ="Android 18"
+displayname ="Android 18"
+versiondate = 
+mugenversion = 
+author ="Stig87"
+;Originally by Big Eli King
+pal.defaults=1,2,3,4,5,6,7,8,9
+;pal.defaults = 
+
+[files]
+cns =18.cns
+cmd =18.cmd
+stcommon =common1.cns
+sprite =18.sff
+anim =18.air
+st =18.cns
+sound =18.snd
+pal1=1.act
+pal2=2.act
+pal3=7.act
+pal4=4.act
+pal5=5.act
+pal6=6.act
+pal7=9.act
+pal8=8.act
+pal9=3.act
+pal10=10.act
+st1=attack.cns
+st2=special.cns
+st3=hyper.cns
+st4=zcombo.cns
+
+
+[arcade]
+intro.storyboard=
+ending.storyboard=
+

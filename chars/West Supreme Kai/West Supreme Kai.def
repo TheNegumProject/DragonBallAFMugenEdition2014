@@ -1,0 +1,30 @@
+
+;/ Player information 
+[Info]                                                 
+name="West Supreme Kai"
+displayname="West Supreme Kai"
+versiondate=09,23,2001
+mugenversion=06,27,2000+
+author="Teromugen/Shin hayato"
+pal.defaults =1,2
+
+[Files]                                                
+cmd=Kaioshin.cmd
+;States_____________________
+cns=Kaioshin.cns
+st=Kaioshin.cns
+stcommon=Common.cns
+;'''''''''''''''''''''''''''
+sprite=Kaioshin.sff
+anim=Kaioshin.air
+sound=Kaioshin.snd
+pal1=WestSupremeKai.act
+pal2=kaioshin05.act
+st1=modific.CNS
+st2=IA.cns
+;_____________________________________________________
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

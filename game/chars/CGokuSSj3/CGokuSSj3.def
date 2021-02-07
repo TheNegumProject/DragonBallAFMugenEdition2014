@@ -1,0 +1,34 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Goku"
+displayname ="ChibiGokuGT SSJ3"
+versiondate =04,14,2001
+mugenversion =04,14,2001
+author ="oz"
+pal.defaults =
+
+; Files for the player
+[Files]
+cmd     =CGokuSSj3.cmd
+cns     =CGokuSSj3.cns
+st      =CGokuSSj3.cns
+stcommon =CGokuSSj31.cns
+sprite  =CGokuSSj3.sff
+anim    =CGokuSSj3.air
+sound   =CGokuSSj3.snd
+pal1=CGokuSSj3.act
+pal2=CGokuSSj31.act
+pal3=
+pal4=
+pal5=
+pal6=
+pal7=
+pal8=
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard =

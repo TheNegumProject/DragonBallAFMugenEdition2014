@@ -1,0 +1,1040 @@
+;===============
+;Gohan SSJ2
+;===============
+
+
+
+
+;==========================================================================================
+;====================HELPERS===============================================================
+;---------------------------------------------------------
+;gohan intro jump
+
+[Statedef 194]
+type                    = A
+ctrl                    = 0
+velset                  = 3, 7
+anim                    = 190
+
+[State 0]
+type                    = DestroySelf
+trigger1                = pos y >= 0
+
+
+
+;fading afterimage
+[statedef 1001]
+type = S
+movetype = I
+physics = S
+ctrl = 0
+velset = 0,0
+
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 0
+v = 23
+value = 1
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 0
+v = 33
+value = 1
+
+[state 1001]
+type = varset
+trigger1 = time = 0
+v = 0
+value = parent, anim
+
+[state 1001]
+type = varset
+trigger1 = time = 0
+v = 1
+value = parent, animelemno(0)
+
+[state 1001]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[state 1001]
+type = trans
+trigger1 = time < 40
+trans = addalpha
+alpha = 240,256
+
+[state 1001]
+type = trans
+trigger1 = time >= 40
+trans = addalpha
+alpha = 240-((time-40)*4),256
+
+[state 1001]
+type = changeanim
+trigger1 = 1
+value = var(0)
+elem = var(1)
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 78
+v = 23
+value = 0
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 80
+v = 33
+value = 0
+
+[state 1001]
+type = destroyself
+trigger1 = time = 80
+
+;---------------------------------------------------------
+;fading afterimage fast
+[statedef 1003]
+type = S
+movetype = I
+physics = S
+ctrl = 0
+velset = 0,0
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 0
+v = 23
+value = 1
+
+[state 1001]
+type = assertspecial
+trigger1 = time = 0
+flag = invisible
+
+[state 1001]
+type = varset
+trigger1 = time = 0
+v = 0
+value = parent, anim
+
+[state 1001]
+type = varset
+trigger1 = time = 0
+v = 1
+value = parent, animelemno(0)
+
+[state 1001]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[state 1001]
+type = trans
+trigger1 = time < 3
+trans = addalpha
+alpha = 240,256
+
+[state 1001]
+type = trans
+trigger1 = time >= 3
+trans = addalpha
+alpha = 240-((time-4)*5),256
+
+[state 1001]
+type = changeanim
+trigger1 = 1
+value = var(0)
+elem = var(1)
+
+[State 1001]
+type = parentvarset
+trigger1 = time = 28
+v = 23
+value = 0
+
+[state 1001]
+type = destroyself
+trigger1 = time = 30
+;--------------------------------------------------------------------
+;push helper
+[statedef 6020]
+type = S
+movetype = A
+physics = N
+ctrl = 0
+anim = 6081
+
+[state 6000]
+type = velset
+trigger1 = 1
+x = ifelse(ishelper(2), 5,-5)
+
+[state 6000]
+type = posset
+trigger1 = pos Y>= 0
+y = 0
+
+[state 6000]
+type = pause
+trigger1 = movecontact
+time = 2
+persistent = 2
+
+[state 6000]
+type = hitby
+trigger1 = 1
+value = SCA, NP
+
+[state 6000]
+type = hitoverride
+trigger1 = 1
+attr = SCA, NP
+stateno = 6000
+
+[state 6000]
+type = playerpush
+trigger1 = 1
+value = 1
+
+[state 6000]
+type = destroyself
+trigger1 = time = 30
+
+;-------------------------------------------------------------------
+;rock helper
+[statedef 6021]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = ifelse(random < 100, 6033,(6034+random%3))
+velset = 0,0
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6033
+scale = 0.7,0.7
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6034 || anim = 6035
+scale = 0.8,0.8
+
+[state 6021]
+type = sprpriority
+trigger1 = ishelper(500) || ishelper(501)
+trigger1 = vel X>= 0
+trigger2 = ishelper(502) || ishelper(503)
+trigger2 = vel X<= 0
+value = -1
+
+[state 6021]
+type = sprpriority
+trigger1 = ishelper(500) || ishelper(501)
+trigger1 = vel X< 0
+trigger2 = ishelper(502) || ishelper(503)
+trigger2 = vel X> 0
+value = 4
+
+[state 6021]
+type = velset
+trigger1 = var(0) = 0
+y = -0.9
+
+[state 6021]
+type = velset
+trigger1 = var(0) = 1
+y = 0.9
+
+[state 6021]
+type = null;varset
+trigger1 = parentdist Y< 10
+v = 0
+value = 0
+
+[state 6021]
+type = null;varset
+trigger1 = parentdist Y> 120
+v = 0
+value = 1
+
+[state 6021]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(500)
+x = -0.35
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(501)
+x = -0.25
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(502)
+x = -0.15
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(503)
+x = -0.05
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(500)
+x = 0.4
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(501)
+x = 0.25
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(502)
+x = 0.15
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(503)
+x = 0.05
+
+[state 6021]
+type = changestate
+trigger1 = parent, stateno != 800
+value = 6023
+ctrl = 0
+
+[state 6021]
+type = destroyself
+trigger1 = screenpos Y< -10
+
+[statedef 6023]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6033
+scale = 0.7,0.7
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6034 || anim = 6035
+scale = 0.8,0.8
+
+[state 6021]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+
+[state 6023]
+type = veladd
+trigger1 = pos Y!= 0
+y = 0.1
+
+[state 6023]
+type = destroyself
+trigger1 = pos Y>= 0
+trigger2 = frontedgedist < -40
+trigger3 = backedgedist < -40
+trigger4 = screenpos Y< -40
+
+;-------------------------------------------------------------------
+;rock helper intro
+[statedef 6921]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = ifelse(random < 100, 6033,(6034+random%3))
+velset = 0,0
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6033
+scale = 0.7,0.7
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6034 || anim = 6035
+scale = 0.8,0.8
+
+[state 6021]
+type = sprpriority
+trigger1 = ishelper(500) || ishelper(501)
+trigger1 = vel X>= 0
+trigger2 = ishelper(502) || ishelper(503)
+trigger2 = vel X<= 0
+value = -1
+
+[state 6021]
+type = sprpriority
+trigger1 = ishelper(500) || ishelper(501)
+trigger1 = vel X< 0
+trigger2 = ishelper(502) || ishelper(503)
+trigger2 = vel X> 0
+value = 4
+
+[state 6021]
+type = velset
+trigger1 = var(0) = 0
+y = -0.9
+
+[state 6021]
+type = velset
+trigger1 = var(0) = 1
+y = 0.9
+
+[state 6021]
+type = null;varset
+trigger1 = parentdist Y< 10
+v = 0
+value = 0
+
+[state 6021]
+type = null;varset
+trigger1 = parentdist Y> 120
+v = 0
+value = 1
+
+[state 6021]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(500)
+x = -0.35
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(501)
+x = -0.25
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(502)
+x = -0.15
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X< 0 && ishelper(503)
+x = -0.05
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(500)
+x = 0.4
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(501)
+x = 0.25
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(502)
+x = 0.15
+
+[state 6021,2]
+type = veladd
+trigger1 = parentdist X> 0 && ishelper(503)
+x = 0.05
+
+[state 6021]
+type = changestate
+trigger1 = parent, stateno != 7192
+value = 6023
+ctrl = 0
+
+[state 6021]
+type = destroyself
+trigger1 = screenpos Y< -10
+
+[statedef 6023]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6033
+scale = 0.7,0.7
+
+[state 6021]
+type = angledraw
+trigger1 = anim = 6034 || anim = 6035
+scale = 0.8,0.8
+
+[state 6021]
+type = assertspecial
+trigger1 = 1
+flag = noshadow
+
+[state 6023]
+type = veladd
+trigger1 = pos Y!= 0
+y = 0.1
+
+[state 6023]
+type = destroyself
+trigger1 = pos Y>= 0
+trigger2 = frontedgedist < -40
+trigger3 = backedgedist < -40
+trigger4 = screenpos Y< -40
+;-------------------------------------------------------------------
+;AfterImage Teleport
+[Statedef 2500]
+type = S
+ctrl = 0
+anim = 2402
+physics = S
+sprpriority = 2
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 0,0
+
+[State 0, Turn]
+type = Turn
+trigger1 = Animelem=1
+x = p2bodydist
+
+[State 0, AfterImage]
+type = AfterImage
+trigger1 = !time||animelem=1
+length = 6
+palbright = 0,0,0
+palcontrast = 120,120,120
+palpostbright = 0,0,0
+paladd = 0,0,0
+palmul = .65,.65,.75
+timegap = 2
+framegap = 1
+time = 50
+trans = add ;"none","add1","sub"
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Time>=8
+;-------------------------------------------------------------------
+;AfterImage Teleport 2
+[Statedef 2501]
+type = S
+ctrl = 0
+anim = 2403
+physics = S
+sprpriority = 2
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 0,0
+
+[State 0, Turn]
+type = Turn
+trigger1 = Animelem=1
+x = p2bodydist
+
+[State 0, AfterImage]
+type = AfterImage
+trigger1 = !time||animelem=1
+length = 6
+palbright = 0,0,0
+palcontrast = 120,120,120
+palpostbright = 0,0,0
+paladd = 0,0,0
+palmul = .65,.65,.75
+timegap = 2
+framegap = 1
+time = 50
+trans = add ;"none","add1","sub"
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Time>=8
+;-------------------------------------------------------------------
+;Aura
+[Statedef 3000]
+type = S
+ctrl = 0
+anim = 9999
+physics = S
+sprpriority = 2
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 0,0
+
+;[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = (Gametime%25=0)
+value = S7193,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = invisible
+
+[State 0, ]
+type = Explod
+trigger1 = random > 700
+anim = 6026
+ID = 6026
+pos = 45,-95
+postype = p1
+facing = -1
+vfacing = 1
+bindtime = 1
+random = 30,80
+supermove = 1
+scale = .2,.2
+sprpriority = ifelse(random<500,-3,3)
+ownpal = 1
+
+[State 0, ]
+type = Explod
+trigger1 = random > 500
+anim = 6027
+ID = 6027
+pos = 60,-80
+postype = p1
+facing = -1
+vfacing = 1
+bindtime = 1
+random = 10,60
+supermove = 1
+scale = .2,.2
+sprpriority = ifelse(random<500,-3,3)
+ownpal = 1
+
+[State 0, ]
+type = Explod
+trigger1 = random > 500
+anim = 6027
+ID = 6027
+pos = -70,-80
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+random = 10,60
+supermove = 1
+scale = .2,.2
+sprpriority = ifelse(random<500,-3,3)
+ownpal = 1
+
+[State 0, ]
+type = Explod
+trigger1 = random > 700
+anim = 6043
+ID = 6043
+pos = -85,-60
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = 1
+random = 0,20
+supermove = 1
+scale = .2,.2
+sprpriority = ifelse(random<500,-3,3)
+ownpal = 1
+
+[State 0, ]
+type = Explod
+trigger1 = random > 700
+anim = 6043
+ID = 6043
+pos = 80,-60
+postype = p1
+facing = -1
+vfacing = 1
+bindtime = 1
+random = 0,20
+supermove = 1
+scale = .2,.2
+sprpriority = ifelse(random<500,-3,3)
+ownpal = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,stateno!=2306
+;-------------------------------------------------------------------
+;khh blast
+[StateDef 6024, Khh blast]
+type = S
+movetype= A
+physics = N
+ctrl = 0
+anim = 6024
+sprpriority =8
+
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, Velset]
+type =  Velset
+trigger1 =  time = 2
+x = 12
+y = 0
+
+[State 0, PlayerPush]
+type = null;PlayerPush
+trigger1 =  (1)
+value = 1
+persistent = 1
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA;,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = !time
+attr = S,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;hitflag = MAFDP        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = hard
+priority = 8,Hit   ;Hit,Miss,Dodge
+damage = 50,10
+pausetime = 0,10
+sparkno = S6069
+guard.sparkno = 0
+sparkxy = 0,0
+hitsound = S11,11
+guardsound = 0,0
+ground.type = High      ;Low,Trip,None
+air.type = High
+ground.slidetime = 10
+ground.hittime = 11
+air.hittime = 20
+ground.velocity = -9,-6
+guard.velocity = -15
+air.velocity = -10,-8
+sprpriority = 2
+fall = 1
+kill = 1
+guard.kill = 1
+palfx.time = 50
+palfx.sinadd = 255,173,158,25
+palfx.mul = 77,115,189
+palfx.add = 200,200,200
+fall.envshake.time = 10
+fall.envshake.ampl = 5
+
+[state 0: trans]
+type = trans
+trigger1 = 1
+trans = add
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = (movecontact)||(movehit)
+;-------------------------------------------------------------------
+[StateDef 6060, Sonic kick spark]
+type = A
+movetype= A
+physics = N
+anim = 6021
+sprpriority = 3
+
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = root,anim=460
+;time = 1
+;facing = 0
+;pos = 0,0
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = -30,-15
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = root,stateno!=460
+trigger1 = root,stateno!=468
+;ignorehitpause =
+;persistent =
+;-------------------------------------------------------------------
+[StateDef 6042, Kamehameha beam]
+type = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 6042
+sprpriority = 3
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 24,-42
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA;,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0: HitOverride]
+type                    = HitOverride
+trigger1                = 1
+slot                    = 0
+attr                    = SCA, NP, SP, HP
+stateno                 = -1
+time                    = -1
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = Animelem=3
+trigger2 = Animelem=4
+trigger3 = Animelem=5
+trigger4 = animelem =8
+attr = S,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAFDP        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = hard
+priority = 8,Hit   ;Hit,Miss,Dodge
+damage = 25
+pausetime = 0,12
+;sparkno = S6069
+guard.sparkno = S ifelse(random<200,9053,9003)
+sparkxy = 0,0
+hitsound = S480
+guardsound = 0,0
+ground.type = High      ;Low,Trip,None
+air.type = High
+ground.slidetime = 10
+ground.hittime = 11
+air.hittime = 20
+ground.velocity = -9,-5
+guard.velocity = -15
+air.velocity = -3,-5
+sprpriority = 2
+fall = 1
+fall.recover = 0
+guard.kill = 1
+palfx.time = 50
+palfx.sinadd = 255,173,158,25
+palfx.mul = 77,115,189
+palfx.add = 200,200,200
+envshake.time = 30
+envshake.freq = 80
+envshake.ampl = -9
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = Animtime=0
+;-------------------------------------------------------------------
+[StateDef 6403 masenko blast]
+type = S
+movetype = A
+ctrl = 0
+anim = 2403
+physics = N
+sprpriority = 3
+
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA;,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+
+[State 0: HitOverride]
+type                    = HitOverride
+trigger1                = 1
+slot                    = 0
+attr                    = SCA, NP, SP, HP
+stateno                 = -1
+time                    = -1
+
+
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+
+[State 0, ]
+type = VelAdd
+trigger1 = time = 2
+x = 18
+
+
+[State 0: PlayerPush]
+type                    = PlayerPush
+trigger1                = (1)
+value                   = 0
+persistent              = 1
+
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = !time
+attr = S,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;hitflag = MAFDP        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = hard
+priority = 8,Hit   ;Hit,Miss,Dodge
+damage = 200,0
+pausetime = 0,10
+sparkno = S6069
+guard.sparkno = S6069
+sparkxy = 0,0
+hitsound = S500,7
+guardsound = S500,7
+ground.type = Trip      ;Low,Trip,None
+air.type = Trip
+ground.slidetime = 26
+ground.hittime = 11
+air.hittime = 20
+ground.velocity = -15,-6
+guard.velocity = -15
+air.velocity = -15,-6
+sprpriority = 2
+fall = 1
+guard.kill = 1
+palfx.time = 50
+palfx.sinadd = 255,123,198,15
+palfx.mul = 255,231,247
+palfx.add = 239,214,24
+envshake.time = 30
+envshake.ampl = -10
+envshake.freq = 120
+
+
+[state 0: trans]
+type = trans
+trigger1 = 1
+trans = add
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = (movecontact)||(movehit)
+
+
+;-------------------------------------------------------------------------
+
+
+[StateDef 6404 super punch explosion]
+type = S
+movetype = A
+ctrl = 0
+anim = 6069
+physics = N
+sprpriority = 3
+
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA;,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+
+[State 0: HitOverride]
+type                    = HitOverride
+trigger1                = 1
+slot                    = 0
+attr                    = SCA, NP, SP, HP
+stateno                 = -1
+time                    = -1
+
+
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = !time
+attr = S,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;hitflag = MAFDP        ;HLAFD+-
+guardflag = MA         ;HLA
+getpower = 0,0
+givepower = 0,0
+animtype = hard          ;light,medium,hard,back,up,diagup
+air.animtype = hard
+priority = 8,Hit   ;Hit,Miss,Dodge
+damage =  100,0
+pausetime = 0,10
+sparkno = S9092
+guard.sparkno = S6069
+sparkxy = 0,0
+hitsound = S500,7
+guardsound = S500,7
+ground.type = Trip      ;Low,Trip,None
+air.type = Trip
+ground.slidetime = 26
+ground.hittime = 11
+air.hittime = 20
+ground.velocity = 0,0
+air.velocity = -12,2
+guard.velocity = -15
+sprpriority = 2
+fall = 1
+guard.kill = 1
+kill = 1
+envshake.time = 30
+envshake.ampl = -10
+envshake.freq = 120
+
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 =animtime = 0
+
+
+
+
+

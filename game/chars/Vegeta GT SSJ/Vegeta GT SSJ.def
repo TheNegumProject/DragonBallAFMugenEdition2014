@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Vegeta-GT-SSJ2"
+displayname ="Vegeta GT SSJ2"
+versiondate =14/10/2007
+mugenversion =06,14,2003
+author ="Ippo, edit mephistopheles"
+pal.defaults =1,2
+
+[Files]
+sprite =Vegeta-GT-SSJ2.sff
+anim =Vegeta-GT-SSJ2.air
+sound =Vegeta-GT-SSJ2.snd
+cmd =Vegeta-GT-SSJ2.cmd
+cns =Vegeta-GT-SSJ2.cns
+stcommon =common.cns
+st =Basics.st
+pal1=paleta.act
+pal2=paleta2.act
+st1=Specials.st
+st2=Supers.st
+st3=-2.st
+st4=-3.st
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard =

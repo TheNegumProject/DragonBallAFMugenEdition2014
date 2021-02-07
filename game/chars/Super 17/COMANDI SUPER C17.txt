@@ -1,0 +1,10 @@
+--------------------------|Super C17 command by Squall|-------------------------
+
+Volo                                           : S
+Charge                                         : z
+teleport                                       : c
+
+--|Hypers|-------------------------------------
+Chain Gun		                       : D, F, D, F, a (need 1 Ki bar)			
+Flash Bomb (perde forza man mano che lo usa)   : D, F, D, F, b (need 2 Ki bar) 
+Electro Eclipse Ball 	                       : D, F, D, F, x (need 3 Ki bar)

@@ -1,0 +1,25 @@
+
+[Info]
+name    ="PexBuu"
+displayname ="Majin Buu"
+versiondate =12,25,2008
+pal.defaults =1,2
+author="Pextin"
+mugenversion=
+
+[Files]
+cmd     =BellyBuu.cmd
+cns     =BellyBuu.cns
+st      =BellyBuu.cns
+stcommon =common1.cns
+sprite  =BellyBuu.sff
+anim    =BellyBuu.air
+pal1    = 1.act
+pal2    = 2.act
+sound   =BellyBuu.snd
+st1=AI.cns
+st2=Supers.cns
+st3=Specials.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def

@@ -1,0 +1,95 @@
+                  [MUGEN MUNDO TEAM]
+------------------------------------------------------------------------------------------------------
+Este é o Cell super perfect form versão 2.2 by mugen mundo
+
+Sheet:DBZ sb2
+Editado por:Marcus
+programado por:Marcus
+
+oque ele tem?
+oque ele terá
+-------------------------------------------------------------------------------------------------------
+        OQUE ELE TEM?
+ 18 golpes
+ 12 poderes(modo normal & SSJ1)
+ 5 combos
+ teleport para frente/trás
+ modo super perfect
+ voz em portugues
+ muitos efeitos
+ 1 intro
+ modo fly
+ Taioken
+ sequencias aéreas
+ carrega o ki e vida
+ hipers especiais(Genkidama,golpe dos helpers e cell juniores attack)
+ 12 paletas:para usar as paletas especiais do vegetto que são 6 segure o enter+a,isso pode ser feito tambem com todos os outros botões
+ shoques no corpo quando esta com 3000 de power no modo super perfect
+ E umas surpresas como o super recovery que permite no caso se o char levar um golpe no ar e for cair aperte 
+ rapidamente x e entaum ele se teleportara diretamente para perto do player 2 possibilitando que você o
+ ataque.
+ 
+-------------Golpes que podem ser feitos------------------------------
+Bom este cell possue combos manuais que podem ser ligados como
+ apertar raipidamente um e depois o outro
+D,B,c////D,B,a.
+
+[chute fantasma]
+"a+c"
+---------------
+[Taioken]
+"y+z"
+---------------
+[genkidama]
+"B,F,a"
+---------------------------------------------------------------------------------------------------------
+                     OQUE ELE TERÁ?
+Bom não tera mais nada a não ser que eu mude de ideia se alguem quiser me dar alguma sugestão
+www.mugenmundo.ucoz.com
+www.mugenmundo.blogspot.com
+www.mugenmundo.forumfree.com
+----------------------------------------------------------------------------------------------------------
+                   NOVIDADES NELE!!
+ É o unico char do cell decente na net com voz em portugues 
+ e é o unico cell com transformação em super perfect cell
+ E tambem paletas novas deis da ultima versão
+--------------------------------------------------------------------
+               HISTORIA DO PERSONAGEM
+Cell é o ultimo androide que fugiu do futuro e retornou ao passado
+com a maquina do tempo de trunks e seu objetivo era destruir goku,os guerreiros z
+e a terra mais mesmo com seu poder imenso foi derrotado por gohan ssj2&goku
+--------------------------------------------------------------------
+                 CREDITOS A QUEM MEREÇE MUITO!!
+____________________________________________________________________
+A Bandai pelo dbz sb2
+____________________________________________________________________
+Ao francynaldo por sempre me ajudar com variais e coisas assim.
+____________________________________________________________________
+A yago meu braço direito que sempre me ajuda com as coisas.
+___________________________________________________________________
+Ao bardock por me autorizar a usar o fx de explosão de fogo dele
+____________________________________________________________________
+A toad pelo fxs de ki ssj1 e modo normal.
+____________________________________________________________________
+ao gokuthepower pelos fxs da genkidama!!!!!!!!!!!!
+____________________________________________________________________
+E é claro a todos meus comparsas da Mugen mundo que vem crescendo.
+
+
+                [MUGEN MUNDO TEAM]
+               -<Marcus>
+               -<Yago LS>
+               -<Vitor angili>
+               -<Julian dbz>
+               -<Taylor>
+               -<Bandido>
+               -<Rhandus mauricio>
+               -<Gustavo>
+               -<Greed>
+               -<Kakashi>
+               -<Diego antunes>
+               -<Rho>
+               
+obrigado a todos por ler este arquivo e se divirtam 
+com esse cell pois em breve
+tem mais!!!!

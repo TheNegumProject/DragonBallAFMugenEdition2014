@@ -1,0 +1,33 @@
+[Info]
+
+name="||>(Zerberus-:-Dante)<|| saiyajin Raditz(Son Goku Brother)"
+
+displayname="Raditz SSJ"
+
+versiondate=01/12/2007
+
+mugenversion=04,14,2001 & Winmugen
+
+author="Zerberus_Dante(DgzMember)"
+
+pal.defaults=1,2,3,4,5,6,7,8
+
+
+[Files]
+sprite   =Raditz.sff
+sound    =Raditz.snd
+anim     =Raditz.air
+cmd      =Raditz.cmd
+cns      =Raditz.cns
+st       =Raditz.cns
+stcommon =common1.cns
+pal1=SSJ.act
+pal2=raditzpaletaprueba.act
+st1=Hypers.cns
+st2=Helpers.cns
+;st3=
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

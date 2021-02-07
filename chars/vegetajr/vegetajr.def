@@ -1,0 +1,18 @@
+ [Info]
+Name=      "K-vegeta by Felipe"
+DisplayName="Vegeta junior"
+Author=     "Felipe"
+VersionDate= 04,14,2001
+MugenVersion= 04,14,2001
+pal.defaults = 1
+
+[Files]
+cmd =    k-vegeta.cmd
+cns =    k-vegeta.cns
+st =     k-vegeta.cns
+stcommon =  common1.cns
+sprite =  k-vegeta.sff
+anim =  k-vegeta.air
+sound =  k-vegeta.snd
+pal1 = k-vegeta.act
+

@@ -1,0 +1,30 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Gohan AF SSJ4"
+displayname = "Gohan AF SSJ4"
+versiondate = 04,14,2002
+mugenversion = 04,14,2002
+author = "Tapion & Nahue77, EDIT MEPHISTOPHELES"
+pal.defaults = 1,2
+
+[Files]
+sprite = GOHAN AF SSJ4.sff
+anim = GOHAN AF SSJ4.air
+sound = GOHAN AF SSJ4.snd
+cmd = Mistic_Gohan.cmd
+cns = Mistic_Gohan.cns
+stcommon = common1.cns
+st = Basics.cns
+st1 = Specials.cns
+st2 = Supers.cns
+st3 = Helpers.cns
+st4 = Artifcial_intelligence.cns
+pal1 = GOHAN AF SSJ4.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

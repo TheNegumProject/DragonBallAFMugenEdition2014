@@ -1,0 +1,12 @@
+------------------------------------|Comandi Goku Ssj4 by Squall|--------------
+
+volo                                                   : s
+charge                                                 : z
+
+--|Hypers|--------------------------------------------
+
+Raggio Ki (9000)                                       : D, F, D, F, a
+Vegeta Helper (9000)                                   : D, F, D, F, b
+Kamehameha (8000)                                      : D, F, D, F, x
+Genkidama ssj4 fatality (8000, p2life <= 900)          : D, F, D, F, z
+Genkidama desperate (7000, life <= 900)                : D, B, D, B, z

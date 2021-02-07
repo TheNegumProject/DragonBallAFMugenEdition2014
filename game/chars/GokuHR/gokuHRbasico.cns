@@ -1,0 +1,440 @@
+;---------------------------------------------------------------------------
+; Lose by Time Over
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; Win state decider
+[Statedef 180]
+type = S
+
+[State 180, 1]
+type = ChangeState
+trigger1 = Time = 0
+value = 181
+
+;---------------------------------------------------------------------------
+; Win pose 1 - Bow
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 180
+velset = 0,0
+
+[State 181, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = s0, 0
+
+[State 181, 1]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = s50, 0
+
+[State 181, 2]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = s10000, 0
+
+[State 181,3]
+type = AssertSpecial
+trigger1 = Time = [0,300]
+flag = RoundNotOver
+
+[State 181, 4]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; Introduction
+[Statedef 191]
+type = A
+ctrl = 0
+anim = 190
+pos = 0, 0
+
+[State 3001, 0]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 2
+x = -80
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 3
+x = 15
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 11
+x = -5
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 21
+x = 2
+
+[State 100, 2]
+type = VelSet
+trigger1 = AnimElem = 25
+x = 0
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 8, 0
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 180, 1
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 8, 2
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 38
+value = 800, 0
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 38
+value = 5, 6
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 44 || AnimElem = 49 || AnimElem = 54 || AnimElem = 59 || AnimElem = 63
+value = 0, 0
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 66
+value = 1, 1
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 66
+value = 5, 7
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 64
+value = 8, 1
+
+[State 0]
+type = Helper
+trigger1 = AnimElem = 2
+helpertype = Normal
+name = "Nuvem"
+id = 195
+pos = -158, -38
+facing = 1
+stateno = 195
+
+[State 191, 1] ;Freeze animation until PreIntro is over
+type = ChangeAnim
+trigger1 = RoundState = 0
+value = 190
+
+[State 191, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 191, 3] ;Change to stand state when done
+type = ChangeState
+trigger1 = AnimElem = 68
+value = 0
+
+;---------------------------------------------------------------------------
+; Nuvem Helper
+[Statedef 195]
+type = A
+ctrl = 0
+anim = 195
+velset = 0,0
+facing = 1
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 2
+x = 15
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 10
+x = -5
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 20
+x = 2
+
+[State 100, 2]
+type = VelSet
+trigger1 = AnimElem = 24
+x = 0
+
+[State 100, 2]
+type = VelSet
+trigger1 = AnimElem = 67
+x = 12
+
+[State 100, 2]
+type = VelSet
+trigger1 = AnimElem = 69
+x = 20
+
+[State 195, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 0, ]
+type = DestroySelf
+trigger1 = !AnimTime
+
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+; Override common states (use same number to override) :
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+; Run Forwards
+[Statedef 100]
+type    = S
+physics = N
+anim = 100
+sprpriority = 1
+ctrl = 0
+
+[State 100, 0]
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+
+[State 52, 3]
+type = CtrlSet
+trigger1 = Time = 5
+value = 1
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 4
+x = 15
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 10
+x = 10
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 11
+x = 8
+
+[State 0]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 2025
+bindtime = 1
+sprpriority = 3
+ownpal = 1
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 3
+
+[State 100, 3]
+type = ChangeState
+trigger1 = AnimElem = 13
+value = 101
+
+;---------------------------------------------------------------------------
+; Run Stop
+[Statedef 101]
+type    = S
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 101
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 1
+x = 5
+
+[State 101, 1]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 101, 2]
+type = PlaySnd
+trigger1 = Time = 0
+value = 40, 0
+
+[State 101, 3]
+type = MakeDust
+trigger1 = Time = 2
+pos = -5,-2
+spacing = 1
+
+[State 101, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; RUN_BACK
+[Statedef 105]
+type    = S
+physics = S
+ctrl = 0
+anim = 105
+sprpriority = 1
+ctrl = 0
+
+[State 105, 1]
+type = VelSet
+trigger1 = AnimElem = 4
+x = -25
+
+[State 0]
+type = Explod
+trigger1 = AnimElem = 4
+anim = 2020
+bindtime = 1
+sprpriority = 3
+ownpal = 1
+
+[State 105, 2]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 3
+
+[State 105, 3]
+type = ChangeState
+trigger1 = AnimElem = 18
+value = 106
+
+;---------------------------------------------------------------------------
+; Run Stop
+[Statedef 106]
+type    = S
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 101
+
+[State 100, 1]
+type = VelSet
+trigger1 = AnimElem = 1
+x = -5
+
+[State 101, 1]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 101, 2]
+type = PlaySnd
+trigger1 = Time = 0
+value = 40, 0
+
+[State 101, 3]
+type = MakeDust
+trigger1 = Time = 2
+pos = 5,-2
+spacing = 1
+
+[State 101, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Run Forwards Air
+[Statedef 4000]
+type    = A
+physics = N
+velset = 12,0
+anim = 110
+ctrl = 0
+
+[State 0]
+type = ScreenBound
+trigger1 = PrevStateNo = 2110
+movecamera = 0,1
+
+[State 4000, 0]
+type = AssertSpecial
+trigger1 = 1
+flag=NoWalk
+
+[State 4000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 0, 3
+
+[State 0, 4]
+type = VelSet
+trigger1 = AnimElem = 14
+x = 4
+
+[State 4000, 4]
+type = ChangeState
+trigger1 = time = 14
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Run Back Air
+[Statedef 4005]
+type    = A
+physics = N
+velset = -10,0
+anim = 115
+ctrl = 0
+
+[State 4005, 0]
+type = AssertSpecial
+trigger1 = 1
+flag=NoWalk
+
+[State 0]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 0, 3
+
+[State 0]
+type = VelSet
+trigger1 = AnimElem = 12
+x = -4
+
+[State 4005, 1]
+type = ChangeState
+trigger1 = time = 12
+value = 50
+ctrl = 1

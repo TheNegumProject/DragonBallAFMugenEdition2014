@@ -1,0 +1,27 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Bardock"
+displayname ="Bardock"
+versiondate =04,14,2001
+mugenversion =04,14,2001
+author ="BARDOCK"
+pal.defaults =
+
+; Files for the player
+[Files]
+cmd     =Bardock.cmd
+cns     =Bardock.cns
+st      =Bardock.cns
+stcommon =Bardock1.cns
+sprite  =Bardock.sff
+anim    =Bardock.air
+sound   =Bardock.snd
+pal1=Bardock.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard =

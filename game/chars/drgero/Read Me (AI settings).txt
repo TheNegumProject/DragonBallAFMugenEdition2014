@@ -1,0 +1,56 @@
+******************************************************************************
+
+DrGero AI 5 Levels
+
+by Zagi
+
+updated 2010 6/7
+
+******************************************************************************
+
+------------------------------------------------------------------------------
+　　　　　　　　　　　　　　　　HOW TO USE
+------------------------------------------------------------------------------
+the AI difficulty level can be changed between 1 through 10
+
+Level 1&3 uses less High-Speed Dodges and more taunts.
+Level 3 begains to guard and use special moves more often.
+(Default is Level 3)
+
+*Pal7-12 constantly has AI activated.
+
+To change the difficulty, open the frieza.CNS file with notepad,
+under the [Statedef -3] area there should be;
+;===========================================================================
+;                    　 AIスイッチ　＆　AIレベル設定
+;===========================================================================
+;AI
+[State -3,AI]
+type = varset
+triggerall = var(59)<=0
+triggerall = !ishelper || ishelper(10000+id)
+trigger1 = Command = "AI0"||Command = "AI1"||Command = "AI2"||Command = "AI3"
+trigger2 = Command = "AI4"||Command = "AI5"||Command = "AI6"||Command = "AI7"
+trigger3 = Command = "AI8"||Command = "AI9"||Command = "AI10"||Command = "AI11"
+　　　（略）
+trigger13 = Command = "AI48"||Command = "AI49"||Command = "AI50"||Command = "AI51"
+trigger14 = numhelper(10000+id)
+trigger14 = helper(10000+id),var(59)>0 && (roundstate<2||roundstate=2&&ctrl)
+trigger15 = palno = [7,12]
+;trigger16 = 1
+
+
+
+var(59) = 3        ;AI level can be changed between 1 - 10
+	  ↑
+　　And change this number to any difficulty you like
+　　　　
+
+
+------------------------------------------------------------------------------
+AI作成において、㍻㌢氏のAI説明書が大変参考になりました。
+AI更新時に様々なAI制作者様の記述を参考にさせていただきました。
+また、ドクターゲロを作成し、AIを採用していただいた超神氏に、
+この場をかりてお礼を申し上げます。
+
+つたないAIですが、楽しんでいただければ幸いです。

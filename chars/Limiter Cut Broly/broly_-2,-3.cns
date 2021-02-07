@@ -1,0 +1,4667 @@
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Statedef -2]
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;デバッグ用
+[State ]
+Type=DisplayToClipboard
+trigger1=!ishelper
+Text="stateno %d,animtime %d,anim %d,roundtime %d"
+Params=var(46),var(48),var(47),var(16)
+IgnoreHitPause=1
+
+[State ]
+Type=DisplayToClipboard
+trigger1=ishelper(70000)
+Text="stateno %d,animtime %d,anim %d,target %d"
+Params=var(46),var(48),var(47),numtarget
+IgnoreHitPause=1
+
+[State ]
+type=CtrlSet
+triggerall=!ishelper&&(var(56)&2)
+trigger1=roundstate>2
+trigger1=var(17)=[1,2]
+value=0
+ignorehitpause=1
+
+[State ]
+type=AllPalFx
+trigger1=1
+Color=256
+add=0,-255,0
+time=2
+ignorehitpause=1
+
+[State ]；12Pの時最初から界王拳状態
+type=VarSet
+triggerall=!ishelper&&alive
+triggerAll=palno=12
+trigger1=var(5)!=1
+trigger2=roundstate>=2
+v=5
+value=1
+ignorehitpause=1
+
+[State ]；ラウンド２以降は常に覚醒状態
+type=VarSet
+triggerall=!ishelper&&alive
+triggerAll=palno=12
+Trigger1=RoundNo>=2
+trigger1=var(20)!=1
+trigger2=roundstate>=2
+v=20
+value=1
+ignorehitpause=1
+
+[State ];animtime管理
+type=varset
+triggerall=!ishelper
+trigger1=gametime%1=0
+trigger1=var(37):=0||1
+trigger1=var(38):=0||1
+var(48)=var(48)+1
+ignorehitpause=1
+
+[State ];animtime管理
+type=null
+triggerall=ishelper(70000)
+trigger1=roundstate<=2
+trigger1=var(48):=root,var(48)
+trigger2=roundstate>2
+trigger2=var(48):=var(48)+1
+ignorehitpause=1
+
+[State ];ステート習得1
+type=null
+triggerall=!ishelper&&numhelper(1)
+triggerall=var(49)!=gametime+gametime&&stateno!=1016
+trigger1=var(57)=0
+trigger1=var(57):=stateno||1
+trigger2=var(57)!=0&&var(58)=0
+trigger2=var(57)!=stateno
+trigger2=var(58):=stateno||1
+trigger3=var(58)!=0&&var(59)=0
+trigger3=var(57)!=stateno&&var(58)!=stateno
+trigger3=var(59):=stateno||1
+
+[State ];ステート習得2
+type=null
+triggerall=!ishelper&&numhelper(1)
+triggerall=var(49)!=gametime+gametime
+triggerall=var(57)!=0&&var(58)!=0&&var(59)!=0
+trigger1=var(58)!=stateno&&var(59)!=stateno
+trigger1=var(57):=stateno||1
+trigger2=var(57)!=stateno&&var(59)!=stateno
+trigger2=var(58):=stateno||1
+trigger3=var(57)!=stateno&&var(58)!=stateno
+trigger3=var(59):=stateno||1
+
+[State ];ステート習得3
+type=null
+triggerall=!ishelper&&numhelper(1)
+triggerall=var(49)!=gametime+gametime&&stateno!=1016
+triggerall=hitpausetime>0
+trigger1=var(51)=0
+trigger1=var(51):=stateno||1
+trigger2=var(51)!=0&&var(52)=0
+trigger2=var(51)!=stateno
+trigger2=var(52):=stateno||1
+trigger3=var(52)!=0&&var(53)=0
+trigger3=var(51)!=stateno&&var(52)!=stateno
+trigger3=var(53):=stateno||1
+ignorehitpause=1
+
+[State ];ステート習得4
+type=null
+triggerall=!ishelper&&numhelper(1)
+triggerall=var(49)!=gametime+gametime&&hitpausetime>0
+triggerall=var(51)!=0&&var(52)!=0&&var(53)!=0
+trigger1=var(52)!=stateno&&var(53)!=stateno
+trigger1=var(51):=stateno||1
+trigger2=var(51)!=stateno&&var(53)!=stateno
+trigger2=var(52):=stateno||1
+trigger3=var(51)!=stateno&&var(52)!=stateno
+trigger3=var(53):=stateno||1
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+triggerall=numenemy>0
+trigger1=gametime%40=0
+trigger1=fvar(16):=enemy,AnimElemTime(1)
+trigger2=gametime%40=10
+trigger2=fvar(17):=enemy,AnimElemTime(1)
+trigger3=gametime%40=20
+trigger3=fvar(18):=enemy,AnimElemTime(1)
+ignorehitpause=1
+
+;本気？
+[State ]
+type=VarSet
+triggerall=!ishelper
+triggerall=roundstate=2
+Triggerall=palno>=7&&!(var(56)&32)&&var(16)<10
+triggerall=numenemy>0
+trigger1=enemy,stateno=5150
+trigger1=enemy,alive
+trigger2=numenemy>1
+trigger2=enemy,stateno=5150&&enemy(1),stateno=5150
+trigger2=enemy,alive&&enemy(1),alive
+var(56)=var(56)+!(var(56)&32)*32
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper&&palno>8
+triggerall=var(24)>0&&PlayerIDExist(var(24))
+trigger1=roundstate>2&&(var(56)&1)
+trigger1=playerID(var(24)),var(50)>0
+trigger1=var(54):=playerID(var(24)),var(50)
+trigger2=roundstate>2&&playerID(var(24)),var(18)>0
+trigger2=fvar(39):=playerID(var(24)),var(18)
+trigger3=roundstate>2&&playerID(var(24)),var(19)>0
+trigger3=fvar(38):=playerID(var(24)),var(19)
+trigger4=(playerID(var(24)),var(22)&8)
+trigger4=var(56):=var(56)+!(var(56)&4)*4
+trigger5=(playerID(var(24)),var(27)&8)
+trigger5=var(56):=var(56)+!(var(56)&8)*8
+ignorehitpause=1
+
+[State ]
+Type=null
+triggerall=!ishelper
+triggerall=numenemy>0
+trigger1=fvar(10)!=1
+trigger1=var(0):=ceil(enemynear,lifemax*ifelse(enemynear,Const(data.defence)>100,enemynear,Const(data.defence)*0.01,1))
+trigger2=fvar(10)=1
+trigger2=var(0):=ceil(ifelse(enemynear,lifemax>800,800,enemynear,lifemax)*ifelse(enemynear,Const(data.defence)>100,enemynear,Const(data.defence)*0.01,1))
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ];カメラが追わない
+type=ScreenBound
+trigger1=ishelper
+value=0
+movecamera=0,0
+ignorehitpause=1
+
+[State ]
+type=AttackDist
+trigger1=ishelper
+trigger2=!ishelper
+trigger2=palno>6||var(20)=1
+value=0
+ignorehitpause=1
+
+[State ]
+type=lifeset
+trigger1=ishelper
+value=1000
+ignorehitpause=1
+
+[State ]
+type=AssertSpecial
+trigger1=ishelper
+flag=NoShadow
+flag2=noautoturn
+ignorehitpause=1
+
+[State ]
+type=AssertSpecial
+trigger1=ishelper(1011)
+flag=invisible
+flag2=noshadow
+flag3=globalnoshadow
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper(1010)
+value=81010
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper(1011)
+trigger1=var(49)=gametime+gametime
+trigger1=stateno!=81010
+value=81010
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper(1014)||ishelper(1015)
+value=81022
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(80002)
+trigger1=stateno!=80000
+trigger2=var(49)!=gametime+gametime
+value=80000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(80000)||ishelper(80001)
+trigger1=stateno!=[5000,5120]
+trigger1=stateno!=80000
+trigger2=var(49)!=gametime+gametime
+value=80000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(78000)
+trigger1=stateno!=78000
+trigger2=var(49)!=gametime+gametime
+value=78000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(78001)
+trigger1=stateno!=78001
+trigger2=var(49)!=gametime+gametime
+value=78001
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(78100)
+trigger1=stateno!=78100
+trigger2=var(49)!=gametime+gametime
+value=78100
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(78200)
+trigger1=stateno!=78200
+trigger2=var(49)!=gametime+gametime
+value=78200
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(1)
+trigger1=stateno!=75000||var(49)!=gametime+gametime||!time
+trigger1=var(49):=gametime+gametime||1
+value=75000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(450000)
+Trigger1=stateno!=450000||var(49)!=gametime+gametime||!time
+value=450000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(60000)
+Trigger1=stateno!=60000||var(49)!=gametime+gametime||!time
+value=60000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(10000)
+Trigger1=stateno!=10000||var(49)!=gametime+gametime||!time
+value=10000
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+Type=DisplayToClipboard
+trigger1=ishelper(1012)
+Text="pause %d,sysvar(4) %d,alive %d,roundtime %d"
+Params=hitpausetime,playerID(playerID(root,var(26)),sysvar(3)),hitpausetime,alive,playerID(root,var(26)),sysvar(4)
+IgnoreHitPause=1
+
+[State ]
+Type=DisplayToClipboard
+trigger1=ishelper(1013)
+Text="pause %d,sysvar(4) %d,alive %d,roundtime %d"
+Params=hitpausetime,stateno,playerID(playerID(root,var(26)),sysvar(2)),stateno,playerID(root,var(26)),sysvar(4)
+IgnoreHitPause=1
+
+[State ];地下に埋めて見栄えを良くする
+type=PosSet
+trigger1=ishelper(1012)||ishelper(1013)
+trigger1=var(49)!=gametime+gametime||MoveReversed>0
+Y=-2000000+(ishelper(1013))*-500000
+ignorehitpause=1
+
+[State ]
+type=ChangeAnim
+trigger1=ishelper(1012)
+trigger1=var(49)!=gametime+gametime
+value=60000
+ignorehitpause=1
+
+[State ]
+type=ChangeAnim
+trigger1=ishelper(1013)
+trigger1=var(49)!=gametime+gametime
+value=80000
+ignorehitpause=1
+
+[State ]
+type=lifeset
+trigger1=ishelper(1012)||ishelper(1013)
+trigger1=var(48):=gametime+gametime||1
+value=lifemax
+ignorehitpause=1
+
+[State ]
+type=nothitby
+trigger1=ishelper(1012)||ishelper(1013)
+value=SCA
+time=-1
+ignorehitpause=1
+
+[state ]
+type=statetypeset
+trigger1=ishelper(1012)||ishelper(1013)
+physics=S
+movetype=I
+physics=N
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=nothitby
+trigger1=ishelper(1012)
+value2=SCA
+time=-1
+ignorehitpause=1
+
+[State ]
+type=HitOverride
+trigger1=ishelper(1013)
+trigger2=ishelper(1012)
+time=-1
+attr=SCA,AA,AT,AP
+slot=0
+stateno=81021
+ignorehitpause=1
+
+[State ]
+type=HitOverride
+trigger1=ishelper(1013)
+trigger2=ishelper(1012)
+time=-1
+attr=SCA,AA,AT,AP
+slot=1
+stateno=81021
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper(1012)
+trigger1=hitpausetime>3
+trigger1=alive!=1
+value=99000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper(1013)
+trigger1=hitpausetime>20
+value=99002
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(1012)
+trigger1=var(49)=gametime+gametime
+trigger1=(stateno!=[81020,81021])
+trigger2=hitpausetime=0
+trigger3=alive!=1&&hitpausetime<3
+trigger4=root,var(27)>0&&PlayerIDExist(root,var(27))
+trigger4=playerID(root,var(27)),numtarget=0
+value=81020
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(1013)
+trigger1=var(49)=gametime+gametime
+trigger1=(stateno!=[81020,81021])
+trigger2=root,var(27)>0&&PlayerIDExist(root,var(27))
+trigger2=playerID(root,var(27)),numtarget=0
+value=81020
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(1013)
+trigger1=gethitvar(damage)>0
+value=81021
+ignorehitpause=1
+
+[state ]
+type=Changestate
+triggerall=ishelper(1012)||ishelper(1013)
+triggerall=root,var(26)>0&&playerIDExist(root,var(26))
+triggerall=var(49)!=gametime+gametime||MoveReversed>0
+trigger1=ishelper(1013)
+trigger1=playerID(root,var(26)),sysvar(3)=id
+trigger1=numhelper(1012)<=0
+trigger2=ishelper(1013)
+trigger2=playerID(root,var(26)),sysvar(3)=id&&playerIDExist(playerID(root,var(26)),sysvar(2))
+trigger2=playerID(playerID(root,var(26)),sysvar(2)),alive!=1
+trigger3=ishelper(1013)
+trigger3=playerID(root,var(26)),sysvar(3)=id&&PlayerIDExist(playerID(root,var(26)),sysvar(2))
+trigger3=playerID(playerID(root,var(26)),sysvar(2)),var(48)!=987654321
+trigger3=playerID(playerID(root,var(26)),sysvar(2)),hitpausetime<100&&playerID(playerID(root,var(26)),sysvar(2)),gethitvar(damage)=0
+trigger4=ishelper(1012)
+trigger4=playerIDExist(playerID(root,var(26)),sysvar(3))
+trigger4=playerID(playerID(root,var(26)),sysvar(3)),hitpausetime>0||playerID(playerID(root,var(26)),sysvar(3)),stateno=81020
+value=2147483647
+ignorehitpause=1
+
+[state ]
+type=Changestate
+triggerall=ishelper(1012)
+triggerall=hitpausetime>0
+triggerall=root,var(26)>0&&playerIDExist(root,var(26))
+triggerall=var(49)!=gametime+gametime||MoveReversed>0
+triggerall=playerID(root,var(26)),sysvar(2)=id&&NumHelper(1013)>0
+triggerall=playerIDExist(playerID(root,var(26)),sysvar(3))
+triggerall=playerID(playerID(root,var(26)),sysvar(3)),var(48)!=987654321
+trigger1=playerID(playerID(root,var(26)),sysvar(3)),hitpausetime=0
+trigger2=playerID(playerID(root,var(26)),sysvar(3)),stateno!=[81020,81021]
+value=playerID(root,var(26)),sysvar(4)
+ignorehitpause=1
+
+[state ]
+type=Changestate
+triggerall=ishelper(1013)
+triggerall=root,var(26)>0&&playerIDExist(root,var(26))
+triggerall=playerID(root,var(26)),sysvar(3)=id&&NumHelper(1012)>0
+triggerall=var(49)!=gametime+gametime||MoveReversed>0
+triggerall=playerIDExist(playerID(root,var(26)),sysvar(2))
+triggerall=playerID(playerID(root,var(26)),sysvar(2)),alive=1&&playerID(playerID(root,var(26)),sysvar(2)),hitpausetime>3
+trigger1=playerID(playerID(root,var(26)),sysvar(2)),var(48)!=987654321
+trigger1=playerID(playerID(root,var(26)),sysvar(2)),stateno=playerID(root,var(26)),sysvar(4)
+value=playerID(root,var(26)),sysvar(4)
+ignorehitpause=1
+
+[state ]
+type=Changestate
+triggerall=ishelper(1012)||ishelper(1013)
+trigger1=var(49)!=gametime+gametime
+value=2147483647
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper
+trigger1=!(ishelper(70000)||ishelper(80000)||ishelper(80001)||ishelper(80002))
+trigger1=!(ishelper(1010)||ishelper(1011)||ishelper(1012)||ishelper(1013)||ishelper(1014))
+trigger1=!(ishelper(78000)||ishelper(78001)||ishelper(78100)||ishelper(78200)||ishelper(1))
+trigger1=var(49):=gametime+gametime||1
+value=5000
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=VarSet
+triggerall=!ishelper
+triggerall=palno!=12&&var(20)!=1
+triggerall=palno>4&&var(36)<=0
+triggerall=power>var(36)
+trigger1=var(46)=1050||var(46)=4000||var(46)=1070||var(46)=2014
+trigger2=var(46)=1060||var(46)=2004||var(46)=2012||var(46)=3010
+var(36)=power
+ignorehitpause=1
+
+[State ];エネルギー切れ
+Type=null
+triggerall=!ishelper
+triggerall=palno!=12&&var(20)!=1
+triggerall=palno<5&&power<=0||palno>4&&var(36)<=0
+trigger1=var(46)=1050||var(46)=4000||var(46)=1070||var(46)=2014
+trigger1=var(1):=1
+trigger2=var(46)=1060||var(46)=2004
+trigger2=var(1):=2
+trigger3=var(46)=2012
+trigger3=var(1):=3
+trigger4=var(46)=3010
+trigger4=var(1):=4
+ignorehitpause=1
+
+[State ]
+Type=SelfState
+triggerall=!ishelper&&alive
+triggerall=palno!=[11,12]
+triggerall=var(20)=1
+trigger1=var(21)>0&&PlayerIDExist(var(21))
+trigger1=playerID(var(21)),var(35)=0
+Trigger1=stateno!=8000
+Value=8000
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=RemoveExplod
+triggerall=!ishelper&&alive
+trigger1=StateNo!=180
+trigger1=StateNo!=1040
+trigger1=StateNo!=2100
+trigger1=StateNo!=1030
+trigger1=StateNo!=1070
+trigger1=StateNo!=3000
+trigger1=StateNo!=3010
+trigger1=StateNo!=3020
+trigger1=StateNo!=3021
+trigger1=StateNo!=3030
+trigger1=StateNo!=3040
+id=555
+
+[state ]
+type=modifyexplod
+trigger1=roundstate>2
+trigger2=var(17)=1
+id=-1
+supermovetime=2147483647
+pausemovetime=2147483647
+ignorehitpause=1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper&&alive
+triggerall=var(46)!=182
+trigger1=Time=2
+trigger1=stateno=5070
+value=0,19
+
+[State ];12Pの時最初にパワーが10000から始まる
+type=Powerset
+triggerall=!ishelper&&alive
+trigger1=palno=12
+trigger2=var(20)=1
+value=10000
+ignorehitpause=1
+
+[State ]
+type=Poweradd
+triggerall=!ishelper&&alive
+triggerall=alive&&roundstate=2
+triggerall=stateno!=191
+trigger1=gametime%3=0
+value=1
+
+[State ]
+type=poweradd
+triggerall=!ishelper&&alive
+triggerall=alive&&roundstate=2
+trigger1=gametime%20=0
+trigger2=palno>2
+trigger2=life<=(lifemax*0.2)
+trigger2=gametime%6=0
+value=40-(palno<3)*20
+
+[State ];パワー管理1
+type=VarSet
+triggerall=!ishelper&&palno>=5
+triggerall=alive&&roundstate=2
+trigger1=var(36)<=0
+v=36
+value=0
+
+[State ];パワー管理2
+type=null
+triggerall=!ishelper&&palno>=5
+triggerall=alive&&roundstate=2
+triggerall=stateno!=191
+trigger1=gametime%20=0||life<=500&&gametime%5=0
+trigger1=var(36):=var(36)+40||1
+trigger2=gametime%3=0
+trigger2=var(36):=var(36)+1||1
+trigger3=gametime%2=0&&palno>8
+trigger3=var(36):=var(36)+20||1
+ignorehitpause=1
+
+[State ];パワー管理3
+type=VarSet
+triggerall=!ishelper&&palno>=5
+trigger1=var(36)>10000
+trigger2=RoundNo>=2&&roundstate=1;ラウンド2からパワー10000で始まる
+trigger3=palno=12||var(20)=1
+v=36
+value=10000
+ignorehitpause=1
+
+[State ]
+type=Powerset
+triggerall=!ishelper&&palno>=5
+trigger1=alive&&roundstate=2
+value=var(36)
+ignorehitpause=1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper&&alive
+triggerall=var(46)!=182
+triggerall=Time=1
+trigger1=stateno=52
+trigger2=stateno=106
+value=20,6
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ];nokoで耐性上げてた時期が俺にもありましたw
+type=AssertSpecial
+triggerall=!ishelper&&(var(56)&2)
+trigger1=palno=[11,12]
+trigger1=roundstate!=2&&life=0
+trigger1=var(17)!=[1,2]
+trigger2=!numhelper(1)
+trigger3=var(21)=0
+flag=noko
+ignorehitpause=1
+[State ];やられ声を発生させない
+type=AssertSpecial
+trigger1=!ishelper&&alive
+trigger2=ishelper(70000)
+flag=nokosnd
+flag2=noautoturn
+ignorehitpause=1
+[State ];ジャグル無視
+type=AssertSpecial
+triggerall=!ishelper
+trigger1=Var(5)!=0
+flag=nojugglecheck
+ignorehitpause=1
+[State ];ガード無視
+type=AssertSpecial
+triggerall=!ishelper
+trigger1=Var(20)!=0
+flag=unguardable
+ignorehitpause=1
+[State ];時間停止
+type=AssertSpecial
+triggerall=!ishelper
+triggerall=roundstate=2
+trigger1=Var(55)=1
+trigger1=gametime%70=[0,50]
+trigger2=Var(55)=2
+trigger2=gametime%70=[0,49]
+trigger3=Var(55)=3
+trigger3=gametime%70=[0,48]
+trigger4=Var(55)=4
+trigger4=gametime%70=[0,47]
+trigger5=Var(55)=5
+trigger5=gametime%72=[0,47]
+trigger6=Var(55)=6
+trigger6=gametime%74=[0,47]
+trigger7=Var(55)=7
+trigger7=gametime%78=[0,48]
+trigger8=Var(55)=8
+trigger8=gametime%80=[0,47]
+trigger9=Var(55)=9
+trigger9=gametime%75=[0,42]
+trigger10=Var(55)=10
+trigger10=gametime%76=[0,40]
+trigger11=Var(55)=11
+trigger11=gametime%70=[0,34]
+trigger12=Var(55)=12
+trigger12=gametime%70=[0,31]
+trigger13=Var(55)=13
+trigger13=gametime%70=[0,27]
+trigger14=Var(55)=14
+trigger14=gametime%72=[0,23]
+trigger15=Var(55)=15
+trigger15=gametime%72=[0,17]
+trigger16=Var(55)=16
+trigger16=gametime%72=[0,9]
+flag=timerfreeze
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=lifeadd
+triggerall=!ishelper&&(var(56)&2)
+triggerall=roundstate<=2&&palno>6
+trigger1=var(9)<950
+trigger1=var(49)!=gametime+gametime||stateno=1250
+value=1
+ignorehitpause=1
+
+[State ];ライフ回復
+type=lifeadd
+triggerall=!ishelper&&(var(56)&2)
+triggerall=roundstate<=2&&gametime%2=0
+triggerall=life<=(lifemax*0.4)
+triggerall=random%10=0
+trigger1=var(20)=1
+value=Ceil(lifemax*0.003)
+ignorehitpause=1
+
+[State ]
+type=lifeadd
+triggerall=!ishelper&&(var(56)&2)
+triggerall=roundstate<=2&&var(20)!=1
+triggerall=palno=[7,11]
+trigger1=life<=(lifemax*0.25)
+trigger1=gametime%2=0
+value=Ceil(lifemax*0.001)
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=Helper
+triggerall=NumHelper(1012)=0
+triggerall=roundstate<2
+trigger1=!ishelper&&palno=12
+helpertype=player
+stateno=10000
+id=10000
+name="dim"
+postype=P1
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=Helper
+triggerall=NumHelper(1013)=0
+triggerall=roundstate<2
+trigger1=!ishelper&&palno=12
+helpertype=player
+stateno=10000
+id=10000
+name="dim"
+postype=P1
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=Helper
+triggerall=alive&&!ishelper
+triggerall=palno=12
+trigger1=!numhelper(1014)
+helpertype=player
+stateno=81022
+id=1014
+name="moudameda";もう駄目だ…
+pos=0,2400
+postype=P1
+keyctrl=0
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=Helper
+triggerall=alive&&!ishelper
+triggerall=palno=12
+trigger1=!numhelper(1015)
+helpertype=player
+stateno=81022
+id=1015
+name="osimaida";おしまいだぁ…
+pos=0,2400
+postype=P1
+keyctrl=0
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];othk当たりヘルパー
+type=Helper
+triggerall=!ishelper
+triggerall=palno=[7,12]
+trigger1=NumHelper(1010)=0
+name="othk"
+ID=1010
+persistent=1
+pos=0,99999
+postype=p1
+stateno=5150
+postype=back
+helpertype=player
+keyctrl=0
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];reversaldefヘルパー2
+type=Helper
+triggerall=alive&&!ishelper
+triggerall=palno=[11,12]
+trigger1=!numhelper(78100)
+helpertype=player
+stateno=78100
+id=78100
+name="reversaldef2"
+pos=0,2400
+postype=P1
+keyctrl=0
+ownpal=1
+ignorehitpause=1
+size.xscale=1
+size.yscale=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];reversaldefヘルパー3
+type=Helper
+triggerall=alive&&!ishelper
+triggerall=palno=[7,12]
+trigger1=!numhelper(78200)
+helpertype=player
+stateno=78200
+id=78200
+name="reversaldef3"
+pos=0,2400
+postype=P1
+keyctrl=0
+ownpal=1
+ignorehitpause=1
+size.xscale=0.5
+size.yscale=0.5
+supermovetime=2147483647
+pausemovetime=2147483647
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ];当たり判定ヘルパー
+type=helper
+triggerall=alive&&!ishelper
+triggerall=!numhelper(450000)
+trigger1=palno>=3
+name="broly"
+id=450000
+stateno=450000
+persistent=1
+pos=0,0
+Helpertype=player
+postype=p1
+ownpal=1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];速度、位置管理ヘルパー
+type=Helper
+triggerall=alive&&!ishelper
+triggerall=palno>=7
+trigger1=!NumHelper(70000)
+name="Vel X,Vel Y"
+ID=70000
+stateno=154
+keyctrl=1
+Helpertype=player
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=pause
+triggerall=!ishelper
+trigger1=palno=[11,12]
+trigger1=roundstate<2||(var(56)&2)&&roundstate>2
+trigger2=(palno=[11,12])&&var(46)=98000&&var(48)>300
+trigger2=roundstate=2
+time=20+(numhelper(78100)>0)*2147483627
+movetime=20+(numhelper(78100)>0)*2147483627
+unhittable=0
+ignorehitpause=1
+
+[State ]
+type=superpause
+triggerall=!ishelper
+trigger1=palno=[11,12]
+trigger1=roundstate<2||(var(56)&2)&&roundstate>2
+trigger2=(palno=[11,12])&&var(46)=98000&&var(48)>300
+trigger2=roundstate=2
+anim=-1
+time=2147483637
+movetime=2147483637
+darken=0
+unhittable=0
+ignorehitpause=1
+
+[State ]
+type=HitOverride
+triggerall=alive&&roundstate=2&&!ishelper
+triggerall=numhelper(1)
+trigger1=palno>=7
+trigger1=var(21)>0&&PlayerIDExist(var(21))
+trigger1=!(playerID(var(21)),numtarget<=0)
+trigger2=palno=[3,5]
+attr=SCA,AA,AT,AP
+slot=0
+stateno=var(46)
+ignorehitpause=1
+
+[State ];無敵設定
+type=nothitby
+triggerall=!ishelper&&(var(56)&2)
+trigger1=numhelper(450000)
+trigger2=palno>2
+value=SCA
+time=-1
+ignorehitpause=1
+
+[State ]
+type=HitBy
+triggerall=roundstate=2&&!ishelper&&(var(56)&2)
+triggerall=numhelper(1)
+trigger1=palno>6
+trigger1=var(21)>0&&PlayerIDExist(var(21))
+trigger1=playerID(var(21)),numtarget<=0
+value=SCA,AA,AT,AP
+time=-1
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ];ライフ管理
+type=lifeadd
+triggerall=!ishelper
+triggerall=numhelper(1)>0
+triggerall=palno>4||(palno=[3,4])&&var(20)=1
+triggerall=palno>4&&(var(56)&2)||palno<5&&alive
+triggerall=var(46)!=8000
+triggerall=var(21)>0&&PlayerIDExist(var(21))
+triggerall=(playerID(var(21)),var(51)-life)>0
+trigger1=palno>6
+trigger1=var(56):=var(56)+!(var(56)&64)*64||1
+trigger2=palno<7
+value=playerID(var(21)),var(51)-life
+ignorehitpause=1
+
+[State ];ライフ管理(ヘルパー占拠用)
+type=lifeadd
+triggerall=!ishelper&&(var(56)&2)
+triggerall=palno>6
+trigger1=var(21)=0&&var(9)>0
+value=var(9)
+ignorehitpause=1
+
+[State ];ダメージ設定3～4Pver
+type=LifeAdd
+triggerall=(var(56)&2)&&roundstate=2&&!ishelper
+triggerall=palno=[3,4]
+triggerall=numhelper(450000)&&numhelper(1)
+trigger1=var(21)>0&&var(22)>0&&PlayerIDExist(var(22))
+trigger1=playerID(var(22)),gethitvar(damage)
+trigger1=var(20)!=1||var(20)=1&&playerID(var(22)),var(40)=1
+value=-(playerID(var(22)),gethitvar(damage))
+kill=1
+absolute=0
+ignorehitpause=1
+
+[State ];ダメージ設定5～8Pver
+type=LifeAdd
+triggerall=(var(56)&2)&&roundstate=2&&!ishelper
+triggerAll=palno=[5,8]
+triggerall=numhelper(450000)&&numhelper(1)
+triggerall=var(21)>0&&var(22)>0&&PlayerIDExist(var(22))
+triggerall=playerID(var(22)),gethitvar(damage)
+trigger1=palno=[5,6]
+trigger1=var(20)!=1||var(20)=1&&playerID(var(22)),var(40)=1
+trigger2=playerID(var(22)),var(40)=1
+value=Ceil(-(ifelse(playerID(var(22)),gethitvar(damage)>lifemax*0.1,lifemax*0.1,(playerID(var(22)),gethitvar(damage)))))
+kill=1
+absolute=0
+ignorehitpause=1
+
+[State ];ダメージ設定9～10Pver
+type=LifeAdd
+triggerall=(var(56)&2)&&roundstate=2&&!ishelper
+triggerAll=palno=[9,10]
+triggerall=numhelper(450000)&&numhelper(1)
+trigger1=var(21)>0&&var(22)>0&&PlayerIDExist(var(22))
+trigger1=playerID(var(22)),gethitvar(damage)
+trigger1=playerID(var(22)),var(40)=1
+value=-Ceil(ifelse((playerID(var(22)),gethitvar(damage)>lifemax*0.07),lifemax*0.07,(playerID(var(22)),gethitvar(damage)*0.7))*playerID(var(22)),fvar(39))
+kill=1
+absolute=0
+ignorehitpause=1
+
+[State ];ダメージ設定12Pver
+type=LifeAdd
+triggerall=(var(56)&2)&&roundstate=2&&!ishelper
+triggerAll=palno=12
+triggerall=numhelper(450000)&&numhelper(1)
+triggerall=var(21)>0&&var(22)>0&&PlayerIDExist(var(22))
+triggerall=playerID(var(22)),gethitvar(damage)>0
+trigger1=playerID(var(22)),var(40)=1;垂れ流し対策
+value=-Ceil(ifelse((playerID(var(22)),gethitvar(damage)>lifemax*0.05),lifemax*0.05,(playerID(var(22)),gethitvar(damage)*0.5))*playerID(var(22)),fvar(39))
+kill=1
+absolute=0
+ignorehitpause=1
+
+[State ];今のライフ
+type=varset
+triggerall=!ishelper
+trigger1=numhelper(450000)&&numhelper(1)
+trigger1=var(21)>0
+trigger2=var(49)=gametime+gametime
+var(9)=life
+ignorehitpause=1
+
+[State ];負け確認
+type=null
+triggerall=!ishelper
+trigger1=roundstate>3&&var(21)>0&&PlayerIDExist(var(21))
+trigger1=!win||alive!=1&&!(var(17)=[1,2])
+trigger1=playerID(var(21)),fvar(7)>5
+trigger1=var(56):=(var(56)|1)&&0
+trigger2=var(56):=(var(56)|2)||1
+trigger2=alive=0&&(var(56)&2)
+trigger2=((life<1)||roundstate>2)&&var(17)!=[1,2]
+trigger2=(var(56):=var(56)-(var(56)&2))*0
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;バグ対策
+[State ]
+type=posset
+triggerall=!ishelper&&(var(56)&2)
+triggerAll=var(49)=gametime+gametime
+trigger1=stateno!=[5000,5210]
+trigger1=Pos Y>0
+y=0
+ignorehitpause=1
+
+[State -2]
+type=selfstate
+triggerall=!ishelper&&alive!=1
+triggerall=numenemy>0&&palno>6
+triggerall=numhelper(1)&&var(21)>0&&var(17)!=1
+trigger1=var(9)>1&&roundstate=2||roundstate>2&&!enemy,alive
+trigger1=var(17):=2
+value=12500
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=!ishelper&&(var(56)&2)
+triggerAll=palno>=7
+triggerall=roundstate>2
+trigger1=stateno!=153
+value=0
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=!ishelper
+triggerall=!(var(56)&2)&&!(var(17)=[1,2])
+trigger1=stateno!=[5000,5150]
+value=5050
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=!ishelper
+triggerall=!(var(56)&2)&&!(var(17)=[1,2])
+trigger1=var(49)!=gametime+gametime
+value=5150
+ignorehitpause=1
+
+[State ]
+type=ChangeAnim
+trigger1=ishelper(80000)
+value=80000
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;ステート抜け
+
+[State ];オニ式ステ抜け
+type=varset
+triggerall=!ishelper
+triggerall=var(45):=0||1
+trigger1=stateno=3000||stateno=3010||(stateno=[3020,3021])||stateno=3030||stateno=3040||stateno=3050
+trigger2=stateno=3060||(stateno=[3065,3068])||stateno=3070||(stateno=[3075,3077])
+trigger3=(stateno=[3080,3082])||stateno=3085||(stateno=[200,202])||(stateno=[210,212])||stateno=400
+trigger4=stateno=410||stateno=610||stateno=70||stateno=1040||(stateno=[1999,2000])
+trigger5=stateno=2100||stateno=1000||(stateno=[1010,1011])||(stateno=[1020,1021])||stateno=1030
+trigger6=stateno=1050||stateno=1060||(stateno=[1070,1073])||(stateno=[1086,1087])||stateno=1080
+trigger7=stateno=1084||stateno=1090||(stateno=[1094,1098])||stateno=1100||(stateno=[2001,2008])||(stateno=[2011,2012])
+trigger8=stateno=4000||(stateno=[2014,2015])||stateno=10000||(stateno=[30003,30005])||stateno=7775||stateno=90000
+trigger9=(stateno=[170,172])||stateno=175||(stateno=[180,182])||(stateno=[190,197])
+trigger10=(stateno=[195,196])||stateno=5300||stateno=105||stateno=450000||stateno=60000
+trigger11=(stateno=[10,12])||Stateno=20||stateno=40||stateno=45||stateno=50||(stateno=[1250,1251])||stateno=12500
+trigger12=stateno=52||Stateno=100||Stateno=106||stateno=110||stateno=115||stateno=92002
+trigger13=(stateno=[130,132])||(stateno=[150,155])||(stateno=[170,172])||stateno=175||stateno=92003
+trigger14=(stateno=[5000,5001])||(stateno=[5010,5011])||stateno=5020||stateno=5030
+trigger15=stateno=5035||stateno=5040||stateno=5050||(stateno=[5070,5071])||(stateno=[5080,5081])
+trigger16=(stateno=[5100,5101])||stateno=5110||stateno=5120||stateno=5150||(stateno=[5200,5201])||stateno=5210
+trigger17=stateno=5500||stateno=5900||(stateno=[5600,5602])||(stateno=[6000,6002])||(stateno=[6010,6012])
+trigger18=(stateno=[6020,6022])||stateno=6110||stateno=6200||(stateno=[6300,6301])
+trigger19=stateno=91000||stateno=91050||stateno=91060||(stateno=[91070,91071])||stateno=92004||stateno=92014||stateno=93030||stateno=94000
+trigger20=stateno=93010||stateno=95000||stateno=98000||stateno=99000||stateno=99001||stateno=70010
+v=45
+value=1
+ignorehitpause=1
+
+[State ];オニ式ステ抜け
+type=varset
+triggerall=!ishelper
+triggerall=var(45)=1
+triggerall=roundstate<=2&&stateno!=var(46)
+triggerall=(palno=[9,10])&&(stateno>5150||random<var(4)*30)||(palno=[11,12])
+trigger1=var(46)=3000&&var(48)<80||var(46)=3010&&var(48)<113||var(46)=3020&&var(48)<67||var(46)=3021&&var(48)<35||var(46)=3030&&var(48)<188||var(46)=3040&&var(48)<142||var(46)=3050&&var(48)<119
+trigger2=var(46)=3060&&var(48)<63||var(46)=3065&&var(48)<177||var(46)=3066&&var(48)<87||var(46)=3067&&var(48)<51||var(46)=3068&&var(48)<246||var(46)=3070&&Pos Y<0
+trigger3=var(46)=3075&&var(48)<34||var(46)=3076&&var(48)<62||var(46)=3077&&var(48)<51||var(46)=3080&&var(48)<19||var(46)=3081&&Pos Y<0||var(46)=3082&&var(48)<19||var(46)=3085&&var(48)<34
+trigger4=var(46)=200&&var(48)<20||var(46)=201&&var(48)<24||var(46)=202&&var(48)<21||var(46)=210&&var(48)<22||var(46)=211&&var(48)<14||var(46)=212&&var(48)<22||var(46)=400&&var(48)<13
+trigger5=var(46)=410&&var(48)<24||var(46)=610&&var(48)<25||var(46)=1000&&var(48)<61||var(46)=1010&&var(48)<39||var(46)=1011&&var(48)<39||var(46)=1020&&var(48)<85||var(46)=1021&&var(48)<85
+trigger6=var(46)=1040||var(46)=1050&&var(48)<85||var(46)=1060&&var(48)>35||var(46)=1080&&var(48)<1||var(46)=1084&&var(48)<65||var(46)=1086&&var(48)<26||var(46)=1087&&var(48)<88
+trigger7=var(46)=1090&&Pos Y<0||var(46)=1100&&Pos Y<0||var(46)=1999&&var(48)<25||var(46)=2001&&var(48)<20||var(46)=2003&&var(48)<10||var(46)=2004&&var(48)<91||var(46)=2100&&Pos Y<0
+trigger8=var(46)=4000&&var(48)<160||var(46)=8000&&var(48)<601||var(46)=90000&&var(48)<180
+trigger9=var(20)!=1
+trigger9=var(46)=1070&&var(48)<572||var(46)=2014&&var(48)<180||var(46)=1071&&var(48)<79
+trigger10=var(20)=1
+trigger10=var(46)=1070&&var(48)<278||var(46)=2014&&var(48)<198||var(46)=1071&&var(48)<95
+trigger11=var(46)=2012&&var(48)>429||var(46)=7775&&var(48)<112||var(46)=2015&&var(48)<186
+trigger12=var(46)=91000&&var(48)<45||var(46)=91050&&var(48)<85||var(46)=91060&&var(48)<36||var(46)=92001&&var(48)<6||var(46)=92003&&var(48)<3||var(46)=92004&&var(48)<151||var(46)=93010&&var(48)<74
+trigger13=var(46)=93030&&var(48)<69||var(46)=94000&&var(48)<160||var(46)=95000&&var(48)<300||var(46)=98000&&roundstate=2||var(46)=70010
+trigger14=var(46)=10&&var(48)<1||var(46)=12&&var(48)<1||var(46)=40&&var(48)<2||var(46)=45&&var(48)<2||var(46)=52&&var(48)<4||var(46)=70&&Pos Y<0||var(46)=106&&var(48)<8||var(46)=110&&var(48)<1||var(46)=115&&var(48)<1
+trigger15=var(20)=1
+trigger15=var(46)=0||var(46)=11||var(46)=20||var(46)=100||var(46)=105
+v=45
+value=0
+
+[State ];ステ抜け
+type=SelfState
+triggerall=!ishelper&&(var(56)&2)
+triggerall=(palno=[5,6])&&(movetype=A)||palno=[7,12]
+trigger1=Var(45)!=1||MoveReversed=1
+trigger2=var(49)!=gametime+gametime
+trigger3=palno>10||playerID(var(21)),numtarget<=0
+trigger3=(anim=[5000,5150])||(stateno=[5000,5150])
+value=1251
+ignorehitpause=1
+
+[State ];ステ抜け(AI用)
+type=SelfState
+triggerall=!ishelper&&(var(56)&2)
+triggerall=(var(4)=[4,5])&&(time=[0,6])
+triggerall=var(6)=[250,350]
+triggerall=random<=var(4)*100
+trigger1=var(4)=5
+trigger1=var(49)!=gametime+gametime
+trigger2=(anim=[5000,5150])||(stateno=[5000,5150])
+value=2001
+ignorehitpause=1
+
+[State ];凍結抜け
+type=selfstate
+triggerall=!ishelper&&alive
+trigger1=palno=[7,10]
+trigger1=hitpausetime>9
+trigger1=var(46)!=98000
+trigger2=palno>10
+trigger2=hitpausetime>0
+trigger2=var(46)!=98000
+value=1250
+Ctrl=0
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;速度、位置管理ヘルパー
+[State ];自分のIDを記憶
+type=parentvarset
+trigger1=ishelper(70000)
+v=23
+value=id
+ignorehitpause=1
+
+[State ]
+type=AssertSpecial
+triggerall=ishelper(70000)
+trigger1=roundstate<=2
+flag=Invisible
+flag2=noairguard
+flag3=nocrouchguard
+ignorehitpause=1
+
+[State ]
+type=HitOverride
+trigger1=ishelper(70000)
+time=-1
+attr=SCA,AA,AT,AP
+slot=0
+stateno=root,var(46)
+ignorehitpause=1
+
+[State ]
+type=NotHitBy
+trigger1=ishelper(70000)
+value=SCA,AA,AT,AP
+ignorehitpause=1
+
+[State ];向き
+type=Turn
+trigger1=ishelper(70000)
+trigger1=root,fvar(5)=1||root,fvar(5)=-1
+trigger1=root,fvar(5)!=Facing
+ignorehitpause=1
+[State ];速度
+type=velset
+trigger1=ishelper(70000)
+x=root,fvar(1)
+y=root,fvar(3)
+ignorehitpause=1
+[State ];位置
+type=posset
+trigger1=ishelper(70000)
+x=root,fvar(2)
+y=root,fvar(4)
+ignorehitpause=1
+[State ];本体に張り付かせる
+type=BindToRoot
+trigger1=ishelper(70000)
+facing=1
+ignorehitpause=1
+
+[State ];当身
+type=ReversalDef
+trigger1=ishelper(70000)
+reversal.attr=SCA,AA,AT,AP
+numhits=0
+priority=7,hit
+guard.dist=0
+pausetime=0,0
+gnorehitpause=1
+
+[State ];anim習得
+type=parentvarset
+triggerall=ishelper(70000)
+triggerall=numhelper(60000)&&root,var(24)>0&&PlayerIDExist(root,var(24))
+trigger1=playerID(root,var(24)),var(35)!=0
+var(35)=playerID(root,var(24)),var(35)
+ignorehitpause=1
+
+[State ];anim習得
+type=parentvarset
+triggerall=ishelper(70000)
+triggerall=numtarget>0
+triggerall=target,ishelper
+trigger1=target,prevstateno!=[149995,149999]
+trigger1=target,prevstateno!=149990
+trigger1=var(35):=target,prevstateno
+var(35)=var(35)
+ignorehitpause=1
+
+[State ]
+type=parentvarset
+triggerall=ishelper(70000)
+triggerall=numtarget>0
+trigger1=target,anim!=25000&&target,anim!=24000
+trigger1=root,var(44)=0
+trigger1=var(44):=target,anim
+var(44)=var(44)
+ignorehitpause=1
+[State ];ターゲットを戻す
+type=targetdrop
+triggerall=ishelper(70000)
+triggerall=numtarget>0
+trigger1=target,ishelper
+trigger2=target,hitpausetime>10
+gnorehitpause=1
+
+[State ]
+type=selfstate
+triggerall=ishelper(70000)
+triggerall=!(root,var(46)=98000&&root,var(48)>379)
+trigger1=root,anim=155
+trigger1=stateno!=70000
+trigger2=root,var(49)!=gametime+gametime||!root,alive
+trigger3=var(49)!=gametime+gametime
+value=70000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+triggerall=ishelper(70000)
+triggerall=roundstate>2
+triggerall=root,alive
+trigger1=movetype!=A
+trigger1=stateno!=0&&stateno!=[170,195]
+value=0
+ignorehitpause=1
+
+[State ]
+type=selfstate
+triggerall=ishelper(70000)
+triggerall=roundstate<=2
+triggerall=root,anim!=155||root,var(46)=98000&&root,var(48)>379
+trigger1=stateno!=root,var(46)
+value=root,var(46)
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;modefury
+
+[State ]
+type=EnvShake
+triggerall=!ishelper&&alive
+trigger1=life<=500
+trigger1=p2life<=500
+trigger1=gametime%20=0
+time=10
+freq=100
+ampl=2
+
+[State ]
+type=EnvShake
+triggerall=!ishelper&&alive
+trigger1=life<=500
+trigger1=gametime%30=20
+time=30
+freq=90
+ampl=-2
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;modekahiokenSSJ
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper&&alive
+triggerall=var(46)!=182
+triggerAll=gametime%100=15
+trigger1=var(5)!=0
+trigger2=palno=12
+value=21,1
+Volume=-100
+ignorehitpause=1
+
+[State ]
+Type=VarRandom
+triggerall=!ishelper&&palno>3
+Trigger1=Time=1
+Trigger2=GameTime%3=1
+v=6
+Range=0,599
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=projectile
+triggerall=!ishelper&&alive
+triggerall=((GameTime%10)=0)&&(Random<249)&&(Numprojid(183)<5)
+trigger1=var(5)!=0||var(20)!=0||palno=12
+trigger1=var(17)!=1
+trigger2=var(7)=1
+projid=183
+projanim=12000+random%3
+projremovetime=(Pos Y=[-410,1])*-1+(Pos Y!=[-410,1])*0
+velocity=0,IfElse(Random<=499,-1,-2)
+Projespriority=(IfElse(Random<=499,3,-3))
+projsprpriority=(IfElse(Random<=499,3,-3))
+offset=(random%401-200),0
+projscale=Ceil(IfElse(Random<799,0.1,0.05)),Ceil(IfElse(Random<799,0.1,0.05))
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=projectile
+triggerall=!ishelper&&alive
+triggerall=((GameTime%20)=0)&&(Random>749)&&(Numprojid(184)<5)
+trigger1=var(5)!=0||var(20)!=0||palno=12
+trigger1=var(17)!=1
+trigger2=var(7)=1
+projid=184
+projanim=12003+random%3
+projremovetime=(Pos Y=[-410,1])*-1+(Pos Y!=[-410,1])*0
+velocity=0,Ceil((IfElse(Random<=499,-1.5,-2.5)))
+Projespriority=(IfElse(Random<=499,3,-3))
+projsprpriority=(IfElse(Random<=499,3,-3))
+offset=(random%401-200),0
+projscale=Ceil(IfElse(Random<799,0.1,0.05)),Ceil(IfElse(Random<799,0.1,0.05))
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=projectile
+triggerall=!ishelper&&alive
+triggerall=((GameTime%30)=0)&&(Random=[249,749])&&(Numprojid(185)<5)
+trigger1=var(5)!=0||var(20)!=0||palno=12
+trigger1=var(17)!=1
+trigger2=var(7)=1
+projid=185
+projanim=12003+random%3
+projremovetime=(Pos Y=[-410,1])*-1+(Pos Y!=[-410,1])*0
+velocity=0,(IfElse(Random<=499,-2,-3))
+Projespriority=(IfElse(Random<=499,3,-3))
+projsprpriority=(IfElse(Random<=499,3,-3))
+offset=(random%401-200),0
+projscale=Ceil(IfElse(Random<799,0.1,0.05)),Ceil(IfElse(Random<799,0.1,0.05))
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+type=EnvShake
+triggerall=!ishelper&&alive
+Trigger1=var(48)%30=0
+Trigger1=var(7)=1
+time=30
+ampl=4
+freq=90
+;=========================================================================================================================================================================================
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Statedef -3]
+
+[State ]
+type=destroyself
+trigger1=ishelper(80000)
+trigger1=stateno=5020
+ignorehitpause=1
+
+[State ];時間計測
+type=varset
+trigger1=Var(39):=0||1
+var(49)=gametime+gametime
+ignorehitpause=1
+
+[State ];本体に張り付かせる
+type=BindToRoot
+trigger1=ishelper(70000)
+ignorehitpause=1
+;======================================================================================================================================================================================
+;CPU
+;======================================================================================================================================================================================
+[State ]
+type=VarSet
+triggerall=!ishelper
+TriggerAll=((Var(4)=[1,5])&&(RoundState=[1,2]))
+trigger1=Command="AI0"
+trigger2=Command="AI1"
+trigger3=Command="AI2"
+trigger4=Command="AI3"
+trigger5=Command="AI4"
+trigger6=Command="AI5"
+trigger7=Command="AI6"
+trigger8=Command="AI7"
+trigger9=Command="AI8"
+trigger10=Command="AI9"
+trigger11=Command="AI10"
+trigger12=Command="AI11"
+trigger13=Command="AI12"
+trigger14=Command="AI13"
+trigger15=Command="AI14"
+trigger16=Command="AI15"
+trigger17=Command="AI16"
+trigger18=Command="AI17"
+trigger19=Command="AI18"
+trigger20=Command="AI19"
+trigger21=Command="AI20"
+trigger22=Command="AI21"
+trigger23=Command="AI22"
+trigger24=Command="AI23"
+trigger25=Command="AI24"
+trigger26=Command="AI25"
+trigger27=Command="AI26"
+trigger28=Command="AI27"
+trigger29=Command="AI28"
+trigger30=Command="AI29"
+trigger31=Command="AI30"
+trigger32=Command="AI31"
+trigger33=Command="AI32"
+trigger34=Command="AI33"
+trigger35=Command="AI34"
+trigger36=Command="AI35"
+trigger37=Command="AI36"
+trigger38=Command="AI37"
+trigger39=Command="AI38"
+trigger40=Command="AI39"
+trigger41=Command="AI40"
+trigger42=Command="AI41"
+trigger43=Command="AI42"
+trigger44=Command="AI43"
+trigger45=Command="AI44"
+trigger46=Command="AI45"
+trigger47=Command="AI46"
+trigger48=Command="AI47"
+trigger49=Command="AI48"
+trigger50=Command="AI49"
+trigger51=Command="AI50"
+Trigger52=NumHelper(1)
+Trigger52=Helper(1),var(59)=1
+var(56)=var(56)+!(var(56)&32)*32
+
+[State ]
+type=CtrlSet
+triggerall=ishelper(1)
+trigger1=var(59)=0&&root,ctrl
+value=1
+ignorehitpause=1
+
+[State ];距離X軸1
+type=null
+triggerall=!ishelper||ishelper(70000)
+triggerall=numenemy>0
+triggerall=numenemy=1||numenemy=2&&enemynear(0),alive
+trigger1=fvar(13):=0||1
+trigger1=statetype!=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&facing=1
+trigger2=statetype!=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&!fvar(13)
+trigger3=statetype!=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=1||enemynear,Pos X<Pos X&&enemynear,facing=-1)&&facing=1
+trigger4=statetype!=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=1||enemynear,Pos X<Pos X&&enemynear,facing=-1)&&!fvar(13)
+trigger5=statetype=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&facing=1
+trigger6=statetype=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&!fvar(13)
+trigger7=statetype=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&facing=1
+trigger8=statetype=a&&enemynear,statetype!=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&!fvar(13)
+trigger9=statetype!=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&facing=1
+trigger10=statetype!=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&!fvar(13)
+trigger11=statetype!=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&facing=1
+trigger12=statetype!=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&!fvar(13)
+trigger13=statetype=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&facing=1
+trigger14=statetype=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing=-1||enemynear,Pos X<Pos X&&enemynear,facing=1)&&!fvar(13)
+trigger15=statetype=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&facing=1
+trigger16=statetype=a&&enemynear,statetype=a&&(Pos X<enemynear,Pos X&&enemynear,facing!=-1||enemynear,Pos X<Pos X&&enemynear,facing!=1)&&!fvar(13)
+trigger1=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.front)+enemynear,Pos X-(Pos X+const(size.ground.front))||1
+trigger2=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.front)+enemynear,Pos X)||1
+trigger3=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.back)+enemynear,Pos X-(Pos X+const(size.ground.front))||1
+trigger4=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.back)+enemynear,Pos X)||1
+trigger5=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.front)+enemynear,Pos X-(Pos X+const(size.air.front))||1
+trigger6=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.front)+enemynear,Pos X)||1
+trigger7=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.back)+enemynear,Pos X-(Pos X+const(size.air.front))||1
+trigger8=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.ground.back)+enemynear,Pos X)||1
+trigger9=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.front)+enemynear,Pos X-(Pos X+const(size.ground.front))||1
+trigger10=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.front)+enemynear,Pos X)||1
+trigger11=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.back)+enemynear,Pos X-(Pos X+const(size.ground.front))||1
+trigger12=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.back)+enemynear,Pos X)||1
+trigger13=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.front)+enemynear,Pos X-(Pos X+const(size.air.front))||1
+trigger14=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.front)+enemynear,Pos X)||1
+trigger15=fvar(13):=ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.back)+enemynear,Pos X-(Pos X+const(size.air.front))||1
+trigger16=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear,Pos X,-1,1)*enemynear,const(size.air.back)+enemynear,Pos X)||1
+ignorehitpause=1
+[State ];距離X軸2
+type=null
+triggerall=!ishelper||ishelper(70000)
+triggerall=numenemy>0
+triggerall=numenemy=2&&!enemynear(0),alive
+trigger1=fvar(13):=0||1
+trigger1=statetype!=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&facing=1
+trigger2=statetype!=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&!fvar(13)
+trigger3=statetype!=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=-1)&&facing=1
+trigger4=statetype!=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=-1)&&!fvar(13)
+trigger5=statetype=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&facing=1
+trigger6=statetype=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&!fvar(13)
+trigger7=statetype=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&facing=1
+trigger8=statetype=a&&enemynear(1),statetype!=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&!fvar(13)
+trigger9=statetype!=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&facing=1
+trigger10=statetype!=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&!fvar(13)
+trigger11=statetype!=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&facing=1
+trigger12=statetype!=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&!fvar(13)
+trigger13=statetype=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&facing=1
+trigger14=statetype=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing=1)&&!fvar(13)
+trigger15=statetype=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&facing=1
+trigger16=statetype=a&&enemynear(1),statetype=a&&(Pos X<enemynear(1),Pos X&&enemynear(1),facing!=-1||enemynear(1),Pos X<Pos X&&enemynear(1),facing!=1)&&!fvar(13)
+trigger1=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.front)+enemynear(1),Pos X-(Pos X+const(size.ground.front))||1
+trigger2=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.front)+enemynear(1),Pos X)||1
+trigger3=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.back)+enemynear(1),Pos X-(Pos X+const(size.ground.front))||1
+trigger4=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.back)+enemynear(1),Pos X)||1
+trigger5=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.front)+enemynear(1),Pos X-(Pos X+const(size.air.front))||1
+trigger6=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.front)+enemynear(1),Pos X)||1
+trigger7=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.back)+enemynear(1),Pos X-(Pos X+const(size.air.front))||1
+trigger8=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.ground.back)+enemynear(1),Pos X)||1
+trigger9=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.front)+enemynear(1),Pos X-(Pos X+const(size.ground.front))||1
+trigger10=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.front)+enemynear(1),Pos X)||1
+trigger11=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.back)+enemynear(1),Pos X-(Pos X+const(size.ground.front))||1
+trigger12=fvar(13):=Pos X-const(size.ground.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.back)+enemynear(1),Pos X)||1
+trigger13=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.front)+enemynear(1),Pos X-(Pos X+const(size.air.front))||1
+trigger14=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.front)+enemynear(1),Pos X)||1
+trigger15=fvar(13):=ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.back)+enemynear(1),Pos X-(Pos X+const(size.air.front))||1
+trigger16=fvar(13):=Pos X-const(size.air.front)-(ifelse(Pos X<enemynear(1),Pos X,-1,1)*enemynear(1),const(size.air.back)+enemynear(1),Pos X)||1
+ignorehitpause=1
+
+[State ];距離Y軸1
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=numenemy=1
+trigger2=numenemy=2
+trigger2=enemynear(0),alive
+fvar(14)=(enemynear,Pos y)-Pos y
+ignorehitpause=1
+[State ];距離Y軸2
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=numenemy=2
+trigger1=!enemynear(0),alive
+fvar(14)=(enemynear(1),Pos y)-Pos y
+ignorehitpause=1
+
+[State ];距離X軸射撃用1
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=numenemy=1
+trigger2=numenemy=2
+trigger2=enemynear(0),alive
+fvar(15)=abs(Pos X-enemynear,Pos X)*ifelse(frontedgedist<ifelse((facing=enemynear,facing),(enemynear,frontedgedist),(enemynear,backedgedist)),-1,1)
+ignorehitpause=1
+[State ];距離X軸射撃用2
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=numenemy=2
+trigger1=!enemynear(0),alive
+fvar(15)=abs(Pos X-enemynear(1),Pos X)*ifelse(frontedgedist<ifelse((facing=enemynear(1),facing),(enemynear(1),frontedgedist),(enemynear(1),backedgedist)),-1,1)
+ignorehitpause=1
+
+[State ];pal
+type=PalFX
+trigger1=!ishelper
+time=1
+add=0,0,0
+mul=256,256,256
+sinadd=256,256,256,10
+invertall=0
+color=256
+ignorehitpause=1
+
+[State ]
+Type=VarRandom
+triggerall=!ishelper
+Trigger1=!Time
+v=6
+Range=0,450
+ignorehitpause=1
+
+[State ]
+type=SelfState
+trigger1=ishelper
+value=stateno
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;AI記述
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=90000
+triggerall=!ishelper&&palno>2
+triggerall=roundstate<=2&&alive
+triggerall=power>=10000||var(36)>=10000
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=Var(5)=1
+triggerall=Var(20)!=1
+triggerall=var(20)!=2
+triggerall=life>=501
+trigger1=ctrl=1
+trigger1=statetype=S
+trigger2=stateno=2000
+
+[State ]
+type=SelfState
+value=3030
+triggerall=!ishelper&&palno>2
+triggerall=roundstate=2&&alive
+triggerall=power>=2500||var(36)>=2500
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=Var(5)!=1&&Var(20)!=1
+triggerall=life>=501
+triggerall=stateno=2000
+trigger1=fvar(13)>150&&fvar(14)>100
+trigger2=fvar(14)>150
+
+[State ]
+type=SelfState
+value=3030
+triggerall=!ishelper&&palno>2
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=[3,5])&&(var(56)&1)
+triggerall=power>=2500||var(36)>=2500
+triggerall=Var(5)!=1&&Var(20)!=1
+triggerall=life>=501
+triggerall=stateno=2000||ctrl
+triggerall=var(4)=3&&var(16)>1500||var(4)=[4,5]
+trigger1=fvar(14)>100
+trigger2=fvar(14)<100
+trigger2=random<50
+
+[State ]
+type=SelfState
+value=92001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(5)=1&&var(20)!=1
+triggerall=var(11)=[2,3]
+triggerall=!(var(46)=92001||var(46)=92003)
+trigger1=!enemynear(0),alive&&numenemy>1
+trigger1=enemynear(1),movetype=h&&fvar(13)!=[-100,100]
+trigger1=enemynear(1),BackEdgeBodyDist>60
+trigger1=random<=var(4)*100
+trigger2=enemynear,movetype=h
+trigger2=enemynear,BackEdgeBodyDist>60
+trigger2=fvar(13)!=[-100,100]
+trigger2=random<=var(4)*100
+trigger3=numhelper(450000)&&var(22)>0&&PlayerIDExist(var(22))
+trigger3=playerID(var(22)),gethitvar(damage)
+trigger3=random<=var(4)*100
+trigger4=inguarddist
+trigger4=enemynear,alive&&enemynear,BackEdgeBodyDist>60
+trigger4=random<=var(4)*50
+trigger5=inguarddist&&!enemynear(0),alive&&numenemy>1
+trigger5=enemynear(1),BackEdgeBodyDist>60
+trigger5=random<=var(4)*50
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=numenemy>0&&Var(5)!=1&&var(20)!=1
+triggerall=fvar(13)!=[-200,200]
+triggerall=BackEdgeBodyDist>50
+triggerall=random<=var(4)*100
+trigger1=ctrl||stateno=2000
+trigger1=prevstateno=[120,159]
+trigger1=!enemynear(0),alive&&numenemy>1
+trigger2=ctrl||stateno=2000
+trigger2=prevstateno=[120,159]
+trigger2=enemynear,facing!=facing
+trigger2=enemynear(1),facing!=facing
+trigger3=(var(4)=[4,5])&&palno>6
+trigger3=stateno=[5000,5120]
+
+[State ]
+type=SelfState
+value=2004
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=(var(4)=[1,2])||(var(4)=[3,5])&&power>1000
+triggerall=var(6)!=[100,500]
+triggerall=fvar(13)=[-60,60]
+triggerall=ctrl||stateno=2000
+trigger1=!enemynear(0),alive&&numenemy>1
+trigger1=EnemyNear(1),MoveType=A&&EnemyNear(1),AnimTime<=-9
+trigger1=enemynear(1),Time>=50||!Time&&var(4)=[3,5]
+trigger1=random<=var(4)*35
+trigger2=EnemyNear,MoveType=A
+trigger2=EnemyNear,AnimTime<=-9
+trigger2=enemynear,Time>=50||!Time&&var(4)=[3,5]
+trigger2=random<=var(4)*35
+trigger3=prevstateno=[120,159]
+trigger3=!enemynear(0),alive&&numenemy>1
+trigger3=EnemyNear(1),MoveType=A&&EnemyNear(1),AnimTime<=-9
+trigger3=random<=var(4)*25
+trigger4=prevstateno=[120,159]
+trigger4=EnemyNear,MoveType=A
+trigger4=EnemyNear,AnimTime<=-9
+trigger4=random<=var(4)*25
+
+[State ]
+type=SelfState
+value=2004
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=(var(4)=[1,2])||(var(4)=[3,5])&&power>1000
+triggerall=var(6)!=[100,500]
+triggerall=fvar(13)=[-90,90]
+triggerall=ctrl||stateno=2000
+trigger1=palno=[5,6]
+trigger1=enemynear,hitdefattr=SCA,AA,AP,AT
+trigger1=random<=var(4)*50
+
+[State ]
+type=SelfState
+value=1040
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=palno>2&&(var(56)&32)&&var(4)=[2,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,alive&&enemynear,statetype!=L||numenemy>1
+triggerall=random>550
+triggerall=ctrl||stateno=2000
+trigger1=(random<var(4)*200)&&numenemy>1
+trigger1=enemynear(1),statetype!=L&&enemynear(1),movetype=A
+trigger1=enemynear(1),facing!=facing&&enemynear(1),Time>35||enemynear(1),facing=facing&&enemynear(1),Time>50||prevstateno=[120,159]
+trigger2=(random<var(4)*200)&&numenemy>1
+trigger2=enemynear(1),statetype!=L&&enemynear(1),movetype=A&&numhelper(450000)&&var(22)>0&&PlayerIDExist(var(22))
+trigger2=playerID(var(22)),gethitvar(damage)
+trigger3=var(4)=5&&enemynear,movetype=A
+trigger3=enemynear,facing!=facing&&enemynear,Time>35||enemynear,facing=facing&&enemynear,Time>50||prevstateno=[120,159]
+trigger4=(random<var(4)*200)&&enemynear,movetype=A
+trigger4=numhelper(450000)&&var(22)>0&&PlayerIDExist(var(22))
+trigger4=playerID(var(22)),gethitvar(damage)
+trigger5=power<=5000||var(36)<=5000
+trigger5=life<=500&&(var(56)&1)
+
+[State ]
+type=SelfState
+value=2012
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=Var(20)!=1
+triggerall=(var(4)=2&&(power>=9000||var(36)>=9000))||((var(4)=[3,5])&&(power>=9500||var(36)>=9500))||palno=12
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=random=[100,190]
+triggerall=fvar(13)>50
+triggerall=fvar(14)=[-120,120]
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=400
+
+[State ]
+type=SelfState
+value=1070
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=Var(20)!=1
+triggerall=(var(4)=2&&(power>=7000||var(36)>=7000))||((var(4)=[3,5])&&(power>=7500||var(36)>=7500))||palno=12
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=var(6)=[130,170]
+triggerall=fvar(13)>100
+triggerall=fvar(14)=[-100,100]
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=400
+
+[State ]
+type=SelfState
+value=7775
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=Var(20)!=1
+triggerall=var(6)=[170,210]
+triggerall=power>=6000||var(36)>=6000
+triggerall=fvar(14)=[-100,100]
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=450
+
+[State ]
+type=SelfState
+value=2015
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=Var(20)!=1
+triggerall=power>=6000||var(36)>=6000
+triggerall=var(6)=[250,280]
+triggerall=fvar(14)=[-100,100]
+triggerall=Pos Y>=0
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=450
+
+[State ]
+type=SelfState
+value=2014
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=Var(20)!=1
+triggerall=(var(4)=2&&(power>=5000||var(36)>=5000))||((var(4)=[3,5])&&(power>=5500||var(36)>=5500))
+triggerall=var(6)=[100,130]
+triggerall=fvar(14)=[-20,20]
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=500
+
+[State ]
+type=SelfState
+value=1071
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=(var(4)=[2,3])&&var(16)>2000||var(4)=[4,5]
+triggerall=Var(20)!=1
+triggerall=(var(4)=2&&(power>=4000||var(36)>=4000))||((var(4)=[3,5])&&(power>=4500||var(36)>=4500))
+triggerall=var(6)=[380,400]
+triggerall=fvar(13)>40
+triggerall=fvar(14)=[-100,100]
+triggerall=ctrl=1||stateno=2000
+trigger1=palno<3||var(4)<5||!(var(56)&1)||var(20)=1
+trigger2=!(palno<3||var(4)<5||!(var(56)&1)||var(20)=1)
+trigger2=random>=550
+
+[State ]
+type=SelfState
+value=3060
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,4]
+triggerall=Var(20)!=1
+triggerall=fvar(13)>50
+triggerall=fvar(14)=[-20,20]
+triggerall=power>=2000||var(36)>=2000
+triggerall=var(6)=[300,380]
+triggerall=ctrl||stateno=2000
+Trigger1=random<=1000-(var(4)*100)
+;----------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=numhelper(450000)=0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+triggerall=EnemyNear,facing!=facing&&inguarddist
+Trigger1=random<=var(4)*20
+Trigger2=fvar(13)>=0||enemynear,time>20
+Trigger2=random<=var(4)*40||var(4)=5
+
+[State ]
+Type=SelfState
+Value=120
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=stateno!=[120,155]
+Triggerall=numhelper(450000)=0
+Triggerall=ctrl||(stateno=[0,20])||stateno=40||stateno=70||stateno=100||stateno=2000
+Triggerall=inguarddist
+Trigger1=random<=var(4)*120||var(4)=5
+Trigger2=fvar(13)>=0||enemynear,time>20
+Trigger2=random<=var(4)*170
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=numhelper(450000)&&var(22)>0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+triggerall=EnemyNear,facing!=facing
+trigger1=inguarddist
+Trigger1=random>=1000-(var(4)*50)
+Trigger2=inguarddist
+Trigger2=enemynear,time>20
+Trigger2=random>=1000-(var(4)*110)
+Trigger3=(var(4)=[1,3])&&inguarddist||var(4)=[4,5]
+trigger3=var(22)>0&&PlayerIDExist(var(22))
+trigger3=playerID(var(22)),gethitvar(damage)
+trigger3=random<=var(4)*35
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=numhelper(450000)=0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+triggerall=enemynear(1),facing!=facing&&inguarddist
+Trigger1=random<=var(4)*20
+Trigger2=fvar(13)>=0||enemynear(1),time>20
+Trigger2=random<=var(4)*40||var(4)=5
+
+[State ]
+Type=SelfState
+Value=120
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=stateno!=[120,155]
+Triggerall=numhelper(450000)=0
+Triggerall=ctrl||(stateno=[0,20])||stateno=40||stateno=70||stateno=100||stateno=2000
+Triggerall=inguarddist
+Trigger1=random<=var(4)*120||var(4)=5
+Trigger2=fvar(13)>=0||enemynear(1),time>20
+Trigger2=random<=var(4)*170
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=numhelper(450000)&&var(22)>0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+triggerall=enemynear(1),facing!=facing
+trigger1=inguarddist
+Trigger1=random>=1000-(var(4)*50)
+Trigger2=inguarddist
+Trigger2=enemynear(1),time>20
+Trigger2=random>=1000-(var(4)*110)
+Trigger3=(var(4)=[1,3])&&inguarddist||var(4)=[4,5]
+trigger3=var(22)>0&&PlayerIDExist(var(22))
+trigger3=playerID(var(22)),gethitvar(damage)
+trigger3=random<=var(4)*35
+;----------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=random<=var(4)*110
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,40]
+triggerall=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[0,70]
+triggerall=ctrl||stateno=2000
+Trigger1=EnemyNear,StateNo=5120
+Trigger1=EnemyNear,AnimTime=-7
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=random<=var(4)*80
+triggerall=fvar(14)+(enemynear,Vel Y*30+enemynear,gethitvar(yaccel)*30*30/2)=[-55,70]
+triggerall=fvar(13)+(enemynear,Vel X*30)=[20,95]
+triggerall=ctrl||stateno=2000
+Trigger1=EnemyNear,StateNo=[5100,5120]
+
+[State ]
+type=SelfState
+value=3050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=random<=var(4)*30
+triggerall=power>=1500||var(36)>=1500
+triggerall=fvar(14)+(enemynear,Vel Y*50+enemynear,gethitvar(yaccel)*50*50/2)=[-70,0]
+triggerall=fvar(13)+(enemynear,Vel X*50)>110
+triggerall=Ctrl||stateno=2000
+Trigger1=EnemyNear,StateNo=[5100,5120]
+
+[State ]
+type=SelfState
+value=105
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+Triggerall=random<=var(4)*40
+triggerall=ctrl||stateno=2000
+Triggerall=fvar(13)<60&&BackEdgeBodyDist>25
+Trigger1=EnemyNear,StateNo=5120
+
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=random<=var(4)*110
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,40]
+triggerall=fvar(14)+(enemynear(1),Vel Y*4+enemynear(1),gethitvar(yaccel)*4*4/2)=[0,70]
+triggerall=ctrl||stateno=2000
+Trigger1=enemynear(1),StateNo=5120
+Trigger1=enemynear(1),AnimTime=-7
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=random<=var(4)*80
+triggerall=fvar(14)+(enemynear(1),Vel Y*30+enemynear(1),gethitvar(yaccel)*30*30/2)=[-55,70]
+triggerall=fvar(13)+(enemynear(1),Vel X*30)=[20,95]
+triggerall=ctrl||stateno=2000
+Trigger1=enemynear(1),StateNo=[5100,5120]
+
+[State ]
+type=SelfState
+value=3050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=random<=var(4)*30
+triggerall=power>=1500||var(36)>=1500
+triggerall=fvar(14)+(enemynear(1),Vel Y*50+enemynear(1),gethitvar(yaccel)*50*50/2)=[-70,0]
+triggerall=fvar(13)+(enemynear(1),Vel X*50)>110
+triggerall=Ctrl||stateno=2000
+Trigger1=enemynear(1),StateNo=[5100,5120]
+
+[State ]
+type=SelfState
+value=105
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+Triggerall=random<=var(4)*40
+triggerall=ctrl||stateno=2000
+Triggerall=fvar(13)<60&&BackEdgeBodyDist>25
+Trigger1=enemynear(1),StateNo=5120
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=3060
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X)>50
+triggerall=power>=2000||var(36)>=2000
+triggerall=var(6)=[300,380]
+triggerall=ctrl||stateno=2000
+triggerall=EnemyNear,MoveType=H
+Triggerall=random<=1000-(var(4)*100)
+trigger1=fvar(14)+(enemynear,Vel Y+enemynear,gethitvar(yaccel)*1/2)=[-20,20]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*1/2)=[-20,20]
+
+[State ]
+type=SelfState
+value=3000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[0,120]
+triggerall=fvar(13)+(enemynear,Vel X*10)=[40,80]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*10+enemynear,gethitvar(yaccel)*10*10/2)=[-30,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[-30,0]
+
+[State ]
+type=SelfState
+value=1011
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[340,430]
+triggerall=power>=500||var(36)>=500
+triggerall=fvar(13)+(enemynear,Vel X*7)=[50,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*7+enemynear,gethitvar(yaccel)*7*7/2)=[-40,-10]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*7+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*7*7/2)=[-40,-10]
+
+[State ]
+type=SelfState
+value=3040
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[270,370]
+triggerall=fvar(13)+(enemynear,Vel X*5)=[50,99]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-40,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-40,0]
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[250,265]
+triggerall=fvar(13)+(enemynear,Vel X*4)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-50,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[-50,0]
+
+[State ]
+type=SelfState
+value=1021
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*5)=[300,420]
+triggerall=fvar(13)=[100,150]
+triggerall=power>=500||var(36)>=500
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-30,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-30,0]
+
+[State ]
+type=SelfState
+value=200
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-10,40]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-90,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-90,0]
+
+[State ]
+type=SelfState
+value=201
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*12)=[-10,25]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*12+enemynear,gethitvar(yaccel)*12*12/2)=[-110,-10]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*12+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*12*12/2)=[-110,-10]
+
+[State ]
+type=SelfState
+value=202
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,30]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*8+enemynear,gethitvar(yaccel)*8*8/2)=[-70,30]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-70,30]
+
+[State ]
+type=SelfState
+value=210
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,45]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-65,30]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[-65,30]
+
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,40]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[0,70]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[0,70]
+
+[State ]
+type=SelfState
+value=212
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,25]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-95,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[-95,0]
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[150,260]
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,50]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*8+enemynear,gethitvar(yaccel)*8*8/2)=[-200,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-200,0]
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[280,390]
+triggerall=fvar(13)+(enemynear,Vel X*30)=[20,95]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*30+enemynear,gethitvar(yaccel)*30*30/2)=[-55,70]
+trigger2=fvar(14)+(enemynear,Vel Y*42+enemynear,gethitvar(yaccel)*42*42/2)=[-250,70]
+trigger3=EnemyNear,stateno!=[5000,5150]
+trigger3=fvar(14)+(enemynear,Vel Y*30+enemynear,const(movement.yaccel)*30*30/2)=[-55,70]
+trigger4=EnemyNear,stateno!=[5000,5150]
+trigger4=fvar(14)+(enemynear,Vel Y*42+enemynear,const(movement.yaccel)*42*42/2)=[-250,70]
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[130,240]
+triggerall=fvar(13)+(enemynear,Vel X*7)=[50,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*7+enemynear,gethitvar(yaccel)*7*7/2)=[-40,0]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*7+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*7*7/2)=[-40,0]
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=var(6)=[80,130]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(13)+(enemynear,Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear,Vel Y*19+enemynear,gethitvar(yaccel)*19*19/2)=[-60,-10]
+trigger1=fvar(13)+(enemynear,Vel X*19)=[60,110]
+trigger2=EnemyNear,stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear,Vel Y*19+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger3=fvar(13)+(enemynear,Vel X*25)=[110,160]
+trigger3=fvar(14)+(enemynear,Vel Y*25+enemynear,gethitvar(yaccel)*25*25/2)=[-100,0]
+trigger4=fvar(13)+(enemynear,Vel X*25)=[110,160]
+trigger4=EnemyNear,stateno!=[5000,5150]
+trigger4=fvar(14)+(enemynear,Vel Y*25+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L
+triggerall=Ctrl||stateno=2000||stateno=100
+triggerall=fvar(13)+(enemynear,Vel X*25)>100
+trigger1=EnemyNear,MoveType=H
+Trigger1=BackEdgeBodyDist>50
+trigger1=random<var(4)*120||var(4)=5
+trigger2=EnemyNear,MoveType=H
+Trigger2=BackEdgeBodyDist<60&&BackEdgeBodyDist>10
+trigger2=(var(4)=[4,5])&&random<var(4)*120
+Trigger3=EnemyNear,StateNo=[5100,5120]
+trigger3=EnemyNear,facing!=facing
+Trigger3=BackEdgeBodyDist<25
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=3060
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X)>50
+triggerall=power>=2000||var(36)>=2000
+triggerall=var(6)=[300,380]
+triggerall=ctrl||stateno=2000
+triggerall=enemynear(1),MoveType=H
+Triggerall=random<=1000-(var(4)*100)
+trigger1=fvar(14)+(enemynear(1),Vel Y+enemynear(1),gethitvar(yaccel)*1/2)=[-20,20]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*1/2)=[-20,20]
+
+[State ]
+type=SelfState
+value=3000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[0,120]
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[40,80]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),gethitvar(yaccel)*10*10/2)=[-30,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[-30,0]
+
+[State ]
+type=SelfState
+value=1011
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[340,430]
+triggerall=power>=500||var(36)>=500
+triggerall=fvar(13)+(enemynear(1),Vel X*7)=[50,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*7+enemynear(1),gethitvar(yaccel)*7*7/2)=[-40,-10]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*7+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*7*7/2)=[-40,-10]
+
+[State ]
+type=SelfState
+value=3040
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[270,370]
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[50,99]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*5+enemynear(1),gethitvar(yaccel)*5*5/2)=[-40,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-40,0]
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[250,265]
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*4+enemynear(1),gethitvar(yaccel)*4*4/2)=[-50,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[-50,0]
+
+[State ]
+type=SelfState
+value=1021
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[300,420]
+triggerall=fvar(13)=[100,150]
+triggerall=power>=500||var(36)>=500
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*5+enemynear(1),gethitvar(yaccel)*5*5/2)=[-30,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-30,0]
+
+[State ]
+type=SelfState
+value=200
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[-10,40]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*5+enemynear(1),gethitvar(yaccel)*5*5/2)=[-90,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-90,0]
+
+[State ]
+type=SelfState
+value=201
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*12)=[-10,25]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*12+enemynear(1),gethitvar(yaccel)*12*12/2)=[-110,-10]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*12+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*12*12/2)=[-110,-10]
+
+[State ]
+type=SelfState
+value=202
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*8)=[-5,30]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*8+enemynear(1),gethitvar(yaccel)*8*8/2)=[-70,30]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-70,30]
+
+[State ]
+type=SelfState
+value=210
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,45]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*4+enemynear(1),gethitvar(yaccel)*4*4/2)=[-65,30]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[-65,30]
+
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,40]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*4+enemynear(1),gethitvar(yaccel)*4*4/2)=[0,70]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[0,70]
+
+[State ]
+type=SelfState
+value=212
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,25]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+triggerall=Random<=var(4)*100
+trigger1=fvar(14)+(enemynear(1),Vel Y*4+enemynear(1),gethitvar(yaccel)*4*4/2)=[-95,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[-95,0]
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[150,260]
+triggerall=fvar(13)+(enemynear(1),Vel X*8)=[-5,50]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*8+enemynear(1),gethitvar(yaccel)*8*8/2)=[-200,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-200,0]
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[280,390]
+triggerall=fvar(13)+(enemynear(1),Vel X*30)=[20,95]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*30+enemynear(1),gethitvar(yaccel)*30*30/2)=[-55,70]
+trigger2=fvar(14)+(enemynear(1),Vel Y*42+enemynear(1),gethitvar(yaccel)*42*42/2)=[-250,70]
+trigger3=enemynear(1),stateno!=[5000,5150]
+trigger3=fvar(14)+(enemynear(1),Vel Y*30+enemynear(1),const(movement.yaccel)*30*30/2)=[-55,70]
+trigger4=enemynear(1),stateno!=[5000,5150]
+trigger4=fvar(14)+(enemynear(1),Vel Y*42+enemynear(1),const(movement.yaccel)*42*42/2)=[-250,70]
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[130,240]
+triggerall=fvar(13)+(enemynear(1),Vel X*7)=[50,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*7+enemynear(1),gethitvar(yaccel)*7*7/2)=[-40,0]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*7+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*7*7/2)=[-40,0]
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=var(6)=[80,130]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(13)+(enemynear(1),Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear(1),Vel Y*19+enemynear(1),gethitvar(yaccel)*19*19/2)=[-60,-10]
+trigger1=fvar(13)+(enemynear(1),Vel X*19)=[60,110]
+trigger2=enemynear(1),stateno!=[5000,5150]
+trigger2=fvar(14)+(enemynear(1),Vel Y*19+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger3=fvar(13)+(enemynear(1),Vel X*25)=[110,160]
+trigger3=fvar(14)+(enemynear(1),Vel Y*25+enemynear(1),gethitvar(yaccel)*25*25/2)=[-100,0]
+trigger4=fvar(13)+(enemynear(1),Vel X*25)=[110,160]
+trigger4=enemynear(1),stateno!=[5000,5150]
+trigger4=fvar(14)+(enemynear(1),Vel Y*25+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),StateType!=L
+triggerall=Ctrl||stateno=2000||stateno=100
+triggerall=fvar(13)+(enemynear(1),Vel X*25)>100
+trigger1=enemynear(1),MoveType=H
+Trigger1=BackEdgeBodyDist>50
+trigger1=random<var(4)*120||var(4)=5
+trigger2=enemynear(1),MoveType=H
+Trigger2=BackEdgeBodyDist<60&&BackEdgeBodyDist>10
+trigger2=(var(4)=[4,5])&&random<var(4)*120
+Trigger3=enemynear(1),StateNo=[5100,5120]
+trigger3=enemynear(1),facing!=facing
+Trigger3=BackEdgeBodyDist<25
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=1071
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=power>=10000||var(36)>=10000
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*170
+triggerall=fvar(14)+(enemynear,Vel Y*6+enemynear,gethitvar(yaccel)*6*6/2)=[-100,80]
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+trigger9=stateno=1010
+trigger10=stateno=1020
+trigger11=stateno=3000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=3010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,2]
+triggerall=Var(20)!=1
+triggerall=power>=1000||var(36)>=1000
+triggerall=hitpausetime=1
+triggerall=fvar(13)=[-5,30]
+triggerall=fvar(14)=[-40,-10]
+triggerall=stateno!=3010
+triggerall=stateno!=3020
+triggerall=Random<=var(4)*170
+triggerall=movehit=1
+trigger1=statetype!=A
+trigger1=hitdefattr=SC,NA,SA
+trigger2=movehit=1
+trigger2=(stateno=[1020,1021])||stateno=3000
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=1021
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-5,40]
+triggerall=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-50,0]
+triggerall=Random<=var(4)*80
+triggerall=power>=500||var(36)>=500||palno=12&&random<300
+triggerall=hitpausetime=1
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+trigger9=stateno=1020
+trigger9=time>=50
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=1011
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*7)=[-5,80]
+triggerall=fvar(14)+(enemynear,Vel Y*7+enemynear,gethitvar(yaccel)*7*7/2)=[-40,-10]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*80
+triggerall=movehit=1
+triggerall=power>=500||var(36)>=500||palno=12&&random<300
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+trigger9=stateno=1020
+trigger9=time>=50
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*7)=[-5,80]
+triggerall=fvar(14)+(enemynear,Vel Y*7+enemynear,gethitvar(yaccel)*7*7/2)=[-40,-10]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*80
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+trigger9=stateno=1020
+trigger9=time>=50
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,20]
+triggerall=fvar(14)+(enemynear,Vel Y*8+enemynear,gethitvar(yaccel)*8*8/2)=[-80,-10]
+triggerall=hitpausetime=1
+triggerall=Random>=(var(4)*50+800)
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=212
+trigger5=stateno=210
+trigger6=stateno=211
+trigger7=stateno=400
+trigger8=stateno=410
+trigger9=stateno=610
+trigger9=time>=12
+trigger10=stateno=2100
+trigger10=time>=12
+trigger11=stateno=1020
+trigger11=time>=50
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-50,0]
+triggerall=fvar(13)+(enemynear,Vel X*4)=[20,120]
+triggerall=hitpausetime=1
+triggerall=Random>100-(var(4)*50)
+triggerall=power>=1000||var(36)>=1000||palno=12&&random<300
+triggerall=movecontact=1
+trigger1=moveguarded=1
+trigger1=statetype!=A
+trigger1=hitdefattr=SC,NA,SA
+trigger2=stateno=[200,202]
+trigger3=stateno=[210,212]
+trigger4=stateno=400
+trigger5=stateno=410
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=200
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-10,40]
+triggerall=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-90,0]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*60
+triggerall=movecontact=1
+trigger1=stateno=201
+trigger2=stateno=202
+trigger3=stateno=210
+trigger4=stateno=211
+trigger5=stateno=400
+trigger6=stateno=410
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=202
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,30]
+triggerall=fvar(14)+(enemynear,Vel Y*8+enemynear,gethitvar(yaccel)*8*8/2)=[-70,30]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*60
+triggerall=movecontact=1
+trigger1=stateno=201
+trigger2=stateno=202
+trigger3=stateno=210
+trigger4=stateno=211
+trigger5=stateno=400
+trigger6=stateno=410
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=210
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,45]
+triggerall=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-65,30]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*60
+triggerall=movecontact=1
+trigger1=stateno=201
+trigger2=stateno=202
+trigger3=stateno=211
+trigger4=stateno=400
+trigger5=stateno=410
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=212
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,25]
+triggerall=fvar(14)+(enemynear,Vel Y*4+enemynear,gethitvar(yaccel)*4*4/2)=[-95,0]
+triggerall=hitpausetime=1
+triggerall=Random<=var(4)*60
+triggerall=movecontact=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=400
+trigger7=stateno=410
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=3000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[2,3]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*100
+triggerall=fvar(13)+(enemynear,Vel X*10)=[40,80]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[-30,0]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=1011
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,2]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=EnemyNear,StateType!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*80
+triggerall=power>=500||var(36)>=500
+triggerall=fvar(13)+(enemynear,Vel X*7)=[50,99]
+triggerall=ctrl=1||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*7+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*7*7/2)=[-50,-10]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=3040
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*80
+triggerall=fvar(13)+(enemynear,Vel X*5)=[50,99]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-40,0]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*80
+triggerall=fvar(13)+(enemynear,Vel X*5)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-50,0]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+trigger4=EnemyNear,stateno=[120,155]
+trigger4=random<=var(4)*120
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=fvar(13)+(enemynear,Vel X*5)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-50,0]
+triggerall=random<=var(4)*50
+trigger1=EnemyNear,stateno=[120,155]
+
+[State ]
+type=SelfState
+value=1021
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,2]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*60
+triggerall=fvar(13)+(enemynear,Vel X*5)=[100,150]
+triggerall=power>=500||var(36)>=500
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-30,0]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=200
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-10,40]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-90,0]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=201
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*12)=[-10,25]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*12+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*12*12/2)=[-110,-10]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=202
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,30]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-70,30]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=210
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,45]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[-65,30]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,40]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[0,70]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=212
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*4)=[-5,25]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*4+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*4*4/2)=[-95,0]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,50]
+triggerall=ctrl=1||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-200,0]
+triggerall=random<=var(4)*100
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,MoveType!=H
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=random<=var(4)*80
+trigger1=fvar(13)+(enemynear,Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear,Vel Y*19+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger2=fvar(13)+(enemynear,Vel X*19)=[110,160]
+trigger2=fvar(14)+(enemynear,Vel Y*25+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*150
+triggerall=fvar(13)+(enemynear,Vel X*30)=[20,95]
+triggerall=ctrl||stateno=2000
+trigger1=fvar(14)+(enemynear,Vel Y*30+enemynear,const(movement.yaccel)*30*30/2)=[-55,70]
+trigger1=EnemyNear,movetype=i||EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger2=fvar(14)+(enemynear,Vel Y*42+enemynear,const(movement.yaccel)*42*42/2)=[-250,70]
+trigger2=EnemyNear,movetype=i||EnemyNear,movetype=a&&EnemyNear,facing=facing
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L&&EnemyNear,stateType!=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear,Vel X*7)=[50,150]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*7+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*7*7/2)=[-50,0]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=3000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[2,3]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&EnemyNear(1),StateType!=L
+triggerall=EnemyNear(1),MoveType!=H&&EnemyNear(1),stateType!=C
+triggerall=random<=var(4)*100
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[40,80]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[-30,0]
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=1011
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,2]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),movetype!=H&&enemynear(1),stateType!=C
+triggerall=random<=var(4)*80
+triggerall=power>=500||var(36)>=500
+triggerall=fvar(13)+(enemynear(1),Vel X*7)=[50,99]
+triggerall=ctrl=1||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*7+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*7*7/2)=[-50,-10]
+trigger1=enemynear(1),moveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=3040
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H&&EnemyNear(1),stateType!=C
+triggerall=random<=var(4)*80
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[50,99]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-40,0]
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H&&EnemyNear(1),stateType!=C
+triggerall=random<=var(4)*80
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-50,0]
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+trigger4=EnemyNear(1),stateno=[120,155]
+trigger4=random<=var(4)*120
+
+[State ]
+type=SelfState
+value=3020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[20,120]
+triggerall=power>=1000||var(36)>=1000
+triggerall=ctrl=1||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-50,0]
+triggerall=random<=var(4)*50
+trigger1=enemynear(1),stateno=[120,155]
+
+[State ]
+type=SelfState
+value=1021
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,2]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),movetype!=H&&enemynear(1),statetype!=C
+triggerall=random<=var(4)*60
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[100,150]
+triggerall=power>=500||var(36)>=500
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-30,0]
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=200
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear,movetype!=H&&EnemyNear(1),stateType!=C
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[-10,40]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-90,0]
+triggerall=random<=var(4)*80
+trigger1=enemynear(1),movetype=i||enemynear,Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear,facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear,movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=201
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H&&enemynear(1),stateType!=C
+triggerall=fvar(13)+(enemynear(1),Vel X*12)=[-10,25]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*12+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*12*12/2)=[-110,-10]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=202
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*8)=[-5,30]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-70,30]
+triggerall=random<=var(4)*80
+trigger1=enemynear(1),movetype=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=210
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),movetype!=H&&enemynear(1),stateType!=C
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,45]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[-65,30]
+triggerall=random<=var(4)*80
+trigger1=enemynear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=211
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,40]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[0,70]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=212
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H&&EnemyNear(1),stateType!=C
+triggerall=fvar(13)+(enemynear(1),Vel X*4)=[-5,25]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*4+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*4*4/2)=[-95,0]
+triggerall=random<=var(4)*80
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H&&EnemyNear(1),stateType!=C
+triggerall=fvar(13)+(enemynear(1),Vel X*8)=[-5,50]
+triggerall=ctrl=1||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-200,0]
+triggerall=random<=var(4)*100
+trigger1=EnemyNear(1),MoveType=i||EnemyNear(1),Ctrl
+trigger2=EnemyNear(1),movetype=a&&EnemyNear(1),facing=facing
+trigger3=!EnemyNear(1),Ctrl&&EnemyNear(1),movetype!=a
+trigger3=!EnemyNear(1),inguarddist
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=random<=var(4)*80
+trigger1=fvar(13)+(enemynear(1),Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear(1),Vel Y*19+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger2=fvar(13)+(enemynear(1),Vel X*19)=[110,160]
+trigger2=fvar(14)+(enemynear(1),Vel Y*25+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=1000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=EnemyNear(1),MoveType!=H
+triggerall=random<=var(4)*150
+triggerall=fvar(13)+(enemynear(1),Vel X*30)=[20,95]
+triggerall=ctrl||stateno=2000
+trigger1=fvar(14)+(enemynear(1),Vel Y*30+enemynear(1),const(movement.yaccel)*30*30/2)=[-55,70]
+trigger1=enemynear(1),movetype=i||enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger2=fvar(14)+(enemynear(1),Vel Y*42+enemynear(1),const(movement.yaccel)*42*42/2)=[-250,70]
+trigger2=enemynear(1),movetype=i||enemynear(1),movetype=a&&enemynear(1),facing=facing
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H&&enemynear(1),stateType!=C
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear(1),Vel X*7)=[50,150]
+triggerall=ctrl||stateno=2000||stateno=100||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*7+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*7*7/2)=[-50,0]
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[50,200]
+triggerall=fvar(13)+(enemynear,Vel X*10)=[80,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*10+enemynear,gethitvar(yaccel)*10*10/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>1000)
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[200,350]
+triggerall=fvar(13)+(enemynear,Vel X*5)=[80,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist&&Pos Y<0
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[301,450]
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-80,80]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=EnemyNear,MoveType=H
+trigger1=fvar(14)+(enemynear,Vel Y*5+enemynear,gethitvar(yaccel)*5*5/2)=[-100,-40]
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[50,200]
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[80,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),gethitvar(yaccel)*10*10/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>1000)
+Triggerall=!inguarddist
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[200,350]
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[80,150]
+triggerall=Ctrl||stateno=100||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*5+enemynear(1),gethitvar(yaccel)*5*5/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist&&Pos Y<0
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[301,450]
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[-80,80]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=enemynear(1),MoveType=H
+trigger1=fvar(14)+(enemynear(1),Vel Y*5+enemynear(1),gethitvar(yaccel)*5*5/2)=[-100,-40]
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&((var(4)=[1,2])||(var(4)=[3,5])&&power>500)
+triggerall=var(6)=[0,150]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=fvar(13)+(enemynear,Vel X*10)=[-5,80]
+triggerall=fvar(14)+(enemynear,Vel Y*10+enemynear,const(movement.yaccel)*10*10/2)=[-30,0]
+triggerall=hitpausetime=1
+triggerall=Random>=200
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+ignorehitpause=1
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>0&&var(6)=[0,150]
+triggerall=!enemynear(0),alive&&numenemy>1&&Var(20)!=1
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[-5,80]
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),const(movement.yaccel)*10*10/2)=[-30,0]
+triggerall=hitpausetime=1
+triggerall=Random>=200
+triggerall=movehit=1
+trigger1=stateno=200
+trigger2=stateno=201
+trigger3=stateno=202
+trigger4=stateno=210
+trigger5=stateno=211
+trigger6=stateno=212
+trigger7=stateno=400
+trigger8=stateno=410
+ignorehitpause=1
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear,Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*10+enemynear,const(movement.yaccel)*10*10/2)=[-100,0]
+triggerall=EnemyNear,stateType=A
+Trigger1=!inguarddist
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[0,200]
+triggerall=fvar(13)+(enemynear,Vel X*10)=[10,30]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*10+enemynear,const(movement.yaccel)*10*10/2)=[-30,0]
+Trigger1=!inguarddist
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&power>1000)
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear,Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[-100,-30]
+triggerall=EnemyNear,stateType=A
+Trigger1=!inguarddist
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&power>1000)
+Triggerall=!inguarddist
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[201,400]
+triggerall=fvar(13)+(enemynear,Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[-100,-30]
+trigger1=EnemyNear,MoveType=i||EnemyNear,Ctrl
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+trigger3=!EnemyNear,Ctrl&&EnemyNear,movetype!=a
+trigger3=!EnemyNear,inguarddist
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist&&Pos Y<0
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[401,500]
+triggerall=fvar(13)+(enemynear,Vel X*10)=[-80,80]
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[0,70]
+triggerall=EnemyNear,stateType=A||EnemyNear,MoveType=I
+trigger1=ctrl=1||stateno=70
+trigger1=StateType=A
+trigger2=stateno=100||stateno=2000
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),const(movement.yaccel)*10*10/2)=[-100,0]
+triggerall=enemynear(1),stateType=A
+Trigger1=!inguarddist
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[0,200]
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[10,30]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),const(movement.yaccel)*10*10/2)=[-30,0]
+Trigger1=!inguarddist
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&power>1000)
+triggerall=numenemy>1&&Var(20)!=1
+Triggerall=!inguarddist
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=random<=var(4)*120
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[-100,-30]
+triggerall=enemynear(1),stateType=A
+Trigger1=!inguarddist
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=4000
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&(var(4)=2||(var(4)=[3,5])&power>1000)
+triggerall=numenemy>1&&Var(20)!=1
+Triggerall=!inguarddist
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[201,400]
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[100,180]
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[-100,-30]
+trigger1=enemynear(1),MoveType=i||enemynear(1),Ctrl
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+trigger3=!enemynear(1),Ctrl&&enemynear(1),movetype!=a
+trigger3=!enemynear(1),inguarddist
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+Triggerall=!inguarddist&&Pos Y<0
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[401,500]
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[-80,80]
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[0,70]
+triggerall=enemynear(1),stateType=A||enemynear(1),MoveType=I
+trigger1=ctrl=1||stateno=70
+trigger1=StateType=A
+trigger2=stateno=100||stateno=2000
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+;隙がなかったら適当に技をやる
+;--------------------------------------------------------------------------------------------------------------------------------------
+[state ]
+type=SelfState
+value=70
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,movetype!=h
+triggerall=EnemyNear,facing!=facing
+triggerall=ctrl
+trigger1=EnemyNear,statetype=a
+trigger1=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)>60
+trigger1=random<=60
+trigger2=EnemyNear,statetype!=a
+trigger2=random<=30
+
+[State ]
+type=SelfState
+value=3050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[150,290]
+triggerall=power>=1500||var(36)>=1500
+triggerall=fvar(13)+(enemynear,Vel X*50)>=-100
+triggerall=fvar(14)=[-70,0]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=Random>=400+(var(4)*60)
+trigger1=!EnemyNear,Ctrl
+trigger1=EnemyNear,MoveType=I||EnemyNear,MoveType=H
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+
+[State ]
+type=SelfState
+value=3010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||var(4)=3&&power>2000)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[150,290]
+triggerall=power>1000||var(36)>1000
+triggerall=fvar(13)+(enemynear,Vel X*90)>=-90
+triggerall=fvar(14)=[-70,00]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=Random>=600+(var(4)*60)
+trigger1=!EnemyNear,Ctrl
+trigger1=EnemyNear,MoveType=I
+trigger2=EnemyNear,movetype=a&&EnemyNear,facing=facing
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=S||EnemyNear,stateType=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*10)=[-80,80]
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[0,70]
+triggerall=stateno=2000||stateno=70
+trigger1=Pos Y<0
+trigger1=Random<=var(4)*20
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*10)=[50,120]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear,Vel Y*10+enemynear,const(movement.yaccel)*10*10/2)=[-200,0]
+trigger1=(var(4)=[1,2])||(var(4)=[3,5])&&!inguarddist
+trigger1=random<=var(4)*40
+trigger2=var(4)=[3,5]
+trigger2=!EnemyNear,inguarddist&&!inguarddist
+
+[State ]
+type=SelfState
+value=1060
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||(var(4)=[3,5])&&power>350)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=enemynear,movetype!=H
+triggerall=fvar(13)+(enemynear,Vel X*10)>=100
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear,Vel Y*10+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*10*10/2)=[-60,0]
+trigger1=(var(4)=[1,2])||(var(4)=[3,5])&&!inguarddist
+trigger1=random<=var(4)*20
+trigger2=var(4)=[3,5]
+trigger2=!EnemyNear,inguarddist&&!inguarddist
+
+[State ]
+type=SelfState
+value=200+(random>500)*10
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=S
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*5)=[-10,40]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-90,0]
+trigger1=random<=var(4)*30
+trigger2=!EnemyNear,inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=201+(random>500)*11
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=A
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*12)=[-10,25]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*12+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*12*12/2)=[-110,0]
+trigger1=random<=var(4)*30
+trigger2=!EnemyNear,inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=202+(random>500)*9
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=S||EnemyNear,stateType=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(enemynear,Vel X*8)=[-5,30]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-70,45]
+trigger1=random<=var(4)*30
+trigger2=!EnemyNear,inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=C
+triggerall=EnemyNear,MoveType!=H
+triggerall=fvar(13)+(5+enemynear,Vel X*8)=[-5,40]
+triggerall=ctrl=1||stateno=2000
+triggerall=fvar(14)+(enemynear,Vel Y*8+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*8*8/2)=[-200,0]
+trigger1=random<=var(4)*40
+trigger2=!EnemyNear,inguarddist&&!inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,3])||(var(4)=[4,5])&&!inguarddist)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=EnemyNear,stateType=S||EnemyNear,stateType=A
+triggerall=EnemyNear,MoveType!=H
+triggerall=Ctrl||stateno=70||stateno=2000
+triggerall=random<=var(4)*30
+trigger1=fvar(13)+(enemynear,Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear,Vel Y*19+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger2=fvar(13)+(enemynear,Vel X*19)=[110,160]
+trigger2=fvar(14)+(enemynear,Vel Y*25+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,3])||(var(4)=[4,5])&&!inguarddist)
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=enemynear,statetype=S||enemynear,statetype=A
+triggerall=enemynear,movetype!=H
+triggerall=fvar(13)+(enemynear,Vel X*7)=[50,200]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear,Vel Y*7+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*7*7/2)=[-80,-10]
+trigger1=random<=var(4)*40
+trigger2=!EnemyNear,inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=enemynear,statetype=S||enemynear,statetype=A
+triggerall=enemynear,movetype!=H
+triggerall=fvar(13)+(enemynear,Vel X*5)=[40,150]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear,Vel Y*5+!!enemynear,Vel Y*enemynear,const(movement.yaccel)*5*5/2)=[-80,10]
+trigger1=random<=var(4)*20
+
+[State ]
+type=SelfState
+value=2004
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[4,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=enemynear,movetype!=H
+triggerall=power>1000
+triggerall=fvar(13)=[70,80]
+triggerall=ctrl||stateno=2000
+Trigger1=random<=var(4)*20
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=numenemy>0&&Var(5)=1&&var(20)!=1
+triggerall=fvar(13)!=[-200,200]
+triggerall=EnemyNear,facing!=facing
+Triggerall=BackEdgeBodyDist>50
+triggerall=random<=var(4)*100
+trigger1=ctrl||stateno=2000
+trigger1=prevstateno=[120,159]
+trigger2=(var(4)=[4,5])&&palno>6
+trigger2=stateno=[5000,5120]
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[state ]
+type=SelfState
+value=70
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),movetype!=h
+triggerall=enemynear(1),facing!=facing
+triggerall=ctrl
+trigger1=enemynear(1),statetype=a
+trigger1=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)>60
+trigger1=random<=60
+trigger2=enemynear(1),statetype!=a
+trigger2=random<=30
+
+[State ]
+type=SelfState
+value=3050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[150,290]
+triggerall=power>=1500||var(36)>=1500
+triggerall=fvar(13)+(enemynear(1),Vel X*50)>=-100
+triggerall=fvar(14)=[-70,0]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=Random>=400+(var(4)*60)
+trigger1=!enemynear(1),Ctrl
+trigger1=enemynear(1),MoveType=I||enemynear(1),MoveType=H
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+
+[State ]
+type=SelfState
+value=3010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||var(4)=3&&power>2000)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[150,290]
+triggerall=power>=1000||var(36)>=1000
+triggerall=fvar(13)+(enemynear(1),Vel X*90)>=-90
+triggerall=fvar(14)=[-70,00]
+triggerall=Ctrl||stateno=100||stateno=70||stateno=2000
+triggerall=Random>=600+(var(4)*60)
+trigger1=!enemynear(1),Ctrl
+trigger1=enemynear(1),MoveType=I
+trigger2=enemynear(1),movetype=a&&enemynear(1),facing=facing
+
+[State ]
+type=SelfState
+value=2100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S||enemynear(1),stateType=C
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[-80,80]
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[0,70]
+triggerall=stateno=2000||stateno=70
+trigger1=Pos Y<0
+trigger1=Random<=var(4)*20
+
+[State ]
+type=SelfState
+value=1050
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||(var(4)=[3,5])&&power>500)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*10)=[50,120]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+enemynear(1),const(movement.yaccel)*10*10/2)=[-200,0]
+trigger1=(var(4)=[1,2])||(var(4)=[3,5])&&!inguarddist
+trigger1=random<=var(4)*40
+trigger2=var(4)=[3,5]
+trigger2=!enemynear(1),inguarddist&&!inguarddist
+
+[State ]
+type=SelfState
+value=1060
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,2])||(var(4)=[3,5])&&power>350)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*10)>=100
+triggerall=ctrl||stateno=2000||stateno=100
+triggerall=fvar(14)+(enemynear(1),Vel Y*10+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*10*10/2)=[-60,0]
+trigger1=(var(4)=[1,2])||(var(4)=[3,5])&&!inguarddist
+trigger1=random<=var(4)*20
+trigger2=var(4)=[3,5]
+trigger2=!enemynear(1),inguarddist&&!inguarddist
+
+[State ]
+type=SelfState
+value=200+(random>500)*10
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[-10,40]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-90,0]
+trigger1=random<=var(4)*30
+trigger2=!enemynear(1),inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=201+(random>500)*11
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=A
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*12)=[-10,25]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*12+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*12*12/2)=[-110,0]
+trigger1=random<=var(4)*30
+trigger2=!enemynear(1),inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=202+(random>500)*9
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S||enemynear(1),stateType=C
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*8)=[-5,30]
+triggerall=ctrl||stateno=2000||stateno=70
+triggerall=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-70,45]
+trigger1=random<=var(4)*30
+trigger2=!enemynear(1),inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1090
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=C
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(5+enemynear(1),Vel X*8)=[-5,40]
+triggerall=ctrl=1||stateno=2000
+triggerall=fvar(14)+(enemynear(1),Vel Y*8+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*8*8/2)=[-200,0]
+trigger1=random<=var(4)*40
+trigger2=!enemynear(1),inguarddist&&!inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,3])||(var(4)=[4,5])&&!inguarddist)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S||enemynear(1),stateType=A
+triggerall=enemynear(1),MoveType!=H
+triggerall=Ctrl||stateno=70||stateno=2000
+triggerall=random<=var(4)*30
+trigger1=fvar(13)+(enemynear(1),Vel X*19)=[60,110]
+trigger1=fvar(14)+(enemynear(1),Vel Y*19+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*19*19/2)=[-60,-10]
+trigger2=fvar(13)+(enemynear(1),Vel X*19)=[110,160]
+trigger2=fvar(14)+(enemynear(1),Vel Y*25+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*25*25/2)=[-100,0]
+
+[State ]
+type=SelfState
+value=1010
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&((var(4)=[1,3])||(var(4)=[4,5])&&!inguarddist)
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S||enemynear(1),stateType=A
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*7)=[50,200]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear(1),Vel Y*7+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*7*7/2)=[-80,-10]
+trigger1=random<=var(4)*40
+trigger2=!enemynear(1),inguarddist
+trigger2=var(4)=[3,5]
+
+[State ]
+type=SelfState
+value=1020
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,3]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),stateType=S||enemynear(1),stateType=A
+triggerall=enemynear(1),MoveType!=H
+triggerall=fvar(13)+(enemynear(1),Vel X*5)=[40,150]
+triggerall=ctrl||stateno=2000
+triggerall=fvar(14)+(enemynear(1),Vel Y*5+!!enemynear(1),Vel Y*enemynear(1),const(movement.yaccel)*5*5/2)=[-80,10]
+trigger1=random<=var(4)*20
+
+[State ]
+type=SelfState
+value=2004
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[4,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=enemynear(1),MoveType!=H
+triggerall=power>1000
+triggerall=fvar(13)=[70,80]
+triggerall=ctrl||stateno=2000
+Trigger1=random<=var(4)*20
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[2,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=fvar(13)!=[-200,200]
+triggerall=!enemynear(0),alive&&enemynear(1),facing!=facing
+Triggerall=BackEdgeBodyDist>50
+triggerall=random<=var(4)*100
+trigger1=ctrl||stateno=2000
+trigger1=prevstateno=[120,159]
+trigger2=(var(4)=[4,5])&&palno>6
+trigger2=stateno=[5000,5120]
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[State ]
+Type=SelfState
+Value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+Triggerall=StateType!=A
+triggerall=enemynear,statetype!=L
+Triggerall=EnemyNear,MoveType=I
+triggerall=EnemyNear,facing!=facing
+Triggerall=BackEdgeBodyDist>50
+Triggerall=Ctrl||stateno=2000
+Trigger1=fvar(13)>=200
+trigger1=Random<=var(4)*50
+Trigger2=fvar(13)=[70,80]
+trigger2=Random<=var(4)*50
+
+[State ]
+Type=SelfState
+Value=100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+Triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+Triggerall=EnemyNear,MoveType=I
+Triggerall=Ctrl
+Trigger1=fvar(13)>=120
+trigger1=Random<=var(4)*50
+Trigger2=fvar(13)>90
+trigger2=Random<=var(4)*30
+Trigger3=EnemyNear,MoveType=H
+Trigger3=fvar(13)>20
+
+[State ]
+type=SelfState
+value=1999
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=var(6)=[220,340]
+triggerall=fvar(14)<-50
+triggerall=fvar(13)>100
+trigger1=ctrl
+trigger1=Random>=500+var(4)*70
+
+[State ]
+Type=SelfState
+Value=1999
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+Triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=fvar(14)>40
+Triggerall=Ctrl
+trigger1=fvar(13)=[10,60]
+trigger1=Random<=var(4)*50
+Trigger2=EnemyNear,MoveType=H
+trigger2=fvar(13)=[-40,40]
+trigger2=Random<=var(4)*80
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+triggerall=enemynear,statetype!=L
+triggerall=numhelper(450000)&&var(22)>0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+trigger1=inguarddist
+Trigger1=random>=1000-(var(4)*50)
+Trigger2=inguarddist
+Trigger2=enemynear,time>20
+Trigger2=random>=1000-(var(4)*110)
+Trigger3=(var(4)=[1,3])&&inguarddist||var(4)=[4,5]
+trigger3=var(22)>0&&PlayerIDExist(var(22))
+trigger3=playerID(var(22)),gethitvar(damage)
+trigger3=random<=var(4)*35
+;-------------------------------------------------------------------------------------------------
+[State ]
+Type=SelfState
+Value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>1&&Var(20)!=1
+Triggerall=StateType!=A
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+Triggerall=enemynear(1),MoveType=I
+triggerall=enemynear(1),facing!=facing
+Triggerall=BackEdgeBodyDist>50
+Triggerall=Ctrl||stateno=2000
+Trigger1=fvar(13)>=200
+trigger1=Random<=var(4)*50
+Trigger2=fvar(13)=[70,80]
+trigger2=Random<=var(4)*50
+
+[State ]
+Type=SelfState
+Value=100
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+Triggerall=enemynear(1),MoveType=I
+Triggerall=Ctrl
+Trigger1=fvar(13)>=120
+trigger1=Random<=var(4)*50
+Trigger2=fvar(13)>90
+trigger2=Random<=var(4)*30
+Trigger3=enemynear(1),MoveType=H
+Trigger3=fvar(13)>20
+
+[State ]
+type=SelfState
+value=1999
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=!enemynear(0),alive&&enemynear(1),statetype!=L
+triggerall=var(6)=[220,340]
+triggerall=fvar(14)<-50
+triggerall=fvar(13)>100
+trigger1=ctrl
+trigger1=Random>=500+var(4)*70
+
+[State ]
+Type=SelfState
+Value=1999
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+Triggerall=!inguarddist&&StateType!=A
+triggerall=(var(56)&32)&&var(4)=[3,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=enemynear(1),statetype!=L&&!enemynear(0),alive
+triggerall=fvar(14)>40
+Triggerall=Ctrl
+trigger1=fvar(13)=[10,60]
+trigger1=Random<=var(4)*50
+Trigger2=enemynear(1),MoveType=H
+trigger2=fvar(13)=[-40,40]
+trigger2=Random<=var(4)*80
+
+[State ]
+type=SelfState
+value=2001
+triggerall=!ishelper
+triggerall=roundstate=2&&alive
+triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>1&&Var(20)!=1
+triggerall=enemynear(1),statetype!=L&&!enemynear(0),alive
+triggerall=numhelper(450000)&&var(22)>0
+Triggerall=ctrl||(stateno=[0,20])||stateno=100||stateno=2000
+trigger1=inguarddist
+Trigger1=random>=1000-(var(4)*50)
+Trigger2=inguarddist
+Trigger2=enemynear(1),time>20
+Trigger2=random>=1000-(var(4)*110)
+Trigger3=(var(4)=[1,3])&&inguarddist||var(4)=[4,5]
+trigger3=var(22)>0&&PlayerIDExist(var(22))
+trigger3=playerID(var(22)),gethitvar(damage)
+trigger3=random<=var(4)*35
+;-------------------------------------------------------------------------------------------------
+[State ]
+Type=SelfState
+Value=2001
+triggerall=!ishelper&&!time
+triggerall=roundstate=2&&alive
+Triggerall=(var(56)&32)&&var(4)=[1,5]
+triggerall=numenemy>0&&Var(20)!=1
+Triggerall=fvar(13)>=160
+triggerall=EnemyNear,facing!=facing
+trigger1=ctrl||stateno=40
+trigger2=var(46)=2000
+
+[State ]
+Type=SelfState
+Value=100
+triggerall=!ishelper&&!time
+triggerall=roundstate=2&&alive
+Triggerall=(var(56)&32)&&var(4)=[1,5]
+Triggerall=!inguarddist
+triggerall=ctrl||stateno=40
+trigger1=fvar(13)>90
+trigger2=numenemy>0
+Trigger2=EnemyNear,MoveType=H||EnemyNear,facing=facing
+trigger2=fvar(13)>20
+ignorehitpause=1
+
+[State ]
+Type=SelfState
+Value=var(46)
+triggerall=!ishelper&&!time
+triggerall=roundstate=2&&alive
+Triggerall=(var(56)&32)&&var(4)=[1,5]
+trigger1=ctrl||stateno=40
+ignorehitpause=1
+;======================================================================================================================================================================================

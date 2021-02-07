@@ -1,0 +1,745 @@
+; Inteligencia Artificial - Inicio
+[Statedef 9999]
+anim = 9999
+ctrl = 0
+
+[State 9999, 0]
+type = Turn
+trigger1 = facing != parent, facing
+
+[State 9999, 1]
+type = Varset
+trigger1 = 1
+var(9) = parent, var(9)
+
+[State 9999, 2]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = parent, command = "x"
+trigger2 = parent, command = "y"
+trigger3 = parent, command = "z"
+trigger4 = parent, command = "a"
+trigger5 = parent, command = "holdfwd"
+trigger6 = parent, command = "holdback"
+trigger7 = parent, command = "holdup"
+trigger8 = parent, command = "holddown"
+var(9) = 1
+
+[State 9999, 3]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = (command = "x" && parent, command = "x")
+trigger2 = (command = "y" && parent, command = "y")
+trigger3 = (command = "z" && parent, command = "z")
+trigger4 = (command = "a" && parent, command = "a")
+trigger5 = (command = "holdfwd" && parent, command = "holdfwd")
+trigger6 = (command = "holdback" && parent, command = "holdback")
+trigger7 = (command = "holdup" && parent, command = "holdup")
+trigger8 = (command = "holddown" && parent, command = "holddown")
+var(9) = -1
+
+[State 9999, 4]
+type = varset
+trigger1 = var(9) != parent, var(9)
+V = 47
+value = 0
+
+[State 9999, 5]
+type = VarAdd
+trigger1 = var(9) = parent, var(9)
+V = 47
+value = 1
+
+[State 9999, 6]
+type = Destroyself
+trigger1 = parent, var(9) = -1
+trigger1 = var(47) >= 23
+trigger2 = parent, var(9) = 2
+trigger2 = var(47) >= 23
+trigger3 = RoundState = 3
+
+;----------------------------
+;State -3
+[Statedef -3]
+
+[State -3, Super-Finish]
+type = Helper
+triggerall = winKO && var(48)=0
+triggerall = stateno = [3000,3999]
+triggerall= !numhelper(6000)
+trigger1 = stateno = [3000,3999]
+trigger2 = numhelper(stateno+9) = 1
+trigger3 = helper(stateno+9),movecontact
+trigger4= roundstate < 3
+helpertype = normal
+stateno = 6000
+ID = 6000
+name = "KO FX"
+postype = left
+pos = 160,-120
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 999
+supermovetime = 999
+
+[State -3, AfterImage]
+type = AfterImage
+triggerall = stateno != [100,111]
+trigger1 = stateno = [0,750];Time = 0
+trigger2 = stateno = [5000,5900]
+time = 5
+length =1
+trans = add1
+;;palcolor = 256
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+;palpostbright = 0,0,0
+PalAdd      =   0,  0,  0
+PalMul      =   1,  1,  1
+timegap = 1
+framegap = 4
+trans = add
+
+[State -3, PalFx]
+type = PalFx
+triggerall = var(56)= 1
+trigger1 = (gametime%45)=0 ;&& var(56)!=1
+time = 45
+add = 40,10,10
+mul = 300,200,200
+sinadd = 40,10,10,10
+ignorehitpause = 1
+
+[State 0, PowerAdd]
+type = PowerAdd
+triggerall = (stateno !=[700,760]) && (stateno !=[3000,3999])
+trigger1 = var(56)=1
+value = ifelse(movetype = A,-6,ifelse(movetype =H,-2,-4))
+
+[State 0, VarSet]
+type = VarSet
+;triggerall = stateno != [3000,3999]
+trigger1 = power = 0
+trigger2 = !alive
+v = 56 ;fv = 10
+value = 0
+
+[State -3, BGPalFX]
+type = BGPalFX
+trigger1 = time = 0
+time = 1
+add = 0,0,0
+mul = 256,256,256
+sinadd = 0,0,0,1
+invertall = 0
+color = 256
+;ignorehitpause =
+;persistent =
+
+;Con esto veo si la IA esta activada en el Debug mode
+[State -3,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=1 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial funca" ; Nombre del texto
+
+;Con esto veo si la IA esta desactivada en el Debug mode
+[State -3,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=0 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial desactivada" ; Nombre del texto
+
+[State -3,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = numhelper(9995) = 1 ; Condición para que ponga el texto
+text = "aniquilacion" ; Nombre del texto
+
+[State -2, ReversalDef]
+type = ReversalDef
+trigger1 = animelem = 2,>=0 && animelem = 2,<=4; Para que pegue en los primeros momentos del ataque
+reversal.attr = S,NA,SA   ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+sparkno = -1
+hitsound = S1,7
+p1stateno = 8100;Estado del p1
+p2stateno = 8101; y este del p2
+ignorehitpause = 1
+
+;===================================================================================
+;---------------- Inteligencia Artificial  -----------------------------------------
+;===================================================================================
+[State -3, AI_Check] ; El ayudante siempre presente
+type = Helper ; Ayudante
+trigger1 = NumHelper(9999) = 0 ; No se repitira si esta presente ya
+trigger1 = var(9) = 0 ; Variable que actúa como interruptor
+trigger1 = RoundState = 2 ; Solo activado en combate
+name = "AI activada" ; Nombre de la AI
+id = 9999 ; Su identificador
+pos = 1000, 1000 ; posición en su nivel muy alta
+stateno = 9999 ; Te manda al stateno 9999
+helpertype = normal ; Helper tipo normal
+keyctrl = 1
+
+;[State -2, AI prueba]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI Prueba" ; Nombre del cmd
+;var(9) = 1 ; Pone la variable a 9 a 1
+
+; Con esto le digo cuando está desactivada
+; en este caso, cuando la variable 9 es 0
+;[State -2, AI desactivarlo]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI desactivado" ; Nombre del cmd
+;var(9) = 0
+
+;IA MOVES
+
+;Golpes Basicos
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 200 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 230 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200) && movecontact && random = [200,400]
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 210 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 230) && movecontact && random = [200,400]
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 240 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 230) && movecontact && random = [200,400]
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 215 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [500,700] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [200,400]
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 235 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [500,800] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 230 || stateno = 240) && movecontact && random = [200,400]
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 400 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype = C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 430 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype = C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 410 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype = C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 440 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype = C
+triggerall = random > 500 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 500 ;State no. of the animation you want the CPU to perform
+;triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random < 100 ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,35] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random < 100
+trigger3 = (stateno = 400 || stateno = 430) && movecontact && random = [200,400]
+
+;===============================================================================
+;------------------------------SPECIALS-----------------------------------------
+;===============================================================================
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 600, 1200, 1250) ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [600,900] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,100] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 500, 1202, 1204) ;State no. of the animation you want the CPU to perform
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+trigger1 = (stateno = 1201) && movecontact ;&& random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1203 ;State no. of the animation you want the CPU to perform
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+trigger1 = (stateno = 1202) && movecontact ;&& random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1205 ;State no. of the animation you want the CPU to perform
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+trigger1 = (stateno = 1204) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1290 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,100] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 900, 1300, 1350) ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [600,900] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,40] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1390 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,40] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 600, 1400, 1450) ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [600,900] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,50] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1490 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,65] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 600, 1500, 1550) ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [600,900] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,55] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 1590 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,85] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2000 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 150
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [600,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 230 ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2001 ;State no. of the animation you want the CPU to perform
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 150
+triggerall = random = [500,800]
+trigger1 = (stateno = 2000) && (time > 11 && time < 30)
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2002 ;State no. of the animation you want the CPU to perform
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 150
+triggerall = random = [500,800]
+trigger1 = (stateno = 2001) && (time > 11 && time < 30)
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2200 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 250
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [600,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 230 ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2290 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 230 ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = ifelse(random < 600, 2300, 2350) ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 250
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [300,600] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,85];Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2390 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [700,1000] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,85];Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 2400 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 500
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [300,600] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 85;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+;===============================================================================
+;------------------------------SUPERS-------------------------------------------
+;===============================================================================
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 3000 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 1000
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [900,1200] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 45 && ctrl;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 3100 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 1000
+triggerall = statetype = A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [900,1200] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 45 && ctrl;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 600 || stateno = 610 || stateno = 630 || stateno = 640) && movecontact && random = [500,700]
+trigger3 = (stateno = 1205 || stateno = 1300 || stateno = 2060 || stateno = 640) && movecontact && random = [500,700]
+;trigger4 = (stateno = 1201 || stateno = 1202 || stateno = 1204) && movecontact && random = [400,600]
+;trigger5 = (stateno = 1205 || stateno = 1300) && movecontact && random = [500,800]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 3200 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 2000
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [600,900] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 0 ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 3300 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 3000
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [200,400] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x > 0 ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air ;Character can be controled (Not performing a move)
+trigger1 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger2 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+
+[State -1, AI] ; punch
+type = ChangeState
+value = 3400 ;State no. of the animation you want the CPU to perform
+triggerall = ctrl
+triggerall = roundstate = 2  ;Trigger during the fighting phase of the round "Round One...Fight"
+triggerall = var(9) = 1 ;AI variable that must be used in every CPU command
+triggerall = power >= 3000
+triggerall = statetype != A ;Trigger when the char is not in air
+;triggerall = p2statetype != C
+triggerall = random = [100,300] ;Trigger the move in 50% of the times the conditions is met (i'll explain more)
+triggerall = p2statetype != L ;Trigger when opponent is not lying on the floor
+triggerall = p2bodydist x = [0,125] ;Trigger when the opponent is between 0 to 40 pixels away horizontaly
+;triggerall = p2statetype != A ;Trigger when the opponent is not in air
+trigger1 = ctrl = 1 ;Character can be controled (Not performing a move)
+trigger2 = (stateno = 200 || stateno = 210 || stateno = 215 || stateno = 230 || stateno = 235 || stateno = 240) && movecontact && random = [500,700]
+trigger3 = (stateno = 400 || stateno = 410 || stateno = 430) && movecontact && random = [500,700]
+

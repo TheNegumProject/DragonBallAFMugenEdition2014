@@ -1,0 +1,21 @@
+[Info]
+name="SSJ4Vegeta SVC Style By Ninja_Naruto"
+displayname="Vegeta SSJ4"
+versiondate=15/3/2008
+mugenversion=
+author="Ninja_Naruto,Updated by MugenMundo"
+pal.defaults=1
+[Files]
+sprite=SSJ4VegetaSVC.sff
+sound=SSJ4VegetaSVC.snd
+anim=SSJ4VegetaSVC.air
+cmd=SSJ4VegetaSVC.cmd
+cns=SSJ4VegetaSVC.cns
+st=SSJ4VegetaSVCST.st
+stcommon=SSJ4VegetaSVCCommon.cns
+pal1=DarkVegeta.act
+pal2=2
+pal3=3
+[Arcade]
+intro.storyboard=
+ending.storyboard=

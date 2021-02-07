@@ -1,0 +1,147 @@
+;---------------------------------------------------------------------
+[Characters]
+
+blanc
+blanc
+blanc
+blanc
+Goku
+Goku SSj3af
+Goku SSJ4 AF
+Evil kakarotto ssj5
+Vegeta GT Nm
+Vegeta GT
+blanc
+blanc
+blanc
+blanc
+
+blanc
+blanc
+blanc
+blanc
+Vegeta SSJ4
+Vegeta SSJ5
+Gohan AF Z-Sword
+Baby Gohan
+gohan ssj3
+GOHAN AF SSJ4
+blanc
+blanc
+blanc
+blanc
+
+
+
+blanc
+blanc
+blanc
+blanc
+Trunks 2
+Trunks SSJ2
+Trunks SSJ4
+Goten GT
+Goten SSJ4
+Gotenks AF
+blanc
+blanc
+blanc
+blanc
+
+
+Krillin Special
+Piccolo Cape
+Piccolo
+Tien
+Yamcha
+Bardock
+Bardock SSJ
+Raditz
+Raditz SSJ
+Broly
+Broly LSSJ3
+Limiter Cut Broly
+Bojack
+Brojack
+
+
+
+Uub
+Tapion
+Bulla
+Pikkon
+Goku Jr
+vegetajr
+Pan
+Gogeta SSJ
+Gogeta SSJ4
+Gogeta SSJ5
+Fantasma Kamikaze
+M-Vegeta-SSJ3
+Vegito SSJ3
+Piccura
+
+
+Frieza
+Cooler
+Coolza
+Cell
+Cell Jr
+Rildo
+Nuova Shenron
+Baby Vegeta
+Super Baby Vegeta
+Baby Tuffle
+Super 17
+Chiaotzu
+Oozaru SSJ
+Android 16
+
+
+
+Android 17
+Android 18
+Goten AF
+Supreme Kai
+West Supreme Kai
+Majin Buu
+Super Buu
+Kid Buu
+Evil Goku normal
+Goku SSJ God (False)
+Vegeta Transform
+Omega Shenron
+Xicor
+randomselect
+
+
+
+;-----------------------
+[ExtraStages]
+ ;Put extra stages here. They will be available in VS and Watch modes.
+ ;For example, you can insert "stages/mybg.def".
+stages/Buu's House.def
+stages/Capsule_Corp_HR.def
+stages/CELL_GAMES.def
+stages/dbz_namek.def
+stages/dbz_rocks.def
+stages/Destroyed_Namek.def
+stages/Destruction_HR.def
+stages/Final_Battle_HR.def
+stages/Infinity World.def
+stages/PlanetaKaioshin.def
+stages/Time_Chamber_HR.def
+stages/Vegeta_Death.def
+;---------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends
+ ;in Arcade Mode. The first number is the number of matches against
+ ;characters with order=1, followed by order=2 and order=3 respectively.
+ ;For example, for 4,3,1 you will fight up to 4 randomly-picked
+ ;characters who have order=1, followed by 3 with order=2 and 1 with
+ ;order=3.
+arcade.maxmatches = 2,0,0,0,0,0,0,0,0,0
+
+ ;Maximum number of matches to fight before game ends in Team Mode.
+ ;Like arcade.maxmatches, but applies to Team Battle.
+team.maxmatches = 4,1,1,0,0,0,0,0,0,0

@@ -1,0 +1,225 @@
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===LEIA-ME===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+                                  kakarotto ssj5 Super saiyajin 5
+
+                                   Leia-Me em português
+
+
+=============================================Bugs retirados======================================
+melhorei as paletas de cores adicionei +2 paletas consertei o especial (ssj5flashbatle) quando
+acabava o round ele continuava batendo e não parava agora ta tudo ok adicionei um efeito de brilho
+ao carrega o ki diminui o tamanho do ki dei uma melhorada em varios golpes eles estavão tirando
+muito life agora ta tudo ok. 
+
+
+===FICHA===
+
+Nome : kakarotto ssj5
+Anime : Dragon Ball AF
+Versão do Mugen :04,14,2003 win mugen
+Versão : 2.2
+Completo : 210%
+Data de Lançamento : 3/2/2007
+personagem - editado
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Beta testes===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Gustavo Pinheiro email magicforever3@hotmail.com
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===novidade===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Programas utilizado===,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+.Fight factory
+.foto shop 8.0
+.zsnes
+.mame
+.Chankast Alpha 025
+.paint
+.gravador de som do windows
+o som foi ripado do meu dbz e gt
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===CRÉDITOS===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+                              Autor: FRS GAMES >Franciynaldo
+                            E-mail: superkakarotto@hotmail.com
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===INSTALAÇÃO===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Para colocar o goku no seu M.U.G.E.N. primeiro tenha certeza de que há espaço
+no seu System.def abrindo-o com um editor de texto(como Wordpad)e aumentando
+o número de Columns e Rows se necessário.
+Se já tiver espaço,bom.
+Mande todos os arquivos para uma pasta de nome Goku ssj5 e coloque-a na pasta
+CHARS de seu M.U.G.E.N.
+Agora, entre no arquivo Select.def e procure por uma parte com [Characters]
+escrito.
+Logo embaixo escreva:
+kakarotto ssj5 (se quiser que ele esteja no seu jogo)
+kakarotto ssj5, stages/estagio.def (se quiser que ele tenha uma fase própria no ArcadeMode) 
+kakarotto ssj5, stages/estagio.def, music=sound/nomedamusica.def (se quiser que a fase do modoArcade tenha música própria) 
+Se quiser que ela seja o último chefe de seu jogo, acrescente , order=10 logo
+após a música ou o estágio(vindo em últmo lugar),senão, coloque :, order=9
+para que esteja num nível anterior a último chefe.
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===O QUE FALTA===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                                        
+nada
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===O QUE TEM===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                                       .22 supers
+                                       .12 especiais
+                                       .Sistema de combos
+                                       .Extras
+                                       .5 poses de vitória
+                                       .5 intro
+                                       .Carregamento de ki 
+                                       . teleporte
+                                       . voo
+                                       .Muitos sons todos em portugues
+                                       .4 Paletas
+                                       . final 
+                                       . sequencia aerea
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===NOVIDADES===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Foi adicionado o modo aura quando a barra de power utrapassa 5 o life e a energia aumentam sozinhos
+quando o goku fica parado
+ ADICIONEI MAIS QUATRO ESPECIAIS
+E VARIOS GOLPES
+UMA POSE DE VITORIA
+VARIOS EFEITOS
+VARIOS SOMS
+TIREI ALGUMS BUGS
+                                     é a terceira versão
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===son goku===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Raça : Saiyajin
+Familiares:que morerao (bardock pai),(selipa mae), (raditz irmao mais velho),(son gohan avô de criaçao)
+Familiares: (chichi esposa),(gohan filho mais velho),(goten filho mais novo),(pan neta),(videl nora),( paz  nora), ( goku jr tataraneto)
+Olhos : pretos muda de cor quando transforma
+Cabelo : grisalho,pretos muda de cor quando transforma
+Séries : dragon ball dragon ball z dragon ball gt dragon ball af
+Diciplina: artes marciais 
+ 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===MODOS DE JOGO===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+transformado em super saiyajin  5
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===COMANDOS===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+-------
+Legenda
+-------
+
+F - Frente
+B - Trás
+D - Baixo
+U - Cima
+DF - Baixo frente
+DB - Baixo trás
+UF - Cima frente
+UB - Cima Traz
+
+-------
+Básicos
+-------
+a - botão a chute fraco
+b - botão b chute medio
+c - botão c chute forte
+x - botão x soco fraco
+y - botão y soco medio
+z - botão z soco forte
+------
+Extras
+------
+.Balão - é só chegar perto do aponente e apertar  x ou y ou z
+
+.DASH - e so apertar B,B tras F,F frente
+
+.AIR JUMP - Um pulo comum no ar em qualquer direção
+Um pulo aéreo
+
+.Sistema de Combos - Vá apertando os botões de golpes básicos rapidamente
+goku vai espancando seu inimigo do jeito que você quiser da para juntar todos os golpes com sequencia !
+
+.Super Pulo - D, U
+Um pulo mais forte e mais auto pra cima.
+
+.Super Pulo Foward- D, UF
+Um pulo mais forte e mais auto pra frente.
+
+.Super Pulo Backward- D, U
+Um pulo mais forte e mais auto pra trás.
+-------------
+CARREGAMENTOS
+-------------
+CHARGE - a+b pode ser feito no ar
+goku carrega seu Ki.(10 barras)
+teleporte - x+a pode ser feito no ar
+voar - y+b
+provocaçao - start
+tem duas provocaçao esta no ramdom
+
+--------------------
+Golpes
+--------------------
+sequencia veloz - D, DB, B, a
+sequencia subindo - D, DB, B, b
+ssj5 sequencia2 - D, DB, B, c
+sequencia rapida - D, DB, B, x
+sequencia de chutes - D, DB, B, y
+sequencia super rapida - D, DB, B, z
+Taioken - B, F, b
+teleporte sequencia - D, DF, F, a
+ssj5 sequencia - D, DF, F, b
+ssj5 sequencia3 - D, DF, F, c
+super sequencia  - D, DF, F, x
+super sequencia2  - D, DF, F, y
+porradas - D, DF, F, z
+Ki invisivel - B, F, y
+chute aereo - B,F ,a 
+cotovelada - B,F ,x
+ki atack   - D ,z segure para baixo e  aperte z
+magia  - B,F ,z continue apertando para fazer varias   
+magia aerea  - B,F ,z continue apertando para fazer varias   
+B, F, c -subir o adversario para fazer sequencia aerea
+F,F ,x  -porada na cara
+F,F ,y  -soco no estomago
+-----------
+Especiais
+-----------
+golpe do dragao  - D, DF, F, B , b
+ultra Kamehameha duplo - D, DF, F, B , a
+ataque com ki - D, DF, F, B , y
+Kamehameha duplo - D, DF, F, B , x
+ataque de magia - D, DB, B, F , a -gasta 3 barras de power
+especial de spancamento - D, DB, B, F , b -gasta 2 barras de power
+ssj5terror - D, DB, B, F , c  -de perto
+Kamehameha fraco - D, DB, B, F , x -gasta 1 barras de power 
+Kamehameha medio - D, DB, B, F , y -gasta 2 barras de power
+Kamehameha forte - D, DB, B, F , z  -gasta 3 barras de power
+ssj5flashbatle - D, DF, F, B , c  -pode ser feito durante qualquer golpe
+max camehameha - D, DF, F, B , z   -gasta 5 barras de power
+
+
+                          Especiais que podem ser feito durante o voo
+ataque de magia
+Kamehameha medio
+Kamehameha forte 
+Kamehameha duplo 
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Algumas sequencias que podem ser feitas===,,,,,,,,,,,,,,,,,
+aperte x,a,y,b,c faça B,F,a e depois B,F,b e cancele com um especial.
+sequencia repetitiva aperte x,a,B+a ,y,b,c e utilize o teletransporte x+a repita ate a barra
+acabar ou cancele com algum golpe ou especial.
+sequencia aerea aperte x,a,B+a ,y,b,c ,B,F,c no alto x,a,y,b,x,a,y,b,x,a,y,b e cancele com
+ataque com ki - D, DF, F, B , y.
+sequencia simples x,a,B+a ,y,b,c e cancele com qualquer golpe e no final faça ssj5flashbatle - D, DF, F, B , c
+                               TEM MAIS UM MONTE TENTEM FAZER
+                                  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,(((((( AGRADECIMENTOS))))),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a um dos maiores criadores de personagems para o mugem BARDOCK por ter feito o goku ssj2 que me ispirou a fazer o goku ssj 5
+espero que ele continue lançando os seus otimos personagems
+ ... ao meu pc AMD ATLON 64 3800+ super veloz que me permite terminar meus personagems mais rapido
+ ... Ao grande akira toriama criador do melhor anime do mundo db dbz e gt e os 26 filmes e ovas
+ ... a bandai e a atari pelos jogos de ps2 hehehe  recomendo que joguem o dragon ball sparking neo do ps2 eu zerei 100% tem 130 personagems e d++++++++++++++++++++++++
+ ... ao Dark Roken por ter feito o goku ssj4
+ ... e finalmente ao meu amigo gustavo pinheiro por me ensentiva a fazer os chars e me ajuda com um monte de coisas valeuuuu.
+ ... podem usar qualquer arquivo ou efeito ou som etc dos meus personagens so quero que coloquem algum credito pra mim   
+                            
+

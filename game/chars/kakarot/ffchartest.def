@@ -1,0 +1,30 @@
+[Info]
+name="kakarot"
+displayname="goku ssj2"
+versiondate=
+mugenversion=
+author="((mugen mundo))"
+pal.defaults=1,2
+[Files]
+sprite=kakarot.sff
+sound=kakarot.snd
+anim=kakarot.air
+cmd=kakarot.cmd
+cns=kakarot.cns
+st=kakarot.cns
+stcommon=common1.cns
+pal1=1
+pal2=a
+pal3=f
+pal4=s
+pal5=gffggf
+pal6=xzzx
+pal7=8
+pal8=9
+pal9=10
+pal10=11
+pal11=12
+pal12=13
+[Arcade]
+intro.storyboard=
+ending.storyboard=

@@ -1,0 +1,59 @@
+[SceneDef]
+spr = Gohan-ssj3_Final.sff
+startscene = 0         
+
+;------------------------------------
+[Scene 0]
+; Fade
+fadein.time = 60       
+fadein.col = 0,0,0     
+fadeout.time = 15
+fadeout.col = 255,255,255
+; Screen color
+clearcolor = 255,255,255
+; Overlay Anims (from 0 to 9)
+layerall.pos = 160,0   
+layer0.anim =  0       
+layer0.offset = 0,32   
+layer0.starttime = 0   
+layer1.anim =  1
+layer1.offset = 0,176
+; Music
+bgm = ending.mp3       
+bgm.loop = 0
+; Total time
+end.time = 460
+
+;------------------------------------
+[Scene 1]
+fadein.time = 15
+fadein.col = 255,255,255
+fadeout.time = 15
+fadeout.col = 255,255,255
+layer0.anim =  10
+layer0.offset = 0,32
+layer0.starttime = 0
+layer1.anim =  11
+layer1.offset = 0,176
+;Tempo total
+end.time = 300
+
+
+;Background image
+[Begin Action 0]
+0,0, 0,0, -1
+
+;Text
+[Begin Action 1]
+1,0, 0,0, 200
+;1,1, 0,0, -1
+
+;Background image
+[Begin Action 10]
+10,0, 0,0, -1
+
+;Text
+[Begin Action 11]
+1,1, 0,0, -1
+
+

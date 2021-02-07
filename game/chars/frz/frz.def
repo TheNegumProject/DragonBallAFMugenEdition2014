@@ -1,0 +1,45 @@
+
+;gokuLSSJ def file 
+; by oz
+
+; Player information
+[Info]
+name ="frz"
+displayname="Imperador Freeza"
+versiondate=09,05,2009
+mugenversion=04,14,2001
+author="oz"
+pal.defaults=1,2,3 
+
+; Files for the player
+
+[Files]
+cmd=frz.cmd
+cns=frz.cns
+st=frz.cns
+stcommon=frz1.cns
+sprite=frz.sff
+anim=frz.air
+sound=frz.snd
+pal13=
+pal14=
+pal15=
+pal1=frz.act
+pal2=frz.act
+pal3=frz.act
+pal4=frz.act
+pal5=frz.act
+pal6=frz.act
+pal7=frz.act
+pal8=frz.act
+pal9=frz.act
+pal10=frz.act
+pal11=
+pal12=
+st1=hypers.cns
+st2=frz2.cns
+st3=frz3.cns
+
+    [arcade]
+ending.storyboard =
+intro.storyboard=

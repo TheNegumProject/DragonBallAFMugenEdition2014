@@ -1,0 +1,27 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Rildo"
+displayname ="General Rilldo"
+versiondate =28-06-09
+mugenversion = 
+author ="GokuSSJ5 "Team Spirit Z""
+pal.defaults =1,2
+
+[Files]
+sprite =Rildo.sff
+anim =Rildo.air
+sound = 
+cmd =Rildo.cmd
+cns =Rildo.cns
+stcommon =common1.cns
+st =Rildo.cns
+pal1=rildo.act
+pal2=rildo.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard=..\data\final.def

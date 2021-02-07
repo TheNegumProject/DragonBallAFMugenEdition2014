@@ -1,0 +1,119 @@
+==========================================================================================
+Kid Buu 2.0
+==========================================================================================
+Code    -  Cyanide
+
+Sprites -  Ne0cIdE
+==========================================================================================
+Basics
+==========================================================================================
+------------------------------------------------------------------------------------------
+Standing
+------------------------------------------------------------------------------------------
+a  - Light kick
+b  - Med kick
+x  - Light punch
+y  - Med punch*
+>y - Med punch push back
+------------------------------------------------------------------------------------------
+Crouching
+------------------------------------------------------------------------------------------
+a - Light kick
+b - Sweep kick
+x - Light punch
+y - Med punch
+------------------------------------------------------------------------------------------
+Air
+------------------------------------------------------------------------------------------
+a - Light kick
+b - Knockdown kick
+x - Light punch
+y - Knockdown punch
+
+
+------------------------------------------------------------------------------------------
+Advanced Gameplay Mechanics (AGM)
+------------------------------------------------------------------------------------------
+Light launcher     - Hold DF, x 
+Heavy launcher     - Hold DF, y     
+Fireball           - C (Tap C rapidly for renzoku)              
+Ki shield          - QCB, c 600 power needed        
+Ki push back       - QCF, c         
+Zanzoken           - Z (Multi Directional)
+Zanzoken counter   - QCB, z (while opponent is attacking from a distance) 400 power needed
+Charge up          - a+x                
+Guard counter      - b+y  recover (when knocked up etc....)                                  
+Flight             - c+z                 
+Z links            - fwd,fwd,dwn,dwn,up up, (takes 400 power to do, can only be done after
+                     a 4+ hit combo ending with fwd punch or fwd kick ie
+                     lp,lk,mk,>mk. lots of diff combinations of diff Z links to 
+                     pull off ie... uu,dd,ff, dd,ff, etc....)
+
+==========================================================================================
+Things to be done
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+
+
+==========================================================================================
+Specials
+==========================================================================================
+Buu Frisbe            -          Holdback, F, Punch 
+	
+Uber duber Buu Punch  -          QCF, Punch
+
+Tail Whip             -          QCB, Punch
+ Tail kick            -          QCB, X
+ Tail Toss            -          QCB, Y
+ Tail Swipe           -          QCB, A
+Underground Kick      -          QCB, Kick (Lk for close,hk for far)
+	
+
+==========================================================================================
+Supers
+==========================================================================================
+Boo Boom              -         QCF X2 + Kick (Can be done in the air now as well)
+Buu lifts his hand and fires a large Ki flare.
+
+
+Mouth blast           -         QCB X2 + Kick
+Buu opens his mouth and fires a huge fireball across the screen.
+
+
+Putty arm Bomb        -         QCB X2 + Punch
+Buu flicks his head tassle at the opponent, if it connects they are lifted up
+and hit with a massive upper cut.
+ 
+
+ 
+Genocide  Ball        -         QCF,QCB+ 2 Punch  
+Flys up and charges ball above head then throws towards enemy tap either punch button 
+to increase power.
+
+
+==========================================================================================
+Credits
+==========================================================================================
+Cyanide           -   for enduring so much damn nonsense from me and making my base thank youz
+Jedi              -   Help with  sprites\feedback\beta test 
+Naruto            -   Help with  sprites\feedback\beta test
+Wasaby            -   orignal base\beta testing
+Warusuki3         -   for the awesome CVS2 hitsparks
+Toad              -   fx 
+Chrono Strife     -   beta testing and cheese is good
+Pextin            -   beta testing\bug reports and being so damn awesome with that spiderman mask
+Sarah             -   For giving me the inspiration to do dbz mugen again even though she left :p
+H4voc             -   Sounds
+Elecybyte         -   if I have to say so your dumbzy
+Akira Toriyama    -   for the dbz series 
+Annubis           -   beta testing and something else I think? (maybe sounds?)
+Majita            -   sounds and bringing back the s0Urce w00t 
+WD                -   My site pwns :D
+MV                -   why not? everyone else is here
+Dark Roken        -   for showing me the style I use in most of my dbz sheets.
+Red-Spider        -   Cuz I bother him =p
+Bandai            -   for the horrid games that were only good to get sprites from :)
+Snk               -   Various Fx 
+Capcom            -   Various FX and sounds
+

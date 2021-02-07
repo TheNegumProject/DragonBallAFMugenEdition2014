@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "HIchigo"
+displayname = "Gohan AF Z-Sword"
+versiondate = 3/03/2012
+mugenversion = 06,14,2003
+author = "Haseo, edit mephistopheles 2.0"
+pal.defaults = 1,2
+
+[Files]
+sprite = HIchigo.sff
+anim = HIchigo.air
+sound = HIchigo.snd
+cmd = HIchigo.cmd
+cns = HIchigo.cns
+stcommon = common.cns
+st = HIchigo.cns
+st1 = AI.cns
+;st2 = Bankai.cns
+pal1 = paleta.act
+pal2 = paleta.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

@@ -1,0 +1,115 @@
+..::Goku Type-Z::..
+---------------------------
+
+Sprites		- 	Dark Roken
+
+Coding		-	Dark Roken
+
+Whats new:
+-------------
+Kamehameha stage 2 (chou)
+
+Known Bugs:
+-------------
+None
+
+Things to do:
+---------------
+
+Psycho crusher (headbutt)
+Redo specials
+Tweak system to CVS style
+Countering techniques
+
+Flashy intro
+Redoing some effects
+Instant movement
+Tornado kick super, 2 levels
+Psycho crusher super
+Bison leg ripoff super
+Kaioken (custom combo)
+Jubei Kamehameha
+Mega Ryuken
+Finishers
+
+Basics:
+---------
+
+Standing Light Punch			x
+Standing Hard Punch			y
+Crouching Light Punch			Down+x
+Crouching Hard Punch			Down+y
+Crouching Uppercut			Hold Down+y
+Air Light Punch				Up+x
+Air Hard Punch				Up+y
+Air Smackdown				DOwn+y
+
+Throw				Forward + Y (close)
+
+Standing Light Kick			a
+Standing Axe kick			a + back
+Standing Hard Kick			b
+Standing thrust kick			b + back
+Crouching Light Kick			Down+a
+Crouching Hard Kick			Down+b
+Air Light Kick				Up+a
+Air Hard Kick				Up+b
+Air Kickdown				DOwn+B
+
+Special:
+---------
+
+Super jump				Down, Up
+Power Up				A+X
+Zanzoken				c
+
+Ki shot/Renzenko			z
+Air Ki shot/Renzenko			Hold Z (air)
+Invisible ki blast			D, DF, F z
+Taioken					F, B, F z
+
+Rising knee				F, DF, F a
+Rising knee 2				F, DF, F b
+Cartwheel kick	(air also)		D, DB, B a
+Cartwheel kick 2 (air also)		D, DB, B b
+Dashing Elbow				B, F x
+Dashing Elbow 2				B, F y
+K.Y.O. Ki Punch				D, DF, F x
+K.Y.O. Ki Punch				D, DF, F y
+Dashing Side smash			x While dashing
+Dashing Gut punch > Side smash		y While dashing
+
+Super:
+-------
+
+|--   Level 2
+
+Kamehameha stage 1			D, DF, F, D, DF, F x
+
+Press C to teleprt behind the opponent, takes 500 extra power.
+
+|--   Level 3
+
+Chou Kamehameha				D, DF, F, D, DF, F y
+
+Press C to teleprt behind the opponent, takes 500 extra power.
+
+Finishers:
+-----------
+
+Only can be performed after the 'No Mercy!!' Message once you've
+won your second round.
+
+
+Misc:
+-------
+
+
+
+Combos:
+---------
+
+Hundreds, i'm not spelling them out, they are simple fool.
+
+Tip- Specials into specials are very effective.
+

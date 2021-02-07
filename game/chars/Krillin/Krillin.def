@@ -1,0 +1,29 @@
+; Definition file for Krillin
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Krillin By ChAoS & NeOcIdE"
+displayname ="Krillin"
+versiondate =04,14,2002
+mugenversion =11,01,2001
+author ="ChAoS & NeOcIdE"
+pal.defaults =1,2
+
+; Files for the player
+[Files]
+cmd     =Krillin.cmd
+cns     =Krillin.cns
+st      =Krillin.cns
+stcommon =common1.cns
+sprite  =Krillin.sff
+anim    =Krillin.air
+sound   =Krillin.snd
+pal1=Krillin.act
+pal2=Red.act
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard =ending.def

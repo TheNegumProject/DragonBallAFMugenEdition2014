@@ -1,0 +1,34 @@
+[Info]
+name="Metal Coola"
+displayname="Metal Coola"
+versiondate=
+mugenversion=09,12,9X
+author="Marcus(MugenMundoTeam)"
+pal.defaults=22,,21,2,3,4,5,6,7,8,9,10
+[Files]
+sprite=Metal Coola.sff
+sound=Metal Coola.snd
+anim=Metal Coola.air
+cmd=Metal Coola.cmd
+cns=Metal Coola.cns
+st=Metal Coola.cns
+stcommon=common1.cns
+pal14=
+pal15=
+pal16=
+pal13=
+pal1=a
+pal2=2
+pal3=red
+pal4=metal
+pal5=claro
+pal6=branco
+pal7=jane
+pal8=54
+pal9=gold
+pal10=
+pal11=
+pal12=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

@@ -1,0 +1,27 @@
+
+
+[Info]
+name    ="kakarotto gt"
+displayname ="kakarotto gt"
+author ="Kurihan&FRS GAMES>franciynaldo"     
+pal.defaults =1
+versiondate=18,01,2007
+mugenversion=06,14,2003
+
+[Files]
+cmd     =gokuGT.cmd     
+cns     =gokuGT.cns     
+st      =gokuGT.cns   
+stcommon=Basico.cns   
+sprite  =gokuGT(classic).sff      
+anim    =gokuGT.air      
+sound   =gokuGT.snd
+pal1=gokuGT.act
+pal2=gokuGT2.act
+pal3=gokuGT4.act
+st1=kaioken.cns
+
+
+[Arcade]
+intro.storyboard  =intro.def 
+ending.storyboard =final.def

@@ -1,0 +1,39 @@
+; Player information
+[Info]
+name="Androide13 By Team DBZ OS"
+displayname="Android 13"
+versiondate=04,14,2002
+mugenversion=04,14,2002
+author=""
+pal.defaults=1,2
+
+; Files for the player
+[Files]
+cmd=Androide13.cmd
+cns=Androide13.cns
+st=Androide13.cns
+stcommon=common1.cns
+sprite=Androide13.sff
+anim=Androide13.air
+sound=Androide13.snd
+pal1=Androide13.act
+pal2=Androide13_02.act
+;pal3=Androide13_03.act
+;pal4=Androide13_04.act
+;pal5=Androide13_05.act
+;pal6=Androide13_06.act
+st1=Super_13.cns
+st2=Androide13_IA.cns
+
+
+; Arcade mode
+;[Arcade]
+;intro.storyboard=intro.def
+;ending.storyboard=ending.def
+
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

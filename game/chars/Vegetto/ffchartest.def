@@ -1,0 +1,30 @@
+[Info]
+name="vegetto normal"
+displayname="vegetto normal"
+versiondate=
+mugenversion=
+author="((mugen mundo))"
+pal.defaults=
+[Files]
+sprite=vegettonormal.sff
+sound=vegettonormal.snd
+anim=vegettonormal.air
+cmd=vegettonormal.cmd
+cns=vegettonormal.cns
+st=vegettonormal.cns
+stcommon=common1.cns
+pal1=sas
+pal2=gbfg
+pal3=]dsdf
+pal4=jjkjk
+pal5=beta
+pal6=5
+pal7=gote
+pal8=6
+pal9=roz
+pal10=656
+pal11=21
+pal12=beta2
+[Arcade]
+intro.storyboard=intro/vegetto.def
+ending.storyboard=end/end.def

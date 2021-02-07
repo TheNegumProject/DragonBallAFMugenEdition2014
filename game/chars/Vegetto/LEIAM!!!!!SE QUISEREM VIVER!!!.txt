@@ -1,0 +1,93 @@
+                  ((MUGEN MUNDO TEAM))
+------------------------------------------------------------------------------------------------------
+Este é o super vegetto versão 2.0 by mugen mundo
+
+sheet by:D.W
+Editado por:Marcus/rhandus
+programado por:Marcus
+
+oque ele tem?
+oque ele terá
+-------------------------------------------------------------------------------------------------------
+        OQUE ELE TEM?
+ 24 golpes
+ 26 poderes(modo normal & SSJ1)
+ 14 combos
+ teleport para frente/trás
+ modo ssj1
+ voz em portugues
+ muitos efeitos
+ 2 intro
+ modo fly
+ modo ivuneravel por segundos obs:isso é util para fugir de ataques que matam
+ kaioken
+ sequencias aéreas
+ poderes aéreos
+ carrega o ki e vida
+ hipers especiais(super final flash/genkidama/kamehameha ssj1/big finish....)
+ 12 paletas:para usar as paletas especiais do vegetto que são 6 segure o enter+a,isso pode ser feito tambem com todos os outros botões
+ E para ele ja começar o jogo como ssj1 segure na tela de seleção encima dele enter+z
+ shoques no corpo quando esta com 3000 de power
+ E umas surpresas como o super recovery que permite no caso se o char levar um golpe no ar e for cair aperte 
+ rapidamente x e entaum ele se teleportara diretamente para perto do player 2 possibilitando que você o
+ ataque.
+---------------------------------------------------------------------------------------------------------
+                     OQUE ELE TERÁ?
+Mais nada,a não ser que me deem ideias para continuar ele se quiserem entrar
+em contato comigo me falem pelo orkut:
+obrigado a todos!!
+----------------------------------------------------------------------------------------------------------
+                   NOVIDADES NELE!!
+Esse é o primeiro char do vegetto com transformação em ssj1 com voz em portugues.
+Nós nos esforçamos para lança-lo pois em nossas opiniões é um bom char e nos deu
+muito trabalho pois esse char é 100% nosso sem usar fxs roubados
+Obs:todos os fxs neste char foram autorizados pelos donos cuja citarei os nomes
+no fim desta pagina.
+--------------------------------------------------------------------
+               HISTORIA DO PERSONAGEM
+tudo começa quando vegeta e goku se deparam com a derrota
+ao ver que não conseguem alcanssar os poderes de super buu
+ai goku tendo os 2 brincos de fusão dados por kaio sama
+resolve pedir a vegeta que se funda com ele 
+vegeta orgulhoso como sempre não aceita de primeira
+mais pensando na bulma e seu filho trunks,
+assasinados por majin buu resolve se fundir com kakaroto.
+a fusão é feita e os resultados são surpriendentes 
+a luta estava facil para vegetto quando majin buu começa a aumentar seu
+ki, fazendo com que vegetto se trasformasse 
+em super saiyajin e essa historia que o vegetto by mugen mundo vai contar!!! 
+--------------------------------------------------------------------
+                 CREDITOS A QUEM MEREÇE MUITO!!
+Creditos ao Bardock do site= http://www.bardockrevenge.hpg.ig.com.br/
+por autorizar o uso do fxs de explosão de fogo dele
+____________________________________________________________________
+A Drean Weaver pela sheet open source do maravilhoso vegetto dele.
+____________________________________________________________________
+Ao francynaldo por sempre me ajudar com variais e coisas assim.
+____________________________________________________________________
+A yago meu braço direito que sempre me ajuda com as coisas.
+____________________________________________________________________
+A Rhandus pelos maravilhosos edits do vegetto do DW.
+____________________________________________________________________
+A toskomics pelos fxs opens source na net que a proposito são
+ maravilhosos.
+____________________________________________________________________
+A toad pelo fxs de ki ssj1 e modo normal.
+____________________________________________________________________
+E é claro a todos meus comparsas da Mugen mundo que vem crescendo.
+
+               [MUGEN MUNDO TEAM]
+               -<Marcus>
+               -<Yago LS>
+               -<Vitor angili>
+               -<Bandido>
+               -<Rhandus mauricio>
+               -<Gustavo>
+               -<Greed>
+               -<Kakashi>
+               -<Diego antunes>
+               -<Rho>
+               
+obrigado a todos por ler este arquivo e se divirtam 
+com esse vegetto pois em breve
+tem mais!!!!

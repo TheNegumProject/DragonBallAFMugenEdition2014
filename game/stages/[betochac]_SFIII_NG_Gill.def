@@ -1,0 +1,1326 @@
+;¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤
+;X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X¤¤X
+;¤X¤                                               	¤X¤
+;¤X¤ ExTraIdO dE : "Street Fighter III: New Generation"	¤X¤
+;¤X¤               				   	¤X¤
+;¤X¤	         TiTuLaDo: "SFIII NG Gill"  	        ¤X¤
+;¤X¤						   	¤X¤
+;¤X¤		   VeRsIoN: 12-Marzo-2008	   	¤X¤
+;¤X¤						   	¤X¤
+;¤X¤	           CrEaDo PoR: "betochac"		¤X¤
+;¤X¤				   		   	¤X¤
+;¤X¤  CrEaDo Con: 				        ¤X¤
+;¤X¤	PAINT SHOP PRO					¤X¤
+;¤X¤	PHOTOSHOP					¤X¤
+;¤X¤	MCM						¤X¤
+;¤X¤	Excel						¤X¤
+;¤X¤	SplitImage					¤X¤
+;¤X¤							¤X¤
+;¤X¤  Gracias a:					¤X¤
+;¤X¤   Dios <-> Por darme vida, tiempo y paciencia	¤X¤
+;¤X¤   Joram "ZweiFuss" Nowak <-> Sprites open source	¤X¤
+;¤X¤   DJ-Van <-> Beta tester				¤X¤
+;¤X¤   Kun Fu Man <-> Sprites						¤X¤
+;¤X¤							¤X¤
+;¤X¤							¤X¤
+;¤X¤         NO hagan mal uso de este escenario		¤X¤
+;¤X¤  							¤X¤
+;¤X¤      Duda, sugerencia, comentario, peticion o 	¤X¤
+;¤X¤	       mentada de madre contactar en:           ¤X¤
+;¤X¤                   					¤X¤
+;¤X¤	          betochac@hotmail.com		        ¤X¤
+;¤X¤	         www.mugen-infantry.net			¤X¤
+;¤X¤                                                 	¤X¤
+;¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X
+;X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤X¤
+
+;--------------------------------------------------------
+[Info]
+name = "GILL STAGE"
+authorname = "betochac" 
+
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty =0
+boundleft = -315
+boundright = 315
+boundhigh = -249
+boundlow = 0
+verticalfollow = 0.85
+floortension = 20
+tension = 40
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70         
+p1starty = 0           
+p1startz = 0            
+p1facing = 1           
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+;--- Common ---
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+topbound  =  0     ;Top bound (z-movement)
+botbound  =  0     ;Bottom bound
+
+;--------------------------------------------------------
+[Scaling]
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+;--------------------------------------------------------
+[Bound]
+screenleft = 12  
+screenright = 12  
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 210
+zoffsetlink = 1
+autoturn = 1
+resetBG = 0
+hires = 1
+debugbg = 1
+
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 80
+color = 120,120,120
+yscale = 0.3
+
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/108MegatonaFurioso(Potemkin'sTheme).mp3
+bgvolume = 255
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+spr = stages/[betochac]_SFIII_NG_Gill.sff 
+debugbg = 0
+
+;========================================================
+
+[BG lava anim2 0 ]
+type  = anim
+start = -581,112
+delta = 1.6,1.6
+mask = 0
+actionno = 10
+
+[begin action 10]
+3,0, 0,0, 8
+3,10, 0,0, 8
+3,20, 0,0, 8
+3,30, 0,0, 8
+
+[BG lava anim2 1 ]
+type  = anim
+start = -493,112
+delta = 1.6,1.6
+mask = 0
+actionno = 11
+
+[begin action 11]
+3,1, 0,0, 8
+3,11, 0,0, 8
+3,21, 0,0, 8
+3,31, 0,0, 8
+
+[BG lava anim2 2 ]
+type  = anim
+start = -405,112
+delta = 1.6,1.6
+mask = 0
+actionno = 12
+
+[begin action 12]
+3,2, 0,0, 8
+3,12, 0,0, 8
+3,22, 0,0, 8
+3,32, 0,0, 8
+
+[BG lava anim2 3 ]
+type  = anim
+start = -317,112
+delta = 1.6,1.6
+mask = 0
+actionno = 13
+
+[begin action 13]
+3,3, 0,0, 8
+3,13, 0,0, 8
+3,23, 0,0, 8
+3,33, 0,0, 8
+
+[BG lava anim2 4 ]
+type  = anim
+start = -229,112
+delta = 1.6,1.6
+mask = 0
+actionno = 14
+
+[begin action 14]
+3,4, 0,0, 8
+3,14, 0,0, 8
+3,24, 0,0, 8
+3,34, 0,0, 8
+
+[BG lava anim2 5 ]
+type  = anim
+start = -141,112
+delta = 1.6,1.6
+mask = 0
+actionno = 15
+
+[begin action 15]
+3,5, 0,0, 8
+3,15, 0,0, 8
+3,25, 0,0, 8
+3,35, 0,0, 8
+
+[BG lava anim2 6 ]
+type  = anim
+start = -53,112
+delta = 1.6,1.6
+mask = 0
+actionno = 16
+
+[begin action 16]
+3,6, 0,0, 8
+3,16, 0,0, 8
+3,26, 0,0, 8
+3,36, 0,0, 8
+
+[BG lava anim2 7 ]
+type  = anim
+start = 35,112
+delta = 1.6,1.6
+mask = 0
+actionno = 17
+
+[begin action 17]
+3,7, 0,0, 8
+3,17, 0,0, 8
+3,27, 0,0, 8
+3,37, 0,0, 8
+
+[BG lava anim2 8 ]
+type  = anim
+start = 123,112
+delta = 1.6,1.6
+mask = 0
+actionno = 18
+
+[begin action 18]
+3,8, 0,0, 8
+3,18, 0,0, 8
+3,28, 0,0, 8
+3,38, 0,0, 8
+
+[BG lava anim2 9 ]
+type  = anim
+start = 211,112
+delta = 1.6,1.6
+mask = 0
+actionno = 19
+
+[begin action 19]
+3,9, 0,0, 8
+3,19, 0,0, 8
+3,29, 0,0, 8
+3,39, 0,0, 8
+
+[BG nubes 0 ]
+type  = normal
+spriteno = 4,0
+start = -957,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 1 ]
+type  = normal
+spriteno = 4,1
+start = -909,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 2 ]
+type  = normal
+spriteno = 4,2
+start = -861,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 3 ]
+type  = normal
+spriteno = 4,3
+start = -813,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 4 ]
+type  = normal
+spriteno = 4,4
+start = -765,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 5 ]
+type  = normal
+spriteno = 4,5
+start = -717,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 6 ]
+type  = normal
+spriteno = 4,6
+start = -669,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 7 ]
+type  = normal
+spriteno = 4,7
+start = -621,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 8 ]
+type  = normal
+spriteno = 4,8
+start = -573,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 9 ]
+type  = normal
+spriteno = 4,9
+start = -525,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 10 ]
+type  = normal
+spriteno = 4,10
+start = -477,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 11 ]
+type  = normal
+spriteno = 4,11
+start = -429,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 12 ]
+type  = normal
+spriteno = 4,12
+start = -381,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 13 ]
+type  = normal
+spriteno = 4,13
+start = -333,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 14 ]
+type  = normal
+spriteno = 4,14
+start = -285,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 15 ]
+type  = normal
+spriteno = 4,15
+start = -237,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 16 ]
+type  = normal
+spriteno = 4,16
+start = -189,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 17 ]
+type  = normal
+spriteno = 4,17
+start = -141,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 18 ]
+type  = normal
+spriteno = 4,18
+start = -93,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 19 ]
+type  = normal
+spriteno = 4,19
+start = -45,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 20 ]
+type  = normal
+spriteno = 4,20
+start = 3,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 21 ]
+type  = normal
+spriteno = 4,21
+start = 51,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 22 ]
+type  = normal
+spriteno = 4,22
+start = 99,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 23 ]
+type  = normal
+spriteno = 4,23
+start = 147,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 24 ]
+type  = normal
+spriteno = 4,24
+start = 195,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 25 ]
+type  = normal
+spriteno = 4,25
+start = 243,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 26 ]
+type  = normal
+spriteno = 4,26
+start = 291,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 27 ]
+type  = normal
+spriteno = 4,27
+start = 339,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 28 ]
+type  = normal
+spriteno = 4,28
+start = 387,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 29 ]
+type  = normal
+spriteno = 4,29
+start = 435,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 30 ]
+type  = normal
+spriteno = 4,30
+start = 483,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 31 ]
+type  = normal
+spriteno = 4,31
+start = 531,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 32 ]
+type  = normal
+spriteno = 4,32
+start = 579,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 33 ]
+type  = normal
+spriteno = 4,33
+start = 627,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 34 ]
+type  = normal
+spriteno = 4,34
+start = 675,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 35 ]
+type  = normal
+spriteno = 4,35
+start = 723,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 36 ]
+type  = normal
+spriteno = 4,36
+start = 771,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 37 ]
+type  = normal
+spriteno = 4,37
+start = 819,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 38 ]
+type  = normal
+spriteno = 4,38
+start = 867,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG nubes 39 ]
+type  = normal
+spriteno = 4,39
+start = 915,-440
+delta = 1.6,1.6
+mask = 1
+
+[BG lava anim1 0 ]
+type  = anim
+start = -578,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 0
+
+[begin action 0]
+2,0, 0,0, 8
+2,10, 0,0, 8
+2,20, 0,0, 8
+2,30, 0,0, 8
+2,40, 0,0, 8
+2,50, 0,0, 8
+2,60, 0,0, 8
+2,70, 0,0, 8
+2,80, 0,0, 8
+
+[BG lava anim1 1 ]
+type  = anim
+start = -454,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 1
+
+[begin action 1]
+2,1, 0,0, 8
+2,11, 0,0, 8
+2,21, 0,0, 8
+2,31, 0,0, 8
+2,41, 0,0, 8
+2,51, 0,0, 8
+2,61, 0,0, 8
+2,71, 0,0, 8
+2,81, 0,0, 8
+
+[BG lava anim1 2 ]
+type  = anim
+start = -330,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 2
+
+[begin action 2]
+2,2, 0,0, 8
+2,12, 0,0, 8
+2,22, 0,0, 8
+2,32, 0,0, 8
+2,42, 0,0, 8
+2,52, 0,0, 8
+2,62, 0,0, 8
+2,72, 0,0, 8
+2,82, 0,0, 8
+
+[BG lava anim1 3 ]
+type  = anim
+start = -206,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 3
+
+[begin action 3]
+2,3, 0,0, 8
+2,13, 0,0, 8
+2,23, 0,0, 8
+2,33, 0,0, 8
+2,43, 0,0, 8
+2,53, 0,0, 8
+2,63, 0,0, 8
+2,73, 0,0, 8
+2,83, 0,0, 8
+
+[BG lava anim1 4 ]
+type  = anim
+start = -82,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 4
+
+[begin action 4]
+2,4, 0,0, 8
+2,14, 0,0, 8
+2,24, 0,0, 8
+2,34, 0,0, 8
+2,44, 0,0, 8
+2,54, 0,0, 8
+2,64, 0,0, 8
+2,74, 0,0, 8
+2,84, 0,0, 8
+
+[BG lava anim1 5 ]
+type  = anim
+start = 42,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 5
+
+[begin action 5]
+2,5, 0,0, 8
+2,15, 0,0, 8
+2,25, 0,0, 8
+2,35, 0,0, 8
+2,45, 0,0, 8
+2,55, 0,0, 8
+2,65, 0,0, 8
+2,75, 0,0, 8
+2,85, 0,0, 8
+
+[BG lava anim1 6 ]
+type  = anim
+start = 166,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 6
+
+[begin action 6]
+2,6, 0,0, 8
+2,16, 0,0, 8
+2,26, 0,0, 8
+2,36, 0,0, 8
+2,46, 0,0, 8
+2,56, 0,0, 8
+2,66, 0,0, 8
+2,76, 0,0, 8
+2,86, 0,0, 8
+
+[BG lava anim1 7 ]
+type  = anim
+start = 290,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 7
+
+[begin action 7]
+2,7, 0,0, 8
+2,17, 0,0, 8
+2,27, 0,0, 8
+2,37, 0,0, 8
+2,47, 0,0, 8
+2,57, 0,0, 8
+2,67, 0,0, 8
+2,77, 0,0, 8
+2,87, 0,0, 8
+
+[BG lava anim1 8 ]
+type  = anim
+start = 414,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 8
+
+[begin action 8]
+2,8, 0,0, 8
+2,18, 0,0, 8
+2,28, 0,0, 8
+2,38, 0,0, 8
+2,48, 0,0, 8
+2,58, 0,0, 8
+2,68, 0,0, 8
+2,78, 0,0, 8
+2,88, 0,0, 8
+
+[BG lava anim1 9 ]
+type  = anim
+start = 538,-500
+delta = 1.8,1.8
+mask = 0
+actionno = 9
+
+[begin action 9]
+2,9, 0,0, 8
+2,19, 0,0, 8
+2,29, 0,0, 8
+2,39, 0,0, 8
+2,49, 0,0, 8
+2,59, 0,0, 8
+2,69, 0,0, 8
+2,79, 0,0, 8
+2,89, 0,0, 8
+
+[BG piso y columnas 0 ]
+type  = normal
+spriteno = 5,0
+start = -957,-498
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 1 ]
+type  = normal
+spriteno = 5,1
+start = -957,-486
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 2 ]
+type  = normal
+spriteno = 5,2
+start = -957,-474
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 3 ]
+type  = normal
+spriteno = 5,3
+start = -957,-462
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 4 ]
+type  = normal
+spriteno = 5,4
+start = -957,-450
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 5 ]
+type  = normal
+spriteno = 5,5
+start = -957,-438
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 6 ]
+type  = normal
+spriteno = 5,6
+start = -957,-426
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 7 ]
+type  = normal
+spriteno = 5,7
+start = -957,-414
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 8 ]
+type  = normal
+spriteno = 5,8
+start = -957,-402
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 9 ]
+type  = normal
+spriteno = 5,9
+start = -957,-390
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 10 ]
+type  = normal
+spriteno = 5,10
+start = -957,-378
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 11 ]
+type  = normal
+spriteno = 5,11
+start = -957,-366
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 12 ]
+type  = normal
+spriteno = 5,12
+start = -957,-354
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 13 ]
+type  = normal
+spriteno = 5,13
+start = -957,-342
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 14 ]
+type  = normal
+spriteno = 5,14
+start = -957,-330
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 15 ]
+type  = normal
+spriteno = 5,15
+start = -957,-318
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 16 ]
+type  = normal
+spriteno = 5,16
+start = -957,-306
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 17 ]
+type  = normal
+spriteno = 5,17
+start = -957,-294
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 18 ]
+type  = normal
+spriteno = 5,18
+start = -957,-282
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 19 ]
+type  = normal
+spriteno = 5,19
+start = -957,-270
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 20 ]
+type  = normal
+spriteno = 5,20
+start = -957,-258
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 21 ]
+type  = normal
+spriteno = 5,21
+start = -957,-246
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 22 ]
+type  = normal
+spriteno = 5,22
+start = -957,-234
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 23 ]
+type  = normal
+spriteno = 5,23
+start = -957,-222
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 24 ]
+type  = normal
+spriteno = 5,24
+start = -957,-210
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 25 ]
+type  = normal
+spriteno = 5,25
+start = -957,-198
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 26 ]
+type  = normal
+spriteno = 5,26
+start = -957,-186
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 27 ]
+type  = normal
+spriteno = 5,27
+start = -957,-174
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 28 ]
+type  = normal
+spriteno = 5,28
+start = -957,-162
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 29 ]
+type  = normal
+spriteno = 5,29
+start = -957,-150
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 30 ]
+type  = normal
+spriteno = 5,30
+start = -957,-138
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 31 ]
+type  = normal
+spriteno = 5,31
+start = -957,-126
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 32 ]
+type  = normal
+spriteno = 5,32
+start = -957,-114
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 33 ]
+type  = normal
+spriteno = 5,33
+start = -957,-102
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 34 ]
+type  = normal
+spriteno = 5,34
+start = -957,-90
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 35 ]
+type  = normal
+spriteno = 5,35
+start = -957,-78
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 36 ]
+type  = normal
+spriteno = 5,36
+start = -957,-66
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 37 ]
+type  = normal
+spriteno = 5,37
+start = -957,-54
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 38 ]
+type  = normal
+spriteno = 5,38
+start = -957,-42
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 39 ]
+type  = normal
+spriteno = 5,39
+start = -957,-30
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 40 ]
+type  = normal
+spriteno = 5,40
+start = -957,-18
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 41 ]
+type  = normal
+spriteno = 5,41
+start = -957,-6
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 42 ]
+type  = normal
+spriteno = 5,42
+start = -957,6
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 43 ]
+type  = normal
+spriteno = 5,43
+start = -957,18
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 44 ]
+type  = normal
+spriteno = 5,44
+start = -957,30
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 45 ]
+type  = normal
+spriteno = 5,45
+start = -957,42
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 46 ]
+type  = normal
+spriteno = 5,46
+start = -957,54
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 47 ]
+type  = normal
+spriteno = 5,47
+start = -957,66
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 48 ]
+type  = normal
+spriteno = 5,48
+start = -957,78
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 49 ]
+type  = normal
+spriteno = 5,49
+start = -957,90
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 50 ]
+type  = normal
+spriteno = 5,50
+start = -957,102
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 51 ]
+type  = normal
+spriteno = 5,51
+start = -957,114
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 52 ]
+type  = normal
+spriteno = 5,52
+start = -957,126
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 53 ]
+type  = normal
+spriteno = 5,53
+start = -957,138
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 54 ]
+type  = normal
+spriteno = 5,54
+start = -957,150
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 55 ]
+type  = normal
+spriteno = 5,55
+start = -957,162
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 56 ]
+type  = normal
+spriteno = 5,56
+start = -957,174
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 57 ]
+type  = normal
+spriteno = 5,57
+start = -957,186
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 58 ]
+type  = normal
+spriteno = 5,58
+start = -957,198
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 59 ]
+type  = normal
+spriteno = 5,59
+start = -957,210
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 60 ]
+type  = normal
+spriteno = 5,60
+start = -957,222
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 61 ]
+type  = normal
+spriteno = 5,61
+start = -957,234
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 62 ]
+type  = normal
+spriteno = 5,62
+start = -957,246
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 63 ]
+type  = normal
+spriteno = 5,63
+start = -957,258
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 64 ]
+type  = normal
+spriteno = 5,64
+start = -957,270
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 65 ]
+type  = normal
+spriteno = 5,65
+start = -957,282
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 66 ]
+type  = normal
+spriteno = 5,66
+start = -957,294
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 67 ]
+type  = normal
+spriteno = 5,67
+start = -957,306
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 68 ]
+type  = normal
+spriteno = 5,68
+start = -957,318
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 69 ]
+type  = normal
+spriteno = 5,69
+start = -957,330
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 70 ]
+type  = normal
+spriteno = 5,70
+start = -957,342
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 71 ]
+type  = normal
+spriteno = 5,71
+start = -957,354
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 72 ]
+type  = normal
+spriteno = 5,72
+start = -957,366
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 73 ]
+type  = normal
+spriteno = 5,73
+start = -957,378
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 74 ]
+type  = normal
+spriteno = 5,74
+start = -957,390
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 75 ]
+type  = normal
+spriteno = 5,75
+start = -957,402
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 76 ]
+type  = normal
+spriteno = 5,76
+start = -957,414
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 77 ]
+type  = normal
+spriteno = 5,77
+start = -957,426
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 78 ]
+type  = normal
+spriteno = 5,78
+start = -957,438
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 79 ]
+type  = normal
+spriteno = 5,79
+start = -957,450
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 80 ]
+type  = normal
+spriteno = 5,80
+start = -957,462
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 81 ]
+type  = normal
+spriteno = 5,81
+start = -957,474
+delta = 2,2
+mask = 1
+
+[BG piso y columnas 82 ]
+type  = normal
+spriteno = 5,82
+start = -957,486
+delta = 2,2
+mask = 1
+
+
+[BG gargola 0 ]
+type  = anim
+start = -957,84
+delta = 2,2
+mask = 0
+actionno = 20
+
+[begin action 20]
+6,0, 0,0, 8
+6,1, 0,0, 8
+6,2, 0,0, 8
+6,3, 0,0, 8
+6,4, 0,0, 8
+
+
+[BG agujero 0 ]
+type  = anim
+start = -573,302
+delta = 2,2
+mask = 0
+actionno = 21
+
+[begin action 21]
+7,0, 0,0, 9
+7,1, 0,0, 9
+7,2, 0,0, 9
+7,3, 0,0, 9
+7,4, 0,0, 9
+7,5, 0,0, 9
+7,6, 0,0, 9
+7,7, 0,0, 9
+7,8, 0,0, 9
+
+
+
+
+
+
+
+

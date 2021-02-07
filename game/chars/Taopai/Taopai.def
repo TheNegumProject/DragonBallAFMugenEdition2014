@@ -1,0 +1,28 @@
+; Definition file for Bardock
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Taopaipai"
+displayname ="Taopai"
+versiondate =04,14,2001
+mugenversion =04,14,2001
+author ="Bardock"
+pal.defaults =1,2
+
+; Files for the player
+[Files]
+cmd     =taopaipai.cmd
+cns     =taopaipai.cns
+st      =taopaipai.cns
+stcommon =taopaipai1.cns
+sprite  =taopaipai.sff
+anim    =taopaipai.air
+sound   =taopaipai.snd
+pal1=rosa.act
+pal2=azul.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard =..\data\final.def

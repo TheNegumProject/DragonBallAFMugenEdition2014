@@ -1,0 +1,89 @@
+#####|Character Info|#####
+Character Name: Kurosaki Ichigo
+Game/Anime: Bleach
+Style: Melty Blood + CVS2 + Custom
+Version: 1.1
+
+#####|Resources Info|#####
+Sprites: Bleach DS 2nd
+Effects: CVS2 + Custom
+Hit Sparks: CVS2
+Sound Effects: CVS2
+Voice Samples: Bleach: Blade Battlers 2nd + Bleach DS 2nd
+
+#####|Movelist|#####
+---|Basics|---
+A: Weak Attack
+B: Medium Attack
+C: Strong Attack
+DD , a,b,c (one of them): Shunpo
+A+B : Energy Charge
+
+
+#####|Specials|#####
+QCF a,b,c: Getsuga Tenshou (can be used in air)
+QCB a,b,c: Random 2 sword Slash (can be used in air)
+D,F,DF a,b,c: Another random slash
+HCB a,b,c: Rock throw
+
+#####|Supers|#####
+All supers are performed by using the c variation of the special while having more
+than 1 energy level
+
+QCF c: Getsuga Tenshou EX (can be used in air)
+QCB c: Random 2 Getsuga Tenshou (can be used in air)
+D,F,DF c: yet another getsuga tenshou
+HCB c: Giant Rock throw
+a, a, F, c: Bankai (being this the only exception from the super commands requires 3 power levels)
+
+#####|Move Details|#####
+
+-Getsuga Tenshou EX makes the enemy bounce off walls
+-Random 2 Getsuga Tenshou IS supposed to look like that when used in the air
+(in bleach they stand on air...and make dust on air from dragging their feet O_o)
+-Air Getsuga Tenshou EX can hit downed opponents
+-While in Bankai ichigo has super armor
+-While in Bankai energy will always be lowering and transform back when 0
+-Bankai transformation can be skipped at any time by pressing start 
+during the transformation sequence
+- while in bankai you will only receive half normal damage
+
+#####|Features|#####
+-AI
+-Intro
+-Win
+-Sounds
+-Multiple Palletes
+-Lose
+-Negative Edge
+-CVS2 styled Parry
+
+#####|Known Issues|#####
+-bankai needs tweaking
+
+#####|Credits|#####
+-Neimad for sheet
+-NghtmrSrph for sounds
+->>DoB<< for sounds
+-Alchemist for sounds
+-Anjel for effects
+-P.O.T.S. for effects and some code samples
+-Guimus for Beta Testing
+-pplz who gave feedback
+
+#####|Version History|#####
+---|Version 1.1|---
+-first post tourney version
+-fixed debug spam
+-added negative edge
+-added Special KO effect
+-tweaked AI
+-tweaked bankai super armor
+-tweaked damages on supers
+-fixed infinites on SMP and CMP
+-fixed bug on bankais back air dash
+-added lose anim
+-replaced some effects for the sake of visual coherence
+
+---|Version 1.0|---
+-Posted the char for the tourney

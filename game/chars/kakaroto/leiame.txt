@@ -1,0 +1,161 @@
+                     Kakaroto 100% - By Kakaroto
+-----------------------------------------------------------------------
+Este é meu último char de Dragon Ball Z para o MUGEN. As aulas voltam dia 13 de feveirero e vou ter que estudar muito este ano pois estou no 3º Colegial, sei que o Vestibular é embassado pois prestei como treineiro agora no 2º, consegui passar para a última fase e vi como ela é difícil.
+
+
+Nesta versão, o Kakaroto têm:
+
+
+-1 INTRO
+-1 WIN POSE
+-TODO O BÁSICO
+-11 SPECIALS
+-3 METEOR ATTACKS
+-5 SUPERS
+-FINAL
+-AI (INTELIGÊNCIA ARTIFICIAL)
+-SPARKS DO SUPERBOUTUDEN 2
+-STORY LINE
+-VIRA SSJ QUANDO LUTAR CONTRA:
+  FREEZA (by Overmind)
+  NORMAL TRUNKS (by Emuboarding) 
+  CELL (by Ssonic) 
+-VIRA SSJ2 CONTRA:
+  MAJIN VEGETA (by Overmind)
+
+ASSISTA TODA A INTRO CONTRA MAJIN VEGETA PARA QUE A TRANSFORMAÇÃO FUNCIONE CORRETAMENTE!!!!!!!!
+
+-SSJ2 MODE
+
+-----------------------------------------------------------------------
+Comandos:
+
+B - trás
+DB - diagonal inferior esquerda
+D - baixo
+DF - diagonal inferior direita
+F - frente
+UF - diagonal superior direita
+U - cima
+UB - diagonal superior esquerda
+~30B - segurar pra trás um pouco
+
+a - soco fraco
+b - chute fraco
+c - fireball
+x - soco forte
+y - chute forte
+z - modo normal
+
+a+b - Charge Power
+
+x+y - Fly
+-----------------------------------------------------------------------
+                          TRANSFORMAÇÕES:
+Estes são os modos que Goku pode usar e como acioná-los:
+
+    *KAIOKEN MODE
+-Para ativar este modo, quando no modo normal e com power maior que 1,5 (um e meio), faça:
+ D, DF, F, D, DF, F + a 
+
+    *SSJ MODE
+-Para ativar este modo, uma das duas condições deve existir:
+
+ a)Estar no modo normal e com power 3
+ b)Estar no modo kaioken e com power 2 ou maior
+
+Existindo qualquer uma destas duas condições, faça:
+
+D, DF, F, D, DF, F + b
+
+    *SSJ2 MODE
+-Para ativar este modo, você precisa estar no modo SSJ e:
+ 
+  a)CARREGAR O POWER ATÉ O MÁXIMO
+
+            OU 
+
+  b)COM O POWER NO MÁXIMO, APERTAR A+B 
+
+Obs: vc não pode voltar ao normal mode quando em ssj2 
+
+
+    *NORMAL MODE
+-É o modo normal de quando Goku está de cabelos pretos. Para retornar a este modo, quando estiver no modo Kaioken ou SSJ, aperte z.
+-----------------------------------------------------------------------
+                       PARA O FINAL FUNCIONAR:
+
+Abra o arquivo docs\system.def no Notepad (Bloco de Notas) e substitua a "Win Screen Definition" por esta:
+
+;-------------------------------------------------------------------
+;Win screen definition
+;This is the screen that is shown when you win in arcade mode.
+[Win Screen]
+wintext.text =  
+wintext.font = 2,0,0 
+wintext.offset = 159,70 
+wintext.displaytime = -1 
+wintext.layerno = 2 
+fadein.time = 32 
+pose.time = 10000 
+fadeout.time = 64 
+
+-----------------------------------------------------------------------
+Golpes:
+
+Fireball x3 - D, DF, F + c (*)
+
+Taioken - F, D, DF + x (precisa de pelo menos 500 de power bar) (também pode ser feito no ar)
+
+Air Attack - F, D, + b (no ar)
+
+Teleport - x+y (*)
+
+Elbow Dash - ~30B, F + b
+
+Cicle Kick - B, DB, D, DF, F + y 
+
+Roll Forward - ~30B, F + y
+
+Invisible Fireball - D, DF, F + c
+
+Quick Kamehameha - D, DB, B + x
+
+Kamehameha (weak) - D, DB, B, F + a (*)
+
+Kamehameha (medium) - D, DB, B, F + b (*)
+
+Kamehameha (strong) - D, DB, B, F + x (*)
+
+Genki Dama (Spirit Bomb) - F, B, DB, D, DF, F + x (*)
+
+Renzoku Energy Dan - D, DB, B, F + y (*)
+
+Meteor Attack - ~D, DB, B, DB, D, DF, F + x (Power Level 3 em modo Normal e SSJ Mode, com qualque power em Kaioken Mode)
+-----------------------------------------------------------------------
+COMO CONTROLAR OS MOVIMENTOS:
+
+Todos os golpes marcados com (*) são controláveis. Tudo que você têm que fazer é APERTAR E SEGURAR a direção que se quer no joystick após fazer o comando do golpe. Estes golpes também podem ser feitos no ar.
+
+FIREBALLS AND KAMEHAMEHA:
+
+Após fazer o comando, aperte e segure:
+
+DF - JOGAR PRA CIMA
+UF - JOGAR PRA BAIXO
+
+NO TRIPLO FIREBALL E NO RENZOKU ENERGY DAN VOCÊ DEVE DIRECIONAR CADA BOLA DE MAGIA!!!!!
+
+TELEPORT:
+
+Após fazer o comando, APERTE E SEGURE a direção que você que ir (qualquer uma das oito flechas do direcional). Se você não fizer nada, Goku fica aonde ele está.
+
+-----------------------------------------------------------------------
+
+Comentários e bugs :
+
+spidertura@zipmail.com.br
+
+           ou
+
+http://spidertura.cjb.net

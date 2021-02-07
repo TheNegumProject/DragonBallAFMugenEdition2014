@@ -1,0 +1,323 @@
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===LEIA-ME===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+                                   Gohan do Futuro ssj 2
+
+                                   Leia-Me em português
+
+
+===FICHA===
+nome do autor do char : Franciynaldo rock (de brasilia ceilândia)
+Nome : gohan
+Anime : Dragon Ball Z especial para tv
+Versão do Mugen :04,14,2003 win mugen
+Versão : 1.0
+Completo : 100%
+Data de Lançamento : 3/2/2007
+personagem - editado
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Programas utilizado===,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+.Fight factory
+.foto shop 8.0
+.zsnes
+.paint
+.gravador de som do windows
+o som foi ripado do meu dbz 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Beta testes===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Gustavo Pinheiro email magicforever3@hotmail.com
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===novidade===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+quando o gohan se transforma em ssj 2 sua força aumenta 50% é só aperta a+b
+                              Ele tem inteligencia artificial
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===CRÉDITOS===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+                              Autor: FRS GAMES >Franciynaldo
+                            E-mail: superkakarotto@hotmail.com
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===historia do personagem===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+no futuro goku morreu de uma rara doença do coração e todos querreiros foram assasinados pelos androides 17 e 18 menos gohan e trunks
+ao ver o senhor piccolo morrer gohan se treansformou em ssj ele sempre enfrentava os androides
+quando trunks fez 13 anos gohan começou a treinalo para que ele se transforma se em ssj mais era muito dificil para ele
+ os androides estavam destruindo o resto das cidades que sobrarao e gohan e trunks forao lutar 
+contra eles mais como trunks ainda nao era um ssj eles estavao em desvantagem e pra protege
+o trunks de um atack mortal da n 18 gohan entra na frente do golpe dela e perde o seu braço esquerdo
+ficando gravemente ferido mais pelo menos sauvou o seu aprendiz da morte por sorte os androides
+nao acharao eles feridos debaixo das pedras entao voltarao para corporaçao capsula para se recuperarem
+enquanto isso a mae de trunks bulma construiu uma maquina do tempo para que eles voltasem para
+a epoca que goku era vivo e treinasem com ele eles voltarao bem na hora que o freeza estava se aposando
+da terra trunks ainda nao tinha se tornado ssj e nao pode lutar entao gohan sozinho derrotou
+freeza e seu pai cold quando goku chegou do espaço eles iniciarao um treinamento goku e gohan
+trunks e vegeta logo gohan se transformou em ssj 2 graças ao treinamento do seu pai goku que era muito abilidoso e forte
+goku ficou muito surpreso em conhece o gohan do futuro e o trunks logo depois o trunks se transformou
+em ssj graças ao seu pai vegeta entao voltaram para o futuro e derrotarao juntos os androides 17 e 18
+e ainda matarao o cell de brinde e assim termina a historia do meu gohan do futuro
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===INSTALAÇÃO===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Para colocar o gohan no seu M.U.G.E.N. primeiro tenha certeza de que há espaço
+no seu System.def abrindo-o com um editor de texto(como Wordpad)e aumentando
+o número de Columns e Rows se necessário.
+Se já tiver espaço,bom.
+Mande todos os arquivos para uma pasta de nome Gohan do futuro  e coloque-a na pasta
+CHARS de seu M.U.G.E.N.
+Agora, entre no arquivo Select.def e procure por uma parte com [Characters]
+escrito.
+Logo embaixo escreva:
+Gohan do futuro (se quiser que ele esteja no seu jogo)
+Gohan do futuro, stages/estagio.def (se quiser que ele tenha uma fase própria no ArcadeMode) 
+Gohan do futuro, stages/estagio.def, music=sound/nomedamusica.def (se quiser que a fase do modoArcade tenha música própria) 
+Se quiser que ela seja o último chefe de seu jogo, acrescente , order=10 logo
+após a música ou o estágio(vindo em últmo lugar),senão, coloque :, order=9
+para que esteja num nível anterior a último chefe.
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===O QUE FALTA===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                                        
+nada
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===O QUE TEM===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                                       .15 supers
+                                       .12 especiais
+                                       .Sistema de combos
+                                       .Extras
+                                       .2 poses de vitória
+                                       .3 intro
+                                       .Carregamento de ki 
+                                       . teleporte
+                                       . voo
+                                       .Muitos sons todos em portugues
+                                       .2 Paletas
+                                       . final 
+                                       . sequencia aerea +ou-
+
+                                     é a primeira versão "final"
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===son goku===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Raça : Saiyajin
+Familiares:que morerao (bardock avô),(selipa avó), (raditz  tio)
+Familiares: (chichi mãe),(goten irmao mais novo),(pan filha),(videl esposa),( paz  cunhada), ( goku pai)
+Olhos : pretos muda de cor quando transforma
+Cabelo : grisalho,pretos muda de cor quando transforma
+Séries :  dragon ball z dragon ball gt dragon ball af
+Diciplina: artes marciais 
+ 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===MODOS DE JOGO===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+normal é tambem transformado em super saiyajin  2
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===COMANDOS===,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+-------
+Legenda
+-------
+
+F - Frente
+B - Trás
+D - Baixo
+U - Cima
+DF - Baixo frente
+DB - Baixo trás
+UF - Cima frente
+UB - Cima Traz
+
+-------
+Básicos
+-------
+a - botão a chute fraco
+b - botão b chute medio
+c - botão c chute forte
+x - botão x soco fraco
+y - botão y soco medio
+z - botão z magia
+z - botão z soco forte ssj2
+------
+Extras
+------
+.Balão - é só chegar perto do aponente e apertar  x 
+
+.DASH - e so apertar B,B tras F,F frente
+
+.AIR JUMP - Um pulo comum no ar em qualquer direção
+Um pulo aéreo
+
+.Sistema de Combos - Vá apertando os botões de golpes básicos rapidamente
+goku vai espancando seu inimigo do jeito que você quiser da para juntar todos os golpes com sequencia !
+
+.Super Pulo - D, U
+Um pulo mais forte e mais auto pra cima.
+
+.Super Pulo Foward- D, UF
+Um pulo mais forte e mais auto pra frente.
+
+.Super Pulo Backward- D, U
+Um pulo mais forte e mais auto pra trás.
+-------------
+CARREGAMENTOS
+-------------
+CHARGE - a+b pode ser feito no ar
+goku carrega seu Ki.(4 barras)
+teleporte - x+a pode ser feito no ar
+voar - y+b
+provocaçao - start
+
+
+--------------------
+Golpes
+--------------------
+
+(relp) trunks fica furioso ao ve gohan apanhando
+
+[Command]
+name = "trunks fica nervoso"
+command =  z+c e so aperta z+c gasta  2 barras de power
+time = 30
+
+
+
+-----------
+Especiais
+----------- Ja que todo mundo olha no cmd né
+[Command] 
+name = "masenko"
+command = ~D, DB, B, F, y
+time = 30
+[Command]
+name = "ssj2"
+command = a+b
+time = 1
+[Command]
+name = "kamehamehassj2"
+command = ~D, DB, B, F, y
+time = 30
+[Command]
+name = "camehameha fraco"
+command = ~D, DB, B, F, x
+time = 30
+[Command]
+name = "camehameha forte"
+command = ~D, DB, B, F, z
+time = 30
+[Command]
+name = "masenko fraco"
+command = ~D, DB, B, F, b
+time = 30
+[Command]
+name = "magias"
+command = ~D, DB, B, F, c
+time = 30
+[Command]
+name = "kienzan"
+command = ~D, DB, B, F, a
+time = 30
+[Command]
+name = "especial devastador"
+command = ~D, DF, F, B, a
+time = 30
+[Command]
+name = "especial devastador2"
+command = ~D, DF, F, B, x
+time = 30
+[Command]
+name = "especial devastadorssj2"
+command = ~D, DB, B, F, z
+time = 30
+[Command]
+name = "ssj2magias"
+command = D, DB, B, F, a
+time = 30
+[Command]
+name = "especial devastadorssj22"
+command = ~D, DB, B, F, c
+time = 30
+[Command]
+name = "camehameha que desaparece"
+command = D, DB, B, F, x
+time = 30
+;================sequencias================================
+[Command]
+name = "sequencia de porradas"
+command = D, DF, F, z
+time = 10
+[Command]
+name = "super energia"
+command = ~D, DB, B, a
+time = 10
+[command]
+name ="teleporte"
+command = x+a
+[Command]
+name = "balao"
+command = /F,x
+[Command]
+name = "magiaR1"
+command = ~D, DF, F, c
+time = 10
+[Command]
+name = "magiaR2"
+command = ~D, DB, B, c
+time = 10
+[Command]
+name = "magiaR3x"
+command =  z
+time = 10
+[Command]
+name = "magiaR3xssj2"
+command = ~B, F , z
+time = 15
+[Command]
+name = "bolas rapidas"
+command = ~D, DB, B, z
+time = 10
+[Command]
+name = "campo de força"
+command = y+x
+time = 1
+[Command]
+name = "5hits rapidos"
+command = ~D, DF, F, b
+time = 10
+[Command]
+name = "super sequencia"
+command = ~D, DB, B, b
+time = 10
+[Command]
+name = "super atropelo"
+command = ~D, DF, F, a
+time = 10
+[Command]
+name = "chute aereo"
+command = ~D, DF, F, a
+time = 10
+[Command]
+name = "chute aereo"
+command = ~D, DF, F, b
+[Command]
+name = "chute aereo"
+command = ~D, DF, F, c
+time = 10
+[Command]
+name = "brilhoki"
+command = ~D, F, y
+time = 10
+[Command]
+name = "voadora"
+command = ~D, B, y
+time = 10
+[Command]
+name = "sequenciahit"
+command = ~D, F, x
+time = 10
+[Command]
+name = "sequenciaflash"
+command = ~D, B, x
+time = 10
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,===Algumas sequencias que podem ser feitas===,,,,,,,,,,,,,,,,,
+
+                               TEM  UM MONTE TENTEM FAZER
+                                  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,(((((( AGRADECIMENTOS))))),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ ...AO luiz que pe passou o primeiro spryte do gohan do futuro 
+ ...a um dos maiores criadores de personagems para o mugem BARDOCK
+ ...e a mim mesmo por nunca desisti de fazer os chars de dbz esperem vou fazer muito mais chars melhores que esse
+ ...ao meu pc AMD ATLON 64 3800+ super veloz que me permite terminar meus personagems mais rapido
+ ...... Ao grande akira toriama criador do melhor anime do mundo db dbz e gt e os 26 filmes e ovas
+ ...  e a todos criadores de quem eu usei alguns efeitos
+ ... a bandai e a atari pelos jogos de ps2 hehehe  recomendo que joguem o dragon ball sparking neo do ps2 eu zerei 100% tem 130 personagems e d++++++++++++++++++++++++
+ ... e finalmente ao meu amigo gustavo pinheiro por me ensentiva a fazer os chars e me ajuda com um monte de coisas valeuuuu.
+  podem usar qualquer arquivo ou efeito ou som etc dos meus personagens so quero que coloquem algum credito pra mim                          
+

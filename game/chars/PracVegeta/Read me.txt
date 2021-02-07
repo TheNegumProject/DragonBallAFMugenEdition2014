@@ -1,0 +1,139 @@
+Practice Vegeta by Detah
+-----------------------------------------------------------------------
+1. Why?
+2. What?
+3. Who?
+4. New stuff?
+5. Bugs?
+-----------------------------------------------------------------------
+1.Why did I make a totally overused Vegeta? Well one thing is was the
+only character that I had enough sprites of. He was also a good medium
+for some of my combos. 
+
+Also people ask "Why 'PracVegeta'?" (Practice Vegeta). Well I intended
+not to release him and just practice programming. He turned out better
+than planned and I released him.
+
+2. What moves does he have?
+
+A: Punch
+B: Elbow
+C: Uppercut
+X: "Trust kick"
+Y: Side kick
+Z: Knee
+
+all of his specials follow a pattern because there is a lesser form 
+(usually D, DF, F) and a greater form (usually D, DB, B or D, DB, Bx2).
+
+D, DF, F, A           = tri-kick
+D, DB, B, A           = multi-kick
+D, DF, F, B           = Elbow smash
+D, DB, B, B           = Repeated Elbow Smash
+D, DF, F, C           = Smack down
+D, DB, B, D, DB, B, C = Take down
+D, DF, F, X           = "Around the world" combo
+D, DB, B, D, DB, B, X = "All over the place" combo
+D, DF, F, Y           = ki shot
+start                 = SUPER RENZOKU ENERGY DAN (oh yeah)
+B + C                 = Zanzoken
+Y + Z                 = Zanzoken punch
+D, DF, F, Z           = Zanzoken combo
+D, DB, B, D, DB, B, Z = Boost mode
+
+Rage: 
+Their is a rage bar as it fills you gain more defence and attack. When
+it is full you will lose control and perform one of several 
+"Rage Snaps".
+
+Rage Snaps:
+Renzoku Energy Dan: You may remember this from the previous version.
+Trust me you won't escape... his wrath.
+Must have: 100+ health and 2000+ power
+
+Super Meteo Combo: Vegeta will attempt to attack you. This can be 
+blocked and he loses his energy gain if this move is performed.
+Must have: 100+ health and less than 2000 power, but greater than 1000
+
+PermaBoost: Vegeta is set into Boost Mode and there is no drain on his
+energy. He cannot switch out as well. He can still perform other rage 
+snaps.
+Must have: 100+ health and less than 1000 power
+
+Energy Rain: Vegeta is about to unleash some hell. He rains energy 
+bombs that explode on ground impact. There is no excape (well there is 
+but...). You'll probably die if your caught in this.
+Must have: less than 100 health
+
+End of Rage Snaps
+
+The new Super Renzoku Energy Dan:
+After pressing start Vegeta will get into a charge possition. 
+Press...
+A: to fire
+B: to cancel getting back all energys charged into the move
+C: to zanzoken costs 250 power
+X: to charge Health into the move
+Y: to charge Energy into the move
+Z: to charge Rage into the move
+Any direction: to fly around during the charge. You cannot move while
+chargeing all 3 Rage, Health, and Energy; you can move while charging
+only 2 though. If your hit you lose the energys chaged in.
+
+Super chaining:
+The super chains don't use the same buttons as they do up there, and I
+won't tell you what they are either. I'll give you a hint they are 
+some button + another button. It can only be done during the zanzoken 
+combo.
+
+Beam Finishers:
+They can be done after every special move, except renzoku, ki shot, 
+zanzoken, boost mode and most of the "Rage Snaps". Just hold a button 
+(or set of buttons) during the move to use them. (They aren't just 
+a, b, c, x, y, or z.... MWAHAHAHAHAHA)
+
+3. Who helped me? (the Thanks section)
+Thanks to
+
+Cyanide: for answering questons I had on moves when I got stuck
+Necromancer and Majita: for helping me with the Renzoku code
+Blackshinobi: for helping me with the AI Anti fly (hey that rhymes)
+Rellik: for the sprite sheet
+Red Spider: for the great sounds
+And last but probably the most important Goten88: for teaching how to
+program (even though I watched him make one move and basiclly knew what
+to do from there).
+
+(after Version 1)
+Necromancer and Sunboy: for the suggestions
+Necromancer and Majita: for help improving the renzoku code (thx 
+again guys)
+Necromancer, Majita, Thrawn, and The Spectator: The founders of the 
+Rage code.
+(is it me or is Necro THE man?)
+
+4. The update section
+Version 1.1
+
+-Rage code
+-Added super chaining
+-Added new effects to intro
+-All required sprites in
+-removed attack sound from every move
+-fixed tired anim after renzoku (I think)
+-changed regular attack chaining
+-added beam finishers
+-improved renzoku code
+-super meteo combo added
+
+5. Known bugs...
+
+The rage bar doesn't change vertical position.. (probably because it's
+a helper). Also it may move kinda "slow" sideways.
+
+Otherwise I don't know of any I think. Bug reports welcome...
+sockboybc@hotmail.com  reviews welcome too.
+
+Also there is a stolen character by bardockssj (I think) called
+Majin Vegeta... that's mine with a few things by other creators.
+Of course that is the previous 1.0 version.

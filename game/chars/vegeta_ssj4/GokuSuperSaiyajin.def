@@ -1,0 +1,32 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************     http://virtualltek.mgbr.net     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Goku Super Saiyajin"
+displayname ="Goku  ssj1"
+versiondate =20/06/2009
+mugenversion = 
+author ="Victor(dragonsmugen)"
+pal.defaults =1,2
+
+[Files]
+sprite =grafico\GokuSuperSaiyajin.sff
+anim =programacao\Pui.air
+sound =som\Pui.snd
+cmd =programacao\Pui.cmd
+cns =codes\Pui.cns
+stcommon =codes\common.cns
+st =codes\basico.st
+pal1=Acts\GokuSuperSaiyajin.act
+pal2=Acts\sh-gokulssj4.act
+pal3=Acts\sh-gokulssj4.act
+st1=codes\especiais.st
+st2=codes\supers.cns
+st3=codes\hipers.cns
+st4=codes\helpers.cns
+
+[Arcade]
+intro.storyboard =intro\intro.def
+ending.storyboard = 

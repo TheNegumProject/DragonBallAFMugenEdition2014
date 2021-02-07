@@ -1,0 +1,29 @@
+;Broli normal by deus sayajin
+;versão 85%
+
+[Info]
+name    = "Broli forma 1"
+displayname = "Broly"
+
+[Files]
+
+cmd=broli1.cmd     
+cns=broli1.cns     
+st=broli1.cns
+st2=broli1-2.cns 
+sound=broli1.snd    
+stcommon=common1.cns   
+sprite=broli1.sff      
+anim=broli1.air                   
+pal=broli1.act
+pal2=broli2.act 
+pal3=broli3.act
+pal4=broli4.act
+pal5=broli5.act
+pal6=broli6.act
+pal7=broli7.act
+pal8=broli8.act
+pal9=broli9.act
+pal10=broli10.act
+pal11=broli11.act
+pal12=broli12.act       

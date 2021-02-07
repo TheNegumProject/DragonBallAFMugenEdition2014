@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Tapion =El Valiente Legendario= By Team OS"
+displayname ="Tapion"
+versiondate =04,14,2002
+mugenversion =04,14,2002
+author ="nahue77 (Team OS)"
+pal.defaults =1,2
+
+[Files]
+sprite =Tapion.sff
+anim =Tapion.air
+sound =tapion.snd
+cmd =Tapion.cmd
+cns =Tapion.cns
+stcommon =common1.cns
+st =Tapion.cns
+pal1=Tapion.act
+pal2=tapion5.act
+
+st1=Tapion_IA.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard =..\data\final.def

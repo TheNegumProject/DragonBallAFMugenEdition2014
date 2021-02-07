@@ -1,0 +1,132 @@
+Vegeta SSj4 1.0 By Midnight Fighters Team
+----------------------------------------------------------------
+Code:Intoxicados
+Sprites:Bosterodelalma10,Gabe555,Tapion,Intoxicados 
+Sheet Base:Veg y editsTeam os
+Sprites Customs: Intoxicados
+Sounds: Rips of MajinVegetto and Finalblast
+Fxs: Classic OpenSource, Sawady, Cervantes, POTS.
+_______________________________________
+	Comentarios y Derechos del char|
+---------------------------------------
+El char es en su totalidad Open Source, cada píxel o letra de código puede ser 
+usada libremente sin necesidad de pedir permiso a nadie, siempre y cuando la creación resultante
+de esta sea Open Source (Obviamente una mención al Midnight Fighters Team).
+__________________________________
+________________________________________________________________
+		LISTA DE MOVIMIENTOS				|
+----------------------------------------------------------------
+Level 3
+Ultimate-Big-Bang(ki -3000)
+ D,DF,F,D,DB,B,x+y
+
+Final-Shine(ki -3000)
+D,DB,B,D,DF,F,a+b
+=============================================================================================================================
+Level 2
+Super-Explosive-Wave(ki -2000)
+(puede realizarse en el aire)
+D,DB,B,D,DB,B,a/b
+=============================================================================================================================
+Level 1
+Final-Flash(ki -1000)
+(Mantenga pulsado "C" pare retener el atake hasta un determinado tiempo)
+D,DB,B,F,c
+
+Meteor-Explosion(ki -1000)
+(Este atake se ejecuta en el aire)
+D,DF,F,B,c
+-----------------------------------------------------------------------------------------------------------------------------
+Especiales 
+
+Fire Balls(ki -150)
+(seguir pulsando "C" para lanzar 2  fireballs adicionales) (Se pueden hacer en el aire)
+c
+
+Nova-Explod(ki -250)
+(Este atake se ejecuta en el aire)
+D,DF,F,c
+
+Saiyan-Blast (ki -500)
+(Provoca daño progresivo en el oponente)
+D,DB,B,c
+
+Ki-Geyser-1(ki -250)
+D,DB,B,a/b/a+b
+
+Kienzan(ki -250)
+D,DB,B,x/y/x+y
+
+Dash-Jishin-Ha
+F,D,F,x/y/x+y
+
+Smash-Elbow
+(Seguir secuencia con D,DB,B,x_D,DB,B,x/D,DB,B,a_D,DB,B,b)
+D,DB,B,x/y/x+y
+
+Smash-Knee
+F,D,F,a/b/a+b
+
+Dash-Kick
+D,DF,F,a/b/a+b
+
+;============================================================================================================================
+Misceláneos
+
+Rage Mode(ki -2500)
+c+z(marcarlo de nuevo para regresar al estado normal)
+
+Zanzoken
+z
+
+Dodge 
+a+x
+
+Carga de ki
+b+y(mantener presionado)
+
+Counter(ki -1000)
+z(Cubriendose)
+
+Parry
+F (antes de ser impactado por algún golpe)
+
+Launcher
+x+y 
+
+Burla
+S
+
+;============================================================================================================================
+EXplicaciones
+-Zanzoken: puedes teletransportarte a una corta distancia,puede utilizarse para escapar o para crear emboscadas al enemigo como asi tambien combinar golpes
+-Dodge: se utiliza para esquivar golpes , proyectiles o lo q fuese y presionando "a" o "b" puedes contraatacar con un golpe q tumba al oponente  
+-Carga de ki: sirve para aumentar la barra de poder
+-Counter: sirve para contraatacar con un golpe fuerte mientras te cubres de algun atake
+-Parry: puedes detener el atake del oponente y al hacerlo ganas 200 de ki
+-Launcher : es un golpe q eleva al oponente util para realizar combos aereos
+-Todos los golpes basicos pueden encadenarse con casi cualkier tecnica ya sea de melee o de ki
+-Hitclash: se activa cuando el oponente y tu se golpean al mismo tiempo,en este modo debes apretar rapidamente las teclas para ganar y tumbar al oponente
+-PowerClash: se activa cuando el Final Flash Impacta contra algun rayo del oponente,al igual q el hitclash debes apretar las teclas para ganar
+
+;============================================================================================================================
+RAGE MODE
+-Mayor Velocidad y agilidad
+-Posibilidad de Combinar cualkier golpe o tecnica
+-Teletransportacion hacia detras del oponente
+-Descuento progresivo del Ki,al llegar a 0 se desactiva el modo
+
+________________________________________________________________
+			AGRADECIMIENTOS DE MUGEN		|
+----------------------------------------------------------------
+1)A Bosterodelalma10 por haber tomado la iniciativa con la mejora de sprites y a gabe555,Tapion por haber cooperado muchisimo y hacer q el char kedara sarpado por lo menos en calidad grafica
+2)A todo el Midnight Fighters Team (Viejarda del Agua,Emiliano01) por Testeos,consejos e implementaciones por parte de Emiliano01
+3)A Benazhard por el sprite base
+4)A Fran y Lochetin por coperacion en algun sprite y por tirarme la goma jajaja
+5)POTS, Sawady y Cervantes por FX'S
+6)Al Team OS porq gracias a ellos aprendi bastante en codes y un poco en sprites y si no fuera por ellos todavia andaria programando pockets jaja
+7)MV y Finalblast por los rips
+8)Y a vos por bajar el char
+-------------------------------------------------------------------------------------------------------
+Cualquier duda, sugerencia,reporte de bugs, pueden encontrarme
+en http://mugengenerations.foroactivo.info/forum.htm 

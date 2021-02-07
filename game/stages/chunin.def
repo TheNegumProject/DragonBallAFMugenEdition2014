@@ -1,0 +1,113 @@
+;Chunin Exam Finals by Blunted
+
+[Info]
+name = "Chunin Exam Finals"
+
+[BGdef]
+spr = chunin.sff
+debugbg = 0
+
+[Music]
+bgmusic = sound/Strong And Strike.mp3
+bgvolume = 100
+loop = 1
+
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -150
+boundright = 350
+boundhigh = -525
+boundlow = 0
+verticalfollow = 1
+floortension = 30
+tension = 60
+
+[PlayerInfo]
+p1startx = -70          
+p1starty = 0            
+p1startz = 0            
+p1facing = 1        
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000 
+rightbound = 1000 
+topbound  =  0     
+botbound  =  0     
+
+[Scaling] 
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+[Bound]
+screenleft = 15    
+screenright = 15  
+
+[StageInfo]
+zoffset = 200
+autoturn = 1
+resetBG = 1
+
+[shadow]
+Intensity = 128
+color = 0,0,0
+yscale = .05
+fade.range = -400,-100
+
+[Reflection]
+intensity = 0
+
+;----------------------------------------[PCX IMAGE]
+[BG konoha]
+type  = normal
+spriteno = 2,1 
+mask = 1
+delta = 1, 1
+;---------------------------------------
+[BG wall]
+type  = normal
+spriteno = 0, 0
+mask = 1
+delta = 1,1
+;---------------------------------------
+[BG fground]
+type  = normal
+spriteno = 1,1
+mask = 1 
+;---------------------------------------
+[BG Genma]
+type  = anim   
+actionno = 1
+mask = 1
+delta = 1, 1
+;---------------------------------------[/PCX IMAGE]
+
+
+[Begin action 1]
+3,1, 0,0, 13
+3,2, 0,0, 13
+3,3, 0,0, 13
+3,4, 0,0, 13
+3,1, 0,0, 13
+3,2, 0,0, 13
+3,3, 0,0, 13
+3,1, 0,0, 13
+3,2, 0,0, 13
+3,3, 0,0, 13
+3,1, 0,0, 13
+3,2, 0,0, 13
+3,3, 0,0, 13
+3,4, 0,0, 13
+3,5, 0,0, 13
+3,6, 0,0, 13
+3,7, 0,0, 13
+3,8, 0,0, 13
+3,9, 0,0, 13
+3,10, 0,0, 13

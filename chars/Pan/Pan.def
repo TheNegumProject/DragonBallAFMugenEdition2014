@@ -1,0 +1,28 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Panchan"
+displayname ="Pan"
+versiondate =10/09/2011
+mugenversion =04,14,2002
+author ="The_Heartbreaker"
+pal.defaults =1,2
+
+[Files]
+sprite =Pan.sff
+anim =Pan.air
+sound =Pan.snd
+cmd =Pan.cmd
+cns =Pan.cns
+stcommon =common1.cns
+st =Pan.cns
+pal1=1.act
+pal2=1.act
+st1=Helpers
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard=..\data\final.def

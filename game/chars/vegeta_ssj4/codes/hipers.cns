@@ -1,0 +1,1361 @@
+;=====================================================================
+; Super Kamehameha
+;=====================================================================
+[Statedef 2210]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2210
+poweradd = -500
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = animelem = 2
+time = 320
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Tras"
+stateno = 1428
+postype = p1
+pos = -10, 0
+keyctrl = 0
+ownpal = 1
+id = 1428
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "meio"
+stateno = 1427
+postype = p1
+pos = 0, 0
+keyctrl = 0
+ownpal = 1
+id = 1427
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Frente"
+stateno = 1426
+postype = p1
+pos = 10, 0
+keyctrl = 0
+ownpal = 1
+id = 1426
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim = 6071
+ID = 6071
+pos = -30,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 9999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 315
+supermove
+pausemove
+scale = 0.5,0.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = animelem = 4
+ID =  6071
+scale = 0.6,0.6
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = animelem = 6
+ID =  6071
+scale = 0.7,0.7
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = animelem = 8
+ID =  6071
+scale = 0.8,0.8
+
+[State 0, Explod]
+type = Explod
+triggerall = pos y = 0
+trigger1 = animelem = 1
+anim = 6015
+ID = 6015
+pos = -13,2
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 250
+supermove
+pausemove
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value =6,9
+volume = 99999999
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 4
+trigger3 = AnimElem = 6
+trigger4 = AnimElem = 8
+value =5,15
+volume = 99999999
+channel = -1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0]
+type = Explod
+trigger1 = time = 250
+anim = 8000
+ID =  8000
+pos = -15,-80
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 70
+supermove =1
+pausemove  =1
+scale = 0.5,0.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0]
+type = Explod
+trigger1 = time = 250
+anim = 8004
+ID =  8000
+pos = -60,-110
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 70
+supermove =1
+pausemove  =1
+scale = 0.4,0.4
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0]
+type = Explod
+trigger1 = time = 250
+anim = 8005
+ID =  8000
+pos = -60,-90
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 70
+supermove =1
+pausemove  =1
+scale = 0.4,0.4
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0]
+type = Explod
+trigger1 = time = 250
+anim = 8006
+ID =  8006
+pos = -60,-70
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 70
+supermove =1
+pausemove  =1
+scale = 0.4,0.4
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 0, Turn]
+type = turn
+trigger1 = p2dist X < 0 && time = 318
+
+[State 1800, end]
+type = ChangeState
+trigger1 = command = "hold_x" && time = 320
+value = 2212
+ctrl = 0
+
+[State 1800, end]
+type = ChangeState
+trigger1 = command = "hold_y" && time = 320
+value = 2213
+ctrl = 0
+
+[State 1800, end]
+type = ChangeState
+trigger1 =command = "hold_z" && time = 320
+value = 2214
+ctrl = 0
+
+[State 1800, end]
+type = ChangeState
+trigger1 = time = 320 && command != "hold_x" && command != "hold_y" && command != "hold_z"
+value = 2211
+ctrl = 0
+
+;===========================
+;==super kamehamhea release
+;===========================
+[Statedef 2211]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2211
+poweradd = -500
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Tras"
+stateno = 1428
+postype = p1
+pos = -10, 0
+keyctrl = 0
+ownpal = 1
+id = 1428
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "meio"
+stateno = 1427
+postype = p1
+pos = 0, 0
+keyctrl = 0
+ownpal = 1
+id = 1427
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Frente"
+stateno = 1426
+postype = p1
+pos = 10, 0
+keyctrl = 0
+ownpal = 1
+id = 1426
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = animelem = 1
+time = 145
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 0]
+type = Explod
+trigger1 = animelem = 1
+anim = 6071
+ID =  6071
+pos = 65,-55
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 140
+supermove =1
+pausemove  =1
+scale = 1.5,1.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+triggerall = pos y = 0
+trigger1 = animelem = 1
+anim = 6015
+ID = 6015
+pos = -13,2
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 200
+supermove
+pausemove
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 1
+anim = 8015
+ID = 8015
+pos = -280,-235
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 180
+supermove
+pausemove
+scale = 3.5,2.5
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 2
+helpertype = normal
+name = "kamehameha"
+ID =  6225
+stateno = 6225
+pos = 268,-53
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.9
+size.yscale = 2.2
+supermove =1
+pausemove =1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 1 && numhelper(8100) = 0
+helpertype = normal
+name = "Cinema"
+ID = 8100
+stateno = 8100
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 1
+persistent = 0
+
+[State 0, Turn]
+type = turn
+trigger1 = p2dist X < 0 && time =1
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 1800, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;=============================================================
+;==super kamehamhea release , com teleporte para a frete do p2
+;=============================================================
+[Statedef 2212]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2211
+poweradd = -500
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Tras"
+stateno = 1428
+postype = p1
+pos = -10, 0
+keyctrl = 0
+ownpal = 1
+id = 1428
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "meio"
+stateno = 1427
+postype = p1
+pos = 0, 0
+keyctrl = 0
+ownpal = 1
+id = 1427
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Frente"
+stateno = 1426
+postype = p1
+pos = 10, 0
+keyctrl = 0
+ownpal = 1
+id = 1426
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = animelem = 1
+time = 145
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 0]
+type = Explod
+trigger1 = animelem = 1
+anim = 6071
+ID =  6071
+pos = 65,-55
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 140
+supermove =1
+pausemove  =1
+scale = 1.5,1.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+triggerall = pos y = 0
+trigger1 = animelem = 1
+anim = 6015
+ID = 6015
+pos = -13,2
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 200
+supermove
+pausemove
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 1
+anim = 8015
+ID = 8015
+pos = -280,-235
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 180
+supermove
+pausemove
+scale = 3.5,2.5
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 2
+helpertype = normal
+name = "kamehameha"
+ID =  62251
+stateno = 62251
+pos = 268,-53
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.9
+size.yscale = 2.2
+supermove =1
+pausemove =1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 1 && numhelper(8100) = 0
+helpertype = normal
+name = "Cinema"
+ID = 8100
+stateno = 8100
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 1
+persistent = 0
+
+[State 0, Turn]
+type = turn
+trigger1 = p2dist X < 0 && time = 324
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = p2bodydist x - 40
+y = 0
+
+[State 1800, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;=============================================================
+;==super kamehamhea release , com teleporte para a atras do p2
+;=============================================================
+[Statedef 2213]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2211
+poweradd = -500
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Tras"
+stateno = 1428
+postype = p1
+pos = -10, 0
+keyctrl = 0
+ownpal = 1
+id = 1428
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "meio"
+stateno = 1427
+postype = p1
+pos = 0, 0
+keyctrl = 0
+ownpal = 1
+id = 1427
+
+[State 2000]
+type = Helper
+trigger1 = Time = 0
+trigger2 = Time = 30
+trigger3 = Time = 60
+trigger4 = time = 80
+trigger5 = Time = 120
+trigger6 = Time = 150
+trigger7 = Time = 180
+name = "Frente"
+stateno = 1426
+postype = p1
+pos = 10, 0
+keyctrl = 0
+ownpal = 1
+id = 1426
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = animelem = 1
+time = 145
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 0]
+type = Explod
+trigger1 = time = 2
+anim = 6071
+ID =  6071
+pos = 65,-55
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 140
+supermove =1
+pausemove  =1
+scale = 1.5,1.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+triggerall = pos y = 0
+trigger1 = animelem = 1
+anim = 6015
+ID = 6015
+pos = -13,2
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 200
+supermove
+pausemove
+scale = 1,1
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 1
+anim = 8015
+ID = 8015
+pos = -280,-235
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 180
+supermove
+pausemove
+scale = 3.5,2.5
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 2
+helpertype = normal
+name = "kamehameha"
+ID =  62251
+stateno = 62251
+pos = 268,-53
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.9
+size.yscale = 2.2
+supermove =1
+pausemove =1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 1 && numhelper(8100) = 0
+helpertype = normal
+name = "Cinema"
+ID = 8100
+stateno = 8100
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 1
+persistent = 0
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = p2bodydist x - 40
+y = 0
+
+[State 0, Turn]
+type = turn
+trigger1 = p2dist X < 0 && time =1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = p2bodydist x - -40
+y = 0
+
+[State 1800, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;=============================================================
+;==super kamehamhea release , com teleporte para acima do p2
+;=============================================================
+[Statedef 2214]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2214
+poweradd = -500
+
+[State 0]
+type = Explod
+trigger1 = animelem = 1
+anim = 6071
+ID =  6071
+pos = 40,30
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 140
+supermove =1
+pausemove  =1
+scale = 1.5,1.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, HitDef]
+type = HitDef
+trigger1 = Time > 0
+attr = SCA, NP
+animtype = high
+damage  = 1,1
+guardflag = MA
+sparkno = -1
+sparkxy = -1, -1
+guard.sparkno = -1
+pausetime = 0,1
+ground.type = High
+ground.slidetime = 5
+ground.hittime = 5
+ground.velocity = 1
+air.velocity = -5
+air.animtype = Back
+air.juggle = 5
+air.fall = 1
+fall = 1
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = animelem = 1
+time = 145
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 2
+helpertype = normal
+name = "kamehameha"
+ID =  62252
+stateno = 62252
+pos = 45,240
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.9
+size.yscale = 2.2
+supermove =1
+pausemove =1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 1 && numhelper(8016) = 0
+helpertype = normal
+name = "Cinema"
+ID = 8100
+stateno = 8100
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 1
+persistent = 0
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = p2bodydist x - 0
+y = p2bodydist y - 200
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 19
+x = p2bodydist x - 100
+y = p2bodydist y - 0
+
+[State 10000:	Sound]
+type = PlaySnd
+trigger1 = animelem = 19
+value = s1,1
+
+[State 1800, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;=====================================================================
+; Angry Kamehameha
+;=====================================================================
+[Statedef 2100]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2100
+poweradd = -500
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim = 6071
+ID = 6071
+pos = -10,-40
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 70
+supermove
+pausemove
+scale = 0.7,0.7
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, sound]
+type = PlaySnd
+trigger1 = animelem = 2
+value = s5,15
+
+[State 0, sound]
+type = PlaySnd
+trigger1 = animelem = 4
+value = s6,7
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 4
+anim = 8015
+ID = 8015
+pos = -280,-235
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 99999999999999999999999999
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 100
+supermove
+pausemove
+scale = 3.5,3
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 =  animelem = 4
+helpertype = normal
+name = "kamehameha"
+ID =  6225
+stateno = 6225
+pos = 275,-52
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+size.xscale = 1
+size.yscale = 1.5
+supermove =1
+pausemove =1
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 4 && numhelper(8016) = 0
+helpertype = normal
+name = "Cinema"
+ID = 8100
+stateno = 8100
+pos = 0,0
+postype = front
+facing = 1
+keyctrl = 0
+ownpal = 1
+persistent = 0
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 1800, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;=====================================================================
+;Fúria de destructor disc
+;=====================================================================
+[StateDef 2350]
+type = S
+movetype= A
+physics = S
+juggle = 1
+velset = 0,0
+ctrl = 0
+anim = 2350
+poweradd = -500
+
+[State 0, Turn]
+type = turn
+trigger1 = p2dist X < 0 && time = 170
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = time = 0
+value = 7,23
+volume = 99999999999999
+
+[State 0]
+type  = Pause
+trigger1 = time > 285 && time < 325
+time = 3
+
+[State 3656, 1]
+type = superpause
+trigger1 = time = 0
+time =110
+movetime = 110
+anim = -1
+darken = 0
+
+[State 3656, 1]
+type = superpause
+trigger1 = animelem = 18
+time =30
+movetime = 30
+anim = -1
+darken = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 14
+anim = 6215
+pos = -27,-75
+postype = p1
+removetime = 10
+sprpriority = 20
+supermove=1
+pausemove =0
+ownpal = 1
+scale = 0.7,0.8
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 18
+anim = 6215
+pos = -27,-75
+postype = p1
+removetime = 30
+sprpriority = 20
+supermove=1
+pausemove =0
+ownpal = 1
+scale = 0.9,0.9
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 6215
+pos = -11,-97
+postype = p1
+supermove=1
+pausemove =0
+removetime = 40
+sprpriority = 20
+ownpal = 1
+scale = 0.8,0.8
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 8030
+pos = 15,-75
+supermove=1
+pausemove =0
+postype = p1
+removetime =200
+sprpriority = 20
+ownpal = 1
+ontop=1
+scale =1,0.8
+
+[State 0, PalFXWiz]
+type = bgPalFX
+trigger1 = time = 120
+time = 260
+add = 40,40,-100
+mul = 256,256,256
+sinadd = 40,30,0,100
+invertall = 0
+color = 256
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time = [120,300]
+flag = nobardisplay
+
+[State 0, Expslod]
+type = Explod
+trigger1 = AnimElem = 12
+trigger2 = AnimElem = 16
+anim = 6215
+pos = -15,-70
+postype = p1
+removetime = 10
+sprpriority = 20
+ownpal = 1
+supermove=1
+pausemove =0
+scale = 0.7,0.8
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 12
+trigger3 = AnimElem = 14
+trigger4 = AnimElem = 16
+trigger5 = AnimElem = 18
+volume = 100
+value = 5, 20
+volume = 10
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 13
+trigger3 = AnimElem = 15
+trigger4 = AnimElem = 17
+trigger5 = AnimElem = 19
+volume = 100
+value = 5, 21
+volume = 10
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 13
+trigger3 = AnimElem = 15
+trigger4 = AnimElem = 17
+helpertype = normal ;player
+name =  "destructor disc"
+ID =  6215
+stateno =  6215
+pos = 75,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =0.9
+size.yscale =0.9
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 19
+helpertype = normal ;player
+name =  "destructor disc"
+ID =  6216
+stateno =  6216
+pos = 75,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =1
+size.yscale =1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

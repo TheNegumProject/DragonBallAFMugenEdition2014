@@ -1,0 +1,116 @@
+;Fireball
+[Statedef 9906]
+type = A
+movetype = A
+physics = N
+velset = 0,0
+sprpriority = 2
+juggle = 6
+ctrl = 0
+anim = 9906
+
+[State 0, ]
+type = VelAdd
+trigger1 = time >= 0
+x = 3
+
+[State 9906:	HitDef]
+type			= HitDef
+trigger1		= 1
+attr			= S, NP
+hitflag		= MAFDP
+guardflag		= MA
+animtype		= Hard
+priority		= 7, Hit
+damage		= 30,5
+pausetime		= 1,4
+guard.pausetime	= 1,4
+sparkno		= S9600
+guard.sparkno	= S9600
+sparkxy		= 0,0
+hitsound		= S0,5
+guardsound		= S0,9
+ground.type		= High
+air.type		= high
+ground.slidetime	= 25
+ground.hittime	= 25
+air.hittime		= 25
+ground.velocity	= -3
+guard.velocity	= -3
+air.velocity	= -8,-3.5
+airguard.velocity	= -8,-3.5
+ground.cornerpush.veloff = 0
+down.velocity	= -1,-2
+getpower		= 0
+givepower		= 0
+p1power = 0
+Palfx.time = 5
+Palfx.add = 40,-70,-200
+Palfx.sinadd = 40,30,0,10
+Palfx.color = 0
+Palfx.invertall = 1
+ownpal = 1
+envshake.time 	= 12
+envshake.freq 	= 120
+envshake.ampl 	= -4
+persistent		= 0
+
+
+[State 9906, 1]
+type = AfterImage
+trigger1 = time = 0
+time = -1
+length = 50
+palcontrast = 219+(var(25)=3)*50,217+(var(25)=3)*50,51-(var(25)=3)*100
+paladd = -25+(var(25)=3)*15,-25+(var(25)=3)*15,-10-(var(25)=3)*15
+palmul = .65+(var(25)=3)*.1,.65+(var(25)=3)*.1,.75-(var(25)=3)*.1
+timegap = 2
+framegap = 1
+trans = add
+
+[State 9906]
+type = VarRandom
+trigger1 = time = 0
+v = 3
+range = 4
+
+[State 9906]
+type = Veladd
+trigger1 = time >= 0
+trigger1 = var(3) = 1
+y = -0.12
+
+[State 9906]
+type = Veladd
+trigger1 = time >= 0
+trigger1 = var(3) = 3
+y = -.08
+
+[State 9906]
+type = Veladd
+trigger1 = time >= 0
+trigger1 = var(3) = 4
+y = .08
+
+[State 9906]
+type = Veladd
+trigger1 = time >= 0
+trigger1 = var(3) = 2
+y = 0.12
+
+[State 9906, noshadow]
+type=AssertSpecial
+trigger1=1
+flag=NoShadow
+ignorehitpause=1
+
+[State 9906: NotHitBy]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA
+ignorehitpause = 1
+
+[State 9906, DestroySelf]
+type = DestroySelf
+trigger1 = movecontact = 1

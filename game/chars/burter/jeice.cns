@@ -1,0 +1,170 @@
+[Statedef 7170]
+type = S
+movetype = A
+physics = N
+anim = 7170
+velset = 0
+ctrl = 0
+SprPriority =3
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+
+[State 100, dust]
+type = Explod
+trigger1 = AnimElem = 1
+anim = 4010
+postype = p1
+pos = -10,0
+bindtime = 1
+sprpriority = 2
+ownpal = 1
+
+
+[State 361, snd]
+type = PlaySnd
+trigger1 = time= 0
+value = 700,0
+
+[State 100, 0]
+type = PlaySnd
+trigger1 = animelem=3
+value = 100,0
+channel = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem =3
+x = -10
+y = 0
+;ignorehitpause =
+;persistent =
+
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+
+;---------------------------------------------------------------------------
+[Statedef 7998]
+type    = S
+physics = S
+anim = 7998
+SprPriority =4
+
+[State 7000, 4] ;Are you dead?
+type = ChangeState
+trigger1 = NumHelper(7000) < 2
+value = 7000
+;;;-------------------------------------------------
+; turn
+[Statedef 7005]
+type    = S
+physics = S
+anim = 7005
+SprPriority =4
+
+[State 0, Turn]
+type = Turn
+trigger1 = time =0
+;ignorehitpause =
+;persistent =
+
+[State 12, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+;----------------------------------
+; turn while crouching
+[Statedef 7006]
+type    = S
+physics = S
+anim = 7006
+SprPriority =4
+
+[State 0, Turn]
+type = Turn
+trigger1 = animelem = 1
+;ignorehitpause =
+;persistent =
+
+[State 12, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+;-----------------------------------------------------
+;;;the binder
+[Statedef 7997]
+type = S
+movetype = A
+physics = N
+anim = 7997
+velset = 0
+ctrl = 0
+SprPriority =4
+
+[State 361, snd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 700,0
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = AnimTime = 0
+time = 1
+pos = 15,0
+
+
+ [State 2000, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+
+;----------------------------------------------------------
+[Statedef 7999]
+type = S
+movetype = A
+physics = N
+anim = 2002
+velset = 0
+ctrl = 0
+SprPriority =4
+
+
+[State 361, snd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 700,0
+
+[State 0, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 7000
+
+
+[Statedef 7996]
+type = S
+movetype = A
+physics = N
+velset = 0
+ctrl = 0
+SprPriority =3
+
+[State 361, snd]
+type = PlaySnd
+trigger1 = time= 0
+value = 700,0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 0
+
+
+

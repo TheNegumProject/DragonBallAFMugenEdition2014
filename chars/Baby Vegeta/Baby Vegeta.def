@@ -1,0 +1,29 @@
+;...........................................................................................
+[Info]
+name ="baby vegeta ssj 2 by franciynaldo"
+displayname ="Baby Vegeta"
+versiondate =2,09,2008
+mugenversion =14,04,2002
+author ="FRS GAMES"
+pal.defaults =1,2
+[Files]
+cmd =babyssj2.cmd
+cns =babyssj2.cns
+st  =babyssj2.cns
+stcommon =common1.cns
+sprite =babyssj2.sff
+anim  =babyssj2.air
+sound =babyssj2.snd
+pal1=1.act
+pal2=6.act
+
+[Arcade]
+intro.storyboard =
+ending.storyboard=final/final.def
+
+;...........................................................................................
+
+                                ; Feito no Brasil           
+;                              Autor: equipe FRS GAMES
+
+;[[[[[[[[[[[[[[[[[[[[[[E-mail& msn: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

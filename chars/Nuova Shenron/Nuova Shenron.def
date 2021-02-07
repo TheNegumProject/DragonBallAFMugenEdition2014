@@ -1,0 +1,26 @@
+;===========================================================================
+;by RistaR87
+;===========================================================================
+
+[Info]
+name="Firebrand"
+displayname="Nuova Shenron"
+versiondate=01.18.2008
+mugenversion=04.14.2001
+author="RistaR87"
+pal.defaults=1,2
+
+[Files]
+cmd=Firebrand.cmd
+cns=Firebrand.cns
+stcommon=common1.cns
+st=Firebrand.cns
+sprite=Firebrand.sff
+anim=Firebrand.air
+sound=Firebrand.snd
+pal1=4StarDragon.act
+pal2=ice.act
+
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def

@@ -1,0 +1,29 @@
+[Info]
+name="super perfect cell "
+displayname="super cell 2"
+versiondate=
+mugenversion=
+author="((muge mundo))"
+pal.defaults=
+[Files]
+sprite=cell-super-perfect.sff
+sound=cell-super-perfect.snd
+anim=cell-super-perfect.air
+cmd=cell-super-perfect.cmd
+cns=cell-super-perfect.cns
+st=cell-super-perfect.cns
+stcommon=common1.cns
+pal1=a
+pal2=s
+pal3=sd
+pal4=df
+pal5=sdds
+pal6=sdsasqw
+pal7=qwc
+pal8=sdsdd
+pal9=21
+pal10=22
+pal11=23
+[Arcade]
+intro.storyboard=intro/cell.def
+ending.storyboard=

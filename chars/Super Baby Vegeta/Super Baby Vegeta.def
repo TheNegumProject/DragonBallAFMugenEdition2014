@@ -1,0 +1,25 @@
+[Info]
+name="babyvegeta by zero liger  -Version 0.2"
+displayname="Super Baby Vegeta"
+versiondate=21 de junio de 2008
+mugenversion=06,14,2003
+author="zero liger"
+pal.defaults=1,2
+[Files]
+sprite=babyvegeta.sff
+sound=baby.snd
+anim=babyvegeta.air
+cmd=babyvegeta.cmd
+cns=babyvegeta.cns
+st=babyvegeta.cns
+stcommon=common1.cns
+pal1=babyvegeta.act
+pal2=baby.act
+st1=fly.cns
+st2=powers.cns
+st3=combos.cns
+st4=IA.cns
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

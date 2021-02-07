@@ -1,0 +1,28 @@
+
+
+[Info]
+name ="Gohan do futuro ssj2"
+displayname ="Gohan" 
+author ="FRS GAMES >franciynaldo"     
+
+[Files]
+cmd      =UltraVegeta.cmd     
+cns      =UltraVegeta.cns     
+st       =UltraVegeta.cns     
+stcommon =common1.cns   
+sprite   =UltraVegeta.sff      
+anim     =UltraVegeta.air      
+sound    =UltraVegeta.snd
+pal1=UltraVegeta.act
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard= final/final.def
+;...........................................................................................
+
+
+;                              Autor: FRS GAMES >Franciynaldo
+;[[[[[[[[[[[[[[[[[[[[[[[[[[[[E-mail: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+

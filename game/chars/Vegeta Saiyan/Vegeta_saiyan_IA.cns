@@ -1,0 +1,1166 @@
+; Inteligencia Artificial - Inicio
+
+[Statedef 9999]
+anim = 9999
+ctrl = 0
+
+[State 9999, 0]
+type = Turn
+trigger1 = facing != parent, facing
+
+[State 9999, 1]
+type = Varset
+trigger1 = 1
+var(9) = parent, var(9)
+
+[State 9999, 2]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = parent, command = "x"
+trigger2 = parent, command = "y"
+trigger3 = parent, command = "z"
+trigger4 = parent, command = "a"
+trigger5 = parent, command = "holdfwd"
+trigger6 = parent, command = "holdback"
+trigger7 = parent, command = "holdup"
+trigger8 = parent, command = "holddown"
+var(9) = 1
+
+[State 9999, 3]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = (command = "x" && parent, command = "x")
+trigger2 = (command = "y" && parent, command = "y")
+trigger3 = (command = "z" && parent, command = "z")
+trigger4 = (command = "a" && parent, command = "a")
+trigger5 = (command = "holdfwd" && parent, command = "holdfwd")
+trigger6 = (command = "holdback" && parent, command = "holdback")
+trigger7 = (command = "holdup" && parent, command = "holdup")
+trigger8 = (command = "holddown" && parent, command = "holddown")
+var(9) = -1
+
+[State 9999, 4]
+type = varset
+trigger1 = var(9) != parent, var(9)
+V = 47
+value = 0
+
+[State 9999, 5]
+type = VarAdd
+trigger1 = var(9) = parent, var(9)
+V = 47
+value = 1
+
+[State 9999, 6]
+type = Destroyself
+trigger1 = parent, var(9) = -1
+trigger1 = var(47) >= 23
+trigger2 = parent, var(9) = 2
+trigger2 = var(47) >= 23
+trigger3 = RoundState = 3
+
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 7
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 195
+channel = 5
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 12
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 11
+
+
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Numhelper(1750) = 0
+id = 3305
+
+
+[State -2,VarSet]
+type = VarSet
+trigger1 = life = 0
+v = 2
+value = 1
+
+
+;===============================================================================
+;===============================================================================
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+
+[Statedef -3]
+
+;This controller plays a sound everytime KFM lands from a jump, or
+;from his back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = 40, 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = prevstateno = 191 && !Time
+channel = -1
+
+;===================================================================================
+;---------------- Inteligencia Artificial  -----------------------------------------
+;===================================================================================
+; [State -3, AI_Check] ; El ayudante siempre presente
+; type = Helper ; Ayudante
+; trigger1 = NumHelper(9999) = 0 ; No se repitira si esta presente ya
+; trigger1 = var(9) = 0 ; Variable que actúa como interruptor
+; trigger1 = RoundState = 2 ; Solo activado en combate
+; name = "AI activada" ; Nombre de la AI
+; id = 9999 ; Su identificador
+; pos = 1000, 1000 ; posición en su nivel muy alta
+; stateno = 9999 ; Te manda al stateno 9999
+; helpertype = normal ; Helper tipo normal
+; keyctrl = 0
+; 
+; Con esto le digo cuando está activada
+; en este caso, cuando la variable 9 es 1
+;[State -3, AI prueba]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI Prueba" ; Nombre del cmd
+;var(9) = 1 ; Pone la variable a 9 a 1
+
+;Con esto veo si la IA esta activada en el Debug mode
+[State -3,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=1 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial funca" ; Nombre del texto
+
+
+; Con esto le digo cuando está desactivada
+; en este caso, cuando la variable 9 es 0
+;[State -3, AI desactivarlo]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI desactivado" ; Nombre del cmd
+;var(9) = 0
+
+;Con esto veo si la IA esta desactivada en el Debug mode
+[State -3,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=0 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial desactivada" ; Nombre del texto
+
+;---------------------------------------------------------
+; con esto la pc activa la IA
+
+
+
+; IA de Defensa
+[State -3, IA de Defensa]
+type = ChangeState
+value = 132
+triggerall = p2movetype = A || (enemy, NumProj >= 1) ;
+triggerall = P2bodydist X <= 40 || (enemy, NumProj >= 1)
+triggerall = statetype = A ; Activo unicamente si estas en el Aire
+triggerall = random <= 600 ; Aquí le ponemos un poco de aleteoriedad
+triggerall = var(9) = 1 ; La variable que activa la AI
+triggerall = ctrl
+triggerall = stateno != 132
+trigger1 = p2statetype = A
+trigger2 = (enemy, NumProj >= 1)
+
+[State -3, IA de Defensa]
+type = ChangeState
+value = 130
+triggerall = p2movetype = A || (enemy, NumProj >= 1)
+triggerall = P2bodydist X <= 40 || (enemy, NumProj >= 1)
+triggerall = random <= 400
+triggerall = statetype != A
+triggerall = var(9) = 1
+triggerall = ctrl
+triggerall = stateno != 120
+trigger1 = p2statetype = S
+trigger2 = (enemy, NumProj >= 1)
+
+;----------------------------------
+;combos normales
+;[State -3, IA puño devil 1 ]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = p2life > 0
+value = 200
+triggerall = P2bodydist X <= 20
+triggerall = random = [600,700]
+triggerall = statetype != A
+triggerall = var(9) = 1
+triggerall = ctrl
+trigger1 = p2statetype = S
+
+;start using basics
+[State -3, puño devil doble]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1 ;&& roundstate = 2
+triggerall = p2life > 0
+trigger1 = ctrl && statetype = S && p2dist X< 80 && random = [0,100]
+value = ifelse(random < 50,200,201)
+
+[State -3, patada devil\puño fuerte]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = p2life > 0
+triggerall = var(9) = 1  && statetype = S ;&& roundstate = 2
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 240 && movecontact && random = [800,900]
+trigger5 = stateno = 320 && movecontact && random = [800,900]
+trigger6 = stateno = 330 && movecontact && random = [800,900]
+value = ifelse(random > 850, 230,210)
+
+[State -3, patadas]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1 && statetype = S ;&& roundstate = 2
+triggerall = p2life > 0
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 320 && movecontact && random = [800,900]
+value = ifelse(random > 850, 230,240)
+
+[State -3, puño abajo\giro patada]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1  && statetype = S
+triggerall = p2life > 0
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 240 && movecontact && random = [800,900]
+value = ifelse(random < 850, 410,330)
+
+[State -3, Puño Fuerte\coletaso]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1  && statetype = S
+triggerall = p2life > 0
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 240 && movecontact && random = [800,900]
+value = ifelse(random < 850, 210,320)
+
+
+[State -3, combos Agachado - basicos]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1  && statetype != A
+triggerall = p2life > 0
+trigger1 = ctrl && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 400 && movecontact && random = [800,900]
+trigger3 = stateno = 430 && movecontact && random = [800,900]
+value = ifelse(random < 850, 410,440)
+
+[State -3, combos saltando - basicos]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1  && statetype = A
+triggerall = p2life > 0
+trigger1 = ctrl && p2dist X< 60 && random = [800,900]
+trigger2 = stateno = 600 && movecontact && random = [800,900]
+trigger3 = stateno = 630 && movecontact && random = [800,900]
+trigger4 = stateno = 1600 && movecontact && random = [10,50]
+value = ifelse(random < 850, 610,640)
+
+
+
+;----------------------------------------
+;Specials
+[State -3, Codazo Combo]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = pos y >= -10
+trigger1 = ctrl && statetype = S
+trigger1 = P2bodydist X <= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [0,400]
+trigger3 = stateno = 201 && movecontact && random = [0,400]
+trigger4 = stateno = 230 && movecontact && random = [0,400]
+trigger5 = stateno = 210 && movecontact && random = [0,400]
+trigger6 = stateno = 320 && movecontact && random = [0,400]
+trigger7 = stateno = 410 && movecontact && random = [0,400]
+trigger8 = stateno = 430 && movecontact && random = [0,400]
+value = 1200
+
+[State -3, Codazo Combo Zanzoken]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = p2life > 0
+trigger1 = ctrl && statetype = S
+trigger1 = P2bodydist X <= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+value = 1300
+
+;codaso combo 2º hit / codaso traba
+[State -3, codaso combo 2º hit / codaso traba]
+type = changestate
+triggerall = var(9) = 1
+triggerall = pos y >= -50
+triggerall = p2life > 0
+trigger1 = stateno = 1210 && movecontact && random = [800,900]
+trigger2 = stateno = 1211 && movecontact && random = [800,900]
+value = ifelse(random < 50, 1220,1222)
+
+;codaso traba / codaso patada
+[State -3, codaso traba / codaso patada]
+type = changestate
+triggerall = var(9) = 1
+trigger1 = stateno = 1220 && movecontact && random = [800,900]
+value = 1221
+
+;codaso patada / codaso combo 2º hit
+[State -3, codaso patada / codaso combo 2º hit]
+type = changestate
+triggerall = var(9) = 1
+triggerall = p2life > 0
+trigger1 = stateno = 1221 && movecontact && random = [800,900]
+value = ifelse(random < 50, 1230,1222)
+
+;codaso combo remate/ codaso patada
+[State -3, codaso combo remate/ codaso patada]
+type = changestate
+triggerall = var(9) = 1
+trigger1 = stateno = 1221 && movecontact && random = [800,900]
+trigger2 = stateno = 1222 && movecontact && random = [800,900]
+value = ifelse(random < 50, 1230,1280)
+
+;---------------------------------------------------
+
+
+[State -3, Ataque Rodillazo Volador Rodillazo Devil]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 4500  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = pos y >= -10
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X >= 100 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+value = 4500
+
+[State -3, Ataque Rodillazo Volador Fuerte]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = pos y >= -10
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X >= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+value = 4530
+
+[State -3, rodillazo arriba]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X >= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+trigger9 = stateno = 1600 && movecontact && random = [10,50]
+value = 1500
+
+[State -3, rodillazo arriba]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X >= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+value = 1600
+
+
+[State -3, shoryuken]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X <= 100 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+trigger9 = stateno = 1600 && movecontact && random = [10,50]
+value = 1550
+
+[State -3, shoryuken Fuerte]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+trigger1 = P2bodydist X <= 150 && random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [800,900]
+trigger3 = stateno = 201 && movecontact && random = [800,900]
+trigger4 = stateno = 230 && movecontact && random = [800,900]
+trigger5 = stateno = 210 && movecontact && random = [800,900]
+trigger6 = stateno = 320 && movecontact && random = [800,900]
+trigger7 = stateno = 410 && movecontact && random = [800,900]
+trigger8 = stateno = 430 && movecontact && random = [800,900]
+value = 1560
+
+
+[State -3, Raigeki Shuu Devil]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1500 ;shoryuken:
+triggerall = stateno != 1550 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = ctrl
+triggerall = p2life > 0
+trigger1 = random = [800,900]
+trigger2 = stateno = 600 && movecontact && random = [0,400]
+trigger3 = stateno = 630 && movecontact && random = [0,400]
+trigger4 = stateno = 610 && movecontact && random = [0,400]
+trigger5 = stateno = 640 && movecontact && random = [0,400]
+trigger6 = stateno = 1500 && movecontact && random = [10,50]
+trigger7 = stateno = 1100 && random = [0,400]
+value = 1850
+
+[State -3, Raigeki Shuu fuerte]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = ctrl
+triggerall = p2life > 0
+trigger1 = random = [800,900]
+trigger2 = stateno = 600 && movecontact && random = [0,400]
+trigger3 = stateno = 630 && movecontact && random = [0,400]
+trigger4 = stateno = 610 && movecontact && random = [0,400]
+trigger5 = stateno = 640 && movecontact && random = [0,400]
+trigger6 = stateno = 1500 && movecontact && random = [10,50]
+trigger7 = stateno = 1100 && random = [0,400]
+value = 1860
+
+;------------------------------------------------------------------
+;Speciales de Ki
+[State -3, Yubisaka-Kara Energy devil/Electrico/Kienzan]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+triggerall = power > 500
+trigger1 = P2bodydist X >= 200 && random = [800,900]
+value = ifelse(random > 880, 1400, ifelse(random < 850,1700,220))
+
+[State -3, Bola de fuego/Ki bomb/Ki gaiser]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+triggerall = power > 500
+trigger1 = random = [800,900]
+value = ifelse(P2bodydist X >= 200, 4600, ifelse(P2bodydist X <= 100,2400,2000))
+
+
+;----------------------------------------------
+;Supers
+
+
+[State -3, Ohzauru]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+triggerall = power >= 3000
+trigger1 = random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [0,400]
+trigger3 = stateno = 201 && movecontact && random = [0,400]
+trigger4 = stateno = 230 && movecontact && random = [0,400]
+trigger5 = stateno = 210 && movecontact && random = [0,400]
+trigger6 = stateno = 320 && movecontact && random = [0,400]
+trigger7 = stateno = 410 && movecontact && random = [0,400]
+trigger8 = stateno = 430 && movecontact && random = [0,400]
+value = 6000
+
+
+
+[State -3, Destructor de mundos]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = A
+triggerall = power >= 2000
+trigger1 = random = [990,900]
+trigger2 = stateno = 600 && movecontact && random = [0,400]
+trigger3 = stateno = 630 && movecontact && random = [0,400]
+trigger4 = stateno = 610 && movecontact && random = [0,400]
+trigger5 = stateno = 640 && movecontact && random = [0,400]
+trigger6 = stateno = 1870 && movecontact && random = [10,50]
+trigger7 = stateno = 1100 && random = [800,900]
+value = 4700
+
+[State -3, Flash Dead To Nappa]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+triggerall = power >= 2000
+trigger1 = random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [0,400]
+trigger3 = stateno = 201 && movecontact && random = [0,400]
+trigger4 = stateno = 230 && movecontact && random = [0,400]
+trigger5 = stateno = 210 && movecontact && random = [0,400]
+trigger6 = stateno = 320 && movecontact && random = [0,400]
+trigger7 = stateno = 410 && movecontact && random = [0,400]
+trigger8 = stateno = 430 && movecontact && random = [0,400]
+value = 3200
+
+
+[State -3, Gyaric Ho]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = A
+triggerall = power >= 1000
+trigger1 = random = [990,900]
+trigger2 = stateno = 600 && movecontact && random = [0,400]
+trigger3 = stateno = 630 && movecontact && random = [0,400]
+trigger4 = stateno = 610 && movecontact && random = [0,400]
+trigger5 = stateno = 640 && movecontact && random = [0,400]
+trigger6 = stateno = 1870 && movecontact && random = [10,50]
+trigger7 = stateno = 1100 && random = [800,900]
+value = 3100
+
+[State -3, Death kiwi]
+type = ChangeState
+triggerall = stateno != 6000 || stateno != 6020 || stateno != 6030|| stateno != 6035 || stateno != 6040 || stateno != 5300 ;Ohzauru
+triggerall = stateno != 4700 || stateno != 4710 ;Destructor de mundos
+triggerall = stateno != 3200 || stateno != 3201 ;Flash Dead To Nappa
+triggerall = stateno != 3100 ;Gyaric Ho
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302  ;Death kiwi
+triggerall = stateno != 3100 ;Explosion Atomica de Ki
+triggerall = stateno != 1400 ;Yubisaka-Kara Energy devil
+triggerall = stateno != 1700 ;Yubisaka-Kara Energy Electrico
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002|| stateno != 2003 ;Ki gaiser
+triggerall = stateno != 2200 || stateno != 2201 ;Kienzan
+triggerall = stateno != 4600|| stateno != 4601 ;Bola de fuego
+triggerall = stateno != 2400 ;Ki bomb
+triggerall = stateno != 1200 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo:
+triggerall = stateno != 1300 || stateno != 950 || stateno != 1210 || stateno != 1220|| stateno != 1221 || stateno != 1222 || stateno != 1230 || stateno != 1260 || stateno != 1270 ;Codazo Combo Zanzoken:
+triggerall = stateno != 1550 ;shoryuken:
+triggerall = stateno != 1560 ;shoryuken Fuerte:
+triggerall = stateno != 1550  ;Ataque Rodillazo Volador Rodillazo Devil:
+triggerall = stateno != 4530 || stateno != 4540 || stateno != 4550 ;Ataque Rodillazo Volador Fuerte:
+triggerall = stateno != 1500  ;Patada con vuelta
+triggerall = stateno != 1600  ;Patada Con giro desde arriba
+triggerall = stateno != 1850  ;Raigeki Shuu Devil
+triggerall = stateno != 1860|| stateno != 1870  ;Raigeki Shuu fuerte
+triggerall = var(9) = 1
+triggerall = p2life > 0
+triggerall = ctrl && statetype = S
+triggerall = power >= 1000
+trigger1 = random = [800,900]
+trigger2 = stateno = 200 && movecontact && random = [0,400]
+trigger3 = stateno = 201 && movecontact && random = [0,400]
+trigger4 = stateno = 230 && movecontact && random = [0,400]
+trigger5 = stateno = 210 && movecontact && random = [0,400]
+trigger6 = stateno = 320 && movecontact && random = [0,400]
+trigger7 = stateno = 410 && movecontact && random = [0,400]
+trigger8 = stateno = 430 && movecontact && random = [0,400]
+value = 3300
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(9) = 1 && p2statetype = L
+v = 9
+value = 2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(9) = 2 && p2statetype != L
+v = 9
+value = 1
+
+[State -3, terminación]
+type = Varset
+trigger1 =  p2life = 0
+v =  9
+value = 0
+
+;-------------------------------- Inteligencia Artificial --------------------------------------------
+;Run Forward
+;[State -3:		ChangeState]
+;type = ChangeState
+;triggerall = (Var(9) = 1) && (StateType != A) && (StateNo != [100,101]) && (P2MoveType != A) && (EnemyNear, NumProj = 0) && (StateNo != [3000,3400])
+;triggerall = random = [300,400]
+;trigger1 = (P2BodyDist X > 75) && (EnemyNear, Pos Y = 0) && (EnemyNear, Anim = 5300) && (P2MoveType != A)
+;trigger2 = ((P2Dist X > 150) || ((P2Dist X > 75) && (P2StateNo = 105)))
+;value = 100

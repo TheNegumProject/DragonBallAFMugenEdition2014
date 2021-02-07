@@ -1,0 +1,33 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Xicor"
+displayname ="Xicor"
+versiondate =9/19/2008
+mugenversion = 
+author ="TOPS, edit mephistopheles"
+pal.defaults =1,2
+
+[Files]
+sprite =xicor.sff
+anim =xicor.air
+sound =xicor.snd
+cmd =xicor.cmd
+cns =xicor.cns
+stcommon =common2.cns
+st =xicor.cns
+pal1=xicor.act
+pal2=xicor.act
+st1=basics.cns
+st2=flycom.cns
+st3=kamehamehas.cns
+st4=helpers.cns
+st5=beatdowns.cns
+st6=damage.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard= 

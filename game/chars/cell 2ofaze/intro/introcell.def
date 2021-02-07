@@ -1,0 +1,47 @@
+[Info]
+name ="introcell"
+author ="zero liger"
+displayname="introcell"
+versiondate=14/05/2008
+mugenversion=04,14,2001
+pal.defaults=1,2,3,4,5
+
+;---------------------------------------------------------------------
+[SceneDef]
+spr = introcell.sff
+;------------------------------------
+[Scene 0]
+; Fade
+fadein.time = 60
+fadeout.time = 0
+; Screen color
+clearcolor = 0,0,0
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0 ;Default position for all layers
+layer0.anim =  0       ;Anim action number
+; Total time
+end.time = 5000
+
+
+;--------------------------------------------------------
+bgm = twisted.mp3
+bgm.loop= 1
+bgvolume = 500
+
+;------------------------------------
+;Animation for logo
+[Begin Action 0]
+0,0, 0,0, -1
+
+
+[Files]
+sprite=
+sound=
+anim=
+cmd=
+cns=
+st=
+stcommon=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

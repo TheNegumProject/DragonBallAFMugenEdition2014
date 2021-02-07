@@ -1,0 +1,528 @@
+[Statedef 2656]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 210
+
+[State 200, VelSetY]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+
+[State 260, 2]
+type = afterimage
+trigger1 = AnimElem = 1
+time = 10
+TimeGap  = 1
+FrameGap = 4
+
+
+[State 260, 13]
+type = EnvShake
+trigger1 = AnimElem = 4
+time = 25
+ampl = -5
+freq = 90
+phase = 90
+
+[State 260, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0, 2
+
+
+[State 260, 2]
+type = veladd
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 2
+x = 1
+
+[State 260, 3]
+type = veladd
+trigger1 = AnimElem = 3
+x = 30
+
+
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, HP
+animtype  = Hard
+damage    = 50
+guardflag = MA
+pausetime = 18,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, -15
+air.type = Low
+air.velocity = .1, -15
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 26561
+ctrl = 1
+
+;----------------------------------------------------------------
+[Statedef 26561]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 260, 2]
+type = afterimage
+trigger1 = AnimElem = 1
+time = 10
+TimeGap  = 1
+FrameGap = 4
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = AnimElem = 1
+x = p2bodydist x
+y = p2bodydist y
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = animtime = 0
+value = 26562
+ctrl = 1
+;-----------------------------------------
+
+[Statedef 26562]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = 200
+y = -240
+;ignorehitpause = 0
+;persistent = 1
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 40
+value = 26563
+ctrl = 1
+
+;-----------------------------
+
+[Statedef 26563]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = -30
+y = -240
+;ignorehitpause = 0
+;persistent = 1
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 40
+value = 26564
+ctrl = 1
+;--------------------------------------
+
+[Statedef 26564]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = 100
+y = -240
+;ignorehitpause = 0
+;persistent = 1
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 50
+value = 26565
+ctrl = 1
+
+
+;---------------------------------------
+
+[Statedef 26565]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = -30
+y = -240
+;ignorehitpause = 0
+;persistent = 1
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 40
+value = 26566
+ctrl = 1
+
+;-----------------------------------
+
+[Statedef 26566]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 3200
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = 100
+y = -240
+;ignorehitpause = 0
+;persistent = 1
+
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, HP
+animtype  = Hard
+damage    = 10
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+snap = 70,0
+
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 40
+value = 26567
+ctrl = 1
+
+;-----------------------------------
+[Statedef 26567]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+poweradd= 60
+ctrl = 0
+velset = 0
+anim = 295
+
+[State 0, Turn]
+type = Turn
+trigger1 = AnimElem = 1
+;ignorehitpause = 0
+;persistent = 1
+
+
+
+[State 0, PosAdd]
+type = Posset
+trigger1 = time = 3
+x = -30
+y = -240
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, HP
+animtype  = Hard
+damage    = 30
+guardflag = MA
+pausetime = 0,18
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 0
+guard.velocity = -0.1
+airguard.velocity = 0
+;fall = 1
+;p2stateno =
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, HP
+animtype  = Hard
+damage    = 35
+guardflag = MA
+pausetime = 0,0
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1, 0
+air.type = Low
+air.velocity = .1, 8
+guard.velocity = -0.1
+airguard.velocity = 0
+
+[State 260, 18]
+type = HitDef
+trigger1 = AnimElem = 5
+attr = S, HP
+animtype  = Hard
+damage    = 50
+guardflag = MA
+pausetime = 0,0
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .2, 200
+air.type = Low
+air.velocity = .1, 200
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 1
+
+[State 260, 3]
+type = ChangeState
+trigger1 = time = 30
+value = 0
+ctrl = 1
+

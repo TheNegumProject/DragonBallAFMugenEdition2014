@@ -1,0 +1,1102 @@
+; Inteligencia Artificial - Inicio
+
+[Statedef 9999]
+anim = 9999
+ctrl = 0
+
+[State 9999, 0]
+type = Turn
+trigger1 = facing != parent, facing
+
+[State 9999, 1]
+type = Varset
+trigger1 = 1
+var(9) = parent, var(9)
+
+[State 9999, 2]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = parent, command = "x"
+trigger2 = parent, command = "y"
+trigger3 = parent, command = "z"
+trigger4 = parent, command = "a"
+trigger5 = parent, command = "holdfwd"
+trigger6 = parent, command = "holdback"
+trigger7 = parent, command = "holdup"
+trigger8 = parent, command = "holddown"
+var(9) = 1
+
+[State 9999, 3]
+type = ParentVarSet
+triggerall = parent, RoundState = 2
+trigger1 = (command = "x" && parent, command = "x")
+trigger2 = (command = "y" && parent, command = "y")
+trigger3 = (command = "z" && parent, command = "z")
+trigger4 = (command = "a" && parent, command = "a")
+trigger5 = (command = "holdfwd" && parent, command = "holdfwd")
+trigger6 = (command = "holdback" && parent, command = "holdback")
+trigger7 = (command = "holdup" && parent, command = "holdup")
+trigger8 = (command = "holddown" && parent, command = "holddown")
+var(9) = -1
+
+[State 9999, 4]
+type = varset
+trigger1 = var(9) != parent, var(9)
+V = 47
+value = 0
+
+[State 9999, 5]
+type = VarAdd
+trigger1 = var(9) = parent, var(9)
+V = 47
+value = 1
+
+[State 9999, 6]
+type = Destroyself
+trigger1 = parent, var(9) = -1
+trigger1 = var(47) >= 23
+trigger2 = parent, var(9) = 2
+trigger2 = var(47) >= 23
+trigger3 = RoundState = 3
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 7
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 12
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 11
+
+
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Numhelper(3050) = 0
+id = 3049
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Numhelper(3050) = 0
+id = 3046
+
+
+
+[State -2,VarSet]
+type = VarSet
+trigger1 = life = 0
+v = 2
+value = 1
+
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+;This controller plays a sound everytime KFM lands from a jump, or
+;from his back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = 40, 0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Numhelper(3050) = 0
+id = 3049
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Numhelper(3050) = 0
+id = 3046
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 191
+channel = 9
+
+
+
+;===================================================================================
+;---------------- Inteligencia Artificial  -----------------------------------------
+;===================================================================================
+[State -2, AI_Check] ; El ayudante siempre presente
+type = Helper ; Ayudante
+trigger1 = NumHelper(9999) = 0 ; No se repitira si esta presente ya
+trigger1 = var(9) = 0 ; Variable que actúa como interruptor
+trigger1 = RoundState = 2 ; Solo activado en combate
+name = "AI activada" ; Nombre de la AI
+id = 9999 ; Su identificador
+pos = 1000, 1000 ; posición en su nivel muy alta
+stateno = 9999 ; Te manda al stateno 9999
+helpertype = normal ; Helper tipo normal
+keyctrl = 1
+
+; Con esto le digo cuando está activada
+; en este caso, cuando la variable 9 es 1
+;[State -2, AI prueba]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI Prueba" ; Nombre del cmd
+;var(9) = 1 ; Pone la variable a 9 a 1
+
+;Con esto veo si la IA esta activada en el Debug mode
+[State -2,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=1 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial funca" ; Nombre del texto
+
+
+; Con esto le digo cuando está desactivada
+; en este caso, cuando la variable 9 es 0
+;[State -2, AI desactivarlo]
+;type = VarSet ; Tipo variable
+;trigger1 = command ="AI desactivado" ; Nombre del cmd
+;var(9) = 0
+
+;Con esto veo si la IA esta desactivada en el Debug mode
+[State -2,3]
+type = DisplayToClipboard ; Pone el nombre en el debug
+trigger1 = var(9)=0 ; Condición para que ponga el texto
+text = "La Inteligencia Artificial desactivada" ; Nombre del texto
+
+;---------------------------------------------------------
+
+
+; IA de Defensa
+[State -2, IA de Defensa]
+type = ChangeState
+value = 132
+triggerall = p2movetype = A || (enemy, NumProj >= 1) ;
+triggerall = P2bodydist X <= 40 || (enemy, NumProj >= 1)
+triggerall = statetype = A ; Activo unicamente si estas en el Aire
+triggerall = random <= 600 ; Aquí le ponemos un poco de aleteoriedad
+triggerall = var(9) = 1 ; La variable que activa la AI
+triggerall = ctrl
+triggerall = stateno != 132
+trigger1 = p2statetype = A
+trigger2 = (enemy, NumProj >= 1)
+
+[State -2, IA de Defensa]
+type = ChangeState
+value = 130
+triggerall = p2movetype = A || (enemy, NumProj >= 1)
+triggerall = P2bodydist X <= 40 || (enemy, NumProj >= 1)
+triggerall = random <= 400
+triggerall = statetype != A
+triggerall = var(9) = 1
+triggerall = ctrl
+triggerall = stateno != 120
+trigger1 = p2statetype = S
+trigger2 = (enemy, NumProj >= 1)
+
+;----------------------------------
+;combos normales
+[State -2, IA puño devil 1]
+type = ChangeState
+triggerall = stateno != 3000 ; esto es para que no corte los supers
+triggerall = stateno != 3100
+triggerall = stateno != 3200
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302 || stateno != 3303
+triggerall = stateno != 3400 || stateno != 3410 || stateno != 3420 || stateno != 3425 || stateno != 3440 || stateno != 3441 || stateno != 3450
+triggerall = stateno != 3500 || stateno != 3501 || stateno != 3502
+triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1100 || stateno != 1110 || stateno != 1130 || stateno != 1140 || stateno != 1150 || stateno != 1160
+triggerall = stateno != 1200 || stateno != 1250
+triggerall = stateno != 1300 || stateno != 1310 || stateno != 1350 || stateno != 1359 || stateno != 1360 || stateno != 1367 || stateno != 1368 || stateno != 1369 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1405 || stateno != 1410 || stateno != 1420
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520 || stateno != 1550 || stateno != 1570
+triggerall = stateno != 1600 || stateno != 1620
+triggerall = P2bodydist X <= 20
+triggerall = random = [600,700]
+triggerall = statetype != A
+triggerall = var(9) = 1
+triggerall = ctrl
+trigger1 = p2statetype = S
+value = 200
+
+[State -2, IA puño devil 2]
+type = ChangeState
+triggerall = stateno != 3000 ; esto es para que no corte los supers
+triggerall = stateno != 3100
+triggerall = stateno != 3200
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3302 || stateno != 3303
+triggerall = stateno != 3400 || stateno != 3410 || stateno != 3420 || stateno != 3425 || stateno != 3440 || stateno != 3441 || stateno != 3450
+triggerall = stateno != 3500 || stateno != 3501 || stateno != 3502
+triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000 || stateno != 2001 || stateno != 2002
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1100 || stateno != 1110 || stateno != 1130 || stateno != 1140 || stateno != 1150 || stateno != 1160
+triggerall = stateno != 1200 || stateno != 1250
+triggerall = stateno != 1300 || stateno != 1310 || stateno != 1350 || stateno != 1359 || stateno != 1360 || stateno != 1367 || stateno != 1368 || stateno != 1369 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1405 || stateno != 1410 || stateno != 1420
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520 || stateno != 1550 || stateno != 1570
+triggerall = stateno != 1600 || stateno != 1620
+triggerall = P2bodydist X <= 20
+triggerall = random = [600,700]
+triggerall = statetype != A
+triggerall = var(9) = 1
+triggerall = ctrl
+trigger1   = stateno = 200 && movecontact && random = [50,100]
+trigger1   = p2statetype = S
+value = 201
+
+
+[State -2, patada devil\puño fuerte]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype = S ;&& roundstate = 2
+trigger1 = ctrl && statetype = S && p2bodydist X< 60 && random = [100,300]
+trigger2 = stateno = 200 && movecontact && random = [100,200]
+trigger3 = stateno = 201 && movecontact && random = [100,200]
+value = ifelse(random > 150, 230,210)
+
+[State -2, puño fuerte/Patada fuerte]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype = S ;&& roundstate = 2
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [100,300]
+trigger2 = stateno = 200 && movecontact && random = [100,200]
+trigger3 = stateno = 201 && movecontact && random = [100,200]
+trigger4 = stateno = 230 && movecontact && random = [100,200]
+value = ifelse(random > 150, 210,240)
+
+[State -2, Patada fuerte]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype = S ;&& roundstate = 2
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [100,300]
+trigger2 = stateno = 200 && movecontact && random = [100,200]
+trigger3 = stateno = 201 && movecontact && random = [100,200]
+trigger4 = stateno = 230 && movecontact && random = [100,200]
+trigger5 = stateno = 210 && movecontact && random = [100,200]
+value = 240
+
+[State -2, puño abajo\patada abajo]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype = S
+trigger1 = ctrl && statetype = S && p2dist X< 60 && random = [100,200]
+trigger2 = stateno = 210 && movecontact && random = [100,300]
+trigger3 = stateno = 230 && movecontact && random = [100,300]
+trigger4 = stateno = 200 && movecontact && random = [100,300]
+trigger5 = stateno = 201 && movecontact && random = [100,300]
+value = ifelse(random < 150, 410,440)
+
+
+[State -2, combos Agachado - basicos]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype != A
+trigger1 = ctrl && p2dist X< 60 && random = [100,300]
+trigger2 = stateno = 400 && movecontact && random = [100,300]
+trigger3 = stateno = 430 && movecontact && random = [100,300]
+value =  ifelse(random < 150, 440,410)
+
+[State -2, combos saltando - basicos]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1  && statetype = A
+trigger1 = ctrl && p2dist X< 60 && random = [100,200]
+trigger2 = stateno = 600 && movecontact && random = [100,300]
+trigger3 = stateno = 630 && movecontact && random = [100,300]
+value = ifelse(random < 150, 610,640)
+
+
+;----------------------------------------
+;----------------------------------------
+;combo espada fuerte inicio
+[State -2, Buu combo inicio]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist X <= 100 && random = [500,600]
+trigger2 = stateno = 210 && movecontact && random = [10,15]
+trigger3 = stateno = 230 && movecontact && random = [10,15]
+trigger4 = stateno = 200 && movecontact && random = [10,15]
+trigger5 = stateno = 201 && movecontact && random = [10,15]
+trigger6 = stateno = 240 && movecontact && random = [10,15]
+trigger7 = stateno = 241 && movecontact && random = [10,15]
+trigger8 = stateno = 410 && movecontact && random = [10,15]
+trigger9 = stateno = 440 && movecontact && random = [10,15]
+value = 1500
+
+;combo espada devil inicio
+[State -2, Buu combo inicio]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist X <= 100 && random = [500,600]
+trigger2 = stateno = 210 && movecontact && random = [10,15]
+trigger3 = stateno = 230 && movecontact && random = [10,15]
+trigger4 = stateno = 200 && movecontact && random = [10,15]
+trigger5 = stateno = 201 && movecontact && random = [10,15]
+trigger6 = stateno = 240 && movecontact && random = [10,15]
+trigger7 = stateno = 241 && movecontact && random = [10,15]
+trigger8 = stateno = 410 && movecontact && random = [10,15]
+trigger9 = stateno = 440 && movecontact && random = [10,15]
+value = 1400
+
+;combo espada fuerte 2do hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1500 && (time > 15)  ;&& random = [0,20]
+value = 1510
+
+;combo espada fuerte 3er hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1510 && (time > 8) ;&& random = [0,20]
+value = 1520
+
+;combo espada devil 2do hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1400 && movecontact ;&& random = [0,1]
+value = 1401
+
+;combo espada devil 2do hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1401 && movecontact ;&& random = [0,1]
+value = 1402
+
+;combo espada devil 2do hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1402 && movecontact ;&& random = [0,1]
+value = 1403
+
+
+;combo patada
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist X >= 50 && random = [500,600]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = ifelse(P2dist y <= -30, 1370, 1300)
+
+;combo patada 2do hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1300 && movecontact ;&& random = [0,1]
+value = 1350
+
+;combo patada 3er hit
+[State -2, Buu combo 2do hit - Uppercut/gancho bajo]
+type = ChangeState
+triggerall = var(9) = 1
+trigger1 = stateno = 1350 && movecontact ;&& random = [0,1]
+value = 1360
+
+
+
+;espadazo moriya
+[State -2, Whip agarre]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = stateno < 5000
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist Y <= -100 && random = [500,800]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 1600
+
+;espadazo giratorio
+[State -2, espadazo giratorio]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = stateno < 5000
+triggerall = var(9) = 1
+triggerall = ctrl && statetype = A
+trigger1 = random = [500,600]
+trigger2 = stateno = 400 && movecontact && random = [20,35]
+trigger3 = stateno = 410 && movecontact && random = [20,35]
+trigger4 = stateno = 430 && movecontact && random = [20,35]
+trigger5 = stateno = 440 && movecontact && random = [20,35]
+trigger6 = stateno = 500 && movecontact && random = [20,35]
+trigger7 = stateno = 510 && movecontact && random = [20,35]
+trigger8 = stateno = 530 && movecontact && random = [20,35]
+trigger9 = stateno = 540 && movecontact && random = [20,35]
+trigger10 = stateno = 1300 && movecontact && random = [20,35]
+trigger11 = stateno = 1350 && movecontact && random = [20,35]
+trigger12 = stateno = 1360 && movecontact && random = [20,35]
+trigger13 = stateno = 1370 && movecontact && random = [20,35]
+trigger14 = stateno = 1100
+value = 2100
+
+
+;-------------------------------------------------------------------------------
+;special ki
+;---------------------------------------------------------------------------------
+;espadazo al piso fuerte
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = power >= 300
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist X >= 50 && random = [500,600]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 1800
+
+;espadazo al piso devil
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = power >= 150
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 =  P2bodydist X <= 100 && random = [500,600]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 1900
+
+;canto sirena
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 =  P2bodydist X <= 200 && random = [900, 999]
+value = 2000
+
+;shield
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = pos y >= -10
+triggerall = ctrl && statetype != A
+trigger1 =  (enemy, NumProj >= 1) && random = [900, 999]
+trigger2 =  (enemy, Numhelper >= 1) && random = [900, 999]
+value = 2000
+
+;repukken
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = power >= 50
+triggerall = ctrl && statetype != A
+trigger1 = P2bodydist X >= 50 && random = [400, 450]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 1700
+
+;-------------------------------------------------------------------------------
+;super
+;-------------------------------------------------------------------------------
+;cañon valiente
+[State -2, cañon valiente]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = stateno < 5000
+triggerall = var(9) = 1
+triggerall = ctrl && statetype = A
+triggerall = power >= 1000
+trigger1 = pos Y <= -50 && random = [0,100]
+trigger2 = stateno = 400 && movecontact && random = [20,35]
+trigger3 = stateno = 410 && movecontact && random = [20,35]
+trigger4 = stateno = 430 && movecontact && random = [20,35]
+trigger5 = stateno = 440 && movecontact && random = [20,35]
+trigger6 = stateno = 500 && movecontact && random = [20,35]
+trigger7 = stateno = 510 && movecontact && random = [20,35]
+trigger8 = stateno = 530 && movecontact && random = [20,35]
+trigger9 = stateno = 540 && movecontact && random = [20,35]
+trigger10 = stateno = 1300 && movecontact && random = [20,35]
+trigger11 = stateno = 1350 && movecontact && random = [20,35]
+trigger12 = stateno = 1360 && movecontact && random = [20,35]
+trigger13 = stateno = 1100
+value = 3000
+
+;Ataque de Espada Valiente
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = ctrl && statetype != A
+triggerall = power >= 3000
+trigger1 = random = [0,100]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 3400
+
+;repukken valiente aire
+[State -2, cañon valiente]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = stateno < 5000
+triggerall = var(9) = 1
+triggerall = ctrl && statetype = A
+triggerall = power >= 2000
+trigger1 = random = [0,100]
+trigger2 = stateno = 400 && movecontact && random = [20,35]
+trigger3 = stateno = 410 && movecontact && random = [20,35]
+trigger4 = stateno = 430 && movecontact && random = [20,35]
+trigger5 = stateno = 440 && movecontact && random = [20,35]
+trigger6 = stateno = 500 && movecontact && random = [20,35]
+trigger7 = stateno = 510 && movecontact && random = [20,35]
+trigger8 = stateno = 530 && movecontact && random = [20,35]
+trigger9 = stateno = 540 && movecontact && random = [20,35]
+trigger10 = stateno = 1300 && movecontact && random = [20,35]
+trigger11 = stateno = 1350 && movecontact && random = [20,35]
+trigger12 = stateno = 1360 && movecontact && random = [20,35]
+trigger13 = stateno = 1100
+value = 3100
+
+;espada valiente
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = ctrl && statetype != A
+triggerall = power >= 2000
+trigger1 = random = [0,100]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 3200
+
+;regin storm
+[State -2]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = ctrl && statetype != A
+triggerall = power >= 1000
+trigger1 = random = [0,100]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 3300
+
+;regin storm aire
+[State -2, Bola]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = ctrl && statetype = A
+triggerall = power >= 1000
+trigger1 = random = [0,100]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 3301
+
+;ocarina valiente
+[State -2]
+type = ChangeState
+triggerall = stateno != 3000 || stateno != 3001 || stateno != 3002 || stateno != 3003 || stateno != 3005 || stateno != 3050   ; esto es para que no corte los supers
+triggerall = stateno != 3100 || stateno != 3105 || stateno != 3110 || stateno != 3160 || stateno != 3170
+triggerall = stateno != 3300 || stateno != 3301 || stateno != 3305
+triggerall = stateno != 3400
+triggerall = stateno != 3500 || stateno != 3501
+;triggerall = stateno != 2100 || stateno != 2200 || stateno != 2300
+triggerall = stateno != 2000
+triggerall = stateno != 1000 || stateno != 1001 || stateno != 1002
+triggerall = stateno != 1300 || stateno != 1350 || stateno != 1360 || stateno != 1370
+triggerall = stateno != 1400 || stateno != 1401 || stateno != 1402 || stateno != 1403
+triggerall = stateno != 1500 || stateno != 1510 || stateno != 1520
+triggerall = stateno != 1600
+triggerall = stateno != 1700 || stateno != 1701 || stateno != 1702
+triggerall = stateno != 1800 || stateno != 1801
+triggerall = stateno != 1900
+triggerall = stateno != 2200 || stateno != 2210 || stateno !=2220
+triggerall = var(9) = 1
+triggerall = ctrl && statetype != A
+triggerall = power >= 2000
+trigger1 = random = [0,100]
+trigger2 = stateno = 210 && movecontact && random = [20,35]
+trigger3 = stateno = 230 && movecontact && random = [20,35]
+trigger4 = stateno = 200 && movecontact && random = [20,35]
+trigger5 = stateno = 201 && movecontact && random = [20,35]
+trigger6 = stateno = 240 && movecontact && random = [20,35]
+trigger7 = stateno = 241 && movecontact && random = [20,35]
+trigger8 = stateno = 410 && movecontact && random = [20,35]
+trigger9 = stateno = 440 && movecontact && random = [20,35]
+value = 3500
+
+
+
+[State -2, terminación]
+type = VarAdd
+trigger1 =  p2life = 0
+v =  9
+value = 0
+;ignorehitpause =
+;persistent =
+
+
+
+;-------------------------------- Inteligencia Artificial --------------------------------------------
+;Run Forward
+;[State -3:		ChangeState]
+;type = ChangeState
+;triggerall = (Var(9) = 1) && (StateType != A) && (StateNo != [100,101]) && (P2MoveType != A) && (EnemyNear, NumProj = 0) && (StateNo != [3000,3400])
+;triggerall = random = [300,400]
+;trigger1 = (P2BodyDist X > 75) && (EnemyNear, Pos Y = 0) && (EnemyNear, Anim = 5300) && (P2MoveType != A)
+;trigger2 = ((P2Dist X > 150) || ((P2Dist X > 75) && (P2StateNo = 105)))
+;value = 100
+
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+;===============================================================================
+[Statedef -3]
+;===============================================================================
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = S40, 1
+
+[State -3, Running Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = StateNo = 100
+value = S2,0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = stateno != 1005
+channel = 5
+
+
+[State -3, Null]
+type = Null
+;triggerall = (PalNo = [7,12])
+trigger1 = (RoundState = 2) && ((Command = "AI2") || (Command = "AI3") || (Command = "AI4") || (Command = "AI5"))
+trigger1 = (var(9) := 1)
+trigger2 = (RoundState = 2) && ((Command = "AI6") || (Command = "AI7") || (Command = "AI8") || (Command = "AI9") || (Command = "AI10"))
+trigger2 = (Var(9) := 1)
+trigger3 = ((!Time) * (TicksPerSecond)) && (IsHomeTeam) && (NumEnemy = 1) && (!NumPartner) && (TeamSide = 2) && (Alive)
+trigger3 = (Var(9) := 1)
+trigger4 = (RoundState = 2) && ((Command = "AI11") || (Command = "AI12") || (Command = "AI13") || (Command = "AI14"))
+trigger4 = (Var(9) := 1)
+
+
+
+
+

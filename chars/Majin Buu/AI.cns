@@ -1,0 +1,909 @@
+
+[Statedef -2]
+
+[State -2: DisplayToClipBoard]
+type = DisplayToClipBoard
+trigger1 = 1
+text = "Variable 1: %d, X Dist: %d, Var 24: %d, Var 6: %d, Var 7: %d"
+params = Var(1), Var(14),Var(24),Var(6),Var(7)
+
+; Fly Stuff --------------------------------------------------------------------
+[State -2]
+type = changestate
+trigger1 = (stateno = 0)||(stateno = [10,12])||(stateno = 20)||(stateno = [50,51])
+trigger1 = Pos Y < 0 && ctrl && Var(15) = 1500
+v = 15
+value = 1500
+
+[State -2]
+type = Varset
+trigger1 = Pos Y >= 0 && Var(15) != 0
+v = 15
+value = 0
+
+[State -2]
+type = Velset
+trigger1 = Var(15) = 1500
+trigger1 = (stateno = 130) || (stateno = 131) || (stateno = 132)
+y = 0
+;--------------------------------------------------------------------------------
+
+[State -2]
+type = SuperPause
+trigger1 = P1name != "PexBuu"
+time = 100000000000000000000
+
+[State -2]
+type = helper
+triggerall = ishelper(3101)
+trigger1 = parent,stateno = 3103
+helpertype = normal
+name = "minibuudone"
+postype = p1
+size.xscale = .55
+size.yscale = .55
+pos = 0,0
+id = 3102
+stateno = 3102
+
+;Mini Buu's Go Back
+[state -2]
+type = destroyself
+triggerall = ishelper(3101)
+trigger1 = parent,stateno = 3103
+
+;When To Choose a New Style
+[state -2]
+type = varset
+triggerall = var(1) = 1 || ishelper
+triggerall = stateno != 3102
+trigger1 = var(7) > 70
+trigger1 = random < 10
+v= 7
+value = 0
+
+;Fighting Style Var
+[state -2]
+type = varrandom
+triggerall = var(1) = 1
+trigger1 = var(7) = 0
+trigger2 = power >= 3000
+trigger2 = var(6) = 2
+v= 6
+range = 2
+
+;Fighting Style Var
+[state -2]
+type = varset
+triggerall = var(1) = 1
+trigger1 = var(13) > 200
+trigger1 = var(6) = 1
+trigger2 = var(13) > 500
+trigger2 = var(6) = 2
+v= 6
+value = 0
+
+;Fighting Style Var
+[state -2]
+type = varset
+trigger1 = var(6) != 0
+trigger1 = ishelper
+v= 6
+value = 0
+
+;Fighting Style Var
+[state -2]
+type = varset
+triggerall = var(1) = 1
+trigger1 = power <= 100
+trigger1 = var(6) = 1
+v= 6
+value = 2
+
+;Resetting Timer for Style
+[state -2]
+type = varadd
+triggerall = var(1) = 1
+trigger1 = 1
+v= 7
+value = 1
+
+;P2 Distance
+[state -2]
+type = varset
+trigger1 = 1
+v= 14
+value = floor(p2bodydist x)
+
+; P2 X Dist Timer
+[State -2]
+type = varadd
+trigger1 = 1
+trigger1 = var(14) > 40
+v = 13
+value = 1
+
+;Reset P2 X Dist Timer
+[State -2]
+type = varset
+trigger1 = 1
+trigger1 = var(14) <= 40
+v = 13
+value = 0
+
+;Land
+[State -1]
+type = ChangeState
+value = 15100
+triggerall = var(1) = 1 || ishelper
+triggerall = Var(2) != 1
+trigger1 = stateno = 1500
+;--------------------CLOSE COMBAT---------------------------------------
+
+;Zanzoken
+[State -2]
+type = ChangeState
+value = 1000
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+trigger1 = random <= 5
+trigger1 = stateno = 10000
+trigger2 = var(14) < 40
+trigger2 = P2Movetype = A
+trigger2 = stateno = 10000
+trigger2 = random < 449
+trigger3 = stateno = 100
+trigger3 = random < 449
+trigger3 = P2Movetype = A
+trigger4 = stateno = 101
+trigger4 = random < 449
+trigger4 = P2Movetype = A
+trigger5 = enemynear, numproj > 0
+trigger5 = random <= 249
+trigger5 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+trigger6 = enemynear, numhelper > 0
+trigger6 = P2Movetype = A
+trigger6 = random <= 249
+trigger6 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+
+; Guarding For EVERY MODE
+[State -2]
+type = ChangeState
+value = 120
+triggerall = !win
+triggerall = p2movetype = A
+triggerall = Var(1) = 1 || ishelper
+triggerall = Random <= 449
+trigger1 = stateno = 10000
+trigger2 = stateno = 10020
+trigger3 = stateno = 100
+trigger4 = stateno = 101
+trigger5 = stateno = 105
+trigger6 = stateno = 106
+
+;Body Explosion Counter For EVERY MODE
+[State -2]
+type = ChangeState
+value = 3100
+triggerall = !win
+triggerall = var(1) = 1
+triggerall = random < 4
+triggerall = power >= 1000
+triggerall = ctrl = 0
+triggerall = alive = 1
+trigger1 = Movetype = H
+trigger1 = statetype = S
+trigger2 = Movetype = H
+trigger2 = statetype = A
+trigger3 = stateno = 130
+trigger4 = stateno = 132
+
+;Stand_a
+[State -2]
+type = ChangeState
+value = 200
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 100
+trigger1 = stateno = 10000 || stateno = 10020 || stateno = 100 || stateno = 101
+;---------------------------------------------------------------------------
+;Stand_b
+[State -2]
+type = ChangeState
+value = 201
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 90
+trigger1 = stateno = 10000 || stateno = 10020 || stateno = 100 || stateno = 101
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 210 && movecontact
+;---------------------------------------------------------------------------
+;Stand_x
+[State -2]
+type = ChangeState
+value = 210
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 90
+trigger1 = stateno = 10000 || stateno = 10020 || stateno = 100 || stateno = 101
+trigger2 = stateno = 200 && movecontact
+;--------------------------------------------------------------------------
+;Stand_y
+[State -2]
+type = ChangeState
+value = 211
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 80
+trigger1 = stateno = 10000 || stateno = 10020 || stateno = 100 || stateno = 101
+trigger2 = stateno = 200 && movecontact
+trigger3 = stateno = 201 && movecontact
+trigger4 = stateno = 210 && movecontact
+;---------------------------------------------------------------------------
+;Crouch_a
+[State -2]
+type = ChangeState
+value = 400
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 90
+trigger1 = stateno = 200 && movecontact && pos y > -10
+;---------------------------------------------------------------------------
+;Crouch_b
+[State -2]
+type = ChangeState
+value = 401
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 60
+trigger1 = stateno = 400 && movecontact
+trigger2 = stateno = 410 && movecontact
+trigger3 = stateno = 200 && movecontact && pos y > -10
+trigger4 = stateno = 201 && movecontact && pos y > -10
+trigger5 = stateno = 210 && movecontact && pos y > -10
+;---------------------------------------------------------------------------
+;Crouch_x
+[State -2]
+type = ChangeState
+value = 410
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 80
+trigger1 = stateno = 400 && movecontact
+trigger2 = stateno = 200 && movecontact && pos y > -10
+trigger3 = stateno = 210 && movecontact && pos y > -10
+;---------------------------------------------------------------------------
+;Crouch_y
+[State -2]
+type = ChangeState
+value = 411
+triggerall = var(14) < 40
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 40
+trigger1 = stateno = 400 && movecontact
+trigger2 = stateno = 401 && movecontact
+trigger3 = stateno = 410 && movecontact
+trigger4 = stateno = 200 && movecontact && pos y > -10
+trigger5 = stateno = 201 && movecontact && pos y > -10
+trigger6 = stateno = 210 && movecontact && pos y > -10
+trigger7 = stateno = 211 && movecontact && pos y > -10
+;---------------------------------------------------------------------------
+;Jump_a
+[State -2]
+type = ChangeState
+value = 600
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 100
+triggerall = var(14) < 100
+trigger1 = stateno = 10040 || stateno = 10041 || stateno = 10050 || stateno = 10051
+trigger2 = stateno = 1040 || stateno = 1041
+;---------------------------------------------------------------------------
+;Jump_b
+[State -2]
+type = ChangeState
+value = 601
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 90
+triggerall = var(14) < 100
+trigger1 = stateno = 10040 || stateno = 10041 || stateno = 10050 || stateno = 10051
+trigger2 = stateno = 600 && movecontact
+trigger3 = stateno = 610 && movecontact
+trigger4 = stateno = 1040 || stateno = 1041
+;---------------------------------------------------------------------------
+;Jump_x
+[State -2]
+type = ChangeState
+value = 610
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 90
+triggerall = var(14) < 100
+trigger1 = stateno = 10040 || stateno = 10041 || stateno = 10050 || stateno = 10051
+trigger2 = stateno = 600 && movecontact
+trigger3 = stateno = 1040 || stateno = 1041
+;---------------------------------------------------------------------------
+;Jump_y
+[State -2]
+type = ChangeState
+value = 611
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = random < 80
+triggerall = var(14) < 100
+trigger1 = stateno = 10040 || stateno = 10041 || stateno = 10050 || stateno = 10051
+trigger2 = stateno = 600 && movecontact
+trigger3 = stateno = 601 && movecontact
+trigger4 = stateno = 610 && movecontact
+trigger5 = stateno = 1040 || stateno = 1041
+
+;Throw
+[State -2]
+type = ChangeState
+value = 800
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = stateno = 10000
+triggerall = P2bodydist X <= 10
+trigger1 = random < 100
+trigger1 = (p2statetype = S) || (p2statetype = C)
+trigger1 = p2movetype != H
+
+;Ki Explosion
+[State -2]
+type = ChangeState
+value = 3000
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = power >= 2000
+triggerall = random < 30
+trigger1 = stateno = 400 && movecontact
+trigger2 = stateno = 401 && movecontact
+trigger3 = stateno = 410 && movecontact
+trigger4 = stateno = 200 && movecontact && pos y > -10
+trigger5 = stateno = 201 && movecontact && pos y > -10
+trigger6 = stateno = 210 && movecontact && pos y > -10
+trigger7 = stateno = 211 && movecontact && pos y > -10
+trigger8 = stateno = 411 && movecontact && pos y > -10
+
+;Candy
+[State -2]
+type = ChangeState
+value = 3200
+triggerall = var(6) = 0
+triggerall = var(1) = 1
+triggerall = power >= 2000
+triggerall = random < 30
+trigger1 = stateno = 400 && movecontact
+trigger2 = stateno = 401 && movecontact
+trigger3 = stateno = 410 && movecontact
+trigger4 = stateno = 200 && movecontact && pos y > -10
+trigger5 = stateno = 201 && movecontact && pos y > -10
+trigger6 = stateno = 210 && movecontact && pos y > -10
+trigger7 = stateno = 211 && movecontact && pos y > -10
+trigger8 = stateno = 411 && movecontact && pos y > -10
+
+; P2 in Air Time
+[State -2]
+type = varadd
+trigger1 = 1
+trigger1 = p2bodydist y < -10
+trigger1 = var(24) <=100
+v = 24
+value = 1
+
+;Reset P2 in Air Time
+[State -2]
+type = varset
+trigger1 = 1
+trigger1 = p2bodydist y >= -10
+v = 24
+value = 0
+
+; Super Jump
+[State -2]
+type = ChangeState
+value = 1040
+triggerall = var(6) = 0
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+trigger1 = P2bodydist X < 50
+trigger1 = var(24) >= 100
+trigger1 = stateno = 10000
+
+;WalkFwd
+[State -2]
+type = ChangeState
+value = 10020
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+trigger1 = var(14) <= 50
+trigger1 = P2Statetype = S || P2Statetype = C
+trigger1 = P2Movetype != A
+trigger1 = stateno = 10000
+
+;RunFwd
+[State -2]
+type = ChangeState
+value = 100
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 549
+triggerall = P2Statetype = S || P2Statetype = C
+triggerall = P2Movetype != A
+triggerall = var(14) > 50
+trigger1 = stateno != 100 && stateno != 101
+trigger1 = stateno != 105 && stateno != 106
+trigger1 = stateno = 10000
+trigger2 = stateno = 10020
+
+;RunBack
+[State -2]
+type = ChangeState
+value = 105
+triggerall = var(6) = 0
+triggerall = var(1) = 1 || ishelper
+trigger1 = stateno != 100 && stateno != 101
+trigger1 = stateno != 105 && stateno != 106
+trigger1 = var(14) < 40
+trigger1 = P2Movetype = A
+trigger1 = stateno = 10000
+
+; Jump Up
+[State -2]
+type = ChangeState
+value = 10040
+triggerall = var(6) = 0
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = var(14) < 40
+triggerall = stateno = 10000 || stateno = 10020
+trigger1 = (P2Statetype = S || P2Statetype = C) && random < 10
+trigger2 = P2Statetype = A && Movetype != A
+
+; Super Jump FWD
+[State -2]
+type = ChangeState
+value = 1041
+triggerall = random < 449
+triggerall = var(6) = 0
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = var(14) > 100
+triggerall = stateno = 10000 || stateno = 10020
+trigger1 = P2Statetype = S || P2Statetype = C
+trigger2 = P2Statetype = A || Movetype != A
+
+; Jump FWD
+[State -2]
+type = ChangeState
+value = 10041
+triggerall = var(6) = 0
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = var(14) > 50
+triggerall = stateno = 10000 || stateno = 10020
+trigger1 = P2Statetype = S || P2Statetype = C
+trigger2 = P2Statetype = A || Movetype != A
+
+; Jump Back
+[State -2]
+type = ChangeState
+value = 10042
+triggerall = var(6) = 0
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+trigger1 = var(14) < 40
+trigger1 = stateno = 10000 || stateno = 10020
+trigger1 = P2Movetype = A && P2Statetype != A
+
+;--------------------BACK OFF COMBAT---------------------------------------
+;Zanzoken
+[State -2]
+type = ChangeState
+value = 1000
+triggerall = var(6) = 1
+triggerall = var(1) = 1 || ishelper
+triggerall = stateno = 10000
+trigger1 = random <= 449
+trigger1 = var(14) <= 20
+trigger2 = enemynear, numproj > 0
+trigger2 = random <= 249
+trigger2 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+trigger3 = enemynear, numhelper > 0
+trigger3 = P2Movetype = A
+trigger3 = random <= 249
+trigger3 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+
+;RunBack
+[State -2]
+type = ChangeState
+value = 105
+triggerall = var(6) = 1
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 649
+trigger1 = stateno != 100 && stateno != 101
+trigger1 = stateno != 105 && stateno != 106
+trigger1 = var(14) < 150
+trigger1 = stateno = 10000
+trigger1 = backedgebodydist > 2
+
+; Jump Up
+[State -2]
+type = ChangeState
+value = 10040
+triggerall = var(6) = 1
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = var(14) < 40
+triggerall = stateno = 10000
+trigger1 = (P2Statetype = S || P2Statetype = C) && random < 10
+trigger2 = P2Statetype = A && Movetype != A
+
+; Jump Back
+[State -2]
+type = ChangeState
+value = 10042
+triggerall = var(6) = 1
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+trigger1 = var(14) < 150
+trigger1 = stateno = 10000
+trigger1 = backedgebodydist > 2
+
+; Super Jump FWD
+[State -2]
+type = ChangeState
+value = 1041
+triggerall = var(6) = 1
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = stateno = 10000
+triggerall = backedgebodydist <= 2
+triggerall = var(14) <= 20
+trigger1 = P2Statetype = S || P2Statetype = C
+trigger2 = P2Statetype = A || Movetype != A
+
+;Ki Explosion
+[State -2]
+type = ChangeState
+value = 3000
+triggerall = var(6) = 1
+triggerall = var(1) = 1
+triggerall = power >= 2000
+triggerall = random < 30
+trigger1 = stateno = 10000
+trigger1 = var(14) <= 100
+
+;Candy
+[State -2]
+type = ChangeState
+value = 3200
+triggerall = var(6) = 1
+triggerall = var(1) = 1
+triggerall = power >= 2000
+triggerall = random < 100
+trigger1 = stateno = 10000
+
+;Ki Shot
+[State -1]
+type = ChangeState
+value = 2050
+triggerall = var(6) = 1
+triggerall = var(1) = 1
+trigger1 = random < 449
+trigger1 = stateno = 10000
+trigger1 = var(14) > 80
+trigger2 = stateno = 400 && movecontact
+trigger3 = stateno = 401 && movecontact
+trigger4 = stateno = 410 && movecontact
+trigger5 = stateno = 411 && movecontact
+trigger6 = stateno = 200 && movecontact
+trigger7 = stateno = 210 && movecontact
+trigger8 = stateno = 201 && movecontact
+trigger9 = stateno = 211 && movecontact
+trigger10 = backedgebodydist <= 2
+trigger10 = var(14) <= 80
+trigger10 = stateno = 10000
+
+;Skin Hold Butt Slam
+[State -1]
+type = ChangeState
+value = 1101
+triggerall = var(6) = 1
+triggerall = var(1) = 1
+trigger1 = stateno = 10000
+trigger1 = var(14) > 80
+trigger2 = backedgebodydist <= 2
+trigger2 = var(14) <= 80
+trigger2 = stateno = 10000
+
+;--------------------BACK OFF & POWER UP---------------------------------------
+;Zanzoken
+[State -2]
+type = ChangeState
+value = 1000
+triggerall = var(6) = 1
+triggerall = var(1) = 1 || ishelper
+triggerall = stateno = 10000
+trigger1 = backedgebodydist <= 2
+trigger1 = random <= 449
+trigger1 = var(14) <= 20
+trigger2 = random <= 100
+trigger2 = var(14) <= 20
+trigger3 = enemynear, numproj > 0
+trigger3 = random <= 249
+trigger3 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+trigger4 = enemynear, numhelper > 0
+trigger4 = P2Movetype = A
+trigger4 = random <= 249
+trigger4 = stateno = 10000 || stateno = 100 || stateno = 101 || stateno = 105 || stateno = 106 || stateno = 10020
+
+;RunBack
+[State -2]
+type = ChangeState
+value = 105
+triggerall = var(6) = 2
+triggerall = var(1) = 1 || ishelper
+triggerall = random < 649
+trigger1 = var(14) < 150
+trigger1 = stateno = 10000
+trigger1 = backedgebodydist > 2
+
+; Jump Back
+[State -2]
+type = ChangeState
+value = 10042
+triggerall = var(6) = 2
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+trigger1 = var(14) < 150
+trigger1 = stateno = 10000
+trigger1 = backedgebodydist > 2
+
+; Super Jump FWD
+[State -2]
+type = ChangeState
+value = 1041
+triggerall = var(6) = 1
+triggerall = !win
+triggerall = Var(1) = 1 || ishelper
+triggerall = stateno = 10000
+triggerall = backedgebodydist <= 2
+triggerall = var(14) <= 20
+trigger1 = P2Statetype = S || P2Statetype = C
+trigger2 = P2Statetype = A || Movetype != A
+
+;Power Up
+[State -2]
+type = ChangeState
+value = 730
+triggerall = var(6) = 2
+triggerall = Var(1) = 1 || ishelper
+triggerall = Power < 3000
+triggerall = enemynear, numproj = 0
+trigger1 = var(14) > 100
+trigger1 = stateno = 10000
+
+;--EXTRA CODE----------------------------------------
+
+; Jump Start UP
+[Statedef 10040]
+type    = S
+physics = S
+anim = 40
+ctrl = 0
+sprpriority = 1
+
+[State 10040, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[State 10040, 2]
+type = VarSet
+trigger1 = time = 0
+sysvar(1) = 1
+
+[State 40, 4]
+type = VelSet
+trigger1 = AnimTime = 0
+x = 0
+y = -7.5
+
+[State 10040, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10050
+ctrl = 1
+
+;Jump FWD
+[Statedef 10041]
+type    = S
+physics = S
+anim = 40
+ctrl = 0
+sprpriority = 1
+
+[State 10040, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[State 10040, 2]
+type = VarSet
+trigger1 = time = 0
+sysvar(1) = 1
+
+[State 40, 4]
+type = VelSet
+trigger1 = AnimTime = 0
+x = const(velocity.jump.fwd.x)
+y = -7.5
+
+[State 10040, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10050
+ctrl = 1
+
+;Jump BACK
+[Statedef 10042]
+type    = S
+physics = S
+anim = 40
+ctrl = 0
+sprpriority = 1
+
+[State 10040, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[State 10040, 2]
+type = VarSet
+trigger1 = time = 0
+sysvar(1) = 1
+
+[State 40, 4]
+type = VelSet
+trigger1 = AnimTime = 0
+trigger1 = var(15) != 1
+x = const(velocity.jump.back.x)
+y = -7.5
+
+[State 10040, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 10050
+ctrl = 1
+
+; Jump Up
+[Statedef 10050]
+type    = A
+physics = A
+
+[State 10050, 1]
+type = VarSet
+trigger1 = Time = 0
+sysvar(1) = 0
+
+[State 10050, 2]
+type = ChangeAnim
+trigger1 = Time = 0
+value = ifelse((vel x)=0, 41, ifelse((vel x)>0, 42, 43))
+
+[State 10050, 3]
+type = ChangeAnim
+trigger1 = Vel y > -2
+trigger1 = SelfAnimExist(anim + 3)
+persistent = 0
+value = Anim + 3
+
+; Jump Down (empty state for compatibility)
+[Statedef 10051]
+type    = A
+physics = A
+
+[State 51, 1]
+type = Null
+trigger1 = 1
+
+;---------------------------------------------------------------------------
+; Jump Land
+[Statedef 10052]
+type    = S
+physics = S
+ctrl = 0
+anim = 47
+
+[State 10052, 1]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 10052, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 10052, 3]
+type = CtrlSet
+trigger1 = Time = 3
+value = 1
+
+[State 10052, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+; AI STAND
+[Statedef 10000]
+type = S
+physics = S
+sprpriority = 0
+ctrl = 0
+
+[State 1500,Turn]
+type = Turn
+trigger1 = P2Dist X < 0
+
+[State 1500, 3]
+type = ChangeState
+trigger1 = Time = 0
+trigger1 = Pos Y < 0
+value = 1500
+
+[State 0, 1]
+type = ChangeAnim
+trigger1 = Anim != 0 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0 ;Turn anim over
+value = 0
+
+[State 0, 2]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 0, 3] ;Stop moving if low velocity or 4 ticks pass
+type = VelSet
+trigger1 = abs(vel x) < 2
+trigger2 = Time = 4
+x = 0
+
+[State 0, 4] ;Are you dead?
+type = ChangeState
+trigger1 = !alive
+value = 5050
+
+;---------------------------------------------------------------------------
+; Walk
+[Statedef 10020]
+type    = S
+physics = S
+sprpriority = 0
+
+[State 20, 1]
+type = VelSet
+trigger1 = time >= 0
+x = 2.3
+
+[State 20, 3]
+type = ChangeAnim
+trigger1 = time = 0
+value = 20
+
+[State 20, 3]
+type = Changestate
+trigger1 = var(14) < 20
+value = 10000

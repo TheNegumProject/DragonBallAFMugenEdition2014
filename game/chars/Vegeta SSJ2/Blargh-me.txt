@@ -1,0 +1,233 @@
+..::Vegeta Type-R::..
+---------------------------
+
+Sprites		- 	Dark Roken
+
+Coding		-	Dark Roken
+
+Whats new:
+-------------
+Pretty obvious don't you think?
+
+Known Bugs:
+-------------
+None
+
+Things to do:
+---------------
+
+Rugal anti air move
+REDO STYLE TO GOKU/CVS
+Tweak specials and supers
+Add levels to all moves
+
+Throw
+Air FF orb (zanku haduken)
+Rin Jyou No Energy 	- Ring energy
+Saishyuu Saigo no Waza  "Ultimate Final Skill"
+Finishers
+
+
+
+Basics:
+---------
+
+Standing Light Punch			x
+Standing Light Elbow			x (close)
+Standing Hard Punch			y
+Standing Hard Elbow			y (close)
+Crouching Light Punch			Down+y
+Crouching Uppercut			Down+y
+Air Light Punch				Up+c
+Air Hard Punch				Up+y
+Air Smackdown				DOwn+y
+
+Light throw				Forward + c (close)
+
+Standing Light Kick			a
+Standing Light Knee			a (close)
+Standing Hard Kick			b
+Standing Hard Knee			b (close)			B
+Crouching Light Kick			Down+a
+Crouching Hard Kick			Down+a
+Air Light Kick				Up+a
+Air Hard Kick				Up+b
+
+Specials:
+---------------------------
+
+Super jump				Down, Up
+Rushing Gut Punches			D,F y
+Launching Kick				D,F 
+Launching uppercut			D,F x
+
+
+Ki Specials:
+---------
+
+Power Up				A+X
+Zanzouken				C While Dashing
+
+Kikou Ha (Ki Shot)			Z
+Buksuda	(Yubisaki Kara No Kikou Ha)     D,F z
+Shyougeki Ha (Ground explosion)		D,B z
+Renzenko Energy dan			D,B,F z
+	(keep pressing Z to fire, and C to cancel)
+
+
+Super:
+---------------------------
+
+Level 1:
+--------
+
+Zenshin kara no Shyougeki Ha		D,B,D,B z
+Final Flash Orb				F,B,F Z
+Galic Ho				D,F,D,F x
+
+Level 2:
+--------
+
+Big Bang attack				D,F,D,F a
+
+Level 3:
+--------
+
+Final Shine Attack			D,F,D,F b
+	-Hold b, and release when you want to fire.
+
+Level 4:
+--------
+
+Final Flash				D,F,D,F y
+	-Hold y, and release when you want to fire.
+
+Finishers:
+----------------------------
+
+Only can be performed after the 'No Mercy!!' Message once you've
+won your second round.
+
+
+Misc:
+-------
+
+
+
+Combos:
+---------
+			-Normal-
+_______________________________________________________________
+
+|2 Hit Punch rush|
+
+----- X, Y
+
+_______________________________________________________________
+
+|2 Hit LPunch to Lkick|
+
+----- X, A
+
+_______________________________________________________________
+
+|2 Hit Hpunch to HKick|
+
+----- Y, B
+
+_______________________________________________________________
+
+|2 Hit LKick to HKick|
+
+----- X, A
+
+_______________________________________________________________
+
+
+			-Crouching-
+
+
+There are many, but here are a few worth mentioning.
+_______________________________________________________________
+
+|Low punch/Low kick/hard kick - Uppercut|
+
+----- X/A/B, Y
+
+_______________________________________________________________
+
+
+
+			-Standing Close-
+
+
+_______________________________________________________________
+
+4 Hit kick rush combo
+
+	A, A, B, Back + B
+
+_______________________________________________________________
+
+7 Hit Rushing Gut Punches Majin combo
+
+	 Rushing punches - B, Y, B
+
+_______________________________________________________________
+
+7 Hit Rushing Gut Punches Majin combo 2
+
+	 Rushing punches - B, Y, Z- (final flash, takes 1 level)
+
+
+_______________________________________________________________
+
+7 Hit Rushing Gut Punches Super combo
+
+	 Rushing punches - B, Y, (Galic/BBA/FSA)
+
+_______________________________________________________________
+
+
+
+
+			-Air Close-
+
+
+_______________________________________________________________
+
+| Experiment, with these, there are many that can be done.
+	The best way is to do them after the launch kick/uppercut, 
+	and end it with the hard kick or the smackdown. 
+
+		Hard kick - b
+		Smackdown - Down + y
+_______________________________________________________________
+
+
+--
+
+Thank you's:
+--------------
+Elecbyte		-		What do u think dip-shit?
+Akira T			-		For the DB series.
+
+Me			-		For being me
+Jit			-		Original vegeta sheet.
+Dizzy			-		Programming help
+Toad			-		Tons of effects
+Cyanide			-		Programming help
+Majita			-		Programming help and Orb effects.
+Flowagirl		-		Effects, Sounds, Codes u name it =P
+Neocide 		-		CVS Effects & sounds
+
+Beta Testers- Thanks all.
+
+Lonewolf
+Majita
+Neocide
+
+
+If i forgot someone, please inform me.
+
+-------------------------------------------------------------------

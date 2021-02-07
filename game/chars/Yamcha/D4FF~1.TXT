@@ -1,0 +1,13 @@
+Data]
+life = 1000
+attack = 300
+defence = 100
+power = 3000
+fall.defence_up = 50
+liedown.time = 60
+airjuggle = 10
+sparkno = 2
+guard.sparkno = 40
+KO.echo = 1
+KO.volume = 255
+volume = 0

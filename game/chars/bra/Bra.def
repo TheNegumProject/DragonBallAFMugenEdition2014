@@ -1,0 +1,25 @@
+
+; Player information
+[Info]
+name ="Bra"
+displayname ="Super Bra"
+versiondate =24,08,2005
+mugenversion =14,06,2003
+author ="FRS GAMES"
+pal.defaults =1,2,3
+
+; Files for the player
+[Files]
+cmd      =bojackCMD.cmd
+cns      =bojackCNS.cns
+st       =bojackCNS.cns
+stcommon =commonCNS.cns
+sprite   =bojackSFF.sff
+anim     =bojackAIR.air
+sound    =bojackSND.snd
+pal1=BlueBlackACT1.act
+pal2=BlueBlackACT.act
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

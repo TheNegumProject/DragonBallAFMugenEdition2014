@@ -1,0 +1,789 @@
+;=====================================================================
+; Destructor disc
+;=====================================================================
+; Destructor Disc
+[StateDef 2300]
+type = S
+movetype= A
+physics = S
+juggle = 1
+velset = 0,0
+ctrl = 0
+anim = 2300
+poweradd = -500
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 5, 20
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 5, 21
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 1
+anim = 6215
+pos = -22,-80
+postype = p1
+removetime = 10
+sprpriority = 20
+ownpal = 1
+scale = 0.7,0.8
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim = 6215
+pos = -22,-70
+postype = p1
+removetime = 15
+sprpriority = 20
+ownpal = 1
+scale = 0.7,0.8
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 26
+helpertype = normal ;player
+name =  "destructor disc"
+ID =  6215
+stateno =  6215
+pos = 75,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =0.7
+size.yscale =0.8
+
+[State 2300, end]
+type = ChangeState
+triggerall = time > 30
+trigger1 = command = "destructor disc"
+value = 2310
+ctrl = 1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;=====================================================================
+; Destructor disc 2
+;=====================================================================
+; Destructor Disc 2
+[StateDef 2310]
+type = S
+movetype= A
+physics = S
+juggle = 1
+velset = 0,0
+ctrl = 0
+anim = 2310
+poweradd = -500
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 5, 20
+
+[State 202, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 5, 21
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 1
+anim = 6215
+pos = -10,-70
+postype = p1
+removetime = 14
+sprpriority = 20
+ownpal = 1
+scale = 0.7,0.8
+
+[State 0, Helper]
+type = Helper
+trigger1 =  animelem = 2
+helpertype = normal ;player
+name =  "destructor disc"
+ID =  6215
+stateno =  6215
+pos = 75,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =0.7
+size.yscale =0.8
+
+[State 2300, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;=====================================================================
+; Ki blast cannon
+;=====================================================================
+; Ki blast cannon
+[StateDef 2400]
+type = S
+movetype= A
+physics = S
+juggle = 1
+velset = 0,0
+ctrl = 0
+anim = 2400
+poweradd = -500
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S6,2
+volume = 99999999999999
+channel = -1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 21
+helpertype = normal ;player
+name =  "ki blast cannon"
+ID =  6300
+stateno =  6300
+pos = 12,25
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =1
+size.yscale= 1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  time = 21
+helpertype = normal ;player
+name =  "ki blast cannon"
+ID =  6301
+stateno =  6301
+pos = -12,25
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermove
+pausemove
+size.xscale =1
+size.yscale =1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;===============================================
+;=====super explosive wave
+;=============================================
+;=====super explosive wave
+[Statedef 2600]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd = -500
+ctrl = 0
+velset = 0,0
+anim = 2600
+sprpriority = -1
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim =  6040
+ID =  6040
+pos = 0,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 55
+supermove
+pausemove
+scale = 2,2
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim =  6005
+ID =  6005
+pos = 0,10
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 65
+supermove
+pausemove
+scale = 0.8,0.7
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 2
+anim =  6007
+ID =  6007
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = 65
+supermove
+pausemove
+scale = 0.8,0.8
+sprpriority = 0
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 =  animelem = 6
+ID =  6005
+scale = 0.9,0.8
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 =  animelem = 10
+ID =  6005
+scale = 1,0.9
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 =  animelem = 14
+ID =  6005
+scale = 1,1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time= [0,96]
+flag = noshadow
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value =6,7
+volume = 99999999
+channel = -1
+
+[State 0, Helper]
+type = Helper
+trigger1 = AnimElem = 2
+helpertype = normal
+name = "super explosive wave"
+ID =6020
+stateno = 6020
+pos = 0,-35
+postype = p1
+facing = 1
+ownpal = 1
+keyctrl = 0
+ownpal = 1
+supermove =1
+pausemove =1
+size.xscale = 0.6
+size.yscale = 0.6
+
+[State 210, 7]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 1100
+ctrl = 1
+
+[State 0, ChangeState]
+type = ChangeState
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;=====================================================================
+; Kamehameha
+;=====================================================================
+; Kamehameha
+[Statedef 2200]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2200
+poweradd = -500
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 1
+trigger2 = time = 41 && var (10) != 0
+trigger3 = time = 81 && var (10) != 0
+trigger4 = time = 121 && var (10) != 0
+anim = 6072
+ID = 6072
+pos = -5,-40
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -2
+removetime = 15
+scale = .5,.5
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, sound]
+type = PlaySnd
+trigger1 = time = 1
+trigger2 = time = 41
+trigger3 = time = 81
+trigger4 = time = 121
+value = s5,15
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = time = 41
+ID = 6070
+scale = .6,.6
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = time = [81,120]
+ID = 6070
+scale = .7,.7
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 1
+anim = 6070
+ID = 6070
+pos = -5,-40
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -1
+removetime = -1
+scale = .9,.9
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 1
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = time = [41,80]
+ID = 6070
+scale = 1,1
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = time = [81,120]
+ID = 6070
+scale = 1.1,1.1
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = time = [121,150]
+ID = 6070
+scale = 1.2,1.2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = [1,30]
+v = 10
+value = 0
+
+[State 0, VarSet]
+type = VarSet
+triggerall = power >= 250
+trigger1 =  time = [31,70]
+v = 10
+value = 1
+
+[State 0, VarSet]
+type = VarSet
+triggerall = power >= 500
+trigger1 = time = [71,110]
+v = 10
+value = 2
+
+[State 0, VarSet]
+type = VarSet
+triggerall = power >= 1000
+trigger1 =time = [111,150]
+v = 10
+value = 3
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value =6,4
+volume = 99999999
+channel = -1
+
+[State 0, kamehameha fraco]
+type = ChangeState
+trigger1 = var(10) = 0 && command != "hold_x" && Time > 25
+trigger2 = var(10) = 0 && Time = 150
+value = 2201
+ctrl = 0
+
+[State 0, kamehameha normal]
+type = ChangeState
+trigger1 = var(10) = 1 && command != "hold_x"
+trigger2 = var(10) = 1  && Time = 150
+value = 2202
+ctrl = 0
+
+[State 0, super kamehameha - kamehameha 2X]
+type = ChangeState
+trigger1 = var(10) = 2 && command != "hold_x"
+trigger2 = var(10) = 2  && Time = 150
+value = 2203
+ctrl = 0
+
+[State 0, super kamehameha - kamehameha 3 X]
+type = ChangeState
+trigger1 = var(10) = 3 && command != "hold_x"
+trigger2 = var(10) = 3 && Time = 150
+trigger3 = var(19) > 0 && Time = 40
+value = 2204
+ctrl = 0
+
+; Kamehameha
+[Statedef 2201]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2201
+poweradd = -500
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = -1
+
+[State 0]
+type = Explod
+trigger1 = time = 2
+anim = 6211
+ID =  6211
+pos = 40,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 24
+supermove =1
+pausemove  =1
+scale = 1,0.7
+sprpriority = 2
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value =6,10
+volume = 99999999
+channel = -1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 55
+channel = -1
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 2
+helpertype = normal
+name = "kamehameha"
+ID =  6210
+stateno = 6210
+pos = 30,-48
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermove =1
+pausemove =1
+size.yscale = 0.8
+
+[State 2300, end]
+type = ChangeState
+trigger1 = Time = 55
+value = 0
+ctrl = 1
+
+; Kamehameha
+[Statedef 2202]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2201
+poweradd = -500
+
+[State 0, Helper]
+type = Helper
+trigger1 =  AnimElem = 1
+helpertype = normal
+name = "kamehameha"
+ID =  62101
+stateno = 62101
+pos = 30,-48
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermove =1
+pausemove =1
+size.yscale = 0.9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value =6,10
+volume = 99999999
+channel = -1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = -1
+
+[State 0]
+type = Explod
+trigger1 = time = 2
+anim = 6211
+ID =  6211
+pos = 40,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 44
+supermove =1
+pausemove  =1
+scale = 1,0.8
+sprpriority = 2
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 75
+channel = -1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = Time = 75
+value = 0
+ctrl = 1
+
+; Kamehameha
+[Statedef 2203]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2201
+poweradd = -500
+
+[State 0, Helper]
+type = Helper
+trigger1 =  AnimElem = 1
+helpertype = normal
+name = "kamehameha"
+ID =  62102
+stateno = 62102
+pos = 30,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermove =1
+pausemove =1
+size.yscale = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value =6,7
+volume = 99999999
+channel = -1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = -1
+
+[State 0]
+type = Explod
+trigger1 = time = 2
+anim = 6211
+ID =  6211
+pos = 40,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 64
+supermove =1
+pausemove  =1
+scale = 1,0.9
+sprpriority = 2
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  animtime = 0
+channel = -1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = Time = 85
+value = 0
+ctrl = 1
+
+; Kamehameha
+[Statedef 2204]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+juggle = 4
+ctrl = 0
+anim =2201
+poweradd = -500
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value =6,7
+volume = 99999999
+channel = -1
+
+[State 0, Helper]
+type = Helper
+trigger1 =  AnimElem = 1
+helpertype = normal
+name = "kamehameha"
+ID =  62103
+stateno = 62103
+pos = 30,-50
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermove =1
+pausemove =1
+size.yscale = 1.2
+
+[State 0]
+type = Explod
+trigger1 = time = 2
+anim = 6211
+ID =  6211
+pos = 40,-45
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 999999999999
+vel = 0,0
+accel = 10,10
+velocity = 10,10
+random = 0,0
+removetime = 84
+supermove =1
+pausemove  =1
+scale = 1,1
+sprpriority = 2
+ontop = 0
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  animtime = 0
+channel = -1
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 = time = 0
+channel = -1
+
+[State 2300, end]
+type = ChangeState
+trigger1 = Time = 105
+value = 0
+ctrl = 1

@@ -1,0 +1,26 @@
+[Info]
+name="Android Sixteen"
+displayname="Android Sixteen"
+versiondate=
+mugenversion=
+author="Marcus(Mugen Mundo Team Pocket)"
+pal.defaults=1,2
+[Files]
+sprite=Sixteen.sff
+sound=Sixteen.snd
+anim=Sixteen.air
+cmd=Sixteen.cmd
+cns=Sixteen.cns
+st=Sixteen.cns
+stcommon=common1.cns
+pal1=3
+pal2=2
+pal3=22
+pal4=4
+pal5=5
+pal6=
+pal7=
+pal8=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

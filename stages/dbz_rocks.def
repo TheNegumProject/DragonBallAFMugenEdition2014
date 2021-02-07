@@ -1,0 +1,105 @@
+;auteur = ken master
+;original game = DBZ
+;name = rocher
+;version = 0.1
+;Date = 1/04/2004
+;email = evil.sagat@wanadoo.fr
+;site web = http://perso.wanadoo.fr/evil.sagat
+;Edited by Stig87
+;email = b_blue34@yahoo.com
+;Mugendream.bravehost.com
+;Mugendream.angelfire.com
+
+
+[Info]
+name = "Desert Rocks"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -352
+boundright = 352
+boundhigh = -300
+boundlow = 0
+verticalfollow = .7
+floortension = 0
+tension = 30
+
+[PlayerInfo]
+p1startx = -80
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 80
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  = 0
+botbound  = 0
+
+[Scaling]
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+[Bound]
+screenleft = 24
+screenright = 24
+
+[StageInfo]
+zoffset = 210
+autoturn = 1
+resetBG = 0
+
+[Shadow]
+color = 0,0,0
+yscale = .3
+reflect = 0
+
+[Music]
+bgmusic =sound/Destiny.mp3
+bgvolume =255
+
+[BGdef]
+spr =stages/dbz_rocks.sff
+DEBUGBG=0
+DEBUG=0
+
+[BG fond]
+type = normal
+spriteno = 0,0
+start = 0, 20
+delta = .818181,.699999
+mask = 1
+
+[BG decor]
+type = normal
+spriteno = 1,0
+start = 0, 20
+delta = 1,1
+mask = 1
+
+[BG perso]
+type= anim
+actionno = 1
+start = 0, 20
+delta = 1,1
+mask = 1
+
+
+[Begin action 1]
+2,0, 0,0, 10
+2,1, 0,0, 10
+2,2, 0,0, 10
+2,3, 0,0, 10
+
+
+
+
+
+

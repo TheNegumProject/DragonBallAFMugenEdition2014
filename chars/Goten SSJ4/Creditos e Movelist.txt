@@ -1,0 +1,35 @@
+Nome do Criador do Char: Bruno_SS
+Versão do MUGEN: 1.0
+-------------------------------------------Creditos----------------------------------
+Personagem e golpes: Anime Dragon Ball Z. (O melhor)
+Codigos: Bruno_SS
+Sprites: 
+-------------------------------------------Golpes-------------------------------------
+Stand
+a,a,a - Combo 1
+b,b,b - Combo 2
+c - Ki Ball
+x,x,x - Combo 3 
+y,y,y - Combo 4
+z,z,z - Combo 5
+s - Teletransporte
+x+y - Charge
+
+Ar
+a - Soco 1
+b - Soco 2
+c - Chute
+
+Abaixado
+a - Soco 1
+b - Soco 2
+c - Ki Ball
+x - Chute 1 
+y - Chute 2
+
+Especiais
+D,F,b - Kiezan = 1000 de Power
+D,F,c - Punch Of Dragon (Dragon Punch) = 2900 de Power
+D,F,x - Kamehameha = 1800 de Power
+D,F,y - Kamehameha Red (Vermelho) = 2500 de Power
+D,F,z - Genkidama = 3500 de Power = 200 de Vida

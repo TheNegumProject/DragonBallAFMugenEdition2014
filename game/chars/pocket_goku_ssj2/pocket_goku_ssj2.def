@@ -1,0 +1,19 @@
+[Info]
+name="pocket_goku"
+displayname="pocket goku"
+versiondate=29/12/08
+mugenversion=
+author="The_Virus_X & MGMZX"
+pal.defaults=1
+[Files]
+sprite=pocket_goku_ssj2.sff
+sound=kakaroto.snd
+anim=pocket_goku_ssj2.air
+cmd=pocket_goku_ssj2.cmd
+cns=pocket_goku_ssj2.cns
+st=pocket_goku_ssj2.cns
+stcommon=common1.cns
+pal1=pocket_goku_ssj2.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

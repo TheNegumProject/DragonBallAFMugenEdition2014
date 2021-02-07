@@ -1,0 +1,105 @@
+[Info]
+name = "casa de libra"
+author = "Saga :!^_^!;  For programming, arranged, modified annimations and graphics - All originals Graphics and effects are from Microcosmo team,"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -232
+boundright = 232
+boundhigh = -900
+boundlow = 0
+verticalfollow = .4
+tension = 50
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+[Scaling]
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+[Bound]
+screenleft = 15
+screenright = 15
+
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 0
+
+[Shadow]
+color = 0,0,0
+yscale = 0
+reflect = 1
+
+[Music]
+bgmusic = sound\Golden Mantis.mp3
+bgvolume = 255
+
+[BGdef]
+spr = stages/Libra.sff
+
+[BG Fondnoir]
+type = Normal
+spriteno = 0, 2
+start = 0,240
+delta = 1,1
+mask = 1
+
+[BG Fond]
+type = Normal
+spriteno = 0, 0
+start = 0,240
+delta = 1,1
+mask = 1
+
+[BG Fond2]
+type = Normal
+spriteno = 0, 1
+start = 0,240
+delta = 1,1
+mask = 1
+
+[BG LibraCosmo]
+type = anim
+actionno = 1
+start = 0,240
+delta = 1,1
+mask = 1
+
+
+[BG Libra]
+type = Normal
+spriteno = 2, 0
+layerno = 0
+start = 0,240
+delta = 1,1
+mask = 1
+
+
+
+;------------------------------
+;LibraCosmo
+[Begin Action 1]
+1,0, 0,0, 12,,a2
+1,1, 0,0, 12,,a2
+1,2, 0,0, 12,,a2
+
+
+

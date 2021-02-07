@@ -1,0 +1,84 @@
+|-Goten GT's Movelist------------------------------------------------------------------
+Version 1.0
+Character made by 
+Goten88 a.k.a Pextin
+http://goten88.shorturl.com
+|-Basics---------------------------------------------------------------------------
+
+a   = Knee (Close)
+a   = Light Side Kick (Far)
+b   = Strong High Kick
+x   = Elbow (Close)
+x   = Light Punch (Far)
+y   = Strong Punch
+
+D, a   = Light Toe Kick
+D, b   = Strong Sweep Kick
+D, x   = Light Punch
+D, y   = Strong Punch
+
+U, a   = Light Kick
+U, b   = Strong Kick
+U, x   = Light Punch
+U, y   = Strong Punch
+
+Fly / Land          - c (While on ground hold up to take off immediately!)
+			(First 10 ticks of flight has a tad faster 
+			velocity, so it can be used for evading!)
+Zanzoken            - z
+Ki Charge           - c + z(If flying, Power increase is 1/5 of normal!)
+Super Jump          - D, U
+Super Jump FW       - D, UF
+Super Jump BACK     - D, UB
+
+|-Specials-------------------------------------------------------------------------
+
+Extra High Kick                  - F, a
+Sliding Kick (crouching)         - DB, a
+Ki Push Back                     - D,DB,B, a
+Grab Knee(Tap b for Multi)(close)- F, b
+Horse Kick                       - B, b
+High Kick (while jumping)        - U, b
+Double Kick (crouching)          - DF, b
+Light Uppercut                   - B, x
+Ki Shot (Tap x for Multi)        - D,DF,F, x(Damage decreases based on power level)
+Strong Uppercut                  - F, y
+Ground Throw (close)             - B, y
+SmackDown (while jumping)        - D, y
+Uppercut (crouching)             - DB, y
+Twisty Ki Shots                  - D,DB,B, y(Damage decreases based on power level)
+
+|-Supers Moves---------------------------------------------------------------------
+
+Gambit Throw (close)     - D,DF,F,D,DF,F, a or b (Power >= 1000)
+Kamehameha               - D,DF,F,D,DF,F, x (Power >= 2000)
+                         - (hit x + z during to transform to ssj!!!)
+Twisty Beam              - D,DB,B,D,DF,F, y (Power >= 1000)
+SSJ Transformation       - x + z
+                         - 1st Time transform can be done at any time!
+                         - Power continually slowly increases!
+			 - However instead of decreasing power while in fly state,
+			   power increase is just stopped.
+                         - And if you use too much power continuously and power
+                           gets TOO low, Goten will revert to Normal form!
+                         - USE YOUR POWER WISELY!
+                         
+                         - Transforming again can be done but only if power is 
+			   already at 3000!
+                         - Every other rule for SSJ Mode still applies!
+             
+Special thanks to:
+
+Akira Toriyama - For creating Dragonball
+Bandai - For the Trunks sprites from the DBZ Megadrive Game that I edited into Goten
+Elecbyte - For making Mugen
+Roken - For advice, some spidey sprites, and being a close bud.
+Lonewolf - For advice on sprites etc.
+Toad - For some sweet effects.
+Neo - For givin me some effects.
+Strife - For making me the Rushuna palette and being one of the coolest Ever!
+Majita - For giving me a sound library a while ago
+Annubis - For sounds that I may have or haven't used.
+Capcom Vs Snk - For some fx I used.
+
+and anyone else I can't think of who helped me.

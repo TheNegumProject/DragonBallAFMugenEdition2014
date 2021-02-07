@@ -1,0 +1,58 @@
+;====================================================================
+;---------------------|Goku AF cns|----------------------------------
+;====================================================================
+
+[Data]
+life = 1500          ;
+attack = 195      ;
+defence = 170        ;100% defensive power (more is stronger)
+fall.defence_up = 20 ;Def go
+liedown.time = 20    ;Time p
+airjuggle = 20
+sparkno = S900        ;
+guard.sparkno = s902; = -1
+KO.echo = 1        ;
+volume = 10
+IntPersistIndex = 58
+
+
+[Size]
+xscale = 0.7
+yscale = 0.7
+ground.back = 20     ;
+ground.front = 20   ;
+air.back = 15        ;
+air.front = 15       ;P
+height = 75
+attack.width = 4,4   ;
+attack.dist = 20    ;
+proj.attack.dist = 20
+proj.doscale = 1    ;
+head.pos = -2, -93
+mid.pos = -2, -60
+shadowoffset = 0
+
+
+[Velocity]
+walk.fwd  = 2.1      ;前進の速度
+walk.back = -2.0     ;後退の速度
+run.fwd  = 10.3, 0    ;前ダッシュの速度（ホップする時はyを-にする）
+run.back = -4.5,-3.8 ;Hop backward (x, y)
+jump.neu = 0,-9.8    ;垂直ジャンプの速度
+jump.back = -2.50    ;後ジャンプの速度
+jump.fwd = 2.50       ;前ジャンプの速度
+runjump.back = -3.80,-9.0.1 ;後ダッシュしながらのジャンプ速度(オプション)
+runjump.fwd = 4.5,-11.8      ;前ダッシュしながらのジャンプ速度(オプション)
+airjump.neu = 0,-11.4      ;２段ジャンプ以降の垂直ジャンプの速度(オプション)
+airjump.back = -3.00      ;２段ジャンプ以降の後ジャンプの速度(オプション)
+airjump.fwd = 3.00         ;２段ジャンプ以降の前ジャンプの速度
+
+[Movement]
+airjump.num = 1      ;空中でジャンプする回数
+airjump.height = 0  ;空中でジャンプする最低限の高さ
+yaccel = 0.44         ;重力
+stand.friction = .10  ;立ち状態の摩擦係数
+crouch.friction = .10 ;屈み状態の摩擦係数
+
+
+

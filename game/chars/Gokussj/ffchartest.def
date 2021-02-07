@@ -1,0 +1,26 @@
+[Info]
+name="[Necromancer's] Goku"
+displayname="Super goku"
+versiondate=07,27,2002
+mugenversion=04,14,2002
+author="The Necromancer&mugen mundo"
+pal.defaults=z,1,2,3,4,5,6
+[Files]
+sprite=GokuSFF.sff
+sound=GokuSND.snd
+anim=GokuAIR.air
+cmd=GokuCMD.cmd
+cns=GokuCNS.cns
+st=GokuCNS.cns
+stcommon=GokuCNS.cns
+pal1=z
+pal2=a
+pal3=2
+pal4=3
+pal5=4
+pal6=5
+pal7=6
+pal8=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

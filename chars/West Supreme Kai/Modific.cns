@@ -1,0 +1,1343 @@
+;Modificaciones por Teromugen
+
+;SEGUNDO GOLPE DE STATE 200
+[Statedef 201]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 201
+
+[State 201, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 30,8
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 20
+ground.velocity = -1
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = 0,0
+air.hittime = 12
+
+[STATE 201,2]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 202]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 202
+
+[State 201, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 40,10
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 20
+ground.velocity = -5,-10
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = 0,0
+air.hittime = 12
+FALL=1
+
+[STATE 201,2]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=203
+
+[Statedef 203]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 203
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+TRIGGER2=ANIMELEM=4
+VALUE=S730,2
+
+
+[State 203,TELETRANSPORTACION]
+type = PosAdd
+trigger1 = AnimElem = 2
+x = p2bodydist x - -45
+y = p2bodydist y - 10
+
+[State 203,TELETRANSPORTACION]
+type = PosSET
+trigger1 = TIME=55
+x = 0
+y = 0
+
+[State 203, RAYO]
+type = Helper
+trigger1 =TIME=20
+helpertype = normal ;player
+name ="203"
+ID =204
+stateno = 204
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+
+
+[STATE 201,2]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 204]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset =30,4
+anim = 1061
+
+[State 204, 1]
+type = HitDef
+trigger1 = AnimElem =1
+trigger2=animelem=2
+attr = S, NA
+animtype  = Medium
+damage    = 60,60
+guardflag = -1
+pausetime = 1,1
+sparkno = S9010
+guard.sparkno = -1
+sparkxy = 0,-20
+hitsound   = s0,9
+guardsound = S3231,0
+ground.type = trip
+ground.slidetime = 5
+ground.hittime  = 11
+ground.velocity = 0,0
+airguard.velocity = -1
+air.velocity = -8,10
+fall = 1
+
+[State 204: explosion]
+type		= Explod
+trigger1	= MOVECONTACT=1
+anim		= 1501
+pos 		= 0,25
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 0.8,0.8
+ontop		= 1
+
+[State 204:	DestroySelf]
+type			= DestroySelf
+trigger1		= (MoveContact) || (FrontEdgeBodyDist< -10)
+ignorehitpause	= 1
+;============================================
+;SEGUNDO GOLPE DE STATE 210
+[Statedef 211]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 220
+
+[State 212, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 30,8
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 20
+ground.velocity = -1
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = 0,0
+air.hittime = 20
+
+[STATE 212,2]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 212]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim =212
+
+[State 212, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 30,8
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 100
+ground.velocity = -1
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = 0,0
+air.hittime = 100
+
+[STATE 212,2]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=213
+CTRL=1
+[Statedef 213]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 213
+
+[State 213,teleport]
+type = PosAdd
+trigger1 = AnimElem = 2
+x = 70
+y = -30
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+TRIGGER2=ANIMELEM=5
+VALUE=S730,2
+[State 213, 2]
+type = HitDef
+trigger1 = AnimElem =4
+attr = S, NA
+animtype  = Medium
+damage    = 60,60
+guardflag = -1
+pausetime = 1,1
+sparkno = S999
+guard.sparkno = -1
+sparkxy = 0,-20
+hitsound   = s0,9
+guardsound = S3231,0
+ground.type = trip
+ground.slidetime = 5
+ground.hittime  = 11
+ground.velocity = 10,10
+airguard.velocity = -1
+air.velocity =10,10
+fall = 1
+
+[State 213,teleport]
+type = PosAdd
+trigger1 = AnimElem = 6
+x = 30
+y = 30
+
+[STATE 213,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+;============================================
+;SEGUNDO GOLPE DE STATE 220
+
+[Statedef 221]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 210
+
+[State 221, 2]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+animtype  = Medium
+damage    = 60
+guardflag = MA
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10,-46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 15
+ground.velocity = -2
+air.velocity = -2.5,-4
+
+[STATE 221,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+
+[Statedef 222]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 222
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=2
+VALUE=S730,3
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=3
+VALUE=S730,4
+[State 222, 2]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, NA
+animtype  = Medium
+damage    = 130
+guardflag = MA
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10,-46
+hitsound = S0,9
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 60
+ground.velocity = -20,8
+air.velocity = -2.5,-4
+FALL=1
+[State 222, 2]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+animtype  = Medium
+damage    = 60
+guardflag = MA
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10,-46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 60
+ground.velocity = -1
+air.velocity = -2.5,-4
+[State 0, SuperPause]
+type = SuperPause
+trigger1 =TIME=20
+time =60
+POS=999,999
+darken = 0;endcmdbuftime = (winmugen only)
+
+[State 222: EXPLOSION]
+type		= Explod
+trigger1	= TIME=25
+anim		= 1006
+pos 		= 53,-30
+postype	= p1
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1, 1
+ontop		= 1
+SUPERMOVE=1
+[State 222: ESFERA]
+type		= Explod
+trigger1	= animelem = 3
+anim		= 223
+pos 		= 53,-30
+postype	= p1
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1, 1
+ontop		= 1
+SUPERMOVE=1
+
+[STATE 222,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+;============================================
+;SEGUNDO GOLPE DE STATE 230
+[Statedef 231]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 231;GOLPE EN 5
+
+[State 231, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 30
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[STATE 231,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 232]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 232;GOLPE EN 5
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+TRIGGER2=ANIMELEM=3
+VALUE=S730,2
+[State 231, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 100
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s1006
+sparkxy = -10, -46
+hitsound = S0,9
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 100
+ground.velocity = 0
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 0,-10
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= -10,-15
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 0,-10
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= -10,20
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 10,0
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		=40,-10
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 40,-15
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 40,-10
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= -10,20
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+
+[State 231: explosion]
+type		= Explod
+trigger1	= animelem = 2
+anim		= 1006
+pos 		= 40,0
+postype	= p2
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 1 ,1
+ontop		= 1
+SUPERMOVE=1
+[STATE 231,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 233]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 233;GOLPE EN 5
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+VALUE=S730,3
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+VALUE=S730,4
+[State 231, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 200
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s1006
+sparkxy = -10, -46
+hitsound = S0,9
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -8,5
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+FALL=1
+
+[State 233: explosion]
+type		= Explod
+trigger1	= animelem = 1
+anim		= 223
+pos 		= 50,-43
+postype	= p1
+facing 	= 1
+vfacing	= 1
+vel 		= 0,0
+accel 	= 0,0
+scale = 0.50 , 0.50
+ontop		= 1
+SUPERMOVE=1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 =TIME=1
+time =67
+darken = 0
+POS=999,999
+
+[STATE 233,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+TRIGGER2=TIME=11
+VALUE=0
+CTRL=1
+;==========================================0
+;SEGUNDO GOLPE DE STATE 250
+[Statedef 251]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 251
+
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem = 1
+TRIGGER2=ANIMELEM=3
+attr = S, NA
+damage = 44
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = 0
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[STATE 251,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 252]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 252
+
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem = 1
+TRIGGER2=ANIMELEM=3
+attr = S, NA
+damage = 44
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = 0
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[STATE 251,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 253]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 253
+
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, NA
+damage = 44
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity =-20
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+fall=1
+[STATE 251,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+;==========================================
+;SEGUNDO GOLPE DE STATE 240
+[Statedef 241]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 241
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+VALUE=S730,2
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, NA
+damage = 66
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 25
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+[STATE 241,POSICION]
+TYPE=POSADD
+TRIGGER1=ANIMELEM=2
+X=P2BODYDIST X--75
+Y=P2BODYDIST Y-30
+
+[STATE 241]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 242]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 242
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+VALUE=S730,2
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, NA
+damage = 70
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 25
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+[STATE 241,POSICION]
+TYPE=POSADD
+TRIGGER1=ANIMELEM=2
+X=P2BODYDIST X-35
+Y=P2BODYDIST Y-30
+
+[STATE 241]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+
+[Statedef 243]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 243
+[STATE 203,SONIDO]
+TYPE=PLAYSND
+TRIGGER1=ANIMELEM=1
+VALUE=S730,2
+
+[STATE 243]
+TYPE=POSADD
+TRIGGER1=ANIMELEM=1
+X=P2BODYDIST X-5
+Y=P2BODYDIST Y-0
+
+[State 200, 1]
+type = HitDef
+trigger1 = AnimElem =3
+attr = S, NA
+damage = 100
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 8,8
+sparkno = s999
+sparkxy = -10, -46
+hitsound = S0,2
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+FALL=1
+[STATE 241,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+;=)같같같같같같같같같같같같같같같같같같같같
+;BUSQUEDA PARA COMBO DE STATEDEF 1000
+[Statedef 1001]
+type    = S
+movetype= A
+physics = N
+juggle  = 5;8
+ctrl = 0
+velset = 0
+anim = 6012
+
+[State 1200, 2]
+type = AfterImage
+trigger1 = animelem = 1
+time = 45
+trans = add1
+TimeGap  = 2
+FrameGap = 4
+length = 6
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =   1,  1,  1
+
+[State 1200, 3]
+type = null ;PlaySnd
+trigger1 = AnimElem = 2
+value = 2,4
+
+[State 1200, 1]
+type = velset
+trigger1 = AnimElem = 1
+y = 0
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 3
+x = 15
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 3
+x = -10
+
+[State 1200, 2]
+type = NotHitBy
+Trigger1 = Time = 3
+value = , NA, NT, SA, ST
+time = 36
+
+[State 1200, 4]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+animtype  = Hard
+damage    = 14
+guardflag = MA
+pausetime = 16,18
+sparkno = -1
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1
+air.type = Low
+air.velocity = 0
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 0
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = MoveContact = 1
+value = 1000
+ctrl = 1
+
+[State 1200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 3001
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+[Statedef 1002]
+type    = S
+movetype= A
+physics = N
+juggle  = 5;8
+ctrl = 0
+velset = 0
+anim = 6012
+
+[State 1200, 2]
+type = AfterImage
+trigger1 = animelem = 1
+time = 45
+trans = add1
+TimeGap  = 2
+FrameGap = 4
+length = 6
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =   1,  1,  1
+
+[State 1200, 3]
+type = null ;PlaySnd
+trigger1 = AnimElem = 2
+value = 2,4
+
+[State 1200, 1]
+type = velset
+trigger1 = AnimElem = 1
+y = 0
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 3
+x = 15
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 3
+x = -10
+
+[State 1200, 2]
+type = NotHitBy
+Trigger1 = Time = 3
+value = , NA, NT, SA, ST
+time = 36
+
+[State 1200, 4]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+animtype  = Hard
+damage    = 14
+guardflag = MA
+pausetime = 16,18
+sparkno = -1
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1
+air.type = Low
+air.velocity = 0
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 0
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = MoveContact = 1
+value = 1010
+ctrl = 1
+
+[State 1200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 3001
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+[Statedef 1003]
+type    = S
+movetype= A
+physics = N
+juggle  = 5;8
+ctrl = 0
+velset = 0
+anim = 6012
+
+[State 1200, 2]
+type = AfterImage
+trigger1 = animelem = 1
+time = 45
+trans = add1
+TimeGap  = 2
+FrameGap = 4
+length = 6
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =   1,  1,  1
+
+[State 1200, 3]
+type = null ;PlaySnd
+trigger1 = AnimElem = 2
+value = 2,4
+
+[State 1200, 1]
+type = velset
+trigger1 = AnimElem = 1
+y = 0
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 3
+x = 15
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 3
+x = -10
+
+[State 1200, 2]
+type = NotHitBy
+Trigger1 = Time = 3
+value = , NA, NT, SA, ST
+time = 36
+
+[State 1200, 4]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+animtype  = Hard
+damage    = 14
+guardflag = MA
+pausetime = 16,18
+sparkno = -1
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1
+air.type = Low
+air.velocity = 0
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 0
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = MoveContact = 1
+value = 1020
+ctrl = 1
+
+[State 1200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 3001
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+[Statedef 1004]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim =1005
+
+[State 1311,teleport]
+type = PosAdd
+TRIGGER1=TIME=3
+x = p2bodydist x - 40
+y = p2bodydist y - 0
+
+[STATE 1004,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=TIME=4
+VALUE=1005
+
+[Statedef 1005]
+type    = S
+movetype= A
+physics = N
+juggle  = 5;8
+ctrl = 0
+velset = 0
+anim = 6012
+
+[State 1200, 2]
+type = AfterImage
+trigger1 = animelem = 1
+time = 45
+trans = add1
+TimeGap  = 2
+FrameGap = 4
+length = 6
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =   1,  1,  1
+
+[State 1200, 3]
+type = null ;PlaySnd
+trigger1 = AnimElem = 2
+value = 2,4
+
+[State 1200, 1]
+type = velset
+trigger1 = AnimElem = 1
+y = 0
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 3
+x = 15
+
+[State 1200, 1]
+type = veladd
+trigger1 = AnimElem = 3
+x = -10
+
+[State 1200, 2]
+type = NotHitBy
+Trigger1 = Time = 3
+value = , NA, NT, SA, ST
+time = 36
+
+[State 1200, 4]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+animtype  = Hard
+damage    = 14
+guardflag = MA
+pausetime = 16,18
+sparkno = -1
+sparkxy = -10,-70
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 0
+ground.hittime  = 10
+ground.velocity = .1
+air.type = Low
+air.velocity = 0
+guard.velocity = -0.1
+airguard.velocity = 0
+fall = 0
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = MoveContact = 1
+value = 1300
+ctrl = 1
+
+[State 1200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 3001
+
+[State 1200, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;STATE UNICAMENTE USADO POR LA INTELIGENIA ARTIFICIAL
+[Statedef 1006]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+ctrl = 0
+velset = 0,0,0
+anim = 1005
+
+
+[State 1311,teleport]
+type = PosAdd
+trigger1 = TIME=5
+x = p2bodydist x - 100
+y = p2bodydist y - 0
+
+[STATE 1006,FINAL]
+TYPE=CHANGESTATE
+TRIGGER1=ANIMTIME=0
+VALUE=0
+CTRL=1
+

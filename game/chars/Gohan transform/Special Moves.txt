@@ -1,0 +1,8 @@
+Ki balls: Down,a
+masenko: Down,b
+Kamehameha: Down,c
+super kamehameha: Dwon,x
+combo masenko: Down,y
+combo super masenko: Down,y
+super masenko: Down,y
+Transformations: z

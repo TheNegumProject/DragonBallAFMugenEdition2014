@@ -1,0 +1,24 @@
+; Definition file for Player
+; Contains all the filenames needed for the character
+; Template player 9X-09-12
+
+; Character information
+[Info]
+name    = "BabidiRK";<-- Replace with a real name
+displayname = "Babidi";<-- Replace with name to display
+
+; Files for the character
+[Files]
+cmd     = Babidi.cmd     ;Command set
+cns     = Babidi.cns     ;Constants
+st      = Babidi.cns     ;States
+stcommon = common1.cns   ;Common states
+sprite  = Babidi.sff     ;Sprite
+anim    = Babidi.air     ;Animation
+sound   = Babidi.snd     ;Sound
+pal1    =      ;Palettes
+pal2    = 
+;pal3    =
+;pal4    = 
+;pal5    = 
+;pal6    = 

@@ -1,0 +1,142 @@
+[StateDef 2002]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 2002
+poweradd = 20
+sprpriority = 2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem =1
+value = S2000,1
+volume = 0
+channel = -1
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time>0
+value = -5
+;ignorehitpause =
+;persistent =
+
+
+
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time > 0
+x = floor (p2dist x) + 45
+y = floor (p2dist y) - 0
+;ignorehitpause =
+;persistent =
+
+[State 0, Turn]
+type = Turn
+trigger1 = p2dist x <0
+;ignorehitpause =
+;persistent =
+
+
+[State 2002, 1]
+type = HitDef
+trigger1 = AnimElem =1 ||AnimElem = 2 || animelem = 3 ||AnimElem =4 ||AnimElem =5||AnimElem =6 ||AnimElem = 7||AnimElem =8||AnimElem =9
+attr = S, NA
+damage = 20,20
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 1
+sparkno = 0
+sparkxy = -10, -60
+hitsound = S6, 1
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = -4,-8
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 2002, end]
+type = ChangeState
+trigger1 = animelem = 9 && movecontact
+value = 2003
+ctrl = 1
+
+[State 2002, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+; combo 2
+[StateDef 2003]
+type = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+ctrl = 0
+anim = 2003
+poweradd = 20
+sprpriority = 2
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem =9
+value = S2000,1
+volume = 0
+channel = -1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 9
+x = p2bodydist x - 350
+y = floor(p2dist y) +0
+;ignorehitpause =
+;persistent =
+
+[State 2003, 1]
+type = HitDef
+trigger1 = AnimElem =1 ||AnimElem = 2 || animelem = 3 ||AnimElem =4 ||AnimElem =5||AnimElem =6 ||AnimElem = 7||AnimElem =8||AnimElem =9
+attr = S, NA
+damage = 0
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 1, 1
+sparkno = 0
+sparkxy = -10, -60
+hitsound = S6, 1
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 12
+ground.velocity = 12,8
+airguard.velocity = -1.9,-.8
+air.type = High
+air.velocity = -1.4,-3
+air.hittime = 12
+
+[State 2002, end]
+type = ChangeState
+trigger1 = animelem = 9 && movecontact
+value = 1700
+ctrl = 1
+
+
+[State 2003, end]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+

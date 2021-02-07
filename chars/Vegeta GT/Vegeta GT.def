@@ -1,0 +1,34 @@
+;=======================================
+[Info]
+Author ="Ippo"
+Web = "http://mugentriforce.shorturl.com"
+name ="Vegeta-GT-SSJ2"
+displayname ="Vegeta GT"
+versiondate =14/10/2007
+mugenversion =06,14,2003
+pal.defaults =1,2
+;=======================================
+[Files]
+cmd     =Vegeta-GT-SSJ2.cmd
+cns     =Vegeta-GT-SSJ2.cns
+st      =Basics.st
+stcommon =common.cns
+sprite  =Vegeta-GT-SSJ2.sff
+anim    =Vegeta-GT-SSJ2.air
+sound   =Vegeta-GT-SSJ2.snd
+pal1=Paleta01-Red.act
+pal2=Paleta09-Bebi.act
+
+st1=Specials.st
+st2=Supers.st
+st3=-2.st
+st4=-3.st
+st5=
+;=======================================
+;[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+;=======================================
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def

@@ -1,0 +1,2216 @@
+;---------------------------------------------------------------------------
+; Helper 1(Goku ssj)
+[Statedef 1510]
+type = S
+movetype = I
+anim = 1510
+velset = 0,0,0
+ctrl = 0
+
+[State 200, Som_do_soco]
+type = playsnd
+trigger1 = AnimElem = 2
+value = 2000,0
+
+
+[State 191, 3]
+type = Playsnd
+trigger1 = time = 0
+persistent = 0
+value = F20, 0
+
+[State 4120, 1]
+type = SuperPause
+trigger1 = AnimELem = 1
+time = 55
+anim = -1
+
+[State 1050, 2]
+type=AfterImage
+trigger1= AnimElem = 1 
+time=77
+trans = add
+PalContrast =  255, 200, 255
+PalBright = 0,0,0
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = 1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = "goku"
+id = 1511
+;postype = left
+pos = -20,0
+stateno = 1511
+keyctrl = 0
+ownpal = 1
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = -1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = 	"goku"
+id = 1511
+;postype = right
+pos = -20,0
+stateno = 1511
+keyctrl = 0
+ownpal = 1
+
+[State 7000, 2]
+type = ChangeState
+trigger1 = Time = 100
+value = 1512
+ctrl = 1
+
+[Statedef 1512]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1512 
+
+[State 4001, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; goku Chegando
+[Statedef 1511]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1511  
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1518
+time = -1
+
+[State 3540, 5]
+type = width
+trigger1 = time >= 0
+value = 30,10
+
+[State 3540, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3540, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = 10.5
+
+[State 3540, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3540, 1]
+type = PlaySnd
+trigger1 = timemod = 30, 4
+value = 0,3
+volume = 20
+
+[State 3540, 3]
+type = changestate
+trigger1 = time = 12
+value = 6213
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 6213]
+type    = S
+movetype= I
+physics = S
+juggle  = 4
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 1515
+
+[State 6210, 7]
+type = changestate
+trigger1 = Time = 0
+value = 1513
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;goku Atacando
+[Statedef 1513]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= -2000
+ctrl = 0
+velset = 0,0,0
+anim = 1513
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1518
+time = -1
+
+[State 1000, 2]
+type = PlaySnd
+trigger1 = Time = 2
+value = 1900,0
+
+[State 210 , 2]
+type = Projectile
+Trigger1 = animelem = 1, 11
+projanim = 1514
+;projhitanim = 240
+projhits = 60
+projremovetime= 100
+offset = 23, -85
+;velocity = 6
+attr = S, NA
+animtype  = Medium
+damage    = 28, 9
+;getpower = -3000
+guardflag = MA
+pausetime = 2,2
+sparkno = -1
+hitsound   = S20,4
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 15
+ground.velocity = -2
+air.velocity = -2
+
+[State 3542, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1515
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;goku se Virando
+[Statedef 1515]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = -1,0
+anim = 1515
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1518
+time = -1
+
+[State 3543, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3543, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3543, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3543, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1516
+ctrl = 0
+
+[State 2000,WinLose]
+type = ChangeState
+trigger1 = Win = 1
+value = 1517
+
+;---------------------------------------------------------------------------
+;goku Vitia
+[Statedef 1517]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1517
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,56
+
+[State 181 , 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;goku Saindo
+[Statedef 1516]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1516
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1518
+time = -1
+
+[State 3544, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3544, 1]
+type = posadd
+trigger1 = Time = 0
+x = 33
+
+;[State 3544, 1]
+;type = turn
+;trigger1 = Time = 0
+;Value = 1
+
+[State 3544, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = -6
+
+[State 3544, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3544, 3]
+type = DestroySelf
+trigger1 = time = 50
+
+;---------------------------------------------------------------------------
+;goku apanhando
+[Statedef 1518]
+type = A
+movetype = I
+physics = N
+anim = 1518
+velset = -2,-4,0
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0,34
+
+[State 6005, 1]
+type = Gravity
+trigger1 = time >= 0
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = Pos Y >= -2
+trigger1 = Vel Y > 0
+value = 1519
+;---------------------------------------------------------------------------
+;goku levantando
+[Statedef 1519]
+type = A
+movetype = I
+physics = N
+anim = 1519
+velset = 0,0,0
+
+[State 6015, 1]
+type = Gravity
+trigger1 = Time >= 45
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = animelem = 3
+value = 1516
+
+;---------------------------------------------------------------------------
+; Helper 2(trunks ssj)
+[Statedef 1610]
+type = S
+movetype = I
+anim = 1610
+velset = 0,0,0
+ctrl = 0
+
+[State 200, Som_do_soco]
+type = playsnd
+trigger1 = AnimElem = 2
+value = 2000,0
+
+
+[State 191, 3]
+type = Playsnd
+trigger1 = time = 0
+persistent = 0
+value = F20, 0
+
+[State 4120, 1]
+type = SuperPause
+trigger1 = AnimELem = 1
+time = 55
+anim = -1
+
+[State 1050, 2]
+type=AfterImage
+trigger1= AnimElem = 1 
+time=77
+trans = add
+PalContrast =  255, 200, 255
+PalBright = 0,0,0
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = 1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = "trunks"
+id = 1611
+;postype = left
+pos = -20,0
+stateno = 1611
+keyctrl = 0
+ownpal = 1
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = -1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = 	"trunks"
+id = 1611
+;postype = right
+pos = -20,0
+stateno = 1611
+keyctrl = 0
+ownpal = 1
+
+[State 7000, 2]
+type = ChangeState
+trigger1 = Time = 100
+value = 1612
+ctrl = 1
+
+[Statedef 1612]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1612 
+
+[State 4001, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; trunks Chegando
+[Statedef 1611]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1611  
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1618
+time = -1
+
+[State 3540, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3540, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = 10.5
+
+[State 3540, 1]
+type = PlaySnd
+trigger1 = timemod = 30, 4
+value = 0,3
+volume = 20
+
+[State 3540, 3]
+type = changestate
+trigger1 = time = 12
+value = 62133
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 62133]
+type    = S
+movetype= I
+physics = S
+juggle  = 4
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 1615
+
+[State 6210, 7]
+type = changestate
+trigger1 = Time = 0
+value = 1613
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;trunks Atacando
+[Statedef 1613]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 60
+ctrl = 0
+anim = 1613
+
+[State 1613, AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+trans = add1
+TimeGap  = 1
+FrameGap = 6
+time = 20
+length = 15
+PalBright   =   0,  0,  0
+PalContrast = 128,128,128
+PalAdd      =   0,  0,  0
+PalMul      =  1,1,1;.9, .9, .9
+
+
+
+[State 1613, 2]
+type = HitDef
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 2
+trigger3 = AnimElem = 4
+attr = S, NA
+animtype  = Medium
+damage    = 20
+guardflag = MA
+pausetime = 8,11
+sparkxy = -10,-60
+hitsound   = S5,0
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 50
+ground.velocity = -1
+air.velocity = -2.2,-3.2
+
+
+[State 1613, 3]
+type = HitDef
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 8
+attr = S, NA
+animtype  = Medium
+damage    = 20
+guardflag = MA
+pausetime = 12,11
+sparkxy = -10,-60
+hitsound   = S5,0
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 509
+ground.hittime  = 509
+ground.velocity = -1
+air.velocity = -2.2,-3.2
+
+
+[State 1613, veladd2] 
+type = VelAdd
+trigger1 = AnimElem = 9
+y = 0
+x = -20
+
+[State 3542, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 16155
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;Trunks atacando parte 2
+[Statedef 16155]
+type    = S
+movetype= A
+physics = S
+poweradd= -2000
+ctrl = 0
+anim = 16155
+velset = 0
+
+[State 16155, 2]
+type = SuperPause
+trigger1 = AnimElem = 1
+pos = -21, -87
+anim = 101
+
+
+[State 2000,NoHit]
+type = NotHitBy
+trigger1 = Time > 34
+value = ,NP,SP,NA,SA
+
+
+[State 1211, 1]
+type = velset
+trigger1 = time >= 0
+trigger1 = time <= 48
+x = 0
+y = 0
+
+[State 16155, 3]
+type = PlaySnd
+trigger1 = Time = 1
+value = F20,0
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 3
+trigger3 = AnimElem = 4
+trigger4 = AnimElem = 5
+trigger5 = AnimElem = 6
+trigger6 = AnimElem = 7
+trigger7 = AnimElem = 8
+trigger8 = AnimElem = 9
+trigger9 = AnimElem = 10
+anim = 1956
+pos = -21,-87
+sprpriority = 4
+supermove = 1
+
+[State 16155, 4]
+type = AfterImage
+trigger1 = Time = 1	
+Time = 45
+TimeGap  = 1
+FrameGap = 4
+
+[State 16155, 3]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 1900,1
+
+[State 3021,ProjUp]
+type = Projectile
+trigger1 = AnimElem = 22
+trigger1 = Command = "holdup"
+ProjAnim = 1905
+ProjHitAnim = 1910
+ProjRemAnim = 1910
+offset = 25, -50
+velocity = 15,-12
+remvelocity = 0,0
+velmul = 1.005, 1
+accel = 0, 0
+ProjPriority = 6
+;HitDef part
+attr = S, HP
+damage    = 320,160
+animtype  = Hard
+getpower = 0
+givepower = 200
+guardflag = MA
+pausetime = 0,12
+sparkno = -1
+guard.sparkno = -1
+hitsound = S20,4
+guardsound = S20,4
+ground.type = Trip
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = -20,-15
+guard.velocity = -3.5
+airguard.velocity = -3.5,-3.75
+air.type = Low
+air.velocity = -20,-12
+palfx.time = 20
+palfx.add = 2,130,252
+palfx.sinadd = 66,254,196,20
+palfx.mul = 2,194,196
+fall = 1
+
+;弾（中、地上）
+[State 3021,GroundProjStraight]
+type = Projectile
+trigger1 = AnimElem = 22
+trigger1 = Pos Y >= 0
+trigger1 = Command != "holdup"
+ProjAnim = 1905
+ProjHitAnim = 1910
+ProjRemAnim = 1910
+offset = 25, -50
+velocity = 15, 0
+remvelocity = 0,0
+velmul = 1.005, 1
+accel = 0, 0
+ProjPriority = 6
+;HitDef part
+attr = S, HP
+damage    = 320,160
+animtype  = Hard
+getpower = 0
+givepower = 200
+guardflag = MA
+pausetime = 0,12
+sparkno = -1
+guard.sparkno = -1
+hitsound = S20,4
+guardsound = S20,4
+ground.type = Trip
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = -20,-10
+guard.velocity = -3.5
+airguard.velocity = -3.5,-2.75
+air.type = Low
+air.velocity = -20,-8
+fall = 1
+
+;弾（中、空中）
+[State 3021,AirProjStraight]
+type = Projectile
+trigger1 = AnimElem = 22
+trigger1 = Pos Y < 0
+trigger1 = Command != "holdup"
+trigger1 = Command != "holddown"
+ProjAnim = 1905
+ProjHitAnim = 1910
+ProjRemAnim = 1910
+offset = 25, -50
+velocity = 15, 0
+remvelocity = 0,0
+velmul = 1.005, 1
+accel = 0, 0
+ProjPriority = 6
+;HitDef part
+attr = S, HP
+damage    = 320,160
+animtype  = Hard
+getpower = 0
+givepower = 200
+guardflag = MA
+pausetime = 0,12
+sparkno = -1
+guard.sparkno = -1
+hitsound = S20,4
+guardsound = S20,4
+ground.type = Trip
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = -20,-10
+guard.velocity = -3.5
+airguard.velocity = -3.5,-2.75
+air.type = Low
+air.velocity = -20,-8
+fall = 1
+
+;弾（下）
+[State 3021,ProjDown]
+type = Projectile
+trigger1 = AnimElem = 22
+trigger1 = Command != "holdup"
+trigger1 = Command = "holddown"
+trigger1 = Pos Y < 0
+ProjAnim = 1905
+ProjHitAnim = 1910
+ProjRemAnim = 1910
+ProjID = 555
+offset = 25, -50
+velocity = 15,10
+remvelocity = 0,0
+velmul = 1.005, 1
+accel = 0, 0
+ProjPriority = 6
+;HitDef part
+attr = S, HP
+damage    = 320,160
+animtype  = Hard
+getpower = 0
+givepower = 200
+hitflag = MAFD
+guardflag = MA
+pausetime = 0,12
+sparkno = -1
+guard.sparkno = -1
+hitsound = S20,4
+guardsound = S20,4
+ground.type = Trip
+ground.slidetime = 15
+ground.hittime  = 20
+ground.velocity = -20,8
+guard.velocity = -3.5
+airguard.velocity = -3.5,2.75
+air.type = Low
+air.velocity = -20,15
+fall = 1
+fall.damage = 25
+
+[State 1500, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 1500
+
+[State 1500, changestate]
+type = changestate
+trigger1 = animtime = 0
+value = 1615
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;trunks se Virando
+[Statedef 1615]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = -1,0
+anim = 1615
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1618
+time = -1
+
+[State 3543, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3543, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3543, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3543, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1616
+ctrl = 0
+
+[State 2000,WinLose]
+type = ChangeState
+trigger1 = Win = 1
+value = 1617
+
+;---------------------------------------------------------------------------
+;trunks Vitia
+[Statedef 1617]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1617
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,56
+
+[State 181 , 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;trunks Saindo
+[Statedef 1616]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1616
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1618
+time = -1
+
+[State 3544, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3544, 1]
+type = posadd
+trigger1 = Time = 0
+x = 33
+
+;[State 3544, 1]
+;type = turn
+;trigger1 = Time = 0
+;Value = 1
+
+[State 3544, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = -6
+
+[State 3544, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3544, 3]
+type = DestroySelf
+trigger1 = time = 50
+
+;---------------------------------------------------------------------------
+;trunks apanhando
+[Statedef 1618]
+type = A
+movetype = I
+physics = N
+anim = 1618
+velset = -2,-4,0
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0,34
+
+[State 6005, 1]
+type = Gravity
+trigger1 = time >= 0
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = Pos Y >= -2
+trigger1 = Vel Y > 0
+value = 1619
+;---------------------------------------------------------------------------
+;trunks levantando
+[Statedef 1619]
+type = A
+movetype = I
+physics = N
+anim = 1619
+velset = 0,0,0
+
+[State 6015, 1]
+type = Gravity
+trigger1 = Time >= 45
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = animelem = 3
+value = 1616
+
+
+;---------------------------------------------------------------------------
+; Helper 3(Vegeta ssj)
+[Statedef 1710]
+type = S
+movetype = I
+anim = 1710
+velset = 0,0,0
+ctrl = 0
+
+[State 200, Som_do_soco]
+type = playsnd
+trigger1 = AnimElem = 2
+value = 2000,0
+
+
+[State 191, 3]
+type = Playsnd
+trigger1 = time = 0
+persistent = 0
+value = F20, 0
+
+[State 4120, 1]
+type = SuperPause
+trigger1 = AnimELem = 1
+time = 55
+anim = -1
+
+[State 1050, 2]
+type=AfterImage
+trigger1= AnimElem = 1 
+time=77
+trans = add
+PalContrast =  255, 200, 255
+PalBright = 0,0,0
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = 1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = "vegeta"
+id = 1711
+;postype = left
+pos = -20,0
+stateno = 1711
+keyctrl = 0
+ownpal = 1
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = -1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = 	"vegeta"
+id = 1711
+;postype = right
+pos = -20,0
+stateno = 1711
+keyctrl = 0
+ownpal = 1
+
+[State 7000, 2]
+type = ChangeState
+trigger1 = Time = 100
+value = 1712
+ctrl = 1
+
+[Statedef 1712]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1712 
+
+[State 4001, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; vegeta Chegando
+[Statedef 1711]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1711  
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1718
+time = -1
+
+[State 3540, 5]
+type = width
+trigger1 = time >= 0
+value = 30,10
+
+[State 3540, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3540, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = 4.5
+
+[State 3540, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3540, 1]
+type = PlaySnd
+trigger1 = timemod = 30, 4
+value = 0,3
+volume = 20
+
+[State 3540, 3]
+type = changestate
+trigger1 = time = 12
+value = 621334
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 621334]
+type    = S
+movetype= I
+physics = S
+juggle  = 4
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 1715
+
+[State 6210, 7]
+type = changestate
+trigger1 = Time = 0
+value = 1713
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;vegeta Atacando
+[Statedef 1713]
+type    = S
+movetype= A
+physics = S
+poweradd= -2000
+ctrl = 0
+anim = 1713
+velset = 0
+
+[State 1713, 2]
+type = SuperPause
+trigger1 = AnimElem = 1
+pos = 34, -57
+anim = 102
+
+[State 1211, 1]
+type = velset
+trigger1 = time >= 0
+trigger1 = time <= 48
+x = 0
+y = 0
+
+[State 1713, 3]
+type = PlaySnd
+trigger1 = Time = 1
+value = F20,0
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 1
+anim = 9990
+facing = 1
+pos = 0,0
+postype = left
+sprpriority = -2
+bindtime = 50
+ownpal = 1
+supermove = 1
+removetime = 65
+
+[State 1713, 3]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = 7, 1
+
+[State 1713, 4]
+type = Projectile
+trigger1 = AnimElem = 14
+projanim = 1905
+projhitanim = 1910
+projpriority = 2
+projheightbound = -240, 100
+projedgebound = 100
+projscreenbound = 100
+projshadow = -1
+offset = 25, -50
+velocity = 9
+attr = S, SP
+damage   = 300,30
+animtype = light
+guardflag = MA
+hitflag = MAFDP
+pausetime = 10,10
+hitsound   = S20,4
+sparkxy = 500,500
+guardsound = S1713,1
+ground.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+ground.velocity = -4   
+air.animtype = light
+air.velocity = -4,-5
+air.juggle = 3
+air.fall = 1
+down.velocity = -4,-6
+down.hittime = 30
+down.bounce = 0
+fall = 1
+fall.recover = 0
+
+[State 1500, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = Pos Y < 0
+value = 1500
+
+[State 1713, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1715
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Super Fireball Animation
+[Statedef 17133]
+type    = A
+movetype= A
+physics = N
+poweradd= -2000
+ctrl = 0
+anim = 17133
+
+[State 17133, 1]
+type = VelSet
+trigger1 = Time = 0
+z = 0
+
+[State 17133, 2]
+type = VelMul
+trigger1 = Time = 0
+x = .025
+
+
+[State 17133, 3]
+type = VelAdd
+trigger1 = Time >= 0
+trigger1 = Pos Y < 0
+y = .00
+
+[State 17133, 4]
+type = PosSet
+trigger1 = Pos Y >= -1
+y = 0
+
+[State 17133, 5]
+type = VelSet
+trigger1 = Pos Y >= -1
+y = 0
+
+[State 17133, 5]
+type = Projectile
+trigger1 = AnimElem = 14
+projanim = 17133
+projhitanim = 1910
+projpriority = 2
+projheightbound = -340, 100
+projedgebound = 200
+projscreenbound = 200
+projshadow = -1
+offset = 0,0
+velocity = 8
+attr = S, SP
+damage   = 300,30
+animtype = light
+guardflag = MA
+hitflag = MAFDP
+pausetime = 10,10
+hitsound   = S20,4
+sparkxy = 500,500
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 25
+ground.hittime  = 25
+ground.velocity = -4   
+air.animtype = light
+air.velocity = -4,-5
+air.juggle = 3
+air.fall = 1
+down.velocity = -4,-6
+down.hittime = 30
+down.bounce = 0
+fall = 1
+fall.recover = 0
+
+[State 17133, 9]
+type = CtrlSet
+trigger1 = AnimTime = 0
+value = 1
+
+[State 17133, 10]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+
+;---------------------------------------------------------------------------
+;vegeta se Virando
+[Statedef 1715]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = -1,0
+anim = 1715
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1718
+time = -1
+
+[State 3543, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3543, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3543, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3543, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1716
+ctrl = 0
+
+[State 2000,WinLose]
+type = ChangeState
+trigger1 = Win = 1
+value = 1717
+
+;---------------------------------------------------------------------------
+;vegeta Vitia
+[Statedef 1717]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1717
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,56
+
+[State 181 , 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;vegeta Saindo
+[Statedef 1716]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1716
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1718
+time = -1
+
+[State 3544, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3544, 1]
+type = posadd
+trigger1 = Time = 0
+x = 33
+
+;[State 3544, 1]
+;type = turn
+;trigger1 = Time = 0
+;Value = 1
+
+[State 3544, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = -6
+
+[State 3544, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3544, 3]
+type = DestroySelf
+trigger1 = time = 50
+
+;---------------------------------------------------------------------------
+;vegeta apanhando
+[Statedef 1718]
+type = A
+movetype = I
+physics = N
+anim = 1718
+velset = -2,-4,0
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0,34
+
+[State 6005, 1]
+type = Gravity
+trigger1 = time >= 0
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = Pos Y >= -2
+trigger1 = Vel Y > 0
+value = 1719
+;---------------------------------------------------------------------------
+;vegeta levantando
+[Statedef 1719]
+type = A
+movetype = I
+physics = N
+anim = 1719
+velset = 0,0,0
+
+[State 6015, 1]
+type = Gravity
+trigger1 = Time >= 45
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = animelem = 3
+value = 1716
+
+;---------------------------------------------------------------------------
+; Helper 4(Vegeta ssj)
+[Statedef 1810]
+type = S
+movetype = I
+anim = 1710
+velset = 0,0,0
+ctrl = 0
+
+[State 200, Som_do_soco]
+type = playsnd
+trigger1 = AnimElem = 2
+value = 2000,0
+
+
+[State 191, 3]
+type = Playsnd
+trigger1 = time = 0
+persistent = 0
+value = F20, 0
+
+[State 4120, 1]
+type = SuperPause
+trigger1 = AnimELem = 1
+time = 55
+anim = -1
+
+[State 1050, 2]
+type=AfterImage
+trigger1= AnimElem = 1 
+time=77
+trans = add
+PalContrast =  255, 200, 255
+PalBright = 0,0,0
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = 1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = "vegeta"
+id = 1811
+;postype = left
+pos = -20,0
+stateno = 1811
+keyctrl = 0
+ownpal = 1
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = -1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = 	"vegeta"
+id = 1811
+;postype = right
+pos = -20,0
+stateno = 1811
+keyctrl = 0
+ownpal = 1
+
+[State 7000, 2]
+type = ChangeState
+trigger1 = Time = 100
+value = 1812
+ctrl = 1
+
+[Statedef 1812]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1812 
+
+[State 4001, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; vegeta Chegando
+[Statedef 1811]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1711  
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1818
+time = -1
+
+[State 3540, 5]
+type = width
+trigger1 = time >= 0
+value = 30,10
+
+[State 3540, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3540, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = 4.5
+
+[State 3540, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3540, 1]
+type = PlaySnd
+trigger1 = timemod = 30, 4
+value = 0,3
+volume = 20
+
+[State 3540, 3]
+type = changestate
+trigger1 = time = 12
+value = 6213367
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 6213367]
+type    = S
+movetype= I
+physics = S
+juggle  = 4
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 1715
+
+[State 6210, 7]
+type = changestate
+trigger1 = Time = 0
+value = 1813
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;vegeta Atacando
+[Statedef 1813]
+type    = S
+movetype= A
+physics = S
+velset = 0,0,0
+poweradd = -2000
+juggle = 0
+ctrl = 0
+anim = 1813
+
+;[State 1813, ?]
+;type = PosFreeze
+;trigger1 = time >= 0
+
+[State 1813, supsnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = F20, 0
+
+[State 3000,MBS]
+type = explod
+trigger1 = AnimElem = 1
+anim = 9990
+facing = 1
+pos = 0,0
+postype = left
+sprpriority = -2
+bindtime = 50
+ownpal = 1
+supermove = 1
+removetime = 65
+
+[State 1813, 2]
+type = SuperPause
+trigger1 = AnimElem = 1
+pos = -22,-52
+anim = 102
+
+[State 1813, 2]
+type = SuperPause
+trigger1 = AnimElem = 1
+pos = 23,-49
+anim = 101
+
+[State 1813, 6]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = 7,0
+
+;[State 3000, aura]
+;type = Explod
+;trigger1 = Time = 3
+;id = 950
+;anim = 951
+;pos = 0,0
+;bindtime = -1
+;sprpriority = 6
+;removetime = 30
+;supermove = 1
+
+;[State 1813, ball]
+;type = Explod
+;trigger1 = Time = 30
+;anim = 3002
+;pos = 30,-51
+;bindtime = -1
+;sprpriority = 4
+;removetime = 30
+;supermove = 1
+
+[State 1813, raio]
+type = Projectile
+trigger1 = AnimElem = 19
+projanim = 18133
+projhits = 20
+projmisstime = 3
+;projshadow = -1
+projpriority = 9
+sprpriority = 9
+projremovetime = 70
+projid = 1705
+;velocity = 0.001,0.001
+offset = 18,-64
+attr = S, HP
+damage   = 25,7
+animtype = heavy
+guardflag = MA
+hitflag = MAFP
+pausetime = 0,3
+hitsound   = 5,2
+sparkno = 0                   ;Spark image group and no (Def: set above)
+sparkxy = -500,-500   
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -5   
+fall = 1
+air.animtype = Back
+air.velocity = -5,-8
+air.juggle = 1
+down.velocity = -10
+down.hittime = 30
+down.bounce = 0
+;PalFX
+palfx.time = 23
+palfx.add = 50,30,130
+
+[State 1813, envshake]
+type = EnvShake
+trigger1 = AnimElem = 19;Time = 60
+time = 70
+
+[State 3021, 3]
+type = ChangeState
+trigger1 = Time = 170;200
+trigger1 = Pos Y < 0
+value = 1500
+
+[State 1813, end]
+type = ChangeState
+trigger1 = Time = 170;120
+value = 1815
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;vegeta se Virando
+[Statedef 1815]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = -1,0
+anim = 1815
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1818
+time = -1
+
+[State 3543, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3543, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3543, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3543, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1816
+ctrl = 0
+
+[State 2000,WinLose]
+type = ChangeState
+trigger1 = Win = 1
+value = 1817
+
+;---------------------------------------------------------------------------
+;vegeta Vitia
+[Statedef 1817]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1817
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,56
+
+[State 181 , 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;vegeta Saindo
+[Statedef 1816]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1816
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1818
+time = -1
+
+[State 3544, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3544, 1]
+type = posadd
+trigger1 = Time = 0
+x = 33
+
+;[State 3544, 1]
+;type = turn
+;trigger1 = Time = 0
+;Value = 1
+
+[State 3544, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = -6
+
+[State 3544, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3544, 3]
+type = DestroySelf
+trigger1 = time = 50
+
+;---------------------------------------------------------------------------
+;vegeta apanhando
+[Statedef 1818]
+type = A
+movetype = I
+physics = N
+anim = 1818
+velset = -2,-4,0
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0,34
+
+[State 6005, 1]
+type = Gravity
+trigger1 = time >= 0
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = Pos Y >= -2
+trigger1 = Vel Y > 0
+value = 1819
+;---------------------------------------------------------------------------
+;vegeta levantando
+[Statedef 1819]
+type = A
+movetype = I
+physics = N
+anim = 1819
+velset = 0,0,0
+
+[State 6015, 1]
+type = Gravity
+trigger1 = Time >= 45
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = animelem = 3
+value = 1816
+
+;---------------------------------------------------------------------------
+; Helper 1(Gogeta ssj4)
+[Statedef 1910]
+type = S
+movetype = I
+anim = 19100
+velset = 0,0,0
+ctrl = 0
+
+[State 200, Som_do_soco]
+type = playsnd
+trigger1 = AnimElem = 2
+value = 2000,0
+
+
+[State 191, 3]
+type = Playsnd
+trigger1 = time = 0
+persistent = 0
+value = F20, 0
+
+[State 4120, 1]
+type = SuperPause
+trigger1 = AnimELem = 1
+time = 55
+anim = -1
+
+[State 1050, 2]
+type=AfterImage
+trigger1= AnimElem = 1 
+time=77
+trans = add
+PalContrast =  255, 200, 255
+PalBright = 0,0,0
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = 1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = "gogeta"
+id = 1911
+;postype = left
+pos = -20,0
+stateno = 1911
+keyctrl = 0
+ownpal = 1
+
+[State 4000, 1]
+type = Helper
+trigger1 = Time = 0
+trigger1 = facing = -1
+;trigger1 = numhelper = 0
+helpertype = normal
+name = 	"gogeta"
+id = 1911
+;postype = right
+pos = -20,0
+stateno = 1911
+keyctrl = 0
+ownpal = 1
+
+[State 7000, 2]
+type = ChangeState
+trigger1 = Time = 100
+value = 1912
+ctrl = 1
+
+[Statedef 1912]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+ctrl = 0
+anim = 1912 
+
+[State 4001, 6]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; gogeta Chegando
+[Statedef 1911]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1911  
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1918
+time = -1
+
+[State 3540, 5]
+type = width
+trigger1 = time >= 0
+value = 30,10
+
+[State 3540, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3540, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = 10.5
+
+[State 3540, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3540, 1]
+type = PlaySnd
+trigger1 = timemod = 30, 4
+value = 0,3
+volume = 20
+
+[State 3540, 3]
+type = changestate
+trigger1 = time = 12
+value = 621343535
+ctrl = 0
+
+;---------------------------------------------------------------------------
+[Statedef 621343535]
+type    = S
+movetype= I
+physics = S
+juggle  = 4
+poweradd= 0
+ctrl = 0
+velset = 0,0,0
+anim = 1915
+
+[State 6210, 7]
+type = changestate
+trigger1 = Time = 0
+value = 1913
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;gogeta Atacando
+[Statedef 1913]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 1913
+poweradd = -3000
+ctrl = 0
+
+[State 3001,hit.no.voa]
+type = HitOverride
+trigger1 = pos y < 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 5050
+
+[State 1913,Som]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1910, 0
+
+[State 1913,NoHit]
+type = NotHitBy
+trigger1 = Time > 34
+value = ,NP,SP,NA,SA
+
+[State 1913, 3]
+type = Projectile
+trigger1 = AnimElem = 2
+projanim = 19133
+projhitanim = 191334
+projhits = 29
+projmisstime = 3
+projremanim = 191334
+projshadow = -1
+projpriority = 4
+projremovetime = 102
+projid = 19133
+velocity = 0.001,0.001
+offset = 0
+attr = S, HP
+animtype  = Heavy
+damage    = 25,5
+getpower  = 0
+sparkno = -1
+sparkxy = -1
+guard.sparkno = -1
+priority  = 6
+guardflag = MA
+pausetime = 1,3
+hitsound   = S20,4
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 12
+ground.hittime  = 12
+ground.velocity = -6,-3
+air.velocity = -6,-2
+fall.animtype = Hard
+fall = 1
+
+[State 3001,Fim.no.voa]
+type = ChangeState
+trigger1 = animtime = 0
+trigger1 = pos Y < 0
+value = 3001
+
+[State 1913,Fim]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1915
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;gogeta se Virando
+[Statedef 1915]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = -1,0
+anim = 1915
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1918
+time = -1
+
+[State 3543, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3543, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3543, 1]
+type = Playerpush
+trigger1 = time >= 0
+value = 1
+
+[State 3543, 3]
+type = changestate
+trigger1 = animtime = 0
+value = 1916
+ctrl = 0
+
+[State 1913,WinLose]
+type = ChangeState
+trigger1 = Win = 1
+value = 1917
+
+;---------------------------------------------------------------------------
+;gogeta Vitia
+[Statedef 1917]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1917
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,56
+
+[State 181 , 1]
+type = NotHitBy
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+;gogeta Saindo
+[Statedef 1916]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1916
+
+[State 6006, 1]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP 
+stateno = 1918
+time = -1
+
+[State 3544, 5]
+type = sprpriority
+trigger1 = time >= 0
+value = 3
+
+[State 3544, 1]
+type = posadd
+trigger1 = Time = 0
+x = 33
+
+;[State 3544, 1]
+;type = turn
+;trigger1 = Time = 0
+;Value = 1
+
+[State 3544, 2]
+type = VelSet
+trigger1 = Time >= 0
+x = -6
+
+[State 3544, 1]
+type = NotHitBy
+trigger1 = Time >= 0
+Value = SCA
+
+[State 3544, 3]
+type = DestroySelf
+trigger1 = time = 50
+
+;---------------------------------------------------------------------------
+;gogeta apanhando
+[Statedef 1918]
+type = A
+movetype = I
+physics = N
+anim = 1918
+velset = -2,-4,0
+
+[State 2000, 3]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0,34
+
+[State 6005, 1]
+type = Gravity
+trigger1 = time >= 0
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = Pos Y >= -2
+trigger1 = Vel Y > 0
+value = 1919
+;---------------------------------------------------------------------------
+;gogeta levantando
+[Statedef 1919]
+type = A
+movetype = I
+physics = N
+anim = 1919
+velset = 0,0,0
+
+[State 6015, 1]
+type = Gravity
+trigger1 = Time >= 45
+
+[State 6005, 2]
+type = ChangeState
+trigger1 = animelem = 3
+value = 1916
+
+;---------------------------------------------------------------------------

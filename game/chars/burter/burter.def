@@ -1,0 +1,31 @@
+[info]
+name ="Burter"
+displayname ="Butter 2"
+versiondate =2,26,2008
+mugenversion =
+author ="Stig87"
+pal.defaults =1, 2, 3, 4, 5, 6
+
+[files]
+cns =burter.cns
+sprite =burter.sff
+anim =burter.air
+sound =burter.snd
+cmd =burter.cmd
+stcommon =bcommon.cns
+st =burter.cns
+pal1=burter.act
+pal2=dark.act
+pal3=green.act
+pal4=blue.act
+pal5=light.act
+pal6=arcade.act
+st1=attacks.cns
+st2=specials.cns
+st3=hypers.cns
+st4=jeice.cns
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

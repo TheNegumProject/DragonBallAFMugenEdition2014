@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Uub by Dark King"
+displayname = "Uub"
+versiondate = 12/07/11
+mugenversion = 04,14,2002 ;1.0
+author = "Dark King"
+pal.defaults = 1,2,3,4,5,6
+
+[Files]
+sprite = DK-Uub.sff
+anim = DK-Uub.air
+sound = DK-Uub.snd
+cmd = DK-Uub.cmd
+cns = DK-Uub.cns
+stcommon = common1.cns
+st = DK-Uub.cns
+pal1 = 1.act
+pal2 = 2.act
+pal3 = 6.act
+pal4 = 4.act
+pal5 = 5.act
+pal6 = 3.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard= 

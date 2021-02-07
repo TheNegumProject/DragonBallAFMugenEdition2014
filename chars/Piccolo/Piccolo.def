@@ -1,0 +1,26 @@
+[Info]
+name = "Piccolo"
+displayname = "Piccolo"
+versiondate = 02,13,2011
+mugenversion = 
+author = "CHOUJIN"
+pal.defaults = 4,1,5,2,6,3
+
+[Files]
+cns = piccolo.cns
+cmd = piccolo.cmd
+stcommon = common1.cns
+sprite = piccolo.sff
+anim = piccolo.air
+st = piccolo.cns
+st2 = attack.cns
+st3 = special.cns
+st4 = hyper.cns
+st9 = AI.cns
+sound = piccolo.snd
+pal1 = arcade2.act
+pal2 = bukuu.act
+pal3 = daimaoh2.act
+pal4 = piccolo.act
+pal5 = arcade1.act
+pal6 = daimaoh.act

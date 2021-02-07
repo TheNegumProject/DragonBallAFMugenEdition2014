@@ -1,0 +1,783 @@
+
+;----------------------------------------------------------------------------------------
+;Fly up (Flying Start)
+[Statedef 1999]
+type = A
+movetype = I
+physics = A
+ctrl = 0
+velset = 0,-10
+facep2 = !(prevstateno = 9010)
+
+[State 1999, ChangeAnim]
+type = ChangeAnim
+trigger1 = Time = 0 && Anim != 159
+value = 159
+
+[State 1999, 2]
+type = AfterImage
+Trigger1 = time = 1
+length = 10
+PalColor = 0
+TimeGap = 1
+FrameGap = 3
+Trans = Add1
+time = 10
+
+;This makes the jump sound effect.
+[State 1999, JumpSnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 0, 2
+
+;will go to state 2000 as soon as the move has ended.
+[State 1999, Fly]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 2000
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Bukuu Jutsu
+[Statedef 2000]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 963
+velset = 0,0
+
+[State 2000, VarSet]
+type = VarSet
+trigger1 = Time = 0
+var(23) = 1
+
+[State 2000, MakeDust1]
+type = MakeDust
+triggerall = Pos Y >= -80 && Pos Y <= -70
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+pos = -5, 75
+spacing = 3
+
+[State 2000, MakeDust2]
+type = MakeDust
+triggerall = Pos Y >= -70 && Pos Y <= -60
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+pos = -5, 60
+spacing = 3
+
+[State 2000, MakeDust3]
+type = MakeDust
+triggerall = Pos Y >= -60 && Pos Y <= -50
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+pos = -5, 50
+spacing = 3
+
+[State 2000, MakeDust4]
+type = MakeDust
+triggerall = Pos Y >= -50 && Pos Y <= -40
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+pos = -5, 40
+spacing = 3
+
+[State 2000, MakeDust5]
+type = MakeDust
+triggerall = Pos Y >= -40 
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+pos = -5, 30
+spacing = 3
+
+[State 2000, Guard]
+type = ChangeState
+triggerall = P2MoveType = A
+triggerall = P2BodyDist X <= 120
+trigger1 = Command = "holdback"
+trigger2 = Command = "BB"
+value = 130
+
+[State 2000, RunSnd]
+type = PlaySnd
+trigger1 = command = "FF"
+trigger2 = command = "BB"
+trigger3 = command = "DD"
+trigger4 = command = "UU"
+value = 21, 0
+
+;停止
+[State 2000, Stop1]
+type = VelSet
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = command != "holdz"
+trigger1 = var(2) = 0
+trigger2 = Pos Y < -400
+x = 0
+y = 0
+
+[State 2000, Stop2]
+type = ChangeAnim
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = Anim != 963
+value = 963
+
+[State 2000, Stop2]
+type = ChangeAnim
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = Anim != 963
+value = 963
+
+;フワフワ
+[State 2000,fuwavar(1)]
+type = VarSet
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = var(2) != 2
+trigger2 = var(2) = 2
+trigger2 = Vel Y >= 2.4
+v = 2
+value = 1
+
+[State 2000,fuwavar(2)]
+type = VarSet
+triggerall = var(2) = 1
+trigger1 = Vel Y <= -2.4
+trigger2 = P2BodyDist Y > 400
+trigger2 = Vel Y < 0
+v = 2
+value = 2
+
+[State 2000,fuwaUp]
+type = VelAdd
+;triggerall = stateno != 315143
+trigger1 = var(2) = 1
+y = -0.3
+
+[State 2000,fuwaDown]
+type = VelAdd
+;triggerall = stateno != 315143
+trigger1 = var(2) = 2
+y = 0.3
+
+[State 2000,fuwaDown]
+type = Velset
+trigger1 = stateno = 315143
+y = 0
+
+[State 2000,fuwaEnd]
+type = VelSet
+triggerall = var(2) != 0
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+trigger3 = command = "holdup"
+trigger4 = command = "holddown"
+y = 0
+
+[State 2000,fuwaEndVar]
+type = VarSet
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+trigger3 = command = "holdup"
+trigger4 = command = "holddown"
+v = 2
+value = 0
+
+;高さの限界
+[State 2000, UpBorder1]
+type = PosSet
+trigger1 = Pos Y < -400
+y = -400
+
+[State 2000, UpBorder2a]
+type = PosAdd
+trigger1 = P2BodyDist Y > 400
+trigger1 = Vel Y < 0
+y = 1
+
+[State 2000, UpBorder2b]
+type = VelSet
+trigger1 = P2BodyDist Y > 400
+trigger1 = Vel Y < 0
+y = 0
+
+;ダッシュ分身
+[State 2000, Runeffect]
+type = AfterImage
+trigger1 = Command = "FF"
+trigger1 = Vel X < 9
+trigger2 = Command = "BB"
+trigger2 = Vel X > -8.6
+trigger3 = Command = "DD"
+trigger3 = Vel Y < 8.6
+trigger4 = Command = "UU"
+trigger4 = Vel Y > -8.6
+length = 13
+PalBright   =  30, 30,  0
+PalContrast =  70, 70, 20
+PalAdd      = -10,-10,-10
+PalMul      = .85,.85,.50
+TimeGap  = 1
+FrameGap = 2
+Trans = Add
+time = 10
+
+;ダッシュ前
+[State 2000, RunFwd]
+type = VelSet
+trigger1 = Command = "FF"
+trigger1 = Vel X < 9
+x = 9
+
+;ダッシュ後
+[State 2000, RunBack]
+type = VelSet
+trigger1 = Command = "BB"
+trigger1 = Vel X > -8.6
+x = -8.6
+
+;ダッシュ下
+[State 2000, RunDown]
+type = VelSet
+trigger1 = Command = "DD"
+trigger1 = Vel Y < 8.6
+y = 8.6
+
+;ダッシュ上
+[State 2000, RunUp]
+type = VelSet
+trigger1 = Command = "UU"
+trigger1 = Vel Y > -8.6
+y = -8.6
+
+;下降
+[State 2000, GoDown1]
+type = VelAdd
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holddown"
+trigger2 = var(58) = 1
+trigger2 = P2Dist Y > 0
+y = 0.5
+
+[State 2000,GoDown2]
+type = VelSet
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holddown"
+trigger1 = Vel Y < 0 
+trigger2 = var(58) = 1
+trigger2 = P2Dist Y > 0
+trigger2 = Vel Y < 0
+y = 0
+
+;上昇
+[State 2000, GoUp1]
+type = VelAdd
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdup"
+trigger2 = var(58) = 1
+trigger2 = P2Dist Y < 0
+y = -0.4
+
+[State 2000,GoUp2]
+type = VelSet
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdup"
+trigger1 = Vel Y > 0 
+trigger2 = var(58) = 1
+trigger2 = P2Dist Y < 0
+trigger2 = Vel Y > 0
+y = 0
+
+[State 2000, GoUpAnim]
+type = ChangeAnim
+trigger1 = PalNo = [1, 12]
+trigger1 = Anim != 963
+trigger1 = command = "holdup"
+trigger2 = var(58) = 1
+trigger2 = Anim != 100
+trigger2 = P2Dist Y < 0
+trigger3 = PalNo = [1, 12]
+trigger3 = Anim != 963
+trigger3 = command = "holddown"
+trigger4 = var(58) = 1
+trigger4 = Anim != 963
+trigger4 = P2Dist Y < 0
+value = 963
+
+;後退
+[State 2000, GoBack1]
+type = VelAdd
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdback"
+trigger2 = var(58) = 1
+trigger2 = P2Dist X < 0 
+x = -0.4
+
+[State 2000,GoBack2]
+type = VelSet
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdback"
+trigger1 = Vel X > 0 
+trigger2 = var(58) = 1
+trigger2 = P2Dist X < 0
+trigger2 = Vel X > 0
+x = 0
+
+[State 2000, GoBackAnim]
+type = ChangeAnim
+trigger1 = PalNo = [1, 12]
+trigger1 = Anim != 741
+trigger1 = command = "holdback"
+trigger2 = var(58) = 1
+trigger2 = Anim != 741
+trigger2 = P2Dist X < -10
+value = 741
+
+;前進
+[State 2000, GoFwd1]
+type = VelAdd
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdfwd"
+trigger2 = var(58) = 1
+trigger2 = P2Dist X > 0
+x = 0.5
+
+[State 2000,GoFwd2]
+type = VelSet
+trigger1 = PalNo = [1, 12]
+trigger1 = command = "holdfwd"
+trigger1 = Vel X < 0 
+trigger2 = var(58) = 1
+trigger2 = P2Dist X > 0
+trigger2 = Vel X < 0
+x = 0
+
+[State 2000, GoFwdAnim]
+type = ChangeAnim
+trigger1 = PalNo = [1, 12]
+trigger1 = Anim != 789
+trigger1 = command = "holdfwd"
+trigger2 = var(58) = 1
+trigger2 = Anim != 789
+trigger2 = P2Dist X > 0
+value = 789
+
+;方向転換
+[State 2000, Turn]
+type = Turn
+trigger1 = P2Dist X < 0
+
+;着地
+[State 2000, Land1]
+type = ChangeState
+trigger1 = Pos Y >= 0
+value = 52
+ctrl = 1
+
+;This ends the flying action if the command is used.
+[State 2000, Land2]
+type              = ChangeState
+triggerall 	  = var(58) != 1
+triggerall        = PalNo = [1, 12]
+triggerall        = Command = "holdx"
+triggerall        = Command = "holdy"
+trigger1          = Command = "holdup"
+trigger2          = Command = "holddown"
+trigger3          = Command = "holdback"
+trigger4          = Command = "holdfwd"
+value             = 50
+ctrl              = 1
+
+[State 2000, Kod While Flying]
+type = changestate
+;triggerall = stateno = 2000
+trigger1 = life <=0
+trigger2 = loseko
+value = 5050
+
+[State 2000, WinLose]
+type = ChangeState
+trigger1 = Win
+trigger2 = Lose
+value = 50
+
+
+
+
+
+
+
+
+
+;---------------------------------------------------------------------------
+; CRUEL HUNTING
+[Statedef 3000]
+type    = S
+movetype= A
+physics = S
+anim = 3000
+ctrl = 0
+poweradd = -1000
+
+[state 3000,1]
+type = velset
+trigger1 = time = 0
+Y = 0
+
+[State 3000, Speech 1]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = 3000,0
+
+;[State 3000, Portrait]
+;type = Explod
+;trigger1 = AnimElem = 2, = 1
+;anim = 6000
+;pos = -160,-60
+;facing = 1
+;postype = back
+;sprpriority = -20
+;supermove = 1
+;bindtime = -1
+;ownpal = 1
+
+;[State 3000, BG]
+;type = Explod
+;trigger1 = AnimElem = 2, = 1
+;anim = 6300
+;pos = 0,240
+;scale = 1.055, 1.075
+;postype = left
+;supermove = 1
+;sprpriority = -21
+;removetime = 50
+;bindtime = -1
+;ownpal = 1
+
+;[State 3000, Pause]
+;type = SuperPause
+;trigger1 = AnimElem = 2, = 1
+;time = 50
+;movetime = 50
+;anim = 102
+;pos = 4,-79
+;poweradd = -1000
+
+;[State 3000, Super SFX]
+;type = PlaySnd
+;trigger1 = AnimElem = 2, = 1
+;value = S0,18
+;abspan = 0
+
+;[State 3000, NotHitBy]
+;Type = NotHitBy
+;trigger1 = AnimElem = 2, = 1
+;Value = SCA
+;Time = 50
+
+;[State 3000, Remove BG]
+;type = AssertSpecial
+;trigger1 = Time = [5,54]
+;flag = NoFG
+;flag2 = NoBG
+
+;[State 3000, Stop]
+;type = Posfreeze
+;trigger1 = Time = [5,54]
+
+[State 3000, Gold]
+type = ChangeState
+triggerall = PalNo = 7
+trigger1 = AnimElem = 3
+value = 3050
+
+;[State 3000 , Firing 1]
+;type = Projectile
+;trigger1 = AnimElem = 11
+;trigger2 = AnimElem = 13
+;trigger3 = AnimElem = 15
+;trigger4 = AnimElem = 17
+;trigger5 = AnimElem = 19
+;trigger6 = AnimElem = 21
+;trigger7 = AnimElem = 23
+;trigger8 = AnimElem = 25
+;trigger9 = AnimElem = 27
+;trigger10 = AnimElem = 29
+;trigger11 = AnimElem = 31
+;trigger12 = AnimElem = 33
+;trigger13 = AnimElem = 35
+;projID = 3000
+;projanim = 3001
+;projhitanim = 6150
+;offset = 112, -118
+;velocity = 20, 0
+;attr = S, HP
+;damage    = 7,3
+;fall.animtype = Heavy
+;getpower  = 0
+;hitflag = MAFD
+;guardflag = MA
+;priority = 3
+;pausetime = 0,6
+;sparkno = 2
+;guard.sparkno = S6800
+;sparkxy = 0,0
+;hitsound   = S0,13
+;guardsound = S0,10
+;ground.type = Low
+;ground.slidetime = 15
+;ground.hittime  = 15
+;ground.velocity = -8,-8
+;guard.velocity = -10
+;air.hittime = 15
+;air.velocity = -8,-8
+;airguard.velocity = -4,0
+;air.fall = 1
+;fall = 1
+;fall.recover = 0
+;p2stateno = 9000
+
+;[State 3000 , Firing 2]
+;type = Projectile
+;trigger1 = AnimElem = 11
+;trigger2 = AnimElem = 13
+;trigger3 = AnimElem = 15
+;trigger4 = AnimElem = 17
+;trigger5 = AnimElem = 19
+;trigger6 = AnimElem = 21
+;trigger7 = AnimElem = 23
+;trigger8 = AnimElem = 25
+;trigger9 = AnimElem = 27
+;trigger10 = AnimElem = 29
+;trigger11 = AnimElem = 31
+;trigger12 = AnimElem = 33
+;trigger13 = AnimElem = 35
+;projID = 3000
+;projanim = 3001
+;projhitanim = 6150
+;offset = 135, -113
+;velocity = 20, 0
+;attr = S, HP
+;damage    = 7,3
+;fall.animtype = Heavy
+;getpower  = 0
+;hitflag = MAFD
+;guardflag = MA
+;priority = 3
+;pausetime = 0,6
+;sparkno = 2
+;guard.sparkno = S6800
+;sparkxy = 0,0
+;hitsound   = S0,13
+;guardsound = S0,10
+;ground.type = Low
+;ground.slidetime = 15
+;ground.hittime  = 15
+;ground.velocity = -8,-8
+;guard.velocity = -10
+;air.hittime = 15
+;air.velocity = -8,-8
+;airguard.velocity = -4,0
+;air.fall = 1
+;fall = 1
+;fall.recover = 0
+;p2stateno = 9000
+
+[State 3000 , Firing 3]
+type = Projectile
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 12
+trigger3 = AnimElem = 13
+trigger4 = AnimElem = 14
+trigger5 = AnimElem = 15
+trigger6 = AnimElem = 16
+trigger7 = AnimElem = 17
+trigger8 = AnimElem = 18
+trigger9 = AnimElem = 19
+trigger10 = AnimElem = 20
+trigger11 = AnimElem = 21
+trigger12 = AnimElem = 22
+trigger13 = AnimElem = 23
+trigger14 = AnimElem = 24
+trigger15 = AnimElem = 25
+trigger16 = AnimElem = 26
+trigger17 = AnimElem = 27
+trigger18 = AnimElem = 28
+trigger19 = AnimElem = 29
+trigger20 = AnimElem = 30
+trigger21 = AnimElem = 31
+trigger22 = AnimElem = 32
+trigger23 = AnimElem = 33
+trigger24 = AnimElem = 34
+trigger25 = AnimElem = 35
+trigger26 = AnimElem = 36
+projID = 3000
+projanim = 825
+projhitanim = 6100
+offset = 60, -95
+velocity = 25, 0
+attr = S, HP
+damage    = 10, 1
+fall.animtype = Heavy
+getpower  = 0
+hitflag = MAFD
+guardflag = MA
+priority = 3
+pausetime = 0,6
+sparkno = 2
+guard.sparkno = S6800
+sparkxy = 0,0
+hitsound = s500,4       
+guardsound = 6,0 
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -8,-8
+guard.velocity = -10
+air.hittime = 15
+air.velocity = -8,-8
+airguard.velocity = -4,0
+air.fall = 1
+fall = 1
+fall.recover = 0
+;p2stateno = 9000
+
+[State 3000, Gunfire 1]
+type = PlaySnd
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 12
+trigger3 = AnimElem = 13
+trigger4 = AnimElem = 14
+trigger5 = AnimElem = 15
+trigger6 = AnimElem = 16
+trigger7 = AnimElem = 17
+trigger8 = AnimElem = 18
+trigger9 = AnimElem = 19
+trigger10 = AnimElem = 20
+trigger11 = AnimElem = 21
+trigger12 = AnimElem = 22
+trigger13 = AnimElem = 23
+trigger14 = AnimElem = 24
+trigger15 = AnimElem = 25
+trigger16 = AnimElem = 26
+trigger17 = AnimElem = 27
+trigger18 = AnimElem = 28
+trigger19 = AnimElem = 29
+trigger20 = AnimElem = 30
+trigger21 = AnimElem = 31
+trigger22 = AnimElem = 32
+trigger23 = AnimElem = 33
+trigger24 = AnimElem = 34
+trigger25 = AnimElem = 35
+trigger26 = AnimElem = 36
+value = S0,12
+
+[State 3000, Gunfire 2]
+type = PlaySnd
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 14
+trigger3 = AnimElem = 17
+trigger4 = AnimElem = 20
+trigger5 = AnimElem = 23
+trigger6 = AnimElem = 26
+trigger7 = AnimElem = 29
+trigger8 = AnimElem = 32
+trigger9 = AnimElem = 35
+value = S0,74
+
+[State 3000, Blast 1]
+type = Explod
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 14
+trigger3 = AnimElem = 17
+trigger4 = AnimElem = 20
+trigger5 = AnimElem = 23
+trigger6 = AnimElem = 26
+trigger7 = AnimElem = 29
+trigger8 = AnimElem = 32
+trigger9 = AnimElem = 35
+anim = 3002
+pos = 116,-112
+facing = 1
+postype = p1
+sprpriority = 1
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+
+[State 3000, Blast 2]
+type = Explod
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 14
+trigger3 = AnimElem = 17
+trigger4 = AnimElem = 20
+trigger5 = AnimElem = 23
+trigger6 = AnimElem = 26
+trigger7 = AnimElem = 29
+trigger8 = AnimElem = 32
+trigger9 = AnimElem = 35
+anim = 3002
+pos = 91,-118
+facing = 1
+postype = p1
+sprpriority = 2
+bindtime = -1
+ownpal = 1
+removeongethit = 1
+
+[State 3000, Speech 2]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = S1,19
+channel = 0
+
+[State 3000, Speech 3]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = S1,20
+
+[State 3000, Snap]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = S0,73
+
+[State 3000, Blanket]
+type = PlaySnd
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 39
+value = S0,17
+
+[State 3000, Twirl]
+type = PlaySnd
+trigger1 = AnimElem = 37
+trigger2 = AnimElem = 38
+trigger3 = AnimElem = 39
+trigger4 = AnimElem = 40
+trigger5 = AnimElem = 41
+trigger6 = AnimElem = 42
+trigger7 = AnimElem = 43
+trigger8 = AnimElem = 44
+trigger9 = AnimElem = 45
+value = S0,1
+
+[State 3000, Halt]
+type = PlaySnd
+trigger1 = AnimElem = 46
+value = S0,20
+
+[State 3000, Done]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

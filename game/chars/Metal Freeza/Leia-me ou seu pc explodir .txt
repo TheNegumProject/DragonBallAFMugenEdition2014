@@ -1,0 +1,33 @@
+-------------------------Metal Freeza by MugenMundo e DarkAngel---------------------------
+
+- Sprites by DarkAngel,Obrigado pelos lindos Sprites 
+- Programação feita por Marcus MugenMundo .. com um novo estilo,que aposto que agradará a todos.
+- Sounds:Obrigado Francys por ter ripado esses sons pra eu te robar XD,e obrigado OZ por tambem ter ripado alguns pro seu freeza,vlw amigos!
+
+
+--------------------  O que ele tem? ---------------------------
+
+- 4 mini Combos feitos com as teclas  D,F + Alguma dessas(a,x,y,z)
+- 5 Mini combos feitos de costas executando: D,B + Alguma dessas (a,b,x,y,z)
+- 5 combos que se completam,executados por B,F + (a,b,x,y ou )
+- 6 Especiais caracteristicos ao anime executados por:B,D,F  e algum dos 6 botões
+- 4 Hyper Especiais executados por: B,D,F + Dois botões,descubram quais são.
+
+- hyper Mode:É feito ao apertar a+b,o player fica piscando e seus hits são mais fortes,durá até o power bar acabar.
+- Explosão:afasta o inimigo: y+z
+- Charge:Carrega o powerbar,feito por a+b,segurado
+
+-2 intros
+-1 Win
+-1 Teleport
+
+----------------------------------Agradecimentos Especiais---------------------------
+
+Obrigado a todos por baixarem esses chars e estarem conosco a 8 anos,se virem eles em algum site que não pertença a MugenMundo,por favor nos informe
+no site http://mugenmundo.ucoz.com  
+
+------------------------------------Direitos----------------------------------------
+Nenhum dos sprites contidos nos chars são open source,são feitos e editados por outras pessoas.
+Os sons tambem não são open source,por que os donos não querem,se quiserem só pedir a eles:Francyinaldo,e OZ
+
+

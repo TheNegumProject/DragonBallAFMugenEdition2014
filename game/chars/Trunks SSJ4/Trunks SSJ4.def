@@ -1,0 +1,31 @@
+;.............................................................................................
+[Info]
+name ="trunks"
+displayname ="Trunks SSJ4"
+pal.defaults =1,2
+versiondate=10/30/2008
+mugenversion=
+author="Trunksin4"
+
+; Files for the player
+[Files]
+cmd     =trunks.cmd
+cns     =trunks.cns
+st      =trunks.cns
+stcommon =common1.cns
+sprite  =trunks.sff
+anim    =trunks.air
+sound   =trunks.snd
+pal1=trunks7.act
+pal2=trunks7.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard=final/final.def
+;...........................................................................................
+
+                                ; Feito no Brasil           
+;                              Autor: equipe FRS GAMES
+
+;[[[[[[[[[[[[[[[[[[[[[[E-mail& msn: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

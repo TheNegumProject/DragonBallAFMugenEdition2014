@@ -1,0 +1,185 @@
+
+;-----------------------------------------------
+Street Fighter M.U.G.E.N Edition 2012 by Erick
+;-----------------------------------------------
+
+[Characters]
+Goku
+Gokussj
+kakarot
+Goku Transform
+BSuperGokuSSJ4SS
+Goku Deus
+kakaroto
+kakarotto gt
+Vegeta
+vegeta-sayajin
+MajinVedita
+Vegeta Transform
+vegeta_ssj4
+Mistico gohan
+Gohan transform
+gohan ssj3
+trunks do futuro
+Trunks 2
+Trunks SSJ2
+Piccolo
+Piccolo Sem Capa
+Krillin
+TenShinHan
+Yamcha
+Raditz
+Nappa
+Vegeta Saiyan
+Recoome
+Ginyu
+Guldo
+burter
+Jeice
+frz
+Frezaa
+Metal Freeza
+Cooler
+Metal Coola
+Bardock
+Bardock SSJ
+Turles
+
+android18
+Android 17
+Sixteen
+drgero
+insectcell
+cell 2ºfaze
+cell-super-perfect
+Gohan Armor
+Gohan Armor SSJ
+Gohan SSJ2
+Android 13
+GokuHR
+SSJ3songoku
+Vegeta SSJ2
+Krilin Boo
+PiccoloUB22
+Saiyaman
+babidi
+mrsatan
+Buu
+
+Super Buu
+Kid Buu
+Vegetto
+Vegetto SSJ
+Baby Vegeta
+Super Baby Vegeta
+Super 17
+Nuova Shenron
+omegashenron
+Gogeta SSJ
+Gogeta Ssj4
+Gogeta SSJ5
+broly
+Broly Legendary
+Broly LSSJ3
+Limiter Cut Broly
+Xicor
+Vegeta GT SSJ
+CGokuSSj3
+Gohan AF Z-Sword
+
+Goten GT
+Gohan Do Futuro
+Gotenks AF
+Evil kakarotto ssj5
+Vegeta SSJ5
+GohanZ
+vegettonormal
+Taopai
+King Piccolo
+Supreme Kai
+Goku kid
+Goku Damaged
+Saibaman
+Oozaru SSJ
+PracVegeta
+Baby Gohan
+Majuub
+bra
+Janemba
+Evil Goku normal
+
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+-add new character here
+Trunks SSJ4
+GOHAN AF SSJ4
+SSJ4
+Vegeta ssj4 mm
+Android 18
+pocket_goku_ssj2
+Goku SSJ
+
+randomselect
+
+;-----------------------
+[ExtraStages]
+stages/BardockStage.def
+stages/Destruction_HR.def
+stages/Libra.def
+stages/Coliseum.def
+stages/Akatsuki_Base.def
+stages/chunin.def
+stages/bankai_ichigo_stage.def
+stages/Inner_World.def
+stages/BlackCatShip.def
+stages/Thriller Bark.def
+stages/deadWoods.def
+stages/sagat.def
+stages/[betochac]_SFIII_NG_Gill.def
+;---------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends
+ ;in Arcade Mode. The first number is the number of matches against
+ ;characters with order=1, followed by order=2 and order=3 respectively.
+ ;For example, for 4,3,1 you will fight up to 4 randomly-picked
+ ;characters who have order=1, followed by 3 with order=2 and 1 with
+ ;order=3.
+arcade.maxmatches = 3,3,3,2,1,3,4,9
+
+
+ ;Maximum number of matches to fight before game ends in Team Mode.
+ ;Like arcade.maxmatches, but applies to Team Battle.
+team.maxmatches = 3,3,3,2,1,9,9
+
+team.arcade.maxmatches = 3,3,3,2,1,9
+team.versus.maxmatches = 3,3,3,2,1,9

@@ -1,0 +1,311 @@
+
+
+\ \      / /| ____)/  _____| | ____)(___   ___)/  \      /  _____| (___   ___)
+ \ \    / / | |    | /       | |        | |   / __ \     | /           | |
+  \ \  / /  | |__  | |  ___  | |__      | |  / (__) \    | |  ___      | |
+   \ \/ /   |  __| | | |__ \ |  __|     | |  |  __  |    | | |__ \     | |
+    \  /    | |___ | \___/ / | |___     | |  | |  | |    | \___/ /     | |
+     \/     |_____)\______/  |_____)    |_|  |_|  |_|    \______/      |_|
+
+
+==============================================================================
+
+
+Name            - Vegeta GT SSJ2
+Sprites         - Lord Lee
+Program         - Ippo
+Mugen version   - 06,14,2003
+
+|====================|
+| Perfil             |=========================================================
+|====================|
+Vegeta, es el Príncipe de la Raza Saiyajin, hijo del Rey Vegeta. Desde pequeño
+fue entrenando con dureza, como correspondía a un miembro de la élite entre las
+élites de los saiyajin, la Familia Real. Gracias a esto, sus potencialidades
+de manifestaron tempranamente, y ya a los cinco años destacaba entre los demás
+guerreros de primera clase. Vegeta empieza siendo muy malgino icluso cuando
+peleaba por el bien lo hacia con desprecio y con esperanza de ganar algo a
+cambio. Luego cambia y se hace mas bondadoso al conocer a bulma y al tener
+dos hijos.
+
+Sexo: Masculino
+Origen en: Manga
+Primera aparición: Volumen 17, capítulo 204(Manga)
+Episodio 7 de Dragon Ball Z(Anime}
+Otros nombres: Principe Vegeta
+Procedencia: Planeta Vegeta
+Raza: Saiyajin (puro)
+Familia:
+* Rey Vegeta (padre)
+* Bulma (esposa)
+* Trunks (hijo)
+* Bra (hija)
+* Vegeta Jr.(tataranieto)
+
+Habilidades especiales
+
+* Big Bang Attack
+* Final Flash
+* Garlic Ho
+* Kienzan
+* Kikoha
+* Power Ball
+* Técnicas de Dragon Ball#Ring Ju Energy Dan
+* Saishu Saigo no Waza
+* Shogekiha
+
+Transformaciones
+
+* Ozaru
+* Super Saiyajin
+* Super Saiyajin Dai Ni Dankai
+* Super Saiyajin Dai San Dankai
+* Majin Vegeta
+* Super Saiyajin 2
+* Baby Vegeta
+* Super Ozaru
+* Super Saiyajin 4
+
+
+|====================|
+| INDEX              |=========================================================
+|====================|
+
+I.   - Controles Basicos
+II   - Movimientos estandar
+III  - Ataques basicos de Pie
+IV   - Ataques basicos Agachado
+V    - Ataques basicos en el Aire
+VI   - Agarres
+VII  - Ataques especiales
+VIII - Super Ataques
+IX   - Combos
+X    - Gracias a..
+
+
+|====================|
+|I.Controles Basicos |=========================================================
+|====================|
+
+D - Abajo
+F - Adelante
+U - Arriba
+B - Atras
+x - boton X (puño debil)
+y - boton Y (puño fuerte)
+a - boton A (patada debil)
+b - boton B (patada fuerte)
+S - boton s (Saludo)
+
+|========================|
+|II.Movimientos estandar |=========================================================
+|========================|
+
+U              - Salto
+UF             - Salto Adelante
+F              - Caminar Adelante
+DF             - Agachado
+D              - Agachado
+DB             - Agachado o Guardia baja
+B              - Caminar atras o Guardia Alta
+UB             - Saltar atras
+F, F           - Deslizar Adelante
+B, B           - Deslizar Atras
+x+y            - Recuperacion (Cuando cae)
+a or b         - Recover Kick (cuando esta en el suelo)
+
+
+
+|===========================|
+|III.Ataques basicos de Pie |=====================================================
+|===========================|
+
+x              - puño debil
+y              - puño Fuerte
+a              - Patada debil
+b              - Patada Fuerte
+B,y            - Uppercut
+
+|============================|
+|IV.Ataques basicos Agachado |====================================================
+|============================|
+
+x              - Low W. Punch
+y              - Low S. Punch
+a              - Low W. Kick
+b              - Low S. Kick
+
+|=============================|
+|  Ataques basicos en el Aire |==========================================================
+|=============================|
+
+x              - Air W. Punch
+y              - Air S. Punch
+a              - Air W. Kick
+b              - Air S. Kick
+
+|=========|
+| Agarres |=====================================================================
+|=========|
+
+F/B + y (pegado al oponente) - Agarre Basico
+
+|=======================|
+| Ataques Especiales    |=========================================================
+|=======================|
+
+D, DF, F, x / D, DF, F, y    - Power Elbow(Fly mode)
+D, DF, F, b    -Flying Kick (air / Fly Mode)
+D, DF, F, x    - Bakuhatsu Weak
+D, DF, F, y    - Bakuhatsu Strong
+D, DB, B, x    - Kienzan Low
+D, DB, B, x    - Kienzan High
+D, DF, F, a    - Weak Sonic Knee
+D, DF, F, b    - Strong Sonic Knee
+c              - Renzouken Energy Dan (Power=100)
+               x =Left  Hand  Fireball
+               y =Right Hand  Fireball
+           z,a,b =Cancel Renzouken
+
+z              - Zanzouken
+a+x            - Ki Charge
+b+y            - Buukujutsu (Power=100)
+HoldFwd        - Counter (Power=500)
+D, DF, F, b    - Flying kick
+
+
+
+|====================|
+| Super Attacks      |=========================================================
+|====================|
+
+D, DF, F, D, DF, F, x      - Big Bang    (Power= 1000)
+(Hold Up) = Trow Up Big bang
+
+
+D, DF, F, D, DF, F, y      - Final Flash (Power= 2000)
+(You can make to Air)
+
+D, DF, F, D, DF, F, Z      - Final Shine (Power= 2000)
+(You can make to Air)
+
+a+b                        - Armor Mode  (Power= 3000)
+x+y                        - Power Mode  (Power= 3000)
+
+
+|====================|
+| Combos             |=========================================================
+|====================|
+
+Combo 3 Hit  - x(close), x, y
+Combo 3 Hit  - x(close), x, B, y
+Combo 3 Hit  - x(close), a, B, y
+Combo 4 Hit  - x(close), a, b, B, y
+Combo 5 Hit  - x(close), x, a, y, b, B, y
+
+
+|====================|
+| Damage System      |=========================================================
+|====================|
+
+El Sistema de daño esta basado segun la barra de Power, al aumentar el Power
+aumenta tambien el daño  de Basic Atacks/Special Atacks.
+
+
+|====================|
+| Skills             |=========================================================
+|====================|
+
+Bakuhatsu: Con solo levantar dos dedos, El usuario puede crear un rayo
+que destruye totalmente el area sobre la que esta el oponenete.
+
+Ataque Big Bang: Una de las primeras técnicas desarrolladas por Vegeta como
+Super Saiyajin, el Ataque Big Bang es un enorme rayo formado por el Ki de
+increible poder destructivo. Vegeta mantiene la palma de la mano abierta para
+lanzar el rayo. Esta fue el ataque que dio fin a #19.
+
+Final Flash: extiende los brazos a los lados, luego hacia adelante, acumula
+toda la energía posible y la expulsa de golpe. Es su ataque más poderoso,
+lo consigue mientras entrenaba en la Habitación del Tiempo y supera el poder
+de un Super Saiyajin ordinario y con el ataca a Cell.
+
+Kienzan: Este es otro ataque muy utilizado en DBZ. Es un rayo plano,
+en forma de disco, el cual puede ser usado para rebanar atravez del blanco
+con una exacitud mortal. El Kienzan puedes er controlado por el que lo ejecuta.
+
+Bukujutsu: No es exactamente un técnica de pelea, es la habilidad de volar por
+medio de ki. Ya que casi todas las peleas en DBZ ocurren parcialmente en el
+aire, esta técnica es usada todo el tiempo derante las batallas. Los unicos
+personajes en DB que podían utilizarlo desde su primera aparición son
+Tenshinhan, Chaozu, y Piccolo (tal vez Pooaru). Casi todos los personajes
+poco a poco aprenden a volar, y para cuando DBZ comienza, todos los personajes
+principales pueden.
+
+Renzoku Energy Dan: Aunque muchos personajes pueden hacer esta técnica, el
+maestro de esta técnica sin lugar a duda es Vegeta. El que hace la técnica
+puede disparar rayos de ki continuamente de sus manos, resultando en un efecto
+de "ametralladora de ki". Mientras los disparos normales no son muy poderosos,
+el efecto de cientos puede ser devastador.
+
+Zanzouken : Otra técnica creada por Kamesennnin, con esta técnica, el que la
+emplea puede moverse tan rapido que deja una imagen, mientras ataca desde otro
+punto.
+
+Final Shine Attack versión evolucionada del Final Flash, se diferencia de este
+en que tiene mayor alcance y en el rayo de energía que es de color verde.
+Lo usa por primera vezcontra el Super A-17 convertido en Super Saiyajin 2 al
+limite de su maximo poder y posteriormente cuando se transforma en Super
+Saiyajin 4.
+
+|====================|
+| Features           |=========================================================
+|====================|
+
+SAISHO SAIGO NO WAZA - Durante el combate con Majin Buu en su primera forma.
+Se concentra toda la energía y se libera en forma de explosión, sacrificándo
+la vida del que la ocupa.
+
+Barrera: Técnica totalmente defensiva a base de uso del Ki que protege de los
+ataques. Hay dos formas de hacer esta maniobra. Una es un escudo esférico que
+rodea al cuerpo, el otro recubre el cuerpo.
+
+Atomic Blast: ataque utilizado contra Majin Boo, extiende una mano, pero sólo
+con 3 dedos extendidos y dispara un rayo perforador, sólo lo utiliza una vez
+en la serie.
+
+Zenshin kara no Shougekiha:Consiste en reunir toda la energía posible y
+provocar una explosión centrada en el lanzador, destruyéndolo todo a su
+alrededor.
+
+Ring Jyou no Energy Ball:Vegeta dispara cinco anillos de energía que encadenan
+las manos, pies y cuello de su víctima. Usado en contra de Goku.
+
+Kakusan Yuudou Kikouha:Luego de disparar cientos de rayos que rodean al
+adversario, se lanzan todos contra él, sin dejarle ningún escape.
+
+Galick Ho: similar al Kame Hame Ha, pero con posición diferente de las manos.
+Lo utiliza cuando pelea contra Son Goku en la Tierra por primera vez.
+
+Kakusan Yuudou Kikouha: dispara cientos de rayos al adversario, y éstos se
+vuelven contra él.
+
+Ki No Juutsu: donar Ki.
+
+Power Ball: bola de energía que simula una Luna llena para convertirse en Ozaru.
+
+
+|====================|
+|X. Thanks To..      |=========================================================
+|====================|
+
+Akira Toriyama   - For Created DBZ
+Bandai           - Make Many DBz Games
+Elecbyte         - Created Mugen Rngine
+Fighter Factory  - Make To easy char
+Majita           - Thanks for Fx and Aura dinamic codec.
+Particle Ilusion - Many Fx Sprites
+Lord Lee         - Make vegeta GT sprites.
+UG               - make  many Fx sprites.
+Uchiha Sasuke    - english readme.
+Cheba            - movelist archive.
+

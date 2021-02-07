@@ -1,0 +1,36 @@
+; Definition file for Piccolo
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name = "Piccolo"        ;Name of character
+displayname = "Piccolo" ;Name of character to display
+versiondate = 12,07,2006    ;Version date of character (MM-DD-YYYY)
+mugenversion = 04,14,2002   ;Version of M.U.G.E.N character works on
+author = "supermystery"         ;Character author name     
+pal.defaults = 1
+
+; Files for the player
+[Files]
+cmd     = piccoloUB22.cmd   ;Command set
+cns     = piccoloUB22.cns   ;Constants Very Hard Mode
+st      = piccoloUB22.cns   ;States Very Hard Mode
+stcommon = common1.cns ;Common states
+sprite  = piccoloUB22.sff   ;Sprite
+anim    = piccoloUB22.air   ;Animation
+sound   = piccoloUB22.snd   ;Sound
+pal1    = piccoloUB22.act  ;Palettes (can have up to 12)
+pal2    = red.act
+pal3    = blue.act
+pal4    = green.act
+pal5    = UB22alt.act ; Alt UB22
+pal6    = grey.act
+pal7    = brown.act
+pal8    = black.act
+pal9    = blue.act
+pal10   = bluealt.act ;cleaned custom pallete
+pal11   = redalt.act ;cleaned custom pallete
+pal12   = oralt.act ;cleaned custom pallete
+
+
+

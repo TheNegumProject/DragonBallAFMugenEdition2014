@@ -1,0 +1,30 @@
+; Definition file for Yamcha by Chrono_Strife
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="YamchaSB3 by Chrono_Strife"
+displayname ="Yamcha"
+versiondate =25,04,2005
+mugenversion =14,06,2003
+author ="Chrono_Strife"
+pal.defaults =1,2,3,4,5,6
+
+; Files for the player
+[Files]
+cmd      =Yamcha.cmd
+cns      =Yamcha.cns
+st       =Yamcha.cns
+st3      = Puar.cns                ;Puar States
+stcommon =common.cns
+sprite   =Yamcha.sff
+anim     =Yamcha.air
+sound    =Yamcha.snd
+pal1=Yamcha01.act
+st1=Puar.cns
+st2=Puar.cns
+
+[Arcade]
+;intro.storyboard=story/intro.def
+ending.storyboard =story/ending.def
+intro.storyboard=

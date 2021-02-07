@@ -1,0 +1,21 @@
+[Info]
+name="LiShenlong"
+displayname="Omega Shenron"
+versiondate=
+mugenversion=
+author=""
+pal.defaults= 1,2
+[Files]
+sprite=LiShenlong.sff
+sound=LiShenlong.snd
+anim=LiShenlong.air
+cmd=LiShenlong.cmd
+cns=LiShenlong.cns
+st=LiShenlong.cns
+stcommon=common1.cns
+pal1=LiShenlong.act
+pal2=LiShenlong.act
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

@@ -1,0 +1,26 @@
+
+[Info]
+name="Ultimate SSJ3 Goku"
+displayname="Ultimate SSJ3 Goku"
+mugenversion=01.04.14
+author="FRS GAMES > Franciynaldo"
+versiondate=9/19/2006
+pal.defaults=1,2,3,4,5,6
+
+[Files]
+cns=CNS.cns
+st=CNS.cns
+cmd=CMD.cmd
+stcommon=common1.cns
+sprite=Sprite.sff
+anim=Air.air
+sound=Sound.snd
+pal1=paleta/Goku4.act
+pal2=paleta/Goku3.act
+pal3=paleta/Goku1.act
+pal4=paleta/Goku2.act
+pal5=paleta/Goku.act
+pal6=paleta/Goku5.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

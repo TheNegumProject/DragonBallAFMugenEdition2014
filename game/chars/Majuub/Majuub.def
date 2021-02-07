@@ -1,0 +1,26 @@
+[Info]
+name ="Uub"
+displayname ="Majuub"
+versiondate = 
+mugenversion = 
+author ="Macilento, Cappero, Squall"
+;Macilento - Spriter
+;Cappero - Capo - Spriter
+;Squall - Coder
+pal.defaults =1,2
+
+[Files]
+cns =Uub.cns
+cmd =Uub.cmd
+stcommon =common1.cns
+sprite =Uub.sff
+anim =Uub.air
+st =Uub.cns
+sound =Uub.snd
+pal1=Uub.act
+pal2=Uubrosso.act
+pal3=uubblu.act
+pal4=uubbianco.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

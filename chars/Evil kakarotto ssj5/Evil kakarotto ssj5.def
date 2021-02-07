@@ -1,0 +1,28 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "son Goku by FRS GAMES"
+displayname = "Goku AF SSJ5"
+versiondate = 1/6/2007
+mugenversion = 03.04.14
+author = "FRS GAMES, edit mephistopheles"
+pal.defaults = 1,2,3,4,5,6
+
+[Files]
+sprite = imagems0\Sprite.sff
+anim = animaçao0\Air.air
+sound = som0\Sound.snd
+cmd = comandos0\CMD.cmd
+cns = programaçao0\CNS.cns
+stcommon = programaçao0\common1.cns
+st = programaçao0\CNS.cns
+pal1 = paleta0\Goku.act
+pal2 = paleta0\goku2.act
+pal3 = paleta0\goku3.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = final\final.def

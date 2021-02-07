@@ -1,0 +1,83 @@
+;==============
+;Kid buu with base stuff.
+;==============
+
+;------------------------------------------------------
+;Author:	Cyanide
+;------------------------------------------------------
+
+
+;=============================================================
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name ="Kid Buu"        
+displayname ="Evil Kid Buu" 
+versiondate =01.18.2005   
+mugenversion =11,01,2001   
+author ="Cyanide"         
+pal.defaults =1,2
+
+
+;---------------------
+;Character Files
+;---------------------
+
+;=====================
+[Files]
+;=====================
+
+;---------------------
+;Command Set
+;---------------------
+cmd     =kbuu.cmd
+
+;---------------------
+;State Files
+;---------------------
+cns     =kbuu.cns
+st      =kbuu.cns
+stcommon =common1.cns
+
+;---------------------
+;Sprite/Sound
+;---------------------
+sprite  =kbuu.sff
+anim    =kbuu.air
+sound   =kbuu.snd
+pal1=kbuu.act
+pal2=Kred.act
+st1=basic.cns
+st2=helpers.cns
+st3=specials.cns
+st4=supers.cns
+st5=AI.cns
+
+;---------------------
+;Palletes
+;---------------------
+;Arcade mode
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+
+;----------------------------------
+;----------------------------------
+[Extra Info]
+Manufactory=
+Game=
+Style=
+AI=
+Race=
+Size=
+Strenght=
+Buttons=6
+Combos=
+Boss=1
+SuperJump=0
+Levitate=0
+Secret=0

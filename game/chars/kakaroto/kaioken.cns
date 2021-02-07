@@ -1,0 +1,761 @@
+;kakarotto iadora by FRS GAMES
+[Statedef -2]
+[State -2]
+type = DisplayToClipboard
+trigger1 = 1
+text = "A.I. %d, ssj %d"
+params = Var(6),Var(1)
+[State -2]
+type = ChangeState
+triggerall = Ctrl = 1
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0
+trigger1 = (Enemy, NumProj >= 1)
+value = 2000
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 0 || var(1) = 1
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X < 30
+triggerall = P2BodyDist X > 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 275989
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 2 || var(1) = 3
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X < 30
+triggerall = P2BodyDist X > 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 20409
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 0 || var(1) = 1
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X < 200
+triggerall = P2BodyDist X > 100
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 8747
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 2 || var(1) = 3
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X < 200
+triggerall = P2BodyDist X > 100
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 87479891
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X < 400
+triggerall = P2BodyDist X > 200
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 1050
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist X > 50
+triggerall = numproj = 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 2010
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist y > 50
+triggerall = numproj = 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 2205
+[State -2]
+type = ChangeState
+triggerall = var(1) = 0 || var(1) = 1
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist x > 250
+triggerall = numproj = 0
+triggerall = power >= 2500
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 874733
+[State -2]
+type = ChangeState
+triggerall = var(1) = 0 
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist x > 0
+triggerall = numproj = 0
+triggerall = power = 3000
+trigger1 = P2StateType = S
+value = 2999
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 1000
+triggerall = numproj = 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value =  1900
+[State -2]
+type = ChangeState
+triggerall = var(1) = 1
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist x > 80
+triggerall = P2BodyDist y = 0
+triggerall = numproj = 0
+triggerall = power >= 1500
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 28009
+[State -2]
+type = ChangeState
+triggerall = var(1) = 0
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = P2BodyDist x > 30
+triggerall = P2BodyDist y = 0
+triggerall = numproj = 0
+triggerall = power >= 1500
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value = 886
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 0 ||  var(1) = 1
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 2500
+triggerall = numproj = 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value =  881
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 2 ||  var(1) = 3
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 500
+triggerall = numproj = 0
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value =  1800
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 2 ||  var(1) = 3
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 2500
+triggerall = stateno = 1800
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value =  217
+[State -2]
+type = ChangeState
+triggerall = Ctrl
+triggerall = var(1) = 2 ||  var(1) = 3
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 2500
+trigger1 = P2StateType = S
+trigger2 = P2MoveType = A
+value =  417
+[State -2 ]
+type = ChangeState
+triggerall = var(1) = 2 ||  var(1) = 3
+triggerall = Ctrl
+triggerall = var(6) = 1
+triggerall = StateType = S
+triggerall = power >= 2500
+triggerall = P2BodyDist X > 155
+trigger1 = P2StateType = S
+value = 317
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall = stateno = 1510
+trigger1 = p2statetype = S
+trigger1 = p2bodydist Y > 40
+value = 50
+[State -2]
+type = ChangeState
+triggerall = Var(30)= 1
+triggerall = p2stateno = 1500
+trigger1 = time = 0
+value = 2205
+[State -2]
+type = VarSet
+triggerall = Var(6)= 1 || Var(6)= 2  && Life != 0 && P2Life != 0 && ctrl = 1 && stateno = 2000
+trigger1 = p2bodydist x > 200 && p2movetype = A && p2stateno != [5000,5150]
+trigger2 = p2bodydist x < 30 && p2bodydist y < -30 && p2movetype = A
+v = 4
+value = 0
+[State -2]
+type = ChangeState
+triggerall = statetype = S && Movetype!=I && Movetype!=A && Movetype!=H
+triggerall = stateno != 2000
+triggerall = Var(6)= 1 || Var(6)= 2  && Life != 0 && P2Life != 0 && ctrl = 1
+trigger1 = p2bodydist x > 200 && p2bodydist x < 260 && p2movetype = A
+trigger2 = p2bodydist x < 30 && p2bodydist y < -30 && p2movetype = A
+trigger3 = p2bodydist x < 50 && p2movetype = A && p2stateno = [600,799]
+value = 2000
+[State -2]
+type = ChangeState
+triggerall = statetype = S && Movetype!=I && Movetype!=A && Movetype!=H
+triggerall = stateno != 4000
+triggerall = Var(6)= 1 || Var(6)= 2  && Life != 0 && P2Life != 0 && ctrl = 1
+trigger1 = p2bodydist x < 30 && p2bodydist y < -50 && p2movetype = A
+value = 2000
+[State -2]
+type = VarSet
+triggerall = Var(6)= 1 || Var(6)= 2  && Life != 0 && P2Life != 0 && ctrl = 1 && stateno = 2000
+trigger1 = p2bodydist x > 200 && p2movetype = A
+trigger2 = p2bodydist x < 30 && p2bodydist y < -30 && p2movetype = A
+v = 4
+value = 0
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && Random >0 && P2movetype=H
+trigger1 = statetype = S && ctrl = 1 && p2bodydist x > 40 && p2stateno != [5110,5150]
+trigger1 = p2bodydist x < 370 && prevstateno != 2000 && stateno !=2000
+value = 2000
+[State -2]
+type = VarSet
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && P2movetype=H
+trigger1 = statetype = S && ctrl = 1 && p2bodydist x > 40 && p2stateno != [5110,5150]
+trigger1 = p2bodydist x < 370 && prevstateno !=2000 && stateno=2000
+v = 4
+value = 0
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && Random >0 && P2movetype=H
+trigger1 = statetype = S && ctrl = 1 && p2bodydist x > 40 && p2stateno != [5110,5150]
+trigger1 = p2bodydist x < 370 && prevstateno != 2000 && stateno !=2000
+value = 2000
+[State -2]
+type = VarSet
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && P2movetype=H
+trigger1 = statetype = S && ctrl = 1 && p2bodydist x >40 && p2stateno != [5110,5150]
+trigger1 = p2bodydist x < 370 && prevstateno != 4000 && stateno=4000
+v = 4
+value = 0
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0 && ctrl = 1 && random <= 900
+trigger1 = (Enemy, NumProj >= 1)
+value = 2000
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=1900 && Power >=1500
+triggerall = statetype = S
+triggerall = ctrl = 1
+trigger1 = p2movetype = A || (enemy, NumProj >= 1)
+trigger1 = p2bodydist x >= 100 && Random < 300
+value = 1900
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=1900 && Power < 1500
+triggerall = statetype = S
+triggerall = ctrl = 1
+trigger1 = p2movetype = A || (enemy, NumProj >= 1)
+trigger1 = p2bodydist x >= 100 && Random < 100
+value = 1900
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=2030
+triggerall = statetype = S
+triggerall = ctrl = 1
+trigger1 = p2movetype = A &&(enemy, NumProj = 0)
+trigger1 = p2bodydist x >= 20 && Random < 646 && p2bodydist x < 190
+value = 2030
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=11500 && Power >=100
+triggerall = statetype = S
+triggerall = ctrl = 1
+trigger1 = p2movetype = A || (enemy, NumProj >= 1)
+trigger1 =  p2bodydist x >= 20 && Random < 400 && p2bodydist x < 490
+trigger2 =   p2stateno=646 && p2bodydist x >= 10 && Random < 500 && p2bodydist x < 490
+value = 2030
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=2801
+triggerall = statetype = S
+triggerall = ctrl = 1      &&  movehit=1 && stateno=[200,210]
+trigger1 = p2movetype = H &&(enemy, NumProj >= 0)
+trigger1 = p2bodydist x >= 0 && Random < 504 && p2bodydist x < 190
+value = 2200
+[State -2]
+type = ChangeState
+triggerall =var(6) = 1 && Life != 0 && P2Life != 0  && stateno!=1500 && Power >1000
+triggerall = statetype = S
+triggerall = ctrl = 1
+trigger1 = p2movetype = A || (enemy, NumProj >= 1)
+trigger1 = p2bodydist x >= 100 && Random < 400
+value = 1900
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1  && p2bodydist x >= 100
+triggerall = StateType != A && random <= 300
+triggerall = EnemyNear, StateType != C
+triggerall = EnemyNear, MoveType = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 66
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1  && p2bodydist x >= 180
+triggerall = StateType != A && random <= 500
+triggerall = EnemyNear, StateType != C
+triggerall = EnemyNear, MoveType = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 66
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1
+triggerall = StateType != A && random <= 900
+triggerall = EnemyNear, StateType != C
+triggerall = EnemyNear, MoveType = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 150
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1
+triggerall = StateType != A
+triggerall = EnemyNear, statetype = C
+triggerall = EnemyNear, Movetype = A
+trigger1 = stateno = 150
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 152
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1
+triggerall = StateType != A && random <= 900
+triggerall = EnemyNear, statetype = C
+triggerall = EnemyNear, Movetype = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 152
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1
+triggerall =ctrl = 1
+triggerall = StateType != A
+triggerall = EnemyNear, statetype != C
+triggerall = EnemyNear, Movetype = A
+trigger1 = stateno = 152
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 150
+[State -2]
+type = ChangeState
+triggerall =Var(6)= 1
+triggerall =ctrl = 1
+triggerall = StateType = A && random <= 900
+triggerall = EnemyNear, Movetype = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 154
+[State -2]
+type = ChangeState
+triggerall =Var(6)= 1
+triggerall =ctrl = 1
+triggerall =StateType != A && Stateno= 1510 && random <= 900
+triggerall = EnemyNear, statetype != C
+triggerall = EnemyNear, Movetype = A
+trigger1 = ctrl = 1 && (P2Movetype = A)
+trigger2 = (Enemy, NumProj >= 1)
+trigger3 =(Enemy, NumHelper>= 1)
+trigger4= EnemyNear, MoveType = A
+value = 130
+[State -2]
+type = ChangeState
+triggerall = var(6)=1 && stateno!=[800,801]
+triggerall =  Life != 0 && P2Life != 0
+triggerall = statetype = S && EnemyNear, Statetype = S  && EnemyNear, StateType != A
+triggerall = ctrl = 1  && stateno!=100    && stateno!=[800,801]
+triggerall = prevstateno!=100 && movetype!=A
+trigger1 =p2bodydist x > 70 && p2bodydist x < 400  && Random < 200
+value = 100
+ctrl = 0
+[State -2]
+type = ChangeState
+triggerall = var(6) = 1 && Pos y=0 && Random >200
+triggerall =statetype = S && Life != 0 && P2Life != 0 && P2movetype=H && P2BodyDist X > 0
+triggerall = p2stateno = [645,646]
+trigger1 = ctrl =1
+value = 100
+ctrl = 0
+[State -2]
+type = ChangeState
+triggerall = var(6) = 1 && Pos y=0 && Random <300 && power >=1000
+triggerall =statetype = S && Life != 0 && P2Life != 0 && Var(9) = 0 && P2movetype=H && P2BodyDist X > 0
+triggerall = p2stateno = 646
+trigger1 = ctrl =1
+value = 1510
+ctrl = 0
+[State -2]
+type = ChangeState
+triggerall = var(6) = 1 && Pos y=0 && Random <400  && power >=1000
+triggerall =statetype = S && Life != 0 && P2Life != 0 && Var(9) = 0 && P2movetype=H && P2BodyDist X > 0
+triggerall = p2stateno = 646
+trigger1 = ctrl =1
+value = 1510
+ctrl = 0
+[State -2]
+type = ChangeState
+triggerall =    Var(6)= 1
+triggerall =Pos y =0 && Life != 0 && P2Life != 0  && Random < 450
+triggerall = statetype != A && p2stateno != [5110,5150]
+triggerall = ctrl = 1
+trigger1 = p2movetype != A
+trigger1 = p2bodydist x > 0 && p2bodydist x < 40
+value = 201
+[State -2]
+type = ChangeState
+triggerall =    Var(6)= 1
+triggerall =Pos y =0 && Life != 0 && P2Life != 0  && Random < 370
+triggerall = statetype != A && p2stateno != [5110,5150]
+triggerall = ctrl = 1
+trigger1 = p2movetype != A
+trigger1 = p2bodydist x > 0 && p2bodydist x < 40
+value = 200
+[State -2]
+type = ChangeState
+triggerall =    Var(6)= 1
+triggerall =Pos y =0 && Life != 0 && P2Life != 0  && Random < 390
+triggerall = statetype != A && p2stateno != [5110,5150]
+triggerall = ctrl = 1
+trigger1 = p2movetype != A
+trigger1 = p2bodydist x > 0 && p2bodydist x < 40
+value = 410
+[State -2]
+type = ChangeState
+triggerall =    Var(6)= 1
+triggerall =Pos y =0 && Life != 0 && P2Life != 0  && Random < 200
+triggerall = statetype != A && p2stateno != [5110,5150]
+triggerall = ctrl = 1
+trigger1 = p2movetype != A
+trigger1 = p2bodydist x > 0 && p2bodydist x < 40
+value = 210
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && Random < 300
+triggerall = statetype != A && p2stateno != 403 || p2stateno != 503 && p2stateno != [5110,5150]
+triggerall = ctrl = 1 && stateno!=900 && stateno!=501
+triggerall =prevstateno!=900 && prevstateno!=501 && p2bodydist Y =0 && movetype != A
+trigger1 = p2movetype != A
+trigger1 =p2bodydist x > 0 && p2bodydist x < 22
+value = 800
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0 && Random < 120
+triggerall = statetype != A && p2stateno != 403 || p2stateno != 503 && p2stateno != [5110,5150]
+triggerall = ctrl = 1 && stateno!=700 && stateno!=501
+triggerall =prevstateno!=700 && prevstateno!=501 && p2bodydist Y =0 && movetype != A
+trigger1 = p2movetype != A
+trigger1 =p2bodydist x > 0 && p2bodydist x < 22
+value = 800
+[State -2]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && Random <300
+trigger1 = statetype = A && ctrl = 1 && p2stateno != [5110,5150]
+trigger1 = p2bodydist y > 40 && p2bodydist x > 0
+value = 2040
+[State -2,]
+type = ChangeState
+triggerall = Var(6)= 1 && Life != 0 && P2Life != 0  && Random >300
+trigger1 = statetype = A && ctrl = 1 && p2stateno != [5110,5150]
+trigger1 = p2bodydist y > 40 && p2bodydist x > 0
+value = 2200
+
+[State -2]
+type = playsnd
+triggerall = var(1)= 1
+trigger1 = timemod = 20,0
+value = 730,0
+channel = 7
+[State -2]
+type = playsnd
+triggerall = var(1)= 1
+trigger1 = power = 1
+value = 2999,1
+channel = -1
+[State 3010, palfx]
+type = BgPalfx
+triggerall = var(1)= 1
+trigger1 = power = 1
+time = 10
+add = 256,256,256
+[State -2, 500]
+type = poweradd
+triggerall = var(1) = 1
+trigger1 = time > 0
+value = -1
+[State -2, 500]
+type = varset
+trigger1 = var(1) = 1
+trigger1 = power = 0
+v = 1
+value = 0
+[State -2, 500]
+type = removeexplod
+triggerall = var(1) = 0
+trigger1 = power = 0
+id = 501
+[State -2, 500]
+type = removeexplod
+triggerall = var(1) = 1
+trigger1 = alive = 0
+id = 501
+[State -2, 500]
+type = removeexplod
+triggerall = var(1) = 1
+trigger1 = alive = 0
+id = 502
+[State -2, 500]
+type = removeexplod
+triggerall = var(1) = 0
+trigger1 = power = 0
+id = 502
+[State -2, AddPower]
+type = poweradd
+triggerall = var(1)!= 1
+trigger1 = timemod = 3, 1
+value = 2
+[State -2, Força]
+type = AttackMulSet
+trigger1 = var(1) = 1
+type = AttackMulSet
+value = 1
+[State -2, Força]
+type = AttackMulSet
+trigger1 = var(1) = 2
+type = AttackMulSet
+value = 1.5
+[State -2, Força]
+type = AttackMulSet
+trigger1 = var(1) = 3
+type = AttackMulSet
+value = 1.8
+[State -2]
+type = DefenceMulSet
+triggerall = Var(1) = 1
+trigger1 = stateno = [5000,5200]
+value = 1
+[State -2]
+type = DefenceMulSet
+triggerall = Var(1) = 2
+trigger1 = stateno = [4000,4200]
+value = 1.5
+[State -2]
+type = DefenceMulSet
+triggerall = Var(1) = 3
+trigger1 = stateno = [4000,4200]
+value = 1.8
+[State -2, sound]
+type = playsnd
+triggerall = var(1) = 3
+triggerall = alive = 1
+trigger1 = timemod = 250,0
+value = 989,22
+channel = 7
+volume = 255
+[Statedef -3]
+[State -3]
+type = Explod
+triggerall = var(1)= 1
+trigger1 = timemod =6,0
+anim = 501
+ID = 501
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -1
+supermove =1
+pausemove =1
+scale = 0.8,0.8
+sprpriority = 20
+[State 0, Explod]
+type = Explod
+triggerall = var(1)= 3
+trigger1 = timemod =3,0
+anim = 784
+ID = 784
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -1
+supermove =1
+pausemove =1
+sprpriority = 8
+[State -3]
+type = Explod
+triggerall = var(1)= 1
+triggerall = pos y = 0
+trigger1 = time> 0
+trigger1 = timemod= 10,0
+anim = 732
+ID = 501
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -1
+movetime = -1
+supermove =-1
+pausemove =-1
+removetime = 10
+sprpriority = -1
+[State -3]
+type = Explod
+triggerall = var(1)= 3
+triggerall = pos y = 0
+trigger1 = time> 0
+trigger1 = timemod= 10,0
+anim = 7732
+ID = 7732
+pos = 0,0
+postype = p1
+facing = 1
+vfacing = 1
+bindtime = -1
+movetime = -1
+supermove =-1
+pausemove =-1
+removetime = 10
+sprpriority = -1
+[State -3, StopSnd]
+type = StopSnd
+trigger1 = stateno = 0
+channel = 18
+[State -3]
+type = StopSnd
+trigger1 = stateno = [5000,5200]
+channel = 31
+[State -3]
+type = SuperPause
+trigger1 = P1name != "kakarotto iadora by FRS GAMES"
+time = 9999999999999999999999999
+[State -3]
+type = explod
+trigger1 = life = 2300
+trigger1 = roundstate != 0
+trigger1 = numexplod(753) = 0
+trigger1 = stateno = 180
+anim = 753
+id = 753
+ignorehitpause = 1
+bindtime = -1
+postype = left
+pos = 160,80
+scale = 0.5,0.5
+sprpriority = 20
+[State -3]
+type = PlaySnd
+trigger1 = roundstate != 0
+trigger1 = stateno = 180
+trigger1 = life = 2300
+value = S999,20
+volume = 255
+channel = -1
+[State -3]
+type = VarSet
+triggerall = !RoundState
+triggerall = IsHomeTeam
+trigger1 = (TeamSide = 2)
+trigger2 = (MatchNo > 1)
+var(6) = 1
+[State -3]
+type = VarSet
+trigger1 = !RoundState
+trigger1 = (var(6) != 1)
+trigger1 = NumPartner
+trigger1 = (ID > Partner,ID)
+trigger1 = (TeamSide = 2)
+var(6) = 1
+[State -3]
+type = Helper
+trigger1 = !var(6)
+trigger1 = !NumHelper(9742)
+trigger1 = (RoundState = 2)
+trigger1 = Alive
+trigger1 = NumPartner
+trigger1 = Partner,SelfAnimExist(9741)
+HelperType = normal
+name = "inteligencia artificial"
+ID = 9742
+pos = 9999999,99999
+StateNo = 9742
+KeyCtrl = 1
+PauseMoveTime = 999999999
+SuperMoveTime = 999999999
+[State -3]
+type = Helper
+triggerall = !var(6)
+triggerall = !NumHelper(9741)
+triggerall = (RoundState = 2)
+triggerall = Alive
+trigger1 = !NumPartner
+trigger2 = !(Partner,SelfAnimExist(9741))
+HelperType = normal
+name = "inteligencia artificial"
+ID = 9741
+pos = 9999999,99999
+StateNo = 9741
+KeyCtrl = 1
+PauseMoveTime = 999999999
+SuperMoveTime = 999999999
+
+
+
+

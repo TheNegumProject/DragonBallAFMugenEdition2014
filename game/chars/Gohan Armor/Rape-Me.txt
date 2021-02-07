@@ -1,0 +1,116 @@
+==========================================================================================
+Teen Gohan 1.0
+==========================================================================================
+
+Coding  -  NeoCide, HaVoC
+
+Sprites -  NeoCide
+==========================================================================================
+Basics
+==========================================================================================
+------------------------------------------------------------------------------------------
+Standing
+------------------------------------------------------------------------------------------
+a = Light kick
+b = Med kick
+x = Light punch
+y = Med punch*
+*y = Med punch push back
+------------------------------------------------------------------------------------------
+Crouching
+------------------------------------------------------------------------------------------
+a = Light kick
+b = Hard  kick
+x = Light punch
+y = uppercut
+------------------------------------------------------------------------------------------
+Air
+------------------------------------------------------------------------------------------
+a       =  Light kick
+b =     =  Knockdown kick
+x =     =  Light punch
+y =     =  Knockdown punch
+fwd fwd =  teleport fwd
+bck bck =  teleport back 
+
+==========================================================================================
+jap translation (I dont remember them all)
+==========================================================================================
+ssj2 gohan intro                          -"I'll fight you"
+Maximum sayajin intro                     - "I...Will defeat you"
+win pose power down(cell games\movie 9)   - "your finished"
+win pose 2                                - "Huh....I won?"
+messy hair gohan win pose 2               - "was that...ok?"
+
+==========================================================================================
+Things Left
+==========================================================================================
+Nothing..... Maybe AI. and some bug fixes if needed.
+========================================================================
+Known Bugs
+======================================================================
+
+--------------------------------------------------
+Additional basics
+
+Hold DF, y = Heavy launcher
+a+x = Charge up
+Foward + y = grab
+
+==========================================================================================
+Specials
+==========================================================================================
+Pin Missle            -          Charge Back,then fwd, Punch
+
+Flying bat            -          Charge Down,then up, Punch 
+ 
+
+Sonic Kick            -          Charge down, then up, kick
+ (in air)             -          QCB, Kick
+
+Needle Rocket         -          Charge back, then Foward, Kick
+ Rocket Needle        -           QCF, Kick (after N-R) 
+
+Sonic Charge          -          QCF, Kick
+ Kamehameha           -          QCF, Kick (after sonic charge)
+
+
+ super 2 counter      -          HCF, Kick
+
+                
+========================================================================
+Level 1 Supers
+========================================================================
+
+
+Kamehameha (1000)      -         Charge Back,then foward,back,foward, punch
+
+
+Masenko (1000)         -         QCF, QCB,Punch
+
+
+=======================================================================
+Level 2 super
+=======================================================================
+Maximum Sayajin (2000)  -        Charge Back,then foward,back,foward,, x2 Kick
+
+==========================================================================================
+Credits
+==========================================================================================
+Cyanide           -   for enduring so much damn nonsense from me and making my base thank youz
+Wasaby            -   orignal base\beta testing,O rly?
+Roken             -   Because  he's smexy, and loads of help on gohan struggles (thx for the head upgrade!)
+NeoTokyo          -   Some sprites, inspiration, and because he looks hawt in a red shirt :3
+Chrono Strife     -   MV9 is dedicated to him feedback,help and I wub U thisssss much!
+Jedi              -   I wub U! damn nigga's :D
+Warusuki3         -   for the awesome CVS2 hitsparks
+Majita            -   sounds,feedback,amazing stories of how to ruin relationships XD
+Toad              -   fx 
+MV                -   Because he cant be as smexy as me, but bless his heart for trying :) And for hosting Wub u!
+Pextin            -   being so damn awesome with that spiderman mask
+Elecybyte         -   if I have to say so your dumbzy
+Akira Toriyama    -   for the dbz series 
+WD                -   My site pwns :D
+Bandai            -   for the horrid games that were only good to get sprites from :)
+
+

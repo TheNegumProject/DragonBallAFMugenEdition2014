@@ -1,0 +1,24 @@
+
+[Info]
+name    ="Goten88"
+displayname ="Goku Jr."
+versiondate =12,15,2004
+authorname = "Goten88"
+pal.defaults =1,2
+mugenversion=
+author=""
+
+[Files]
+cmd      =Goten.cmd
+cns      =Goten.cns
+st       =Goten.cns
+stcommon =common1.cns
+sprite   =Goten.sff
+anim     =Goten.air
+sound    =Goten.snd
+pal1=GokuJr.act
+pal2=GokuJr.act
+st1=AI.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

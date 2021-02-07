@@ -1,0 +1,9 @@
+GT贝吉塔：
+这个人物由龙珠真武道会小组制作，版本为1.0，模式为常态，暂不支持变身，下一版本2.0可变身为超级赛亚人。素材由nn和joker修改自frs games的baby vegeta ssj2.在此对他们表示感谢！也感谢FRS games制作了贝比贝吉塔！人物未经允许不得擅自修改！我希望大家能自己学习制作人物，MUGEN的乐趣在于自己DIY而不是单纯的玩乐。谢谢大家下载此人物，希望大家能支持我组，我们会努力为大家带来好玩的龙珠人物。
+招式详见人物CMD和CNS。
+                                                                  MUGENGOD
+
+vegeta GT:
+this char is made by team dbz shinbudokai. version is 1.0 . it is normal mode,can"t transform to super saiyan,but it can be super saiyan next version.sprites are edit by nn and joker ,it is based from frs games"s baby vegeta ssj2. thanks to nn and joker for sprites and thanks very much for frs games make a baby vegeta ssj2 for us to play! this char is opensoruce,but don"t allowed edit without my permission! i hope you can make your own char but not edit a twice char,mugen is cool at DIY, hope everybody can study how to make it.XD thanks for download this char,i hope you can like our team, we will making more dbz chars later.good luck! 
+all moves please look at cmd file and cns files.
+                                                                  MUGENGOD

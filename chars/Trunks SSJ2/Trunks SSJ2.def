@@ -1,0 +1,75 @@
+;==============
+;Trunks
+;==============
+
+;------------------------------------------------------
+;Author:	Wasaby Aka Pierrot -Pierrot the fast-
+;------------------------------------------------------
+
+;A french/deutsch project
+
+
+;=============================================================
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name ="Trunks by [Wasaby]"        
+displayname ="Trunks SSJ2" 
+versiondate =01.18.2005   
+mugenversion =
+author ="Wasaby"         
+pal.defaults =1,2  
+
+
+;---------------------
+;Character Files
+;---------------------
+
+;=====================
+[Files]
+;=====================
+
+;---------------------
+;Command Set
+;---------------------
+cmd     =TrunksCMD.cmd
+
+;---------------------
+;State Files
+;---------------------
+cns     =Trunks.cns
+st      =Trunks.cns
+stcommon =common1.cns
+
+;---------------------
+;Sprite/Sound
+;---------------------
+sprite  =TrunksSFF.sff
+anim    =TrunksAIR.air
+sound   =TrunksSND.snd
+pal1=Trunks.act
+pal2=Trunks.act
+st1=basic.cns
+st2=specials.cns
+
+;---------------------
+;Palletes
+;---------------------
+;pal2    = Vegetto.act
+;pal3    = Vegetto.act
+;pal4    = Vegetto.act     
+;pal5    = Vegetto.act
+;pal6    = Vegetto.act
+
+;Arcade mode
+[Arcade]
+intro.storyboard=
+ending.storyboard=
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+
+;----------------------------------
+pierrothefast@hotmail.com
+;----------------------------------

@@ -1,0 +1,18 @@
+[Info]
+Name="GOKU Dragonball GT by PV"
+DisplayName="Goku GT"
+VersionDate=08,04,2000
+MugenVersion=06,27,2000
+Author="_Vision"
+Pal.Defaults=1,2,1,2
+
+[Files]
+cmd=gokugt.cmd
+cns=gokugt.cns
+st=gokugt.cns
+stcommon=common1.cns
+sprite=gokugt.sff
+anim=gokugt.air
+sound=gokugt.snd
+
+

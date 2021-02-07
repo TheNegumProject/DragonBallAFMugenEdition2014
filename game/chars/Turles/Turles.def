@@ -1,0 +1,24 @@
+[Info]
+name="Turles GZ- V1.0 by zero liger"
+displayname="Turles"
+versiondate=04/11/2008
+mugenversion=06,14,2003
+author="GZ- TEAM"
+pal.defaults=1,2
+[Files]
+sprite=Turles.sff
+sound=Turles.snd
+anim=Turles.air
+cmd=Turles.cmd
+cns=Turles.cns
+st=Turles.cns
+stcommon=common1.cns
+pal1=pallete/Turles.act
+pal2=pallete/Turles.act
+st1=Modo_Vuelo-Fly.cns
+st2=especiales.cns
+st3=Combos_Automatic.cns
+st4=IA.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

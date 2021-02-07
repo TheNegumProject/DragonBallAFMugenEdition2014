@@ -1,0 +1,37 @@
+-------------------------Xicor, by T.O.P.S---------------------------
+
+
+---------Specials-----------
+
+Warp elbow - D,DB,B, X
+
+Wall Slam - B,BD,D,BF,F, B
+
+Repulse - X+A
+
+Counter - (while blocking) Y+B
+
+Deflector - D,DF, A
+
+Teleport - A+B
+
+Energy Beam - c (power must be 6000 or greater)
+
+
+--------Supers-------------
+
+Ki Fury - D,DB,B, C
+
+Deathball - D,DF,F, Y
+
+One handed Kamehameha - D,DF,F, C
+
+A*s Whoopin - D,DB,B, B
+
+
+
+-----------Hypers------------
+
+Mother-Son Kamehameha - B,F, b
+
+A*s Whoopin to the "Next Dimension" - D,DB,B, B, Special conditions must be met

@@ -1,0 +1,150 @@
+;==============
+;Super-Vegetto 
+;==============
+
+;------------------------------------------------------
+;Author:	Wasaby Aka Pierrot -Pierrot the fast-
+;------------------------------------------------------
+
+
+
+;=============================================================
+[Data]
+life                = 1400
+power               = 3000
+attack              = 140
+defence             = 140
+fall.defence_up     = 50
+liedown.time        = 50
+;airjuggle           = 25
+airjuggle           = 35
+sparkno             = -1
+guard.sparkno       = 2
+KO.echo             = 0
+volume              = 0
+IntPersistIndex     = 1
+FloatPersistIndex   = 40
+
+[Size]
+xscale              = 1
+yscale              = 1
+ground.back         = 24
+ground.front        = 22
+air.back            = 17
+air.front           = 14
+height              = 100
+attack.dist         = 160
+proj.attack.dist    = 90
+proj.doscale        = 0 
+head.pos            = 9, -71
+mid.pos             = 9, -53
+shadowoffset        = -1
+draw.offset         = 0,0
+
+[Velocity]
+walk.fwd            = 2.4
+walk.back           = -2.3
+run.fwd             = 9, 0
+run.back            = -8, 0
+jump.neu            = 0,-10
+jump.back           = -3.5
+jump.fwd            = 3.5
+runjump.back        = -2.55,13
+runjump.fwd         = 5,-13
+airjump.neu         = 0,-12
+airjump.back        = -2.55
+airjump.fwd         = 2.5
+
+[Movement]
+airjump.num         = 1
+airjump.height      = 35
+yaccel              = .54
+stand.friction      = .85
+crouch.friction     = .82
+
+;---------------------------------------------------------------------------
+; Format:
+;[Statedef 0]
+;type = 
+;movetype = 
+;physics = 
+;anim = 
+;velset = 0,0,0
+;ctrl = 0
+;poweradd = 0
+;juggle = 0
+;facep2 = 1
+;hitdefpersist = 0
+;movehitpersist = 0
+;hitcountpersist = 0
+;sprpriority = 0
+
+;---------------------------------------------------------------------------
+; Lose by Time Over
+; CNS difficulty: basic
+; CNS レベル: 基本
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170+(10000*var(1))
+velset = 0,0
+
+[State 170: 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;---------------------------------------------------------------------------
+; Win state decider
+; CNS difficulty: basic
+; CNS レベル: 基本
+[Statedef 180]
+type = S
+
+[State 180: 1]
+type = ChangeState
+trigger1 = (Time = 0) && (Var(1) != 1)
+value = 185
+
+[State 180: 1]
+type = ChangeState
+trigger1 = (Time = 0) && (Var(1) = 1)
+value = 10181
+;---------------------------------------------------------------------------
+; Win pose 1 - Bow
+; CNS difficulty: basic
+
+[Statedef 185]
+type = S
+ctrl = 0
+anim = 185+(10000*var(1))
+velset = 0,0
+
+[State 185, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = S13, 4
+channel = 1
+Volume = 255
+
+[State 185: 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+;---------------------------------------------------------------------------
+; Mystic Win pose 1
+;[Statedef 10181]
+;type = S
+;ctrl = 0
+;anim = 10181
+;velset = 0,0
+
+
+;[State 10181: 1]
+;type = NotHitBy
+;trigger1 = 1
+;value = SCA
+;time = 1
+;---------------------------------------------------------------------------

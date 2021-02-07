@@ -1,0 +1,54 @@
+   
+ .:Krilin Saga Boo:.  Vercion 0.6
+   ---------------
+
+Sprites/Sheet : Edit by Ro "OS"
+
+Programacion  : Julian_Sk  "OS"
+
+Team          : Mugenmundo
+
+_________________________________________________________________________________
+                                                                                 |
+ Contactanos: (Dudas y Sugerencias)                                              |
+                                                                                 |
+ Web  : www.mugenreturns.ucoz.com                                                |
+                                                                                 |
+ Foro : www.mugen-elysium.activoforo.com                                         |
+                                                                                 |
+ Msn  : julian_shady@hotmail.com                                                 |
+                                                                                 |
+_________________________________________________________________________________|
+                                                                                 |
+ Caracteristicas del Char:                                                       |
+--------------------------                                                       |
+                                                                                 |
+ Modalidad de 6 Botones ...                                                      |
+ 4 Botones de Golpes    ...                                                      |
+ 1 Boton Fire Ball      ...                                                      |
+ 1 Boton Dash           ...                                                      |
+                                                                                 |
+ Combos: Combinando Botones & Teletrasportacion                                  |
+Son Semi-Autometicos que se Realizan de Cerca al P2                              |
+Con la Teletrasportacion ("Z") Quedan Bien Lindos y Rapidos.                     |
+                                                                                 |
+ Speciales:                                                                      |
+                                                                                 |
+Kame-Hame-Ha : (Ver CMD)                                                         |
+                                                                                 |
+Taioken : (Ver CMD)                                                              |
+                                                                                 |
+_________________________________________________________________________________|
+
+ Agradecimientos:
+------------------
+
+ Wenchu, Pedro, Sawady, Kenshin, Pablo, Miguel, Cheba, Hector
+Lucas, Dragolink... Chicos Gracias por la Ayuda en cada Boludez que les Preguntaba..
+Siempre Estan Ayudando asi Que Gracias ¡¡¡ (Si me Olvide de Alguien Sorry).
+
+ Amigos:
+----------
+ A Todos Mis Amigos Tambien ... Gracias ...
+
+Gracias a Todos ¡¡

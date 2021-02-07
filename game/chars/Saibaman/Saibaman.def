@@ -1,0 +1,36 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name="Saibaman"
+displayname="Saibaman"
+versiondate=04,14,2002
+mugenversion=04,14,2002
+author=""
+pal.defaults=1,2
+
+; Files for the player
+[Files]
+cmd=Saibaman.cmd
+cns=Saibaman.cns
+st=Saibaman.cns
+stcommon=common1.cns
+sprite=Saibaman.sff
+anim=Saibaman.air
+sound=Saibaman.snd
+pal1=Saibaman.act
+pal2=Saibaman2.act
+st1=Saibaman_IA.cns
+
+; Arcade mode
+;[Arcade]
+;intro.storyboard=intro.def
+;ending.storyboard=ending.def
+
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

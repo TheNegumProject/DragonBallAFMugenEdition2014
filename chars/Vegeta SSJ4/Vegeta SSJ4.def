@@ -1,0 +1,32 @@
+; Vegeta SSJ4 for DOS M.U.G.E.N. by Gonçalo
+; Definition file for Vegeta SSJ4 made by Gonçalo 
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Vegeta SSJ4 by Ðragoß & FinalBlast "
+displayname ="Vegeta SSJ4"
+versiondate =04,14,2001
+mugenversion =11,01,2001
+author ="Ðragoß & FinalBlast"
+pal.defaults =1,2
+
+; Files for the player
+[Files]
+cmd      =VegetaSSJ4.cmd
+cns      =VegetaSSJ4.cns
+st       =VegetaSSJ4.cns
+stcommon =vegetacommon.cns
+sprite   =VegetaSSJ4.sff
+anim     =VegetaSSJ4.air
+sound    =VegetaSSJ4.snd
+pal1=VegetaSSJ4.act
+pal2=VegetaSSJ4orgineel.act
+
+st1=VegetaCombos.cns
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard = ..\data\final.def

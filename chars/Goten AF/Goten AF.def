@@ -1,0 +1,26 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Goten AF"
+displayname ="Goten AF"
+versiondate =2014.03.01
+mugenversion =1.0
+author ="LegendTTA"
+pal.defaults =6,3,4,2
+
+; Files for the player
+[Files]
+cmd     =Goten.cmd
+cns     =Goten.cns
+st      =Goten.cns
+stcommon =common1.cns
+sprite  =Goten.sff
+anim    =Goten.air
+sound   =Goten.snd
+pal1=Goten.act
+st1=Transformations.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

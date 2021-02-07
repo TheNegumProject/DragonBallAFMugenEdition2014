@@ -1,0 +1,41 @@
+;================================
+;"Broli", from Super Boutuden 2
+;================================
+
+;----------------------------------------
+;Author:	FlowaGirl
+;		flowergirl@cutey.com
+;		http://blargh.i-xcell.com
+;----------------------------------------
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name			="[FlowaGirl's] Broli"
+displayname		="Broly"
+versiondate		=01,08,2004
+mugenversion	=11,14,2002
+author		="FlowaGirl"
+pal.defaults	=1,2
+
+;---------------
+;Character Files 
+;---------------
+[Files]
+cmd			=BroliCMD.cmd
+cns			=BroliCNS.cns
+st			=BroliCNS.cns
+stcommon		=BroliCNS.cns
+sprite		=BroliSFF.sff
+anim			=BroliAIR.air
+sound			=BroliSND.snd
+pal1=Broli01.act
+pal2=Broli02.act
+
+;[Arcade]
+;intro.storyboard = BroliIntro.def
+;ending.storyboard = BroliEnding.def
+[Arcade]
+intro.storyboard=
+ending.storyboard=

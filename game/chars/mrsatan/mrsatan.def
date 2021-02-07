@@ -1,0 +1,25 @@
+[Info]
+name = "Mr Satan"
+displayname = "Mr.Satan"
+versiondate = 02,13,2011
+mugenversion = 
+author = "CHOUJIN"
+pal.defaults = 4,5,2,1
+
+[Files]
+cns = mrsatan.cns
+cmd = mrsatan.cmd
+stcommon = common1.cns
+sprite = mrsatan.sff
+anim = mrsatan.air
+st = mrsatan.cns
+st1 = attack.cns
+st2 = special.cns
+st3 = hyper.cns
+sound = mrsatan.snd
+pal1 = yellow.act
+pal2 = blue.act
+pal3 = green.act
+pal4 = arcade.act
+pal5 = black.act
+pal6 = red.act

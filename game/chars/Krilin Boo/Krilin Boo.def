@@ -1,0 +1,30 @@
+; Krilin Boo
+; by Julian_Sk
+; Team "MugenMundo"
+
+[Info]
+name         ="Krilin Boo"
+displayname  ="Krilin S.Boo"
+pal.defaults =1
+versiondate  =02/08/2008
+mugenversion =
+author       ="Julian_Sk"
+
+[Files]
+cmd      =KrilinBoo.cmd     
+cns      =KrilinBoo.cns     
+st       =KrilinBoo.cns
+stcommon =common1.cns   
+sprite   =KrilinBoo.sff      
+anim     =KrilinBoo.air      
+sound    =KrilinBoo.snd
+pal1=KrilinBoo.act
+pal2=KrilinBoo1.act
+pal3=
+pal4=KrilinBoo2a.act
+st1=Agregados.cns
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

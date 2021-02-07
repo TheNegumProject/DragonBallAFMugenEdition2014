@@ -1,0 +1,39 @@
+Hey, The Movelist and Credits Of Uub by Dark_King
+
+------------------------Creditos----------------------------------------
+------------------------Sprites by DarkSayjian-----------------------------
+------------------------Sound by Agentsix-------------------------
+------------------------Version: 1.0-----------------------------------
+
+------------------------Movelist-----------------------------------------
+
+Stand 
+A - Combo 1
+B - Combo 2
+C - Combo 3 (A,B,X,Y, Combinations)
+X - Combo 4
+Y - Combo 5
+Z - Ki Ball
+S - Teleport
+
+Air
+X - Combo 1
+Y - Combo 2
+A - Combo 3
+B - Combo 4
+
+Crounch
+X - Combo 1
+Y - Combo 2
+A - Combo 3
+B - Combo 4
+
+Especiais
+D,F,x - Kamehameha
+D,B,x - Blast Explosion
+D,F,y - Hyper Explosive Laser (Two Hands)
+D,B,y - MegaExplosive Laser (One Hand)
+D,F,z - The Mega Combo + Kamehameha
+D,B,z - Combo + Goku With Kamehameha
+
+Thanks For The Downloaded The Char!

@@ -1,0 +1,30 @@
+[Info]
+name="vegeta-sayajin"
+displayname="Super vegeta"
+versiondate=
+mugenversion=
+author="Marcus((mugen mundo))"
+pal.defaults=
+[Files]
+sprite=vegeta-sayajin.sff
+sound=vegeta-sayan.snd
+anim=vegeta-sayajin.air
+cmd=vegeta-sayajin.cmd
+cns=vegeta-sayajin.cns
+st=vegeta-sayajin.cns
+stcommon=common1.cns
+pal1=a
+pal2=2
+pal3=3
+pal4=4
+pal5=5
+pal6=6
+pal7=rox
+pal8=hipe
+pal9=invisiv
+pal10=4
+pal11=
+pal12=
+[Arcade]
+intro.storyboard=
+ending.storyboard=end/end.def

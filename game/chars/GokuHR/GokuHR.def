@@ -1,0 +1,26 @@
+[Info]
+name ="GokuHR"
+displayname ="Goku peliculas"
+author ="Xande Toskomics & Ribeiro"
+pal.defaults =1,2
+versiondate=15/1/2006
+mugenversion=
+
+
+[Files]
+cmd     =gokuHR.st
+cns     =gokuHR.cns
+st      =gokuHRbasico.cns
+st1     =gokuHRgolpes.cns
+st2     =gokuHRespecial.cns
+st3     =gokuHRsupers.cns
+stcommon =common1.cns
+sprite  =gokuHR.sff
+anim    =gokuHR.air
+sound   =gokuHR.snd
+pal1    =gokuHR.act
+
+; Arcade mode
+;[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

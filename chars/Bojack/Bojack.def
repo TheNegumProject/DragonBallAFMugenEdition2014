@@ -1,0 +1,30 @@
+; Definition file for Bojack 2.0 by Chrono_Strife
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Bojack_CS"
+displayname ="Bojack"
+versiondate =2010.1.30
+mugenversion =2002.04.14
+author ="Chrono_Strife"
+pal.defaults =1,2
+
+; Files for the player
+[Files]
+cmd      =coding/BojackCMD.cmd
+cns      =coding/BojackCNS.cns
+st       =coding/BojackCNS.cns
+stcommon =coding/commonCNS.cns
+sprite   =graphical/BojackSFF.sff
+anim     =coding/BojackAIR.air
+sound    =audio/Bojack_EnSND.snd
+pal1=graphical/BojackACT.act
+pal2=graphical/Bojack2ACT.act
+st1=coding/Helper.st
+st2=coding/P2Custom.st
+;pal3     = graphical/Bojack3ACT.act    ;Bojack Red/Yellow
+;pal4     = graphical/Bojack4ACT.act    ;Bojack Blue/Silver
+[Arcade]
+intro.storyboard=
+ending.storyboard= ..\data\final.def

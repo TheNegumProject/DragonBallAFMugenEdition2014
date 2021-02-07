@@ -1,0 +1,107 @@
+;-------------------------------------
+;Custom AI Template, for "Orochi"
+;Originally created by The Necromancer
+;E-mail: demon_nightmare@hotmail.com 
+;        necromancer@zipmail.com 
+;-------------------------------------
+
+;----------
+;Custom AI: 
+;----------
+
+;This is a "Custom AI Template".(Pallette triggered - See DEF file for details.)
+;You may copy and paste it for your character, but please leave the above notes 
+;(the credits) unmodfied.
+
+;In order to use this file, cut and paste all the -2 states of your character
+;and paste it in this file. You may then add any more programming as you wish.
+
+;Alternatively, you can create a Custom AI using the CMD file instead. 
+
+;If there are any -3 states, you can cut and paste them at the bottom of this 
+;file.
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+;---------------------------------------------------------------------------
+
+;Insert all your -2 states here...
+
+;Ground border effect, used to prevent the character from falling through
+;the floor. (A common bug when programming Custom AI's)
+[State -2, GroundBorder]
+type = PosSet
+triggerall = Pos Y > 0
+trigger1 = StateType = S
+trigger2 = MoveType = A
+y = 0
+
+[State -2, HitOverride]
+type = HitOverride
+triggerall = PalNo = [7, 12]
+triggerall = P2MoveType != A
+trigger1 = StateNo = 1
+attr = SCA, AP
+slot = 1
+stateno = 130
+
+;---------------------------------------------------------------------------
+
+;===========================================================================
+;Custom AI (Or "AI" Only)
+;===========================================================================
+
+;===========================================================================
+;Custom AI - All Difficulties
+;===========================================================================
+
+;---------------------------------------------------------------------------
+;Auto Guard - Any Range
+
+[State -2, StandGuard]
+type = ChangeState
+triggerall = PalNo = [7, 12] ;The type of AI programming used. (Can also be a Var trigger)
+triggerall = StateType = S
+triggerall = Pos Y >= 0
+triggerall = P2BodyDist Y <= 0
+triggerall = P2BodyDist Y >= -120 
+;triggerall = P2BodyDist X <= 120 ;Uncomment this to enable Auto Guard range. (More control)
+triggerall = P2StateType != C
+triggerall = P2MoveType = A
+trigger1 = Ctrl = 1
+trigger2 = StateNo = 140
+trigger3 = StateNo = 1 ;Remove this. (Specifically used for this character - Orochi)
+value = 130
+
+[State -2, CrouchGuard]
+type = ChangeState
+triggerall = PalNo = [7, 12] ;The type of AI programming used. (Can also be a Var trigger)
+triggerall = StateType = S
+triggerall = Pos Y >= 0
+triggerall = P2BodyDist Y <= 0
+triggerall = P2BodyDist Y >= -50
+;triggerall = P2BodyDist X <= 120 ;Uncomment this to enable Auto Guard range. (More control)
+triggerall = P2StateType = C
+triggerall = P2MoveType = A
+trigger1 = Ctrl = 1
+trigger2 = StateNo = 141
+trigger3 = StateNo = 1 ;Remove this. (Specifically used for this character - Orochi)
+value = 131
+
+[State -2, AirGuard]
+type = ChangeState
+triggerall = PalNo = [7, 12] ;The type of AI programming used. (Can also be a Var trigger)
+triggerall = StateType = A
+triggerall = Pos Y < 0
+triggerall = P2BodyDist X <= 120
+triggerall = P2BodyDist Y >= -120
+;triggerall = P2BodyDist X <= 120 ;Uncomment this to enable Auto Guard range. (More control)
+triggerall = P2MoveType = A
+triggerall = StateType = A
+trigger1 = Ctrl = 1
+value = 132
+
+;---------------------------------------------------------------------------
+
+;Insert all your -3 states here...

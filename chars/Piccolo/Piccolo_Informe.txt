@@ -1,0 +1,106 @@
+;;;;;;;;;;;;;;Piccolo 1.0 Win_Mugen y 1.0 By Tapion y Emiliano 01;;;;;;;;;;;;;;;;
+__________________________________________________________________________________
+Code:
+Tapion y Emiliano 01
+
+Sprites:
+nreo-san, Chrono strife, Gokax, Tapion, 
+benhazard, G.o.D,  Seifer Firehart, loo-king
+
+
+FX:
+POTS Sawady MGMNXZ  Cervantes y classic open source 
+
+SND:
+Rips Of Saga Saiyajin Game By DGZ
+
+__________________________________________________________________________________
+Softwares utilizados en la Produccion de este char:
+__________________________________________________________________________________
+-_Fighter Factory Classic
+_Fighter Factory Ultimate
+_Palette Editor
+_Paint
+_Adobe Photoshop CS2
+_Audacity
+_Particle Illusion 3.0
+_Irfan View
+_Mugen 1.0
+
+__________________________________________________________________________________
+Special Thanks:
+__________________________________________________________________________________
+Codes:
+_eg_casco, por  ayudarme con unas cuantas dudas que tenia en la programacion.
+
+_Emiliano, por Realizar terrible base de supervegeta que me facilito bastante la programacion del piccolo.
+
+Sprites: 
+_nreo-san y Gokax por realizar el sheet Base, y Chrono strife Por facilitarme los sprites de los Brazos estirados, sin ellos este char no hubiera podido ser realizado como tal. y a todos aquellos users que me ayudaron G.o.D, benhazard, loo-king  y Seifer Firehart
+
+
+__________________________________________________________________________________
+MOVES
+__________________________________________________________________________________
+
+;=================[Level 3]=====================================================
+[command]
+name = "Canon Devil Beam";Canon Devil Beam"
+command = D,DF,F,B,c
+time = 30
+;=================[Level 2]=====================================================
+
+name = "Makankosappo"
+command = D,DF,F,B,x+y
+
+name = "Hellzone Grenade"
+command = D,DB,B,D,DB,B, a+b
+
+;=================[Level 1]=====================================================
+
+name = "Gekiretsukodan"
+
+name = "Mouth Beam"
+command = D,DB,B,D,DF,F,x+y
+
+name = "Mouth Beam"
+command = D,DB,B,D,DF,F,x+y
+
+
+
+========[Especiales de Ki-XYZ]============================================
+
+name = "Fire Balls"
+command = c
+
+name = "Big-Ball"
+command = D,DF,F,c
+
+name = "Eyes-Beam"
+command = D,DB,B, c
+
+name = "Electric"
+command = D,DB,B,D,DB,B, c
+
+
+name = Regeneration
+command = z+c
+Requiere:
+life < 300
+power >=3000
+
+__________________________________________________________________________________
+DERECHOS DE AUTORIDAD
+__________________________________________________________________________________
+
+La programacion y los FX es totalmente Open Source, 
+En cambio los sprites Desafortunadamente son Parciales, puesto que yo no realize todos los sprites no puedo dejarlo a libre uso. pero los sprites del sheet de neocide, el de los brazos hechos por chono todos los sprites que hicimos en la comunidad en el post del Wip si son open. en todo caso si desean utilizar algun sprite en especial mandanme un pm  y lo discutimos, el tema es que no depende de mi unicamente. si fuera por mi seria Todos los recursos del char Open.
+
+
+__________________________________________________________________________________
+Cualquier comentario,sugerencia, agradecimiento 0 reporte de bugs, pueden ser hechos publicamente
+en 
+
+http://www.mugengenerations.foroactivo/info
+
+

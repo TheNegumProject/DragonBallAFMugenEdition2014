@@ -1,0 +1,57 @@
+|-Belly Buu's Movelist------------------------------------------------------------------
+Version 0.8
+Character made by 
+Goten88 a.k.a Pextin
+http://goten88.shorturl.com
+|-Basics---------------------------------------------------------------------------
+
+a   = Light Kick
+b   = Strong Kick
+x   = Light Punch
+y   = Strong Punch
+
+D, a   = Light Kick
+D, b   = Strong Body Roll
+D, x   = Light Punch
+D, y   = Strong Punch
+
+U, a   = Light Kick
+U, b   = Strong Butt
+U, x   = Light Punch
+U, y   = Strong Punch
+
+Fly / Land          - c (While on ground hold up to take off immediately!)
+			(First 10 ticks of flight has a tad faster 
+			velocity, so it can be used for evading!)
+Zanzoken            - z
+Ki Charge           - c + z(If flying, Power increase is 1/5 of normal!)
+Super Jump          - D, U
+Super Jump FW       - D, UF
+Super Jump BACK     - D, UB
+
+|-Specials-------------------------------------------------------------------------
+
+Ki Shot             - D,DF,F, a
+Throw               - Hold F, x or Hold B, x
+Skin Hold Butt Slam - D,DF,F, x
+
+|-Supers Moves---------------------------------------------------------------------
+
+Self Destruct Counter    - x + y + z (Power >= 1000)(For use when hit or guarding
+Chocolate Transform      - D,DF,F,D,DF,F, a (Power >= 2000)
+Ki Explosion             - D,DF,F,D,DF,F, x (Power >= 2000)
+             
+Special thanks to:
+
+Akira Toriyama - For creating Dragonball
+Bandai - For the Majin Buu sprites from the DBZ Super Butouden 3
+Elecbyte - For making Mugen
+Roken - For advice, and being a close bud.
+Lonewolf - For advice on sprites etc.
+Toad - For some sweet effects.
+Neo - For givin me some effects & a Majin Buu Sheet.
+Strife - For being my sexy love partner!
+Majita - For giving me a sound library a while ago
+Capcom Vs Snk - For some fx I used.
+
+and anyone else I can't think of who helped me.

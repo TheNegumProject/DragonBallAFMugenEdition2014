@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Super Goku SSJ4 - Ultimate Version by Bruno_SS"
+displayname ="Goku ssj 4"
+versiondate =12/07/11
+mugenversion =1.0
+author ="Bruno_SS"
+pal.defaults =1,2,3,4,5,6
+
+[Files]
+sprite =BSuperGokuSSJ4SS.sff
+anim =BSuperGokuSSJ4SS.air
+sound =BSuperGokuSSJ4SS.snd
+cmd =BSuperGokuSSJ4SS.cmd
+cns =BSuperGokuSSJ4SS.cns
+stcommon =common1.cns
+st =BSuperGokuSSJ4SS.cns
+pal1=1.act
+pal2=2.act
+pal3=3.act
+pal4=4.act
+pal5=5.act
+pal6=6.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

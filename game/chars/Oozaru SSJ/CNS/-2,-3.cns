@@ -1,0 +1,164 @@
+;--------------------------------------------------------------------------
+[Statedef -3]
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;AI-FlagOn
+[State -3 ,AI-ON]
+type = varset
+trigger1 = command = "AI01" ||  command = "AI02" || command = "AI03"
+trigger2 = command = "AI04" ||  command = "AI05" || command = "AI06"
+trigger3 = command = "AI07" ||  command = "AI08" || command = "AI09"
+trigger4 = command = "AI10" ||  command = "AI11" || command = "AI12"
+trigger5 = command = "AI13" ||  command = "AI14" || command = "AI15"
+trigger6 = command = "AI16" ||  command = "AI17" || command = "AI18"
+trigger7 = command = "AI19" ||  command = "AI20" || command = "AI21"
+trigger8 = command = "AI22" ||  command = "AI23" || command = "AI24"
+trigger9 = command = "AI25" ||  command = "AI26" || command = "AI27"
+trigger10 = command = "AI28" ||  command = "AI29" || command = "AI30"
+var(59) = 1
+
+;AI-FlagOff
+[State -3 ,AI-Off]
+type = varset
+trigger1 = life <= 0
+trigger2 = p2life <= 0
+var(59) = 0
+
+;---------------------------------------------------
+[State -3 AI-Command3500]
+type = ChangeState
+value = 3500
+triggerall = var(59) = 1
+trigger1 = statetype != A && power >= 3000 && ctrl
+trigger1 = p2bodydist x <= 120 && p2statetype != L && Random < 90
+
+[State -3 AI-Command3100]
+type = ChangeState
+value = 3100
+triggerall = var(59) = 1
+triggerall = statetype != A && power >= 1000 && ctrl
+trigger1 = p2bodydist x >= 60 && Life > 400 && Random < 5
+trigger2 = p2bodydist x >= 60 && Life <= 400 && Random < 10
+
+[State -3 AI-Command3000]
+type = ChangeState
+value = 3000
+triggerall = var(59) = 1
+triggerall = statetype != A && power >= 1000 && p2bodydist x <= 70
+trigger1 = stateno = 5120 && AnimTime = 0
+trigger1 = ctrl && Life <= 300 && Random < 300
+trigger2 = stateno = 5120 && AnimTime = 0
+trigger2 = ctrl && Life <= 500 && Random < 150
+trigger3 = stateno = 5120 && AnimTime = 0
+trigger3 = ctrl && Life <= 800 && Random < 50
+trigger4 = ctrl && p2movetype = A && Random < 40
+
+[State -3 AI-Command1300]
+type = ChangeState
+triggerall = var(59) = 1
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = p2bodydist X > 120 && Random < 60
+trigger2 = enemy, NumProj > 0 && Random < 80
+value = 1300
+
+[State -3 AI-Command1100]
+type = ChangeState
+trigger1 = var(59) = 1 && alive
+trigger1 = var(2) = 1 && stateno = 0 && ctrl && p2bodydist X > 0
+value = 1100
+
+[State -3 AI-Command1200]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = stateno = 5120 && Time >= 20
+trigger1 = p2bodydist X < 0 && p2bodydist x >= -80
+value = 1200
+
+[State -3 AI-Command1000]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = stateno = 5120 && AnimTime = 0 && power < 1000
+trigger1 = p2bodydist X > 0 && p2bodydist x <= 80
+value = 1000
+
+[State -3 AI-Command300]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype = A
+trigger1 = ctrl 
+trigger1 = vel Y > 0
+value = 300
+
+[State -3 AI-Command200]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = ctrl 
+trigger1 = p2statetype != L
+trigger1 = p2bodydist x <= 60 && Random <= 100
+value = 200
+
+[State -3 AI-Command201]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = ctrl 
+trigger1 = p2bodydist x <= 50 && Random <= 60
+value = 201
+
+[State -3 AI-Command210]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = ctrl 
+trigger1 = p2statetype != L
+trigger1 = p2bodydist x <= 85 && Random <= 40
+value = 210
+
+[State -3 AI-Command211]
+type = changestate
+trigger1 = var(59) = 1
+trigger1 = statetype != A
+trigger1 = ctrl 
+trigger1 = p2bodydist x <= 120 && Random <= 60
+value = 211
+
+;-------------------------------------------------------------------------
+[Statedef -2]
+;-------------------------------------------------------------------------
+[State -2, AI]
+type = varset
+triggerall = var(59) = 1 && var(2) = 1
+trigger1 = movetype = H
+trigger2 = stateno = 1100
+v= 2
+value = 0
+
+[State -2, afterimagetime]
+type = AfterImageTime
+trigger1 = (stateno != 3111 && movetype = H) || stateno = 3502
+trigger2 = ctrl
+time = 0
+ignorehitpause = 1
+
+[State -2]
+type = AssertSpecial
+trigger1 = stateno = [3503,3507]
+flag = nobardisplay
+flag2 = timerfreeze
+flag3 = noBG
+
+[State -2, KO?]
+type = Varset
+trigger1 = roundno = 1 && Lose
+v= 58
+value = 1
+
+[State -2, KO?]
+type = Varset
+trigger1 = roundno = 2 && var(58) = 0 && Lose
+v= 58
+value = 2

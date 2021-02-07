@@ -1,0 +1,213 @@
+JEICE CON BURTER VERSION 1.0 BY SAWWEN y DBZPOCKET
+
+/////////////////////////////////////////////////////////////////////////////
+
+HISTORIA DE JEICE:
+
+Jeice es un extraterrestre muy humano si no fuera por el tono rojo de su piel y 
+una larga cabellera blanca, su apodo es ``el magma rojo´´. 
+Tras la llegada de Goku, Jeice tuvo que luchar en serio contra éste junto con 
+Burter después de la derrota de Recoome. Goku los derrotó fácilmente, pero Jeice
+consiguió sobrevivir e ir a comunicar de todo lo que había ocurrido al capitán 
+Ginyu. El fue testigo de la derrota de Ginyu y del posterior cambio de cuerpo que
+realizó su capitán con Goku. Tras volver a la nave de Freezer, fue sorprendido
+por Vegeta quien lo elemino.
+
+HISTORIA DE BURTER:
+
+El miembro mas rapido de la Ginyu Tokusentai, Burter es un reptil humanoide de 
+piel azul ojos rojos, y una cresta segmentada en su cabeza. El posee una gran
+velocidad y agilidad, su velocidad era comparable a la de la luz lo que le hizo 
+que le pusieran el nombre de ``el huracan azul´´.
+A burter le tocaria luchar junto a su compañero Jeice contra Goku que habia
+derrotado a recome . Estos 2 lucharon de forma muy agresiva contra goku pero poco
+pudieron hacer ya que este era mucho mas fuerte.
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+Programación      : SaWWeN
+Sheet Jeice       : Lee 70%, Vieja del agua 20%, Osbrex y Tincho 10% 
+Sheet Burter      : DragoLink 90 %, Ryudo 10 %
+Dialogos Latino   : Ripeados por mi
+Fx                : Chrono Strife 35%, Majita 30%, Gokussj1 10%, 
+                    Supermystery 5%, Otros 20% =)
+Version           : 1.0
+
+;----------------------------------------------------------------------------
+
+Base de los Sprites:
+
+Sheet Base        : Chrono Strife
+Burter Base       : Princevegeta
+Programacion Base : Cyanide, old Jeice
+
+;----------------------------------------------------------------------------
+
+MI correo: fa77out@hotmail.com
+MI Blog/Mugen: http://shenlong7.blogspot.com/
+Foro Pocket: http://dbzpocketmugen.activoforo.com/
+
+Otras paginas interesantes: 
+http://www.zgteam.net/forums/
+http://members.lycos.co.uk/cstrife/index.html
+http://www.mugenguild.net/~cyanide/
+
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+
+GOLPES NORMALES:
+
+A boton      : puño debil
+B boton      : puño medio
+C boton      : puño fuerte
+X boton      : rodillazo
+Y boton      : patada alta
+Z boton      : patada fuerte
+
+adelante      : caminar adelante
+atras         : caminar atras
+arriba        : saltar
+abajo         : agacharse
+
+Start button  : jajaja :P
+
+
+////////////////////////////////////////////////////////////////////////////
+
+-------|Basicos|---------------------------------------------------
+
+Correr hacia adelante: adelante x2
+Correr hacia atras:    atras x2
+Cargar Ki:             a+x
+Vuelo:                 b+y 
+Teletransportacion:    c+z
+Vuelo Slash:           8 diferentes direcciones (Base del code by Mugenfan)
+Super Salto:           D, U
+Algunos combos manuales basicos (tiene cientas de convinaciones)
+
+-------|Especiales|------------------------------------------------
+
+
+Blast debil                D, DB, F, a
+
+Blast medio                D, DB, F, b
+
+Blast Fuerte               D, DB, F, c
+
+Rafagas de Energia         D, DB, B, x
+
+Rafagas de Energia         D, DB, B, y
+
+
+------| Combos y Golpes |------------------------------------------
+
+Patada corta           D, DF, x
+ 
+Patada media           D, DF, y
+
+Patada larga           D, DF, z
+
+Codazo debil           D, DF, a
+
+Codazo medio           D, DF, b
+
+Codazo fuerte          D, DF, c
+
+Mini Combo             D, DB, z (solo en tierra)
+
+Rodillazo alto         D, b (solo en tierra)
+
+Patada en Picada       D, DB, z (solo en el aire o saltando)     
+
+-------| Ayudas de Burter |--------------------------------------------------
+
+Rayo Azul Bajo         F, B, x
+
+Rayo Azul Medio        F, B, y
+
+Rayo Azul Alto         F, B, z
+
+Tele + Golpe           F, B, a
+
+Tele + Rodillazo       F, B, b
+
+Embestida              F, B, c
+
+-------| Supers |--------------------------------------------------
+
+Rayo de Energia            D, DB, B, F, x
+
+Fuego Mortal               D, DB, B, F, y (DOS DIRECCIONES)
+
+Ginyu Help                 D, DF, D, DF,  a+b
+
+
+-------| Hypers |--------------------------------------------------
+
+
+Ataque de los Cometas      D, DB, B, F, z
+(se necesita estar volando y cerca de Burter para poder hacerlo)  
+
+
+-------------------------------------------------------------------
+
+Bugs Conocidos: 
+
+1)Burter puede no quedar en linea y a la par de jeice (dificil corregirlo).
+2)No se peara ya se ira sumando la lista XD.
+
+-------------------------------------------------------------------
+
+Agradecimientos:
+
+1) A mi por darme el tiempo de hacer este char.
+2) A Lee  por arreglar todas las sombras y acabar el Sheet !! =).
+3) Vieja del Agua por hacer esa magnifica intro O.O y ayudar como siempre.
+4) A Dragolink por hacer los bonitos sprites de Burter
+5) Tincho y Juanga por ayudar con el Sheet.
+6) A Ryudo por ayudar y siempre dar una mano y los stands.
+7) Ssj 1 Goku por hacer el Fx del ataque de los cometas ^^.
+8) Gprince99 por la idea de agregar a Burter y los datos de la programacion ^_^.
+9) Toad - Por las auras.
+10) Setokaiba por pasarme el mail de Toad y la otra aura.
+11) Mugenfan por prestarme los sprites del Scuter.
+12) Supermystery por el rayo de Ginyu.
+13) Nachonal por los sprites de Ginyu, editados por Ryudo.
+14) Cheba por limpiarme unos sprites que habian quedado sucios :D.
+15) A todos aquellos que brindan sus FX como Opensource (Majita, Chrono, MugenFan, etc)
+
+
+Agradecimientos Especiales:
+
+1) ElectByte y Bandai.
+2) Iee, Ryudo, DragoLink, Sawady y todos los que me ayudaron sin ellos 
+este char nunca habria sido terminado!! 
+3) Chrono Strife por sus magnificos chars y sederme la base de su sheet.
+4) Akira Toriyama por desarrollar semejante serie de anime.
+ 
+
+----------------------------->
+Fuck you:
+
+1) Todos aquellos egoistas que dicen no al open source y si a la muerte del mugen.
+2) Bardock por hecharme la culpa en su web de sabe dios de que... O_O
+----------------------------->
+----------------------------->
+
+THE-END? 
+
+----------------------------->
+
+Proxima version: 1.5
+
+1) Reparar errores y bugs
+2) Mejorar aun mas, Detalles y Fx.
+3) Un super nuevo en lo posible combinando Jeice y Burter.
+4) Implementar una buena Ia que combine bien las ayudas de Burter.
+5) Y mucho mas!!!!!!! o eso espero...
+
+Fecha de salida enero de 2012 XD (El autor no se compromete a garantizar que
+estemos vivos luego de la fecha de la profecia maya) 

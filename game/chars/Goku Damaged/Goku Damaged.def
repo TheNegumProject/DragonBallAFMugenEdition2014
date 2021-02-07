@@ -1,0 +1,51 @@
+;[------Y------][-----][------]
+;[------Y------][-----][------]
+;[------N------][-----][--G---]
+;[------V------][-----][--O---]
+;[------A------][-'S-][---K---]
+;[------S------][-----][--U---]
+;[------E------][-----][------]
+;[------R------][-----][------]
+;[---Don't forget to check out the Shugen-Do--]
+;[------game engine at www.sakirsoft.com------]
+;===========================================================================
+;[Definitions]----------------------------------------------------------------
+;===========================================================================
+;What ya have to know
+[Info]
+name ="Goku by ynvaser"
+displayname ="Goku Damaged"
+versiondate =05,22,2008
+mugenversion =04,14,2002
+author ="Spriting by geriDOS, coding by ynvaser"
+pal.defaults =1,2
+
+; Files for Goku
+[Files]
+cmd 	 =CMD.cmd
+cns 	 =CNS.cns
+st 	 =ST-Basic.st
+stcommon =ST-common.st
+sprite 	 =SFF.sff
+anim 	 =AIR.air
+sound 	 =SND.snd
+pal1=GokuACT-Anime.act
+pal2=GokuACT-SSYellow&SSBlue.act
+st1=ST-Helper.st
+st2=ST-Super.st
+;st3=ST-AI.st
+
+;pal??=GokuACT-Blue&Yellow.act
+;pal??=GokuACT-Orange&Blue.act
+;pal??=GokuACT-Navy.act
+;pal??=GokuACT-Peach&Navy.act
+;pal??=GokuACT-SSYellow&SSBlue.act
+
+;Not arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard = ..\data\final.def
+
+;===========================================================================
+;[End of file]--------------------------------------------------------------
+;===========================================================================

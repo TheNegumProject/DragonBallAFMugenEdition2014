@@ -1,0 +1,29 @@
+;...........................................................................................
+
+[Info]
+name    ="kakaroto gt"
+displayname ="Goku"
+author ="FRS GAMES"     
+pal.defaults =1,2
+versiondate=08,05,2007
+mugenversion=06,14,2003
+[Files]
+cmd =gokuGT.cmd     
+cns =gokuGT.cns     
+st  =gokuGT.cns   
+stcommon=common1.cns   
+sprite =gokuGT(classic).sff      
+anim =gokuGT.air      
+sound =gokuGT.snd
+pal1=GokuAF.act
+pal2=gokuGT.act
+st1=kaioken.cns
+[Arcade]
+intro.storyboard  =
+ending.storyboard=
+;...........................................................................................
+;a inteligencia artificial dele esta media no jogo completo vai estar melhor aguarde
+                                ; Feito no Brasil (Brasilia)                
+;                              Autor: FRS GAMES
+;[[[[[[[[[[[[[[[[[[[[[[[[[[[[E-mail: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+

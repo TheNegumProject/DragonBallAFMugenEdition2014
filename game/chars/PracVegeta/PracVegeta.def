@@ -1,0 +1,24 @@
+[Info]
+name="Practice Vegeta by Detah"
+displayname="Vegeta super saiyajin"
+versiondate=16/2/2008
+mugenversion=
+author="Detah>>>atualizado por ((mugenmundo))"
+pal.defaults=1
+[Files]
+sprite=PracVegeta.sff
+sound=PracVegeta.snd
+anim=PracVegeta.air
+cmd=PracVegeta.cmd
+cns=PracVegeta.cns
+st=PracVegeta.cns
+stcommon=common1.cns
+pal1=a
+pal2=2
+pal3=3
+pal4=4
+pal5=5
+st1=boost.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

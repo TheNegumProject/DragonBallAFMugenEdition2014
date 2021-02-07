@@ -1,0 +1,142 @@
+PAIKUHAN BY KURIHAN AND CYPHER __ edit by SaWWeN
+
+ACLARANDO: ESTE CHAR NO FUE CREADO POR MI SI NO POR LOS NOMBRES QUE ESTAN ALLI 
+ARRIBA, LO UNICO QUE HICE FUE editar EL CHAR Y ARREGLARLE ALGUNOS ERRORES
+DETALLADOS A CONTINUACION SOBRE TODO PARA QUE FUNCIONE 100% EN WINMUGEN.
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+HISTORIA DE PIKUHAN:
+
+Es un personaje al que conoce Goku en el Otro Mundo cuando es asesinado por Cell.
+Es el protejido del rival del Kaiosama de Goku. Su potencia es tal que derrotó a
+Freezer, al rey Cold y Cell de un golpe.Después llegaría a las finales del Torneo
+del Otro Mundo y quedaría empate en la lucha contra Goku. Apareció brevemente 
+cuando Majin Boo llega al Otro Mundo, donde fue derrotado fácilmente.También sería un 
+personaje importante en la pelicula "Fusión", rompiendo la barrera y dando tiempo
+para que Goku y Vegeta se fusionaran.
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+Programacion      : KURIHAN AND CYPHER edit by SaWWeN
+Sprites           : KURIHAN AND CYPHER
+Fx          : KURIHAN AND CYPHER edit by SaWWeN
+Dialogos    : SaWWeN
+version     : Edit 1.0
+
+MI correo: fa77out@hotmail.com
+
+////////////////////////////////////////////////////////////////////////////
+
+ARREGLOS Y EDITS:
+
+1)LIMPIEZA DE ALGUNOS SPRITES CON MARCAS, CAMBIO Y ARREGLO DE PALETA COMPARTIDA.
+
+2)CAMBIADOS Y AGREGADOS FX DE ALGUNOS ATAQUES NORMALES, ATAQUES ESPECIALES,
+EXPLOSIONES, CARGA DE KI, EFECTOS, ETC.
+
+3)AGREGADO AIR DASH EN EL AIRE, HACIA ADELANTE Y HACIA ATRAS.
+
+4)AGREGADO LOS SONIDOS EN GOLPES, PATADAS, COMBOS, EXPLOSIONES, ATAQUES, 
+MOVIMIENTOS, DIALOGOS DE ALGUNOS ESPECIALES, INTRO, WIN, TIMEOVER, START, ETC.
+
+5)HABILITADOS TODOS LOS COMBOS Y MOVIMIENTOS EN EL SUELO Y ALGUNOS EN EL AIRE.
+
+6)AGREGADA LA QUITA DE ENERGIA DE COMBOS Y ESPECIALES.
+
+////////////////////////////////////////////////////////////////////////////
+
+GOLPES NORMALES:
+
+
+A boton      : patada
+B boton      : patada media
+C boton      : patada alta
+X boton      : puño debil
+Y boton      : puño medio
+Z boton      : puño alto
+
+adelante      : caminar adelante
+atras         : caminar adelante
+arriba        : saltar
+abajo         : agacharse
+
+Start button  : jajaja :P
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
+-------|Basicos|----------------------------------------------------
+
+Correr hacia adelante: adelante x2
+Salto hacia atras:     atras x2
+Cargar Ki:             a+x
+Vuelo:                 b+y 
+
+-------|Especiales|-------------------------------------------------
+
+Bola de Fuego:     D, DF, F, x
+
+Bolas de Fuego:    D, DF, F, z
+
+Clon:              D, DF, F, y
+
+Expulsion:         D, DB, B, y
+
+Salto y Golpe:     D, DB, B, z
+
+Hyper Patada:      D, DB, B, c
+
+Patada de Fuego:   D, DF, F, a
+
+Barrida de Fuego:  D, DF, F, b
+
+Invencible:        x+y
+
+
+-------| Supers |---------------------------------------------------
+
+Kikoha:            D, DB, B, F, c
+
+Death Fire Ball:   D, DB, B, F, b
+
+
+------| Hypers |---------------------------------------------------
+
+Tornado de Fuego   D, DB, B, F, z
+
+Relampago Mortal:  D, DB, B, F, a
+
+
+------| Combos |---------------------------------------------------
+
+Secuencia 1:       D, DF, F, c
+
+Combo de Golpes:   D, DB, B, x
+
+Combo de Patadas:  D, DB, B, a
+
+Combo de Patadas2: D, DB, B, b
+
+-----------------------------------------------------------------------------
+
+Agradecimientos:
+
+1) A mi por darme el tiempo de editar este char.
+2) A todos aquellos que brindan sus FX como Opensource (Majita, Chrono, AlienSSj, etc)
+3) A KURIHAN AND CYPHER por hacer este char en el 2000 :P
+
+Agradecimientos Especiales:
+
+1) Akira Toriyama por desarrollar semejante serie de anime.
+2) Goku por salvar la tierra tantas veces.
+
+Fuck you:
+
+1) Todos aquellos egoistas que dicen no al open source y si a la muerte del mugen
+
+
+

@@ -1,0 +1,32 @@
+****************Bulla by Szowel v. 1.0*****
+
+[Info]
+name ="Bulla by Szowel"
+displayname ="Bulla"
+versiondate =09,12,2011
+mugenversion =04,14,2002
+author ="Szowel"
+pal.defaults =1,2,3,4,5,6,7
+
+; Files for the player
+[Files]
+cmd     =Bulla.cmd
+cns     =Bulla.cns
+st      =Bulla.cns
+stcommon =common1.cns
+sprite  =Bulla.sff
+anim    =Bulla.air
+sound   =Bulla.snd
+pal1=Bulla.act
+pal2=Bulla2.act
+pal3=Bulla3.act
+pal4=Bulla4.act
+pal5=Bulla5.act
+pal6=Bulla6.act
+pal7=Bulla7.act
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard =intro.def
+ending.storyboard= ..\data\final.def

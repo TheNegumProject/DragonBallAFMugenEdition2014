@@ -1,0 +1,76 @@
+;==============
+ Super 2 Gohan
+;==============
+
+;------------------------------------------------------
+
+;Progging:	Neocide,HaVoC
+;Sprites:	Neocide
+;------------------------------------------------------
+
+
+;=============================================================
+
+;---------------------
+;Character Information
+;---------------------
+[Info]
+name ="Gohan"        
+displayname ="Gohan SSJ2" 
+versiondate =01.18.2005   
+mugenversion =11,01,2001   
+author =" Neocide & Havoc "         
+pal.defaults =1,2,3
+
+
+;---------------------
+;Character Files
+;---------------------
+
+;=====================
+[Files]
+;=====================
+
+;---------------------
+;Command Set
+;---------------------
+cmd		=Gohan.cmd
+
+;---------------------
+;State Files
+;---------------------
+cns     	=Gohan.cns
+st      	=Gohan.cns
+
+stcommon 	=common.cns
+
+;---------------------
+;Sprite/Sound
+;---------------------
+sprite  	=Gohan-cell.sff
+anim    	=Gohan.air
+sound   	=Gohan.snd
+pal1=gohan.act
+pal2=Ken.act
+st1=basic.cns
+st2=helpers.cns
+st3=specials.cns
+st4=gethits.cns
+st5=supers.cns
+
+;st6=AI.cns
+
+;---------------------
+;Palletes
+
+;---------------------
+
+;Arcade mode
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def
+
+;----------------------------------
+

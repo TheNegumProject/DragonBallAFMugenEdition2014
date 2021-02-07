@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************     http://virtualltek.mgbr.net     *******************;
+;***************************************************************************;
+
+[Info]
+name ="=El Principe Saiyajin Vegeta= By Team OS"
+displayname ="Vegeta Saiyan"
+versiondate =04,14,2010
+mugenversion =04,14,2002
+author ="Programacion:Tapion-Team OS_Sprites: Ryudo-Team OS"
+pal.defaults =1,2
+
+[Files]
+sprite =Vegeta_saiyan.sff
+anim =Vegeta_saiyan.air
+sound =Vegeta_saiyan.snd
+cmd =Vegeta_saiyan.cmd
+cns =Vegeta_saiyan.cns
+stcommon =common1.cns
+st =Vegeta_saiyan.cns
+pal1=Vegeta_saiyan.act
+pal2=Vegeta_saiyan2.act
+;st1=Vegeta_saiyan_IA.cns
+
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard=..\data\final.def

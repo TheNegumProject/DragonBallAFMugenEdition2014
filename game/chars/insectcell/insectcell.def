@@ -1,0 +1,32 @@
+[Info]
+name ="Insect Cell"
+displayname ="Cell potenciado"
+versiondate =1
+mugenversion = 
+author ="miaoyu"
+pal.defaults =1,2,3,4,5,6
+
+[Files]
+
+cmd     =insectcell.cmd
+cns      =insectcell.cns
+st       =insectcell.cns
+stcommon =common1.cns
+sprite =insectcell.sff
+anim =insectcell.air
+sound =insectcell.snd
+pal1=1.act
+pal2=2.act
+pal3=3.act
+pal4=4.act
+pal5=5.act
+pal6=6.act
+pal7=7.act
+st1=attacks.cns
+st2=specials.cns
+st3=hypers.cns
+
+[Arcade]
+
+intro.storyboard =
+ending.storyboard=

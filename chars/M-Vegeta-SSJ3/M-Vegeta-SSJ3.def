@@ -1,0 +1,22 @@
+; Majin Vegeta SSJ3 UB22   
+; by OcariocaNildo
+; http://www.portalmugencg.rg3.net
+; Obrigado por jogar
+
+[Info]
+name    = "Majin Vegeta SSJ3 UB22"
+displayname = "M-Vegeta-SSJ3"
+versiondate = 27,11,2000  
+mugenversion = 07,31,2000 
+author = "OCariocaNildo"     
+pal.defaults = 1 
+
+[Files]
+cmd     = M-Vegeta-SSJ3.cmd     
+cns     = M-Vegeta-SSJ3.cns     
+st      = M-Vegeta-SSJ3.cns  
+st2     = strikers.cns 
+stcommon = common1.cns   
+sprite  = M-Vegeta-SSJ3.sff      
+anim    = M-Vegeta-SSJ3.air      
+pal1    = M-Vegeta-SSJ3.act             

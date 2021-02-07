@@ -1,0 +1,27 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Goku Transform"
+displayname = "Gohan training"
+versiondate = 2013.07.15
+mugenversion = 1.0
+author = "LegendTTA"
+pal.defaults = 6,3,4,2
+
+[Files]
+sprite = Goku.sff
+anim = Goku.air
+sound = Goku.snd
+cmd = Goku.cmd
+cns = Goku.cns
+stcommon = common1.cns
+st = Goku.cns
+st1 = Transformations.cns
+pal1 = Goku.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

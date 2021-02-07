@@ -1,0 +1,32 @@
+;=======================================;
+;           svc-temp by 187             ;
+;   Made with MUGEN Editing Ensemble    ;
+;     (http://ragnaroknemo.cjb.net)     ;
+;=======================================;
+
+[Info]
+name ="SSJ4Vegeta SVC Style By Ninja_Naruto"
+displayname ="Vegeta SSJ4"
+author ="Ninja_Naruto,Updated by MugenMundo"
+pal.defaults =1
+versiondate=15/3/2008
+mugenversion=
+
+[Files]
+cns =SSJ4VegetaSVC.cns
+cmd =SSJ4VegetaSVC.cmd
+stcommon =SSJ4VegetaSVCCommon.cns
+sprite =SSJ4VegetaSVC.sff
+anim =SSJ4VegetaSVC.air
+st =SSJ4VegetaSVCST.st
+;st1 = 
+sound =SSJ4VegetaSVC.snd
+pal1=DarkVegeta.act
+pal2=2
+pal3=3
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

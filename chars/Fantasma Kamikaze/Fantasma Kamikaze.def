@@ -1,0 +1,30 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Fantasma Kamikaze"
+displayname = "Kamikaze Ghost"
+versiondate = 15/01/2010
+mugenversion = 
+author = "Brayan Girón García"
+pal.defaults = 
+
+[Files]
+sprite = Fantasma-Kamikaze.sff
+anim = Fantasma-Kamikaze.air
+sound = Fantasma-Kamikaze.snd
+cmd = Fantasma-Kamikaze.cmd
+cns = Fantasma-Kamikaze.cns
+stcommon = common1.cns
+st = normal.st
+st1 = especial.st
+st2 = hiper.st
+st3 = over.st
+st4 = ss.st
+pal1 = Fantasma-Kamikaze.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

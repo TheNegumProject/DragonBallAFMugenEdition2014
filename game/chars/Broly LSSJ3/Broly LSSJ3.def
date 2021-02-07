@@ -1,0 +1,25 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Broly LSSJ3"
+displayname ="Broly LSSJ3"
+versiondate =2013.06.11
+mugenversion =1.0
+author ="LegendTTA"
+pal.defaults =6,3,4,2
+
+; Files for the player
+[Files]
+cmd     =Broly LSSJ3.cmd
+cns     =Broly LSSJ3.cns
+st      =Broly LSSJ3.cns
+stcommon =common1.cns
+sprite  =Broly LSSJ3.sff
+anim    =Broly LSSJ3.air
+sound   =Broly LSSJ3.snd
+pal1=Broly LSSJ3.act
+[Arcade]
+intro.storyboard=
+ending.storyboard=

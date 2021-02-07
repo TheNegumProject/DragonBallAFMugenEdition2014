@@ -1,0 +1,43 @@
+[SceneDef]
+spr = vegetto.sff
+startscene = 0 
+[Scene 0]
+
+fadein.time = 100
+fadein.col = 0,0,0 
+layerall.pos = 0,0 
+layer0.anim = 0 
+layer0.offset = 0,0 
+layer0.starttime = 0 
+layer1.anim = 1
+layer1.offset = 0,0
+layer1.starttime = 104
+layer2.anim = 2
+layer2.offset = 0,0
+layer2.starttime = 236
+layer3.anim = 3
+layer3.offset = 0,0
+layer3.starttime = 267
+bgm = intro.mp3
+bgm.loop = 1
+end.time = 450
+[Begin Action ] 
+0,1, 0,0, 5
+[Info]
+name=""
+displayname=""
+versiondate=19/2/2008
+mugenversion=04,14,2001
+author=""
+pal.defaults=1,2,3,4,5
+[Files]
+sprite=
+sound=
+anim=
+cmd=
+cns=
+st=
+stcommon=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

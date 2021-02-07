@@ -1,0 +1,38 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name="vegeta_ssj4"
+displayname="vegeta  ssj4"
+versiondate=04,14,2002
+mugenversion=04,14,2002
+author="Nahuelitox"
+pal.defaults=1,2,3,4,5,6
+
+; Files for the player
+[Files]
+sprite =grafico\vegetassj4.sff
+anim =programacao\vegetassj4.air
+sound =som\vegetassj4.snd
+cmd =programacao\vegetassj4.cmd
+cns =codes\vegetassj4.cns
+stcommon =codes\common.cns
+st =codes\basico.st
+pal1=Acts\vegeta.act
+st1=codes\especiais.st
+st2=codes\supers.cns
+st3=codes\hipers.cns
+st4=codes\helpers.cns
+
+; Arcade mode
+;[Arcade]
+;intro.storyboard=intro.def
+;ending.storyboard=ending.def
+
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=

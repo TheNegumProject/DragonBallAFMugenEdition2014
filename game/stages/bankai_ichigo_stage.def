@@ -1,0 +1,120 @@
+; Definition of KFM's stage
+; *** denotes values you should change/check for each stage.
+; The term "background" is used to mean both backgrounds and foregrounds.
+
+;--------------------------------------------------------
+[Info]
+name = "Ichigo`s Bankai"
+Author: Daisetsu aka D4rkSh4d0w
+Sprite by Shinobi X2
+;--------------------------------------------------------
+[Camera]
+startx = 0
+starty = 0
+
+boundleft = -55
+boundright = 150
+boundhigh = -25
+boundlow = 
+verticalfollow =
+floortension = 0
+tension = 60
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound = 1000
+topbound  =  0
+botbound  =  0
+
+;--------------------------------------------------------
+[Scaling]
+topz  = 0
+botz  = 50
+topscale = 1
+botscale = 1.2
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 15
+screenright = 15
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 215
+autoturn = 1
+resetBG = 1
+
+;--------------------------------------------------------
+[Shadow]
+intensity = 130
+color = 0,0,0
+yscale = 0.4
+fade.range = -400,100
+
+;--------------------------------------------------------
+[Reflection]
+intensity= 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = sound/Bleach_Fade_To_Black.mp3
+bgvolume = 255
+
+;--------------------------------------------------------
+[BGDef]
+spr = bankai_ichigo_stage.sff
+debugbg = 0
+
+;--------------------------------------------------------
+
+[BG 1 nubes negras]
+type  = normal
+spriteno = 0, 2
+layerno = 0
+start = 500, -4
+delta = 1, 1
+trans = none
+mask  = 1
+tile  = 1, 0
+velocity = 0.50,0
+window = 0,0, 319, 239
+
+;----------
+
+[BG Floor]
+type  = normal
+spriteno = 0,0
+layerno = 0 
+start = 0, 181
+delta = .75,.78
+trans = none
+mask  = 1
+tile  = 1, 0
+xscale = 1, 1.75
+yscalestart = 100
+yscaledelta = 1.2
+
+;------------
+
+[BG 5 niebla]
+type  = normal
+spriteno = 0, 3
+layerno = 1
+start = 500, -4
+delta = 1, 1
+trans = add
+mask  = 1
+tile  = 1, 0
+velocity = 0.50,0
+window = 0,0, 319, 239

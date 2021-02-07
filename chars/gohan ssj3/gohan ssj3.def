@@ -1,0 +1,31 @@
+[Info]
+name="Gohan super sayajin 3"
+DisplayName="Gohan ssj3"
+Author="Deus sayajin"
+pal.defaults = 1
+
+[Files]
+cmd=gohan-ssj3.cmd
+cns=gohan-ssj3.cns
+st=gohan-ssj3.cns
+st2=helpers.cns 
+stcommon=common1.cns
+sprite=gohan-ssj3.sff
+anim=gohan-ssj3.air
+sound=gohan-ssj3.snd 
+pal1=1.act
+pal2=2.act 
+pal3=3.act 
+pal4=4.act 
+pal5=5.act
+pal6=6.act 
+pal7=7.act 
+pal8=8.act
+pal9=9.act
+pal10=10.act
+pal11=11.act
+pal12=12.act 
+
+
+[Arcade]
+ending.storyboard = Gohan-ssj3_Final.def 

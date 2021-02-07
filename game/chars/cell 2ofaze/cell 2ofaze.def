@@ -1,0 +1,26 @@
+[Info]
+name="cell by zero liger & alien ssw2"
+displayname="Cell fase 2"
+versiondate=04/06/2008
+mugenversion=14,04,2002
+author="zero liger"
+pal.defaults=1,2
+[Files]
+sprite=cell.sff
+sound=cell.snd
+anim=cell.air
+cmd=cell.cmd
+cns=cell.cns
+st=cell.cns
+stcommon=common1.cns
+pal1=cell.act
+pal2=
+st1=powers.cns
+st2=modo-fly.cns
+st3=combos.cns
+st4=IA.cns
+st5=
+st6=
+[Arcade]
+intro.storyboard=intro/introcell.def
+ending.storyboard=

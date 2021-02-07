@@ -1,0 +1,7671 @@
+;------------------------------------------------------------------------------------
+;SSJ5モード用技
+;------------------------------------------------------------------------------------
+[Statedef 91000]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=3
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=91000
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=91000
+value=var(47)
+elem=(var(48)=[0,7])*1+(var(48)=[8,10])*2+(var(48)=[11,12])*3+(var(48)=[13,37])*4+(var(48)=[38,43])*floor((var(48)-38)/2+5)
+ignorehitpause=1
+
+[state ]
+type=explod
+triggerall=!ishelper
+trigger1=var(48)=0
+anim=1065
+ID=1002
+postype=p1
+Pos=-45,-23
+sprpriority=3
+RemoveTime=8
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State 0]
+type=VelSet
+Trigger1=var(48)=0
+y=0
+
+[State ]
+type=EnvShake
+triggerall=!ishelper
+Trigger1=var(48)=13
+time=50
+ampl=6
+freq=127
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=13
+value=5,1
+volume=255
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=13
+Trigger2=var(48)=28
+Trigger3=var(48)=43
+value=20,4
+
+[State ]
+type=NotHitBy
+triggerall=!ishelper&&palno<2
+Trigger1=var(48)=0
+Trigger1=var(37):=13
+value=SCA
+time=13
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)=0
+trigger1=var(37):=13
+ignorehitpause=1
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=13
+Trigger2=var(48)=28
+Trigger3=var(48)=43
+ProjAnim=1001
+ProjHitAnim=1001
+ProjRemAnim=1001
+ProjID=555
+projremovetime=51
+supermovetime=99
+pausemovetime=99
+offset=80+((var(48)-13)/15)*130,0
+Projpriority=450
+attr=S,SP
+damage=Ceil((0.2*(palno<7)+0.44*(palno>6))*var(0))
+animtype=Hard
+hitflag=MAFDP
+pausetime=0,30
+sparkno=-1
+guard.sparkno=-1
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-10,-5
+guard.velocity=-10.5
+airguard.velocity=-10,-3
+air.type=Low
+air.velocity=-10,-5.5
+fall=1
+projscale=0.6,0.6
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=13
+Trigger2=var(48)=28
+Trigger3=var(48)=43
+ProjAnim=1001
+ProjHitAnim=1001
+ProjRemAnim=1001
+ProjID=555
+projremovetime=51
+supermovetime=99
+pausemovetime=99
+offset=-80-((var(48)-13)/15)*130,0
+Projpriority=450
+attr=S,SP
+damage=Ceil((0.2*(palno<7)+0.44*(palno>6))*var(0))
+animtype=Hard
+hitflag=MAFDP
+pausetime=0,30
+sparkno=-1
+guard.sparkno=-1
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-10,-5
+guard.velocity=-10.5
+airguard.velocity=-10,-3
+air.type=Low
+air.velocity=-10,-5.5
+fall=1
+projscale=0.6,0.6
+
+[State ]
+type=SelfState
+Trigger1=AnimTime=0||var(48)>44
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;------------------------------------------------------------------------------------
+[Statedef 91050]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=3
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=91050
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=91050
+value=var(47)
+elem=(var(48)=[0,9])*1+(var(48)=[10,14])*2+(var(48)=[15,34])*3+(var(48)=[35,39])*4+(var(48)=[40,59])*5+(var(48)=[60,64])*6+(var(48)=[65,84])*7
+ignorehitpause=1
+
+[State ]
+type=Turn
+triggerall=!ishelper
+trigger1=enemynear,alive||numenemy=1
+trigger1=(enemynear,pos x-pos x)*facing<0
+trigger2=!enemynear,alive&&numenemy>1
+trigger2=(enemynear(1),pos x-pos x)*facing<0
+
+[state ]
+type=explod
+triggerall=!ishelper
+Trigger1=var(48)=10
+Trigger2=var(48)=35
+Trigger3=var(48)=60
+ID=4052
+anim=4052
+postype=p1
+sprpriority=-1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=10
+Trigger2=var(48)=35
+Trigger3=var(48)=60
+value=0,2
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=10
+Trigger2=var(48)=35
+Trigger3=var(48)=60
+value=5,11
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[10,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-10)*5+48,-92+(var(48)*(1.00-(var(48)*3.5-120.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[14,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-14)*5.7+48,-92+((var(48)-4)*(1.00-((var(48)-4)*3-135.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[17,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-17)*6+48,-92+((var(48)-7)*(1.00-((var(48)-7)*2.5-143.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[19,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-19)*1.4+48,-92+((var(48)-9)*(1.00-((var(48)-9)*3-120.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[22,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-22)*2.6+48,-92+((var(48)-12)*(1.00-((var(48)-12)*1.5-140.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[25,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-25)*2+48,-92+((var(48)-15)*(1.00-((var(48)-15)*2.4-130.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[26,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-26)*4+48,-92+((var(48)-16)*(1.00-((var(48)-16)*3.2-1350.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[29,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-29)*4.7+48,-92+((var(48)-19)*(1.00-((var(48)-19)*4-140.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[30,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-30)*6+48,-92+((var(48)-20)*(1.00-((var(48)-20)*3.5-120.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[32,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-32)*4+48,-92+((var(48)-22)*(1.00-((var(48)-22)*5-135.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[35,84]
+ProjAnim=1056
+ProjID=555
+offset=(var(48)-35)*5+48,-92+((var(48)-25)*(1.00-((var(48)-25)*4-143.00)/10))
+projremovetime=1
+supermovetime=9
+pausemovetime=9
+attr=S,SP
+damage=Ceil((0.04*(palno<7)+0.1*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+air.juggle=3
+projscale=0.5,0.5
+
+[State ]
+type=BGPalFX
+triggerall=!ishelper
+Trigger1=ProjHit555=1
+time=10
+add=25,200,25
+mul=255,255,255
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+trigger1=ProjHit555=1
+value=22,1
+
+[State ]
+type=EnvShake
+triggerall=!ishelper
+Trigger1=ProjHit555=1
+time=4
+ampl=4
+freq=127
+
+[State ]
+type=SelfState
+Trigger1=AnimTime=0||var(48)>84
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;------------------------------------------------------------------------------------t
+[Statedef 91060]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=3
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=91060
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=91060
+value=var(47)
+elem=(var(48)=[0,34])*1
+ignorehitpause=1
+
+[State ];11Pのパワー
+type=null
+triggerall=!ishelper&&palno=11
+trigger1=Var(48)=0
+trigger1=var(36):=var(36)-350||1
+ignorehitpause=1
+
+[state ]
+type=explod
+triggerall=!ishelper
+trigger1=var(48)=1
+ID=4052
+anim=4052
+postype=p1
+sprpriority=-1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=1
+value=0,2
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=1
+value=5,11
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[1,12]
+ProjAnim=2150
+offset=4,-43
+projremovetime=23
+supermovetime=99
+pausemovetime=99
+attr=S,SP
+damage=Ceil((0.025*(palno<7)+0.06*(palno>6))*var(0)+random%10),Ceil((0.01*(palno<7)+0.022*(palno>6))*var(0)+random%10)
+animtype=Hard
+pausetime=0,12
+sparkno=-1
+guard.sparkno=-1
+hitsound=S20,1
+guardsound=S20,3
+ground.type=Trip
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-30,-5
+guard.velocity=-3.5
+airguard.velocity=-4,-3
+air.type=Low
+air.velocity=-30,-5
+fall=1
+projscale=1,0.5
+
+[State ]
+type=SelfState
+Trigger1=AnimTime=0||var(48)>35
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;---------------------------------------------------------------------------
+;緊急回避
+[Statedef 92001]
+velset=0,0
+ctrl=0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=1
+statetype=S
+movetype=I
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=var(46)!=stateno
+trigger1=var(15):=var(48)||1
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理,分けたほうが安定する？
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=stateno!=var(46)
+Trigger1=var(14):=var(47)||1
+var(47)=var(14)
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=var(13):=var(46)||1
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=!ishelper||ishelper(70000)
+value=var(47)
+elem=animelemno(-1)
+ignorehitpause=1
+
+[State ]
+type=Turn
+triggerall=!ishelper
+trigger1=enemynear,alive||numenemy=1
+trigger1=(enemynear,pos x-pos x)*facing<0
+trigger2=!enemynear,alive&&numenemy>1
+trigger2=(enemynear(1),pos x-pos x)*facing<0
+
+[State ]
+type=NotHitBy
+triggerall=!ishelper&&palno<3
+Trigger1=var(48)=0
+Trigger1=var(37):=25
+value=SCA
+time=25
+ignorehitpause=1
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)=0
+trigger1=var(37):=25
+ignorehitpause=1
+
+[State ]
+type=AfterImage
+triggerall=!ishelper
+Trigger1=var(48)=0
+time=20
+trans=add
+palfx=200,200,200
+
+[State ];瞬間移動管理
+type=varset
+trigger1=var(48)=0
+var(7)=0
+
+[State ]
+type=PosAdd
+trigger1=var(48)=3
+trigger1=var(11)=2
+x=fvar(13)+120
+y=0
+[State ]
+type=PosAdd
+triggerall=var(48)=3
+trigger1=var(11)=3
+x=fvar(13)+150
+y=0
+
+[state ]
+type=PosAdd
+trigger1=!ishelper
+triggerall=var(4)!=[1,5]
+triggerall=var(48)=3
+Trigger1=command="holdup"
+y=-100
+ignorehitpause=1
+[state ]
+type=PosAdd
+trigger1=!ishelper
+triggerall=var(4)!=[1,5]
+triggerall=var(48)=3
+Trigger1=command="holddown"
+y=100
+ignorehitpause=1
+
+[state ]
+type=PosAdd
+triggerall=!ishelper
+triggerall=var(4)=[1,5]
+triggerall=var(48)=3
+trigger1=fvar(14)<=-90
+y=-80
+ignorehitpause=1
+[state ]
+type=PosAdd
+triggerall=!ishelper
+triggerall=var(4)=[1,5]
+triggerall=var(48)=3
+trigger1=fvar(14)>=90
+y=80
+ignorehitpause=1
+
+[State ]
+type=ScreenBound
+triggerall=!ishelper
+Trigger1=var(48)=0
+Trigger2=var(48)>=3
+value=0
+movecamera=1,1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=3
+value=20,8
+
+[state ]
+type=statetypeset
+trigger1=palno>6
+movetype=A
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=SelfState
+Trigger1=AnimTime=0||var(48)>5
+value=92003
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;----------------------------------------------------------------------------------------
+;t駘駱ortation - the nightmare apparition
+[Statedef 92003]
+velset=0,0
+ctrl=0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=1
+statetype=S
+movetype=I
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=!ishelper||ishelper(70000)
+trigger1=stateno!=var(46)
+var(47)=2002
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=2002
+value=var(47)
+elem=(var(48)=[0,9])*1
+ignorehitpause=1
+
+[State ]
+type=AfterImage
+triggerall=!ishelper
+Trigger1=var(48)=1
+time=20
+trans=add
+palfx=200,200,200
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=6
+value=20,8
+
+[State ]
+type=Turn
+triggerall=!ishelper
+trigger1=enemynear,alive||numenemy=1
+trigger1=(enemynear,pos x-pos x)*facing<0
+trigger2=!enemynear,alive&&numenemy>1
+trigger2=(enemynear(1),pos x-pos x)*facing<0
+
+[State ];animtime管理
+type=null
+triggerall=!ishelper||ishelper(70000)
+trigger1=var(13)=92001||var(13)=92003
+trigger1=var(13):=0||1
+
+[state ]
+type=statetypeset
+trigger1=palno>6
+movetype=A
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=SelfState
+Triggerall=AnimTime=0||var(48)>2
+Trigger1=var(46):=var(13)||1
+Trigger1=var(47):=var(14)||1
+Trigger1=var(48):=var(15)+2||1
+value=var(13)
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;----------------------------------------------------------------------------
+[Statedef 92004]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=2
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[state ];anim管理
+type=varset
+triggerall=!ishelper||ishelper(70000)
+triggerall=stateno!=var(46)
+trigger1=!ishelper
+trigger1=var(20)=1||palno=12
+trigger2=ishelper(70000)
+trigger2=root,var(20)=1||root,palno=12
+var(47)=92004
+ignorehitpause=1
+
+[state ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=92004
+value=var(47)
+elem=(var(48)=[0,7])*1+(var(48)=[8,27])*floor(((var(48)-8)/5)+2)+(var(48)>=28)*floor(((var(48)-28)%20/5)+6)
+ignorehitpause=1
+
+[state ]
+Type=NotHitBy
+triggerall=!ishelper&&palno<3
+Trigger1=var(48)>=0
+Trigger1=var(37):=1
+Value=SCA
+Time=1
+ignorehitpause=1
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)>=0
+trigger1=var(37):=1
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+Triggerall=var(7):=0||1
+Trigger1=var(48)>8
+Trigger1=var(7):=1||1
+ignorehitpause=1
+
+[state ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)>=8
+Trigger1=(var(48)-8)%20=0
+value=7,2
+ignorehitpause=1
+
+[state ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+value=0,31
+ignorehitpause=1
+
+[state ]
+type=HitDef
+triggerall=!ishelper
+triggerall=fvar(10)!=1
+Trigger1=AnimElem=2||AnimElem=3||AnimElem=4||AnimElem=5
+Trigger2=AnimElem=6||AnimElem=7||AnimElem=8||AnimElem=9
+attr=S,SA
+animtype=Hard
+damage=Ceil((0.003*(palno<7)+0.01*(palno>6))*var(0)+random%10)
+hitflag=MAD
+numhits=0
+pausetime=1,10
+sparkxy=-10,-60
+hitsound=S20,0
+guardsound=S20,3
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-20
+guard.velocity=-25
+air.velocity=-20,-5
+airguard.velocity=-25,-5
+
+[state ]
+type=HitDef
+triggerall=!ishelper
+triggerall=fvar(10)=1
+Trigger1=AnimElem=2||AnimElem=3||AnimElem=4||AnimElem=5
+Trigger2=AnimElem=6||AnimElem=7||AnimElem=8||AnimElem=9
+attr=,SA
+animtype=Hard
+damage=Ceil(0.03*var(0)+random%25)
+hitflag=MAD
+numhits=0
+pausetime=1,10
+sparkxy=-10,-60
+hitsound=S20,0
+guardsound=S20,3
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-20
+guard.velocity=-25
+air.velocity=-20,-5
+airguard.velocity=-25,-5
+ignorehitpause=1
+
+[state ]
+type=posset
+trigger1=!ishelper
+trigger1=Pos Y>0
+y=0
+ignorehitpause=1
+
+[state ]
+Type=Explod
+trigger1=!ishelper
+Trigger1=var(48)=8
+Anim=8550
+Pos=0,0
+PosType=p1
+SprPriority=-2
+BindTime=-1
+RemoveTime=42
+supermovetime=42
+pausemovetime=42
+Scale=0.5,0.5
+ignorehitpause=1
+
+[state ]
+Type=Explod
+trigger1=!ishelper
+Trigger1=var(48)=8
+Anim=3015
+Pos=0,0
+PosType=p1
+SprPriority=-2
+BindTime=-1
+RemoveTime=142
+supermovetime=142
+pausemovetime=142
+Scale=6,6
+ignorehitpause=1
+
+[state ]
+type=EnvShake
+triggerall=!ishelper
+Trigger1=var(48)>=8
+Trigger1=var(48)%4=0
+time=4
+ampl=4
+freq=127
+ignorehitpause=1
+
+[state ]
+type=SelfState
+Trigger1=var(48)>=150
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;------------------------------------------------------------------------------------
+[Statedef 93010]
+velset=0,0
+ctrl=0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=3
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[state ];anim管理
+type=varset
+triggerall=!ishelper||ishelper(70000)
+triggerall=stateno!=var(46)
+trigger1=!ishelper
+trigger1=var(20)=1||palno=12
+trigger2=ishelper(70000)
+trigger2=root,var(20)=1||root,palno=12
+var(47)=93010
+ignorehitpause=1
+
+[state ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=93010
+value=var(47)
+elem=(var(48)=[0,59])*1+(var(48)=[60,62])*floor((var(48)-60)/1+2)+(var(48)=[63,73])*5
+ignorehitpause=1
+
+[state ]
+Type=NotHitBy
+triggerall=!ishelper&&palno<3
+Trigger1=var(48)=[0,59]
+trigger1=var(38):=1
+value2=C,NA
+Time=1
+ignorehitpause=1
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)=[0,59]
+trigger1=var(38):=1
+ignorehitpause=1
+
+[state ]
+type=playsnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+value=5,7
+ignorehitpause=1
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=4
+Value=0,6
+ignorehitpause=1
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=63
+Value=7,5
+ignorehitpause=1
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=63
+Value=5,37
+ignorehitpause=1
+
+[state ]
+Type=Projectile
+triggerall=!ishelper
+Trigger1=var(48)=[0,62]
+ProjAnim=20050
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+offset=80,-80
+Attr=S,HP
+Damage=Ceil((0.01*(palno<7)+0.08*(palno>6))*var(0)+random%10)
+AnimType=Hard
+pausetime=0,12
+sparkno=-1
+guard.sparkno=-1
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-20
+guard.velocity=-25
+air.velocity=-20,-5
+airguard.velocity=-25,-5
+projscale=0.05+(var(48)*0.01),0.05+(var(48)*0.01)
+
+[state ]
+Type=SelfState
+Trigger1=AnimTime=0||var(48)>73
+Value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;------------------------------------------------------------------------------------
+[Statedef 93030]
+velset=0,0
+ctrl=0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=1
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ];animtime管理
+type=varset
+triggerall=!ishelper
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[state ];anim管理
+type=varset
+trigger1=!ishelper||ishelper(70000)
+trigger1=stateno!=var(46)
+var(47)=93030
+ignorehitpause=1
+
+[state ]
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=93030
+value=var(47)
+elem=(var(48)=[0,49])*1+(var(48)=[50,53])*2+(var(48)=[54,68])*3
+ignorehitpause=1
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=8999
+Pos=0,-30
+PosType=back
+SprPriority=-2
+BindTime=50
+RemoveTime=50
+Scale=0.5,0.5
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9001
+PosType=back
+SprPriority=-3
+Vel=-14
+RemoveTime=50
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9001
+Pos=-20,52
+PosType=back
+SprPriority=-3
+Vel=-13
+RemoveTime=50
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9001
+Pos=-10,104
+PosType=back
+SprPriority=-3
+Vel=-14
+RemoveTime=50
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9001
+Pos=-10,156
+PosType=back
+SprPriority=-3
+Vel=-13
+RemoveTime=50
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9001
+Pos=0,208
+PosType=back
+SprPriority=-3
+Vel=-14
+RemoveTime=50
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[state ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+value=0,24
+ignorehitpause=1
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+Value=5,20
+ignorehitpause=1
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=54
+Value=21,1
+ignorehitpause=1
+
+[state ];演出用
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=0
+ProjAnim=3015
+projremovetime=49
+supermovetime=49
+pausemovetime=49
+velocity=0,0
+offset = -20,-75
+projscale=1,1
+ignorehitpause=1
+
+[state ];演出用
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=[0,32]
+trigger1=gametime%6=0
+ProjAnim=8526
+projremovetime=17
+supermovetime=17
+pausemovetime=17
+velocity=0,0
+offset=-30,-45
+projscale=0.5,0.5
+ignorehitpause=1
+
+[state ];演出用
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=54
+ProjAnim=20005
+projremovetime=14
+supermovetime=14
+pausemovetime=14
+sprpriority=-3
+velocity=0,0
+offset=30,-90
+projscale=0.5,0.5
+ignorehitpause=1
+
+[state ]
+Type=Explod
+trigger1=!ishelper
+Trigger1=var(48)=54
+Anim=20004
+Pos=0,0
+PosType=back
+SprPriority=-2
+BindTime=-1
+RemoveTime=21
+supermovetime=21
+pausemovetime=21
+Scale=0.5,0.5
+ignorehitpause=1
+
+[state ];アーマーキラー
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=54
+ProjAnim=60000
+projremovetime=21
+supermovetime=21
+pausemovetime=21
+projhits=7
+projmisstime=3
+attr=A,HP
+damage=Ceil((0.005*(palno<5)+0.02*(palno>4))*var(0)+random%10)
+sparkno=-1
+animtype=back
+ignorehitpause=1
+
+[State ]
+type=selfstate
+trigger1=AnimTime=0||var(48)>68
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;------------------------------------------------------------------------------------
+[Statedef 94000]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=3
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理,分けたほうが安定する？
+type=varset
+triggerall=!ishelper
+triggerall=var(20)!=1
+triggerall=palno!=12
+trigger1=time=0
+trigger1=stateno!=var(46)
+var(47)=4000
+ignorehitpause=1
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=94000
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=4000
+trigger2=var(47)=94000
+value=var(47)
+elem=(var(48)=[0,159])*(1+2*floor(var(48)/15)+((var(48)%15)>9))
+ignorehitpause=1
+
+[State ]
+type=Turn
+triggerall=!ishelper
+trigger1=enemynear,alive||numenemy=1
+trigger1=(enemynear,pos x-pos x)*facing<0
+trigger2=!enemynear,alive&&numenemy>1
+trigger2=(enemynear(1),pos x-pos x)*facing<0
+
+[state ]
+type=explod
+triggerall=!ishelper
+trigger1=var(48)=15
+trigger2=var(48)=30
+trigger3=var(48)=45
+trigger4=var(48)=60
+trigger5=var(48)=75
+trigger6=var(48)=90
+trigger7=var(48)=105
+trigger8=var(48)=120
+trigger9=var(48)=135
+trigger10=var(48)=150
+ID=4052
+anim=4052
+postype=p1
+sprpriority=-1
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+trigger1=var(48)=15
+trigger2=var(48)=45
+trigger3=var(48)=75
+trigger4=var(48)=105
+trigger5=var(48)=135
+value=0,2
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+trigger1=var(48)=15
+trigger2=var(48)=45
+trigger3=var(48)=75
+trigger4=var(48)=105
+trigger5=var(48)=135
+value=5,11
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=[15,44]
+trigger2=var(48)=[45,74]
+trigger3=var(48)=[75,104]
+trigger4=var(48)=[105,134]
+trigger5=var(48)=[135,159]
+ProjAnim=20010+((var(48)-15)%30%5)
+ProjID=555
+offset=((var(48)-15)%30)*7+100,-((var(48)-15)%30)*2-75
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+attr=S,SP
+damage=Ceil((0.008*(palno<7)+0.034*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+sparkno=-1
+guard.sparkno=-1
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8,-3
+airguard.velocity=-3,-4
+air.type=Low
+air.velocity=-2,-6
+projscale=0.4,0.4
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=[15,44]
+trigger2=var(48)=[45,74]
+trigger3=var(48)=[75,104]
+trigger4=var(48)=[105,134]
+trigger5=var(48)=[135,159]
+ProjAnim=20010+((var(48)-15)%30%5)
+ProjID=555
+offset=((var(48)-15)%30)*7+100,-70
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+attr=S,SP
+damage=Ceil((0.008*(palno<7)+0.034*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+pausetime=0,12
+sparkno=-1
+guard.sparkno=-1
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8
+airguard.velocity=-3,-3
+air.type=Low
+air.velocity=-2,-5
+projscale=0.4,0.4
+
+[State ]
+type=Projectile
+triggerall=!ishelper
+trigger1=var(48)=[15,44]
+trigger2=var(48)=[45,74]
+trigger3=var(48)=[75,104]
+trigger4=var(48)=[105,134]
+trigger5=var(48)=[135,159]
+ProjAnim=20010+((var(48)-15)%30%5)
+ProjID=555
+offset=((var(48)-15)%30)*7+100,((var(48)-15)%30)*2-65
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+attr=S,SP
+damage=Ceil((0.008*(palno<7)+0.034*(palno>6))*var(0)+random%10),Ceil((0.004*(palno<7)+0.012*(palno>6))*var(0)+random%10)
+animtype=Medium
+hitflag=MAFD
+pausetime=0,12
+sparkno=-1
+guard.sparkno=-1
+hitsound=S20,1
+guardsound=S20,3
+ground.type=High
+ground.slidetime=15
+ground.hittime=20
+ground.velocity=-8
+airguard.velocity=-3
+air.type=Low
+air.velocity=-2,-1
+projscale=0.4,0.4
+
+[State ]
+type=BGPalFX
+triggerall=!ishelper
+trigger1=ProjHit555=1
+time=10
+add=25,200,25
+mul=255,255,255
+
+[State ]
+type=EnvShake
+triggerall=!ishelper
+trigger1=ProjHit555=1
+time=4
+ampl=4
+freq=127
+
+[State ]
+type=selfstate
+trigger1=AnimTime=0||var(48)>159
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;---------------------------------------------------------------------------------
+[Statedef 95000]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=1
+trigger2=ishelper
+statetype=S
+movetype=I
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=91040
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=91040
+value=var(47)
+elem=(var(48)=[0,24])*1+(var(48)>=25)*floor(((var(48)-25)%32)/8+2)
+ignorehitpause=1
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9104
+Pos=0,50
+PosType=back
+SprPriority=-2
+Scale=0.92,0.8
+BindTime=200
+RemoveTime=200
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=AssertSpecial
+trigger1=1
+flag=timerfreeze
+ignorehitpause=1
+
+[State ]
+type=varSet
+triggerall=!ishelper
+Trigger1=var(48)=25
+fvar(10)=1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+value=0,12
+
+[State ]
+type=PlaySnd
+trigger1=var(48)=[25,150]
+value=5,4
+volume=255
+Channel=8
+LowPriority=1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=200
+value=0,24
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=160
+value=5,21
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[25,280]
+projanim=20005
+projremove=1
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=10,-65
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=140
+projanim=8550
+projremove=1
+projremovetime=42
+supermovetime=42
+pausemovetime=42
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=7,-55
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[25,140]
+trigger1=(var(48)-25)%6=0
+projanim=8526
+projremove=1
+projremovetime=17
+supermovetime=17
+pausemovetime=17
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=-35,0
+ignorehitpause=1
+
+[State ]
+type=NotHitBy
+triggerall=!ishelper&&palno<3
+Trigger1=var(48)>=0
+Trigger1=var(37):=1
+value=SCA
+time=1
+ignorehitpause=1
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)>=0
+trigger1=var(37):=1
+ignorehitpause=1
+
+[State ]
+type=selfstate
+Trigger1=AnimTime=0||var(48)>300
+value=0
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;---------------------------------------------------------------------------------
+[Statedef 98000]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[State ]
+type=selfstate
+triggerall=!ishelper
+trigger1=palno!=12
+value=0
+ignorehitpause=1
+
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=1
+trigger2=ishelper
+statetype=S
+movetype=I
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=94041
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=94041
+value=var(47)
+elem=(var(48)=[0,379])*1+(var(48)>379)*floor(((var(48)-380)%15)/5+8)
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=ishelper(70000)
+value=60000
+ignorehitpause=1
+
+[State ]
+type=ReversalDef
+trigger1=ishelper(70000)
+trigger1=root,var(48)>400
+trigger1=!(root,fvar(10)=1&&((root,var(54)&1)||(root,var(54)&4)))
+trigger2=!ishelper&&var(48)>400
+trigger2=!(fvar(10)=1&&((var(54)&1)||(var(54)&4)))
+reversal.attr=SCA,AA,AT,AP
+numhits=0
+priority=7,hit
+pausetime=0,40
+guard.dist=0
+p2stateno=149995
+gnorehitpause=1
+
+[State ]
+type=ReversalDef
+triggerall=ishelper(70000)
+triggerall=root,palno=12&&root,var(48)>400&&root,var(24)>0&&root,var(33)
+trigger1=playerID(root,var(24)),anim=450100
+trigger1=enemynear,numhelper(149990)<2
+reversal.attr=SCA,AA,AT,AP
+numhits=0
+priority=7,hit
+pausetime=0,40
+guard.dist=0
+p2stateno=root,var(33)
+p2getp1state=0
+gnorehitpause=1
+
+[State ]
+type=TargetLifeAdd
+trigger1=numtarget>0
+value=-2147483647
+absolute=1
+ignorehitpause=1
+
+[State ]
+type=CtrlSet
+trigger1=1
+value=0
+ignorehitpause=1
+
+[state ]
+type=VelSet
+trigger1=1
+x=0
+y=0
+ignorehitpause=1
+
+[State ]
+type=AssertSpecial
+trigger1=1
+flag=timerfreeze
+flag2=nomusic
+flag3=noBG
+ignorehitpause=1
+
+[state ]
+Type=Explod
+triggerall=!ishelper
+Trigger1=var(48)=0
+Anim=9104
+Pos=0,50
+PosType=back
+SprPriority=-2
+Scale=0.92,0.8
+BindTime=400
+RemoveTime=400
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+value=0,35
+
+[state ]
+Type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=0
+Value=5,20
+ignorehitpause=1
+
+[State ]
+type=PlaySnd
+triggerall=!ishelper
+Trigger1=var(48)=380
+value=0,9
+volume=255
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[0,400]
+trigger1=var(48)%14=0
+projanim=20005
+projremove=1
+projremovetime=14
+supermovetime=14
+pausemovetime=14
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=10,-65
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[0,400]
+projanim=12111
+projremove=1
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=10,-65
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[150,400]
+trigger1=(var(48)-25)%6=0
+projanim=8526
+projremove=1
+projremovetime=17
+supermovetime=17
+pausemovetime=17
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=-35,0
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=[300,400]
+projanim=12113
+projremove=1
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=2
+projsprpriority=2
+sparkno=-1
+postype=p1
+offset=10,-65
+projscale=0.5,0.5
+ignorehitpause=1
+
+[State ]
+type=projectile
+triggerall=!ishelper
+trigger1=var(48)=360
+projanim=8550
+projremove=1
+projremovetime=42
+supermovetime=42
+pausemovetime=42
+velocity=vel x,vel y
+attr=S,NT
+Projespriority=-99
+projsprpriority=-99
+sparkno=-1
+postype=p1
+offset=7,-55
+ignorehitpause=1
+
+[State ]
+type=NotHitBy
+triggerall=!ishelper&&palno<3
+Trigger1=var(48)>=0
+Trigger1=var(37):=1
+value=SCA
+time=1
+ignorehitpause=1
+
+[State ]
+type=null
+triggerall=!ishelper&&palno>2
+Trigger1=var(48)>=0
+trigger1=var(37):=1
+ignorehitpause=1
+
+[State ]
+type=lifeset
+triggerall=!ishelper&&palno=12
+trigger1=var(17)=[1,2]
+trigger1=var(9):=1
+value=1
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;---------------------------------------------------------------------------------
+[Statedef 70010]
+ctrl=0
+velset=0,0
+;=============================================================================
+[state ];判断
+type=destroyself
+triggerall=ishelper
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+triggerall=numenemy>0
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[1,9]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[1,9]
+ignorehitpause=1
+
+[state ];不純物排除
+type=Changestate
+triggerall=!(name="Legendary Super Saiyan"&&var(49)=gametime+gametime)
+trigger1=enemy,name="Legendary Super Saiyan"
+trigger1=enemy,palno=[7,12]
+trigger2=numenemy=2
+trigger2=enemy(1),name="Legendary Super Saiyan"
+trigger2=enemy(1),palno=[7,12]
+value=ifelse(!ishelper,1000044,149990)
+ignorehitpause=1
+;=============================================================================
+[state ]
+type=statetypeset
+trigger1=!ishelper
+trigger1=var(11):=1
+trigger2=ishelper
+statetype=S
+movetype=A
+physics=S
+ignorehitpause=1
+supermovetime=2147483647
+pausemovetime=2147483647
+
+[State ];animtime管理
+type=varset
+trigger1=time=0
+trigger1=var(46)!=stateno
+var(48)=0
+ignorehitpause=1
+
+[State ];anim管理
+type=varset
+triggerall=time=0
+triggerall=stateno!=var(46)
+trigger1=var(20)=1
+trigger2=palno=12
+trigger3=ishelper(70000)
+var(47)=70010
+ignorehitpause=1
+
+[State ];state管理
+type=varset
+trigger1=var(46)!=stateno
+trigger1=time=0
+var(46)=stateno
+ignorehitpause=1
+
+[state ];ステ抜け時のanimelem
+type=changeanim
+trigger1=var(47)=70010
+value=var(47)
+elem=(var(48)%60=[0,59])*floor(var(48)%60/15+1)
+ignorehitpause=1
+
+[State ]
+type=AssertSpecial
+trigger1=1
+flag=timerfreeze
+ignorehitpause=1
+
+[state ]
+type=HitDef
+triggerall=!ishelper
+Trigger1=AnimElem=1||AnimElem=3
+attr=S,SA
+animtype=Hard
+damage=20+random%25
+hitflag=MAD
+numhits=0
+pausetime=0,10
+sparkxy=-10,-60
+hitsound=S20,0
+guardsound=S20,3
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-20
+guard.velocity=-25
+air.velocity=-20,-5
+airguard.velocity=-25,-5
+ignorehitpause=1
+
+[state ]
+type=HitDef
+triggerall=!ishelper
+Trigger1=AnimElem=1||AnimElem=3
+trigger1=var(16)>3500&&gethitvar(fall.damage)>lifemax
+attr=,SA
+animtype=Hard
+damage=20+random%25
+hitflag=MAD
+numhits=0
+pausetime=0,10
+sparkno=-1
+gurad,sparkno=-1
+hitsound=-1,0
+guardsound=-1,0
+ground.type=Trip
+ground.slidetime=25
+ground.hittime=25
+ground.velocity=-20
+guard.velocity=-25
+air.velocity=-20,-5
+airguard.velocity=-25,-5
+fall.damage=2147483647
+ignorehitpause=1
+
+[State ]
+type=Projectile
+trigger1=ishelper(70000)
+projid=20004
+projanim=60000
+projremovetime=1
+supermovetime=1
+pausemovetime=1
+attr=S,NA
+damage=10+random%25
+sparkno=-1
+gurad,sparkno=-1
+hitsound=-1,0
+guardsound=-1,0
+animtype=back
+fall.damage=2147483647
+ignorehitpause=1
+
+[State ];ダメージ値
+type=lifeset
+triggerall=alive&&!ishelper
+triggerAll=(palno=[11,12])
+triggerall=numhelper(450000)&&numhelper(1)
+triggerall=roundstate=[2,4]
+triggerall=var(21)>0&&var(22)>0
+trigger1=playerID(var(21)),numtarget>0
+value=1
+ignorehitpause=1
+
+[State ];ダメージ値
+type=null
+triggerall=!ishelper
+;trigger1=var(9)<0
+trigger1=var(9):=1
+ignorehitpause=1
+
+[state ]
+type=null
+triggerall=!ishelper
+trigger1=fvar(1):=Vel X||1
+trigger1=fvar(2):=Pos X||1
+trigger1=fvar(3):=Vel Y||1
+trigger1=fvar(4):=Pos Y||1
+trigger1=fvar(5):=facing||1
+ignorehitpause=1
+;---------------------------------------------------------------------------------------
+[Statedef 99000];蘇生
+movetype= I
+
+[state ]
+type=selfstate
+trigger1=ishelper
+trigger1=name!="Legendary Super Saiyan"||!ishelper(1013)
+trigger2=name!="Legendary Super Saiyan"
+trigger3=hitpausetime<2||time
+value=0
+ctrl=(name!="Legendary Super Saiyan")
+ignorehitpause=1
+;------------------------------------------------------------------------------------------
+[state ];蘇生
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=selfstate
+trigger1=!ishelper
+value=var(46)
+ignorehitpause=1
+;---------------------------------------------------------------------------------------
+[Statedef 99001];自殺用超即死
+movetype= I
+
+[state ]
+type=selfstate
+trigger1=ishelper
+trigger2=name!="Legendary Super Saiyan"
+trigger3=hitpausetime<2||time
+trigger4=!ishelper&&(var(17)!=[1,2])
+value=0
+ctrl=(name!="Legendary Super Saiyan")
+ignorehitpause=1
+;------------------------------------------------------------------------------------------
+[state ];超即死
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+[state ]
+type=Null
+trigger1=1
+ignorehitpause=1
+[state ]
+type=selfstate
+trigger1=!ishelper
+value=var(46)
+ignorehitpause=1
+;---------------------------------------------------------------------------------------
+[Statedef 99002];凍結解除
+movetype= I
+
+[state ]
+type=selfstate
+trigger1=name!="Legendary Super Saiyan"
+trigger2=hitpausetime<2||time
+trigger3=!(!ishelper||ishelper(1013))
+value=0
+ctrl=(name!="Legendary Super Saiyan")
+ignorehitpause=1
+
+[state ]
+type=selfstate
+trigger1=name="Legendary Super Saiyan"
+trigger1=!ishelper||ishelper(1013)
+trigger1=hitpausetime<2
+value=ifelse(!ishelper,var(49),81020)
+ignorehitpause=1
+;-------------------------------------------------------------------------------------
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+[state ]
+type=null
+trigger1=1
+ignorehitpause=1

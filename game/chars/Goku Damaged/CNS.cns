@@ -1,0 +1,78 @@
+;[------Y------][-----][------]
+;[------N------][-----][--G---]
+;[------V------][-----][--O---]
+;[------A------][-'S-][---K---]
+;[------S------][-----][--U---]
+;[------E------][-----][------]
+;[------R------][-----][------]
+;[---Don't forget to check out the Shugen-Do--]
+;[------game engine at www.sakirsoft.com------]
+;===========================================================================
+;[Information]--------------------------------------------------------------
+;===========================================================================
+;-Version: 0.1b (private beta)
+;-Authors
+;Spriting: GeriDOS
+;Coding & FX: ynvaser
+;-Beta testers
+;Kratos
+;Zero
+;===========================================================================
+;[CNS]----------------------------------------------------------------------
+;===========================================================================
+[Data]
+life = 1000
+power = 3000 ;Don't mess with this one
+attack = 100
+defence = 100
+fall.defence_up = 50
+liedown.time = 50
+airjuggle = 100
+sparkno = 2
+guard.sparkno = 40
+KO.echo = 0
+volume = 0
+IntPersistIndex = 59
+FloatPersistIndex = 40
+
+[Size]
+xscale = 1
+yscale = 1
+ground.back = 15
+ground.front = 16
+air.back = 12
+air.front = 12
+height = 60
+attack.dist = 160
+proj.attack.dist = 90
+proj.doscale = 0
+head.pos = 2, -70
+mid.pos = -5, -55
+foot.pos = -2, -5
+shadowoffset = -1
+draw.offset = 0,-1
+
+[Velocity]
+walk.fwd  = 6.0
+walk.back = -5.0
+run.fwd  = 9.0
+run.back = -8.0
+jump.neu = 0,-9
+jump.back = -4,-7.5
+jump.fwd = 5,-7.5
+runjump.back = -2.55,-8.1
+runjump.fwd = 5,-10
+airjump.neu = 0,-10.2
+airjump.back = -5
+airjump.fwd = 2.5
+
+[Movement]
+airjump.num = 0
+airjump.height = 35
+yaccel = .44
+stand.friction = .85
+crouch.friction = .82
+
+;===========================================================================
+;[End of file]--------------------------------------------------------------
+;===========================================================================

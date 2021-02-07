@@ -1,0 +1,26 @@
+;ESTO DEBE IR DESPUES DEL STATEDEF -2
+;RECORDAR QUE EL STATEDEF -3 ESTA INCLUIDO MAS
+;ABAJO PARA LA ACTIVACION DE LA VAR(59)
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+[State -3, Ativando]
+type = VarSet
+trigger1 = command = "ai"
+trigger2 = command = "ai1"
+trigger3 = command = "ai2"
+trigger4 = command = "ai3"
+trigger5 = command = "ai4"
+trigger6 = command = "ai5"
+trigger7 = command = "ai6"
+trigger8 = command = "ai7"
+trigger9 = command = "ai8"
+trigger10= command = "ai9"
+trigger11= command = "ai10"
+trigger12= command = "ai11"
+trigger13= command = "ai12"
+trigger14= command = "ai13"
+var(59) = 1
+

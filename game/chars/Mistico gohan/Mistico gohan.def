@@ -1,0 +1,31 @@
+
+[Info]
+name ="Mistico gohan by franciynaldo"        
+displayname ="Mistico gohan" 
+versiondate =2,25,2007    
+mugenversion =06,14,2003   
+author ="D-GENERACIONZ - Team"        
+pal.defaults =1,2      
+
+; Files for the player
+[Files]
+cmd     =gohan.cmd   
+cns     =gohan.cns   
+st      =gohan.cns   
+stcommon =common1.cns 
+sprite  =gohan.sff   
+anim    =gohan.air   
+sound   =gohan.snd   
+pal1=gohan.act
+pal2=gohan2.act
+
+; Arcade mode
+[Arcade]
+intro.storyboard=
+ending.storyboard=final/final.def
+;...........................................................................................
+
+                                ; Feito no Brasil           
+;                              Autor: equipe D-GENERACIONZ - Team
+
+;[[[[[[[[[[[[[[[[[[[[[[E-mail& msn: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

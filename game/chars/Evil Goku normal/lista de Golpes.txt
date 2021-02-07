@@ -1,0 +1,175 @@
+                                    ===LEIA-ME===
+
+                                Goku Super saiyajin 5
+
+                                   Leia-Me em português
+
+
+===FICHA===
+
+Nome : son goku
+Jogo : Dragon ball af
+Baseado no: nele
+Versão do Mugen :04,14,2001 win mugen
+Versão : 1.0
+Completo : 100%
+Data de Lançamento : 20/09/2006
+personagem - editado
+
+
+
+
+===CRÉDITOS===
+
+Autor: FRS GAMES >Franciynaldo
+E-mail: yusukeuhamesh@ibest.com.br
+
+===INSTALAÇÃO===
+
+Para colocar o goku no seu M.U.G.E.N. primeiro tenha certeza de que há espaço
+no seu System.def abrindo-o com um editor de texto(como Wordpad)e aumentando
+o número de Columns e Rows se necessário.
+Se já tiver espaço,bom.
+Mande todos os arquivos para uma pasta de nome Goku ssj5 e coloque-a na pasta
+CHARS de seu M.U.G.E.N.
+Agora, entre no arquivo Select.def e procure por uma parte com [Characters]
+escrito.
+Logo embaixo escreva:
+Goku ssj5 (se quiser que ele esteja no seu jogo)
+Goku ssj5, stages/estagio.def (se quiser que ele tenha uma fase própria no ArcadeMode) 
+Goku ssj5, stages/estagio.def, music=sound/nomedamusica.def (se quiser que a fase do modoArcade tenha música própria) 
+Se quiser que ela seja o último chefe de seu jogo, acrescente , order=10 logo
+após a música ou o estágio(vindo em últmo lugar),senão, coloque :, order=9
+para que esteja num nível anterior a último chefe.
+
+===O QUE FALTA===
+Golpe do dragao
+Inteligencia Artificial
+===O QUE TEM===
+.18 supers
+.8 especiais
+.Sistema de combos
+.Extras
+.4 poses de vitória
+.5 intro
+.Carregamento de ki
+. teleporte
+. voo
+.Muitos sons
+.6 Paletas
+===NOVIDADES===
+é a primeira versão
+===son goku===
+
+Raça : Saiyajin
+Familiares:que morerao (bardock pai),(selipa mae), (raditz irmao mais velho),(son gohan avô de criaçao)
+Familiares: (chichi esposa),(gohan filho mais velho),(goten filho mais novo),(pan neta),(videl nora),( paz  nora), ( goku jr tataraneto)
+Olhos : pretos muda de cor quando transforma
+Cabelo : grisalho,pretos muda de cor quando transforma
+Séries : dragon ball dragon ball z dragon ball gt dragon ball af
+Diciplina: artes marciais 
+ 
+===MODOS DE JOGO===
+
+transformado em super saiyajin  5
+
+
+===COMANDOS===
+
+-------
+Legenda
+-------
+
+F - Frente
+B - Trás
+D - Baixo
+U - Cima
+DF - Baixo frente
+DB - Baixo trás
+UF - Cima frente
+
+-------
+Básicos
+-------
+a - botão a chute fraco
+b - botão b chute medio
+c - botão c chute forte
+x - botão x soco fraco
+y - botão y soco medio
+z - botão z magias
+------
+Extras
+------
+.Balão - é só chegar perto do aponente e apertar o soco medio que e o y
+
+.DASH - e so apertar B,B tras F,F frente
+
+.AIR JUMP - Um pulo comum no ar em qualquer direção
+Um pulo aéreo
+
+.Sistema de Combos - Vá apertando os botões de golpes básicos rapidamente
+goku vai espancando seu inimigo do jeito que você quiser da para juntar todos os golpes com sequencia !
+
+.Super Pulo - D, U
+Um pulo mais forte e mais auto pra cima.
+
+.Super Pulo Foward- D, UF
+Um pulo mais forte e mais auto pra frente.
+
+.Super Pulo Backward- D, U
+Um pulo mais forte e mais auto pra trás.
+-------------
+CARREGAMENTOS
+-------------
+CHARGE - a+b
+goku carrega seu Ki.(9 barras)
+teleporte - x+a
+voar - y+b
+provocaçao - start
+
+--------------------
+MOVIMENTOS ESPECIAIS
+--------------------
+sequencia veloz - D, DB, B, a
+sequencia subindo - D, DB, B, b
+ssj5 sequencia2 - D, DB, B, c
+sequencia rapida - D, DB, B, x
+sequencia de chutes - D, DB, B, y
+Taioken - D, DB, B, z
+teleporte sequencia - D, DF, F, a
+ssj5 sequencia - D, DF, F, b
+ssj5 sequencia3 - D, DF, F, c
+super soco esquerdo - D, DF, F, x
+super soco direito - D, DF, F, y
+Ki invisivel - D, DF, F, z
+chute aereo - B,F ,a 
+chute aereo2 - B,F ,b
+cotovelada - B,F ,x
+cotovelada2 - B,F ,y
+F, D, DF, a -subir o adversario para fazer sequencia aerea
+F, D, DF, b -subir o adversario para fazer sequencia aerea
+F,F ,x  -soco na bariga
+F,F ,y  -soco na bariga
+-----------
+SUPER MOVES
+-----------
+ataque de magia - D, DB, B, F , a -gasta 3 barras de power
+especial de spancamento - D, DB, B, F , b -gasta 2 barras de power
+ssj5terror - D, DB, B, F , c  -de perto
+Kamehameha fraco - D, DB, B, F , x  -segure x e aperte o c teleportar 
+Kamehameha medio - D, DB, B, F , y -segure y e aperte o c teleportar 
+Kamehameha forte - D, DB, B, F , z  -gasta 3 barras de power
+ssj5flashbatle - D, DF, F, B , c  -pode ser feito durante qualquer golpe
+max camehameha - D, DF, F, B , z   -gasta 5 barras de power
+                                  
+                                              (((((( AGRADECIMENTOS)))))
+                                      A Mugenesis por divulgar meus personagens 
+
+
+
+
+
+
+
+
+

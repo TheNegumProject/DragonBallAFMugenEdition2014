@@ -1,0 +1,137 @@
+;Zanzoken
+[Statedef 2006]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+anim = 2001
+poweradd= 0
+ctrl = 0
+facep2 = 1
+
+[State 2006, 1]
+type = PlaySnd
+Trigger1 = AnimElem = 2
+value = 500, 2
+volume = 20
+
+
+[State 1600, Fwd]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command != "holdback"
+Trigger1 = command != "holdup"
+Trigger1 = command != "holddown"
+x = P2Dist X+30
+y = p2bodydist y - 0
+
+[State 1600, FwdUp]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command = "holdup"
+Trigger1 = command = "holdfwd"
+Trigger1 = command != "holdback"
+Trigger1 = command != "holddown"
+x = 300
+y = -200
+
+[State 1600, Back]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command = "holdback"
+Trigger1 = command != "holdfwd"
+Trigger1 = command != "holdup"
+Trigger1 = command != "holddown"
+x = -300
+y = 0
+
+[State 1600, BackUp]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command  = "holdback"
+Trigger1 = command  = "holdup"
+Trigger1 = command != "holdfwd"
+Trigger1 = command != "holddown"
+x = -300
+y = -200
+
+[State 1600, Up]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command  = "holdup"
+Trigger1 = command != "holdfwd"
+Trigger1 = command != "holdback"
+Trigger1 = command  != "holddown"
+x = 0
+y = -200
+
+[State 1600, down]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command  = "holddown"
+Trigger1 = command != "holdfwd"
+Trigger1 = command != "holdback"
+Trigger1 = command != "holdup"
+x = 0
+y = (pos y)*-1
+
+[State 1600, Fwddown]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command  = "holddown"
+Trigger1 = command  = "holdfwd"
+Trigger1 = command != "holdback"
+Trigger1 = command != "holdup"
+x = 300
+y = (pos y)*-1
+
+[State 1600, Backdown]
+type = PosAdd
+Trigger1 = animtime = 0
+Trigger1 = command  = "holddown"
+Trigger1 = command != "holdfwd"
+Trigger1 = command  = "holdback"
+Trigger1 = command != "holdup"
+x = -300
+y = (pos y)*-1
+
+[State 1600, Turn]
+type = Turn
+Trigger1 = P2Dist X < 0
+
+[State 1600, 4]
+type = ChangeState
+Trigger1 = animtime = 0
+value = 2008
+ctrl = 1
+
+[Statedef 2008]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+anim = 2008
+ctrl = 1
+facep2 = 1
+
+[State 2006, 1]
+type = PlaySnd
+Trigger1 = AnimElem = 1
+value = 500,2
+VOLUM = -100
+
+
+[State 1601, 5]
+type = ChangeState
+trigger1 = pos Y >= -5
+Trigger1 = animtime = 0
+value = 50
+ctrl = 1
+
+[State 1601, 5]
+type = ChangeState
+trigger1 = pos Y < -5
+Trigger1 = animtime = 0
+value = 2000
+ctrl = 1
+

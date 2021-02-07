@@ -1,0 +1,25 @@
+
+[Info]
+name ="Goku DB"        
+displayname ="Goku kid" 
+author ="Goten88 & DBZPD" 
+versiondate =09,19,2004 
+pal.defaults =1,2
+mugenversion=
+
+[Files]
+cmd     =DB.cmd  
+cns     =DB.cns  
+st      =DB.cns
+stcommon =common1.cns 
+sprite  =DB.sff   
+anim    =DB.air   
+sound   =DB.snd 
+pal1=DB2.act
+pal2=DB3.act
+st1=AI.cns
+st2=AI.cns
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=..\data\final.def

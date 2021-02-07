@@ -1,0 +1,245 @@
+Saibaman Versión 1.0 By Team DBZ OS y todos los que juegan mugen|
+----------------------------------------------------------------
+
+
+________________________
+	Historia	|
+------------------------
+Este char es el producto de un Sheet comunitario hecho por los usuarios de la comunidad Elysium no Mugen.
+surgió la idea entre arios de ellos (principalmente Hachemball y Juanga), tomando com base el sheet de Cell Jr, del juego
+Super Butoden 2. Editando sobre esa base, hicieron unos sprites como modelo de edición y propusieron la cración de un sheet
+entre los que quisiearan anotarse en un post abierto a toda la comunidad. 
+Luego, dividienron el sheet original de Cell Jr, en partes de no mas de 5 sprites, así cada uno de los que se anotaba para
+contribuir no tenía que trabajar mucho y podía culminar su parte fácilmente, con un poco más que el ezfuerzo que e requiere
+para un torneo de sprites. Luego todos siguieron el modelo copiando los colores básicos así quedaba todo el sheet con un 
+mismo estilo. 
+
+así, al cabo de tan solo 2 semanas se terminó un sheet de unos 60 sprites. Algo que nadie puede hacer po sí solo, o bien
+puede hacerlo, pero aburriendose mucho. Aca todos trabajaron poco, pero organizadamente, y ello ha rendido sus frutos.
+
+en lo personal, solo puedo decir que la forma en que se produjo tal sheet, es un sueño para mi. (T_T)
+es lo que siempre he esperado y alentado en una comunidad mugen.
+Además es la prueba mas fiel de las enormes ventajas que trae trabajar abiertamente, compartiendo todo lo que hacemos
+y sin miedo a que nadie se "robe" nuestro trabajo, por el simple hecho que desde el mismo momento en que uno trbaaja de esa
+forma, cada cosa que hacemos es de todos.... entonces es simplemente abzurdo pernsar que alquie puede quianoslo, porque el
+sheet está precisamente para eso: para que otros lo usen.
+
+sería bueno que aquelos que se encargar de encriptar sus trabajos, o que queiren ponerle password para que no podamos abrir
+un char con el Fighter Factory, vean los hermoso y simple que es trabajar entre todos y compartir lo que uno hace.     
+Este Saibaman, es la prueba mas grande de ello. 
+
+________________________
+	Comentarios	|
+------------------------
+
+
+Bueno, también quiero decir que en los chars que elijo para hacer trato de que sean chars que todavía no estén hechos o que, 
+si lo están, tienen una jugabilidad que poco se acerca a la clásica del Super Butoden, que es la que más me gusta. 
+Así elijo mis proyectos de acuerdo con lo que me apasione y a lo que no esté hecho (o no muy parecido a los Butoden).
+
+
+Se trata de jugabilidades distintas y de formas distintas de ver, entender, y sentir la pasión por Dragon Ball. No por esta 
+diferencia se está compitiendo, sino, simplmenete, aportando algo distinto tratando de hacerlo lo mejor posible, para 
+disfrute y crecimiento de toda la comunidad MUGEN.
+
+este es mi primer char y espero que más fans de Dragon Ball se entusiasmen en la programación MUGEN.
+el trabajo de cada uno de nosotros es de los demás también. Enrriquecamosnos del esfuerzo de todos. Si alguien hace sprites
+de calidad para el uso de todos, cualquier persona que quiera hacer un char no tiene que empezar desde cero, y por lo tanto 
+le resulta más fácil comenzar y terminar un proyecto de calidad. 
+
+Si por el contrario se le ponen restrcciones a los chars, cada persona que quiera adentrarse en la creción de chars tiene 
+el costo previo del "permiso de autor" (siempre y cuando lo obtenga), para publicar su char. Es obvio que cada persona puede
+cambiar, editar, transformar y borrar la información que tenga en su PC.... pero en algunos sites y foros se impone esta
+restricción ("llamado permiso de autor") para publicar obras deribadas de producciones con código abierto. 
+
+La argumentación que se usa para exigir este "premiso/autorización  de autor" es: "Hay que respetar a los autores 
+porque si sienten que no se los repeta, dejarán de hacer chars y nos prejudicamos nosotros mismos". Es un argumento muy 
+discutible. 
+
+En principio este argumento junta la idea de "respeto" con la delegación de autoridad a la persona que haya hecho tal o cual
+char. Es decir que, según tal argumento, los llamados "creadores" (como si fueran marcianos superdotados, o que otras 
+personas no pueden aprender a programar) tienen el poder de decición para decir qué se usa y qué no... algo que
+tecnológicamente es ridículo, porque en nuestras PCs podemos cambiar lo que queramos, mas allá si alguien quiere o no. Por
+lo tanto, sólo queda el obstáculo social-discursivo para que cualquier persona pueda producir y publicar libremente
+sus personajes MUGEN que haga. Esta restricción sólo puede aplicarse a la publicación (porque la producción ya se encuentra
+posibilitada por el código abierto de los chars) y habitualente se impone en los foros o sites, vía los administradores
+de tales webs. Esta es la idea restrictiva del "respeto": entendida como autoridad.
+
+Si en cambio, entendemos al respeto como el reconocimiento al trabajo de otros, entonces es otra cosa. Dar una palmada en la 
+espalda y decir "che, muy buen laburo" es lo mejor que podemos hacer para reconocer el esfuerzo de otros. Si se pudiera 
+hacer en persona (cara a cara), yo mismo lo haría. Pero vía Internet, se bien que una "cyber palmada" puede resultar un poco 
+fría.... deberemos acostumbrarnos a eso o hacer encuentros personales de gente que programa o quiere aprender a programar 
+chars MUGEN, si de generar relaciones más fraternas es lo que se trata de hacer. Bajo ningún punto de vista imponer autoridad
+sobre otros (como decir "esos cuantos pixeles son míos y no los presto") nos puede llevar a generar lazos más fraternos, si
+no todo lo contrario.
+ 
+Bueno, haciendo caso a este principio de respeto que se basa en felicitar al las personas por su ezfuerzo (pero no en darles
+autoriadad para decidir qué se usa y qué no), he de agradecer los sprites open que Neocide hizo del personaje Capitan Ginew. 
+Más o menos, la mitad de los sprites son los que él hizo. El resto los hice yo mismo 
+
+
+ahora se detallan los movimientos y luego paso a los agradecimientos más formalmente.
+
+__________________________________
+
+
+
+________________________________________________________________
+		LISTA DE MOVIMIENTOS				|
+----------------------------------------------------------------
+
+-| Super Motions |-------------------------------------------------------- 
+"Saibamanes Rush" = D,DB,B,D,DB,B, a+b [-2000 ki] 
+(sean benevolentes con este move, pq es posible que no siemrpe pegue bien) 
+
+"Poison Blast" = D,DF,F,D,DF,F, c [-1000 ki] 
+(tiene un 100% de probabilidades de envenenar al oponente) 
+
+"Autodestruirse" = D,DF,F,B, c [-1000 ki] 
+(comienzan un conteo regresivo que al llegar a 0 explotan sin importar lo que pase) 
+(les resta -400 de vida) 
+(si estan agarrados al oponente y marcan este move, explotan sin necesidad de conteo) 
+
+-| Special Ki |-------------------------------------------------------- 
+
+"Bola Venenosa" = D,DB,B, c [- 400 ki] 
+(se puede hacer en el aire tambien) 
+(tiene un 33% de probabilidades de envenenar al oponente) 
+
+"Explosión de Ki" = F,D,DF, c [- 400 ki] 
+
+
+-| Special Motions |------------------------------------------------------ 
+
+"Bolita" = (20 tics)B, F, x/y (con el X sale por el piso, y con el Y por arriba) 
+(luego del revote pueden hacer cualquier otra tecnica o golpe) 
+
+"Garrazo" = F,D,DF, x/y (con el x sale mas vertical y con el Y sale más en diagonal) 
+[pueden hacerlo en el aire y sale hacia abajo] 
+
+Agarrarse del oponente = F,D,DF, a/b (con el A sale mas alto y con el B mas largo) 
+una vez agarrados al oponente 
+- "x" = chupan vida al oponenete por cada vez que apretan el boton 
+- "y" = dan un garrazo en X al oponente que el quita mas vida de la habirual 
+- "a" = dan una patada que vual al oponente a un costado.. (no se me ocurrió algo mejor 
+- "b" = lanzan veneno desde la cabesa que tiene un 66% de probabilidades de envenenar al P2. [- 200 ki] 
+- "D,DF,F,B + c" = autodestruirse en forma inmediata 
+
+Enterrarse = D,DB,B, x/y 
+- "x" = Shoryuken garritas 
+- "y" = Combo Doble 
+- "a" = Bolita Atras (sirve mas que nada para escaparse) 
+- "b" = Bolita adelante (sirve para atacar al oonente por la espalda) 
+- "c" = Absorver vida de la tierra [- 40 ki por cada vez que se presiona]
+ 
+-| Mini Secuencias |------------------------------------------------------
+
+patada doble: b,b
+doble piñita: x,x
+Doble fireball (tambien en el aire): c,c
+Garrazo: (corriendo) x o y
+Barrida: (corriendo) a o b
+
+
+
+
+
+________________________________________________________________
+			AGRADECIMIENTOS				|
+----------------------------------------------------------------
+
+Ahora sí, paso a los agradecimientos. 
+
+A Electbyte, por haber inventado esta maravilla llamada MUGEN. Gracias a ello ahora los fans, podemos aprovechar lo hecho por
+las companías de juegos de peleas (ya sean SNK, CAPCOM, BANDAI, etc) para producir de forma libre los chars que nos gusten, 
+como queramos, sin competencia entre nosotros los fans, y (mejor que nada) sin rendirles cuentas a los interesados en fines
+de lucro.
+
+Las ya mencionados compañías, hoy resultan burladas por las vías de internet, el trabajo compartido, y la unión libre y 
+fraterna... de más está decir que por esta "burla a las compañías" (por así decirlo) no se terminaron los juegos de peleas, 
+ni Dragon Ball, ni nada parecido.... muy por el contrario ahora tenemos ese furuto desarrollo en nuestras manos y lo podemos 
+llevar a nuestro gusto libremente elegido, en vez de estar esperando año a año los nuevos lanzamientos comerciales.
+
+El futuro de los juegos de peleas ahora está en nuestras manos. GRACIAS  M U G E N  POR ELLO!!!!
+
+respecto a este char en particular les agradezco a toda la comunidad Elysium (mudada a Mugen Hispania) por hacer el sheet
+que sirvió de base para el char. Luego, en el team, lo hemos ampliado, como para que el char tenga mas customs y esas cosas. 
+sin embargo quiero nombrar a aquellos que hicieron posible el sheet base:
+Hachemball (Emma), Juanga, Mixer Stone, Vieja del Agua, SSJ4pedro, Zack, Ryudo, Kato (o Berrocal), Oni link, Boss, Miwel
+y seguramente me estoy olvidando de alguien.... pero ese sheet ha sido el producto de las cosas por las que siempre hemos 
+luchado desde el Team DBZ OS: la falta de egoísmos para copartir cada pixel que se hace para un sprite, el ahcer algo
+organizado para que un sheet llegue a buen puerto, y la distribución de un mismo trabajo, para que no tengamos que trabajar
+mucho individualmente y saquemos provecho del trabajo comunitario.
+
+y todo de forma abierta en un post abierto, sin que nadie se "robe" nada, y sin que nadie tenga miedo de que "le pillen" el 
+trabajo, porque la respuesta es obvia: nadie te puede sacar lo que es de todos... y si todos no encargamos de proteger que
+algo se mantenga disponible para todos, nadie se puede aprovechar eso para sí mismo, sino que cada cosa que haga es de todos.
+
+Todavía aquí pueden ver cómo se fue armando http://mugen-elysium.activoforo.com/sheets-elysium-f36/saibaman-t3145.htm
+
+ojalá que más trabajos se hagan así. 
+
+
+
+________________________
+	Derechos	|
+------------------------
+
+
+de más está decir, que por la forma en la que entiendo el respeto (como reconocimiento y no como autoridad), cada línea 
+de código y cada pixel de este char, es de TOTAL LIBRE USO, lo diga yo o no lo diga.
+
+respecto de que el char ha sido realizado por el Team OS, simplmente resta decir que este equipo simplmente se encargará
+de garantizar la distribución del char, pero no de provirle a otros que lo copien, pegen, hosteen, o inclusio hagan una 
+reversión del char. Bajo ningún punto de vista este el Team OS buscará reservarse para sí soberanía alguna sobre el char. 
+simplmente se encargará de garantizar (y no de reservarse) la distribución, y proteger el derecho Open SOURSE con el 
+que el char ha sido producido.
+Es decir que el char puede ser usado para otras obras, siempre y cuando se mantenga el caracter open sourse de las obras
+dedibadas de este char. 
+
+desde luego que si se usa este char para otra obra, se les agradecería la mension al Team DBZ OS, nada más. 
+
+______________________________________________
+	Reflexiones sobre la idea de "autor"  |
+----------------------------------------------
+
+si se preguntan quién soy o por qué en de este char no figura un "autor", es por el simple hecho de que no creo que sea 
+democrática la idea de proclamarse "autor" (como el "creador") de algo. La producción de conocimiento y de obras culturales 
+(que aunque alguien no lo quiera aceptar, MUGEN es también parte de la cultura) es algo en lo que contribuye toda la 
+sociedad, y en este caso toda la comunidad MUGEN, desde el que postéa una opinión en un foro, hasta el que hace un char pixel
+por pixel... 
+incluso tambien las compañias SNK, CAPCOM, BANDAI y tantas otras han contribuido en este char (con la simple diferencia de
+que estas últimas pretendian cobrar dinero para que uno accediera a sus producciones), a través de los movimientos y 
+gráficos que imagino a partir de las experiencias de jugar sus juegos de peleas.
+
+por lo tanto cada vivencia que he tenido en los juegos de pelea han contribuido al char, también cada parsona con la que 
+hablé de ello, y cada cosa que leí y vi al respecto... es decir que este char no es más que el resultado social de mis 
+vivencias en torno a los juegos de peleas. 
+
+si se está de acuerdo con esto que digo, la simple idea de proclamarse "autor", no puede entenderse más que como un "robo"
+a todas esas distintas producciones de otras personas y de la sociedad toda, que han influido en lo que nosotros produzcamos.
+Es decir que proclamarse "autor" (como el "creador" de algo), es simplemente poner nuestra producción por sobre todas las
+demás, sin contar que la nuestra sería imposible sin todas las demás. Algo muy despótico si se hace intencionadamente, aunque
+la mayoría de las veces no sea intencionado y es una inercia a hacer lo que los demás hacen el hecho de proclamarse autor. En
+este último caso que (reitero que es la mayoría), sería bueno que revieramos nuestros actos, en caso de que estemos deacuerdo
+con lo que opino respecto de que lo que hacemos es producto de lo que hacen otras personas. 
+
+desde luego que esto no quita el fraterno acto de agradecer a las personas que estuvieron cerca de uno en el proyecto. Tampoco
+implica que sean "déspotas" todos los que se proclamen autores, dado que esa idea es algo que nos acostumbramos a usar y a 
+pensar en función de ello, ya que extiste previamente a nosotros. Por otra parte, si considero correcto llamar déspota, a quien
+utilice tal autoproclamción de "autor", para intentar impedir que otros produzcan chars o usen materiales.  
+
+
+dicho esto, no me queda más que decir que es una expresión de deseos que las personas que tomen algo de este char tengan
+la misma actitud que yo tengo: que sus obras deribadas de este char sean de libre uso.
+no puedo ponerlo como condición restrictiva... si lo quieren usar para alimentar su ego propio (autopoclmádose "autor"
+sin ver el trabajo de los demás), yo no puedo hacer nada, ni quiero imponerle a nadie nada. Que haga eso el que quiera 
+y si puede dormir tranquilo con eso no será más que una persona miserable.
+
+
+Muchas gracias para el que haya leido esto y como siempre digo, un saluo.
+
+
+------------------------------------------
+cualquier comentario, agradecimiento, reporte de bugs, insulto, puteadas y demáses agravios, pueden ser hechos publicamente
+en http://mugenhispania.info, lugar donde reside este el Team DBZ OS. 

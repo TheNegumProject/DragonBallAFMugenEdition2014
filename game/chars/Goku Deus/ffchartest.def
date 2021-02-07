@@ -1,0 +1,29 @@
+[Info]
+name="Goku Deus"
+displayname="Goku Deus"
+versiondate=
+mugenversion=
+author="MugenMundo"
+pal.defaults=
+[Files]
+sprite=Goku Deus.sff
+sound=Goku Deus.snd
+anim=Goku Deus.air
+cmd=Goku Deus.cmd
+cns=Goku Deus.cns
+st=Goku Deus.cns
+stcommon=common1.cns
+pal1=a
+pal2=2
+pal3=3
+pal4=ssj
+pal5=original
+pal6=normal
+pal7=roxa
+pal8=walpaper
+pal9=Special
+pal10=Zumbi
+pal11=
+[Arcade]
+intro.storyboard=
+ending.storyboard=

@@ -1,0 +1,283 @@
+--------------------------------------------------------------------------
+Broli ver.1.2 (do SNES,"Dragon Ball Z")
+Originalmente criado por Kuzu-bei para o MUGEN 06.27
+Mudanças e Tutorial feitos por The Necromancer
+--------------------------------------------------------------------------
+
+------------------------------------
+Completo: Estimated 50%
+Versão: BETA 2
+-----------------------------------
+
+--------------------------------
+O Que foi feito/Novidades:
+--------------------------------
+
+-Todos movimentos especiais do modo normal
+-Alguns movimentos mudados
+-Custom AI: 3 difficuldades de jogo.(Veja as características de broli abaixo)
+-Intro contra Goku Normal de Emuboarding e Mystic Gohan de Zero_X
+-Corrigidos vários Bugs
+
+---------------------
+O que falta:
+---------------------
+
+Normal Mode:
+-6 mais supers
+
+USSJ Mode:
+-Tudo
+
+Bio Broli:
+-Tudo
+
+-Referencia de Codigos incompleta.
+
+Se você já jogou com o Broli de Kuzu-bei, você certamente saberá como esse
+deve se parecer .Esse é um Update daquele personagem e como Kuzu-bei me deu
+autorização para fazê-lo, eu pensei que com algumas mudanças, Broli se
+pareceria mais com os filmes do que o jogo original.
+
+Biografia:
+
+Raça: Saiyajin
+Olhos: Black
+Cabelo: Black
+Abilidades: Bio Ekisyushyu Kyodai Ka, Bukujutsu, Ki Barrier, SSJ, USSJ, 
+Zanzoken
+
+O Super Saiyajin original, Broli exibe um poder tremendo mesmo quando 
+criança. Quando o Planeta Vegeta foi destrído por Freeza, foi esse poder que
+manteve ele e seu pai vivos. Antes da destruição de seu planeta, ele ficou
+traumatizado pelo constante choro de Goku, seu companheiro no berçário e
+através disso, passa a ter um ódio por ele como instinto. Anos mais tarde,
+Broli começa a destruir galáxias,planetas e povos sob o comando de seu pai.
+Para se vingar da família real de Vegeta, Paragus, pai de Broli vai à Terra
+e chama Vegeta para governar o planeta "Nova Vegeta" na tentativa de matá-lo
+com o planeta que estava em rota de colisão, mas seu ódio por Goku fez com
+que o plano fosse descoberto e é derrotado pelos Guerreiros Z logo depois.
+Porém, ele ainda vai à Terra no Movie 10 onde é finalmente morto.Ele faz uma
+terceira aparição no Movie 11, em que é clonado e transformado num montro
+gelatinoso verde.
+
+---------------------
+O que tem:
+---------------------
+
+Custom AI:
+
+-Exitem 3 dificuldades para se jogar contra ele:Fácil, Normal, Difícil.
+Mude a ordem das paletas para ajustar :
+
+Paletas 7 and 8 - Fácil
+Paletas 9 and 10 - Normal
+Paletas 11 and 12 - Difícil
+
+A opção básica é a difícil
+
+4 Sistemas de Contra-Ataques:
+
+1.) Air Counter: Mesmo jeito que o Recover. No modo USSJ,pode ser feito a
+qualquer momento que for atingido
+2.) Block Counter: Faz com que você seja lançado para frente quando
+defendendo, ou defender a si mesmo e ganhar força. (Segure para trás). Você
+é livre para atacar o oponente.
+3.) Hit Counter: Feito quando você está sendo atacado. Execute qualquer
+movimento especial. Ele vai parar o do inimigo. Só pode ser feito no modo
+USSJ.
+4.) Instantaneous Movement Recover: Um modo alternativo de se recuperar.
+Deve ser feito quando estiver sendo atacado.
+
+3 Modos de Jogo:
+
+1.) Vôo : Um novo modo de vôo, Broli não cairá quando acertado e pode
+defender ataques físicos.
+2.) USSJ Mode: A força de Broli é aumentada em 1.2 vezes
+3.) Fury Mode: É abilitada quando Broli está com 500 vidas. Nesse modo, Broli
+fica com "Super-Armor", ou seja, golpes não o derrubam.
+
+-------------------
+Movimentos:
+-------------------
+
+Basics:
+
+x: Soco Fraco
+y: Soco Médio
+z: Soco Forte
+
+a: Chute Fraco
+b: Chute Médio
+c: Chute Forte
+
+--------------------
+Special Moves:
+--------------------
+
+F, F: Dasg para Frente
+-Pode ser feito no ar.
+
+B, B: Dash para trás
+-Pode ser feito no ar.
+
+D, D: Caída Instantânea
+-Quando estiver no ar, Broli cairá em grande velocidade.
+
+D, U: Super Pulo
+-Nome diz tudo.
+
+D, DF, F, x: Tiro de Ki
+-Magia básica, pode ser redirecionada para cima e baixo.Se não redirecionar,
+irá em linha reta.
+
+D, DF, F, y: Soco para baixo
+-Nome diz tudo
+
+D, DF, F, z: Renzokou Kikou Ha
+-Magia tripla. Pode ser redirecionada.
+
+D, DB, B, x: Zanzouken
+-Um tipo de teleporte.Pode ser feito como contra-ataque.
+
+D, DB, B, y: Bakuhatsu Ha
+-Uma explosão do chão.
+
+D, DB, B, z: Kiai Hou
+-Magia invisível em alta velocidade.
+
+x+a: Charge
+-Carregamento de Energia
+
+y+b: Ki Barrier
+-Barreira que causa dano no inimigo e rebate magias.
+
+x+y: Bukuu Jutsu
+-Vôo
+
+a+b: Aerial Kick
+-Pode ser usado como Contra-Ataque também.
+
+B, F, x: Smasher
+-Um soco forte.
+
+B, F, y: Smasher Lariat
+-Um soco mais forte de distância maior
+
+B, F, a:  Hell's Smash
+-Um chute seguido de pilão.
+
+B, F, b: Machine Gun Shooter
+-Um sequência de 5 chutes.
+
+-------------------------
+Special EX Moves:
+-------------------------
+
+D, DF, F, D, DF, F, x: Tsuibi Kikou Ha
+-Magia seguidora.
+
+D, DF, F, D, Df, F, y: Bakuhatsu Ha EX:
+-Cria uma explosão muito larga.
+
+D, DF, F, D, DF, F, z: Rezokou Energy Dan
+-Um tiro de Ki seguido. (Aperte qualquer botão rapidamente!!!)
+
+D, DB, B, D, DB, B y: Terremoto
+-Um soco no chão que causa dano em TODOS que estiverem no chão.
+
+D, DB, B, D, DB, B: z: Shogekiha
+-Magia invsível.
+
+B, F, z: Smasher Lariat EX
+-Variação mais forte e rápida do Smash Lariat. Uses 500 power.
+
+B, F, c: Machine Gun Shooter EX
+-Versão mais forte e rápida do Machine Gun Shooter. Uses 500 power.
+
+-------------------
+Super Moves:
+-------------------
+
+D, DF, F, a: KFM TriplePalm - Broli Style!
+-Super do KFM feito ao estilo SSJ.
+
+D, DF, F, b: Shyougeki Ha
+-Super Bola de Energia, lançada ao apertar B.
+
+D, DF, F, c: Eraser Cannon
+-Magia Grande.Acerta o inimigo em seu carregamento se estiver perto.
+
+D, DB, B, a: Meteor Smash
+-Um combo de 14 Hits.Tem final diferente se o inimigo for atingido, se ele
+defender ou se esquivar.
+
+D, DB, B, b: Hyper Dash
+-Um Super Dash que se acertar o inimigo,é linkado a outro golpe.
+
+D, DB, B, c: Nandato
+-O ataque mais forte de Broli.Possui mais de 500 variações
+
+z+c: USSJ Mode Transform
+-Força é aumentada
+
+---------------------
+Agradecimentos:
+---------------------
+
+De: Kuzu-bei:
+
+*Elecbyte (pelo M.U.G.E.N e tools para fazer criar)
+
+*Dragman (pelo Tutorial e por fazer personagens)
+
+*Akane Kanou e Rukky (Por me ensinar sobre SPC)
+
+*MBS (Por dar idéias de efeitos de Hyper Moves)
+
+*Stephane Perez (for Bug Report)
+
+*Gatchan(Dar idéias e material dos filmes)
+
+*Kamuratto(Idéia e falar dos Bugs)
+
+*Foiegura(Dar idéias)
+
+*sdi1980(reportar os Bugs)
+
+*Tetsuroh(por Editar o começo do CNS da intro )
+
+De: The Necromancer
+
+*Para a Mugen Elite,por seu suporte.
+
+*Para o pessoal da MugeNow e da Mugen Eleven, apenas por serem gente fina,
+hehe...
+
+*Aos Beta Testers:
+-Pessoal da MugeNow: Daeyrat, EmuBoarding, OverMind (Me responderam várias
+vezes, mais especificamente Daeyrat, heh heh...) 
+-WilloughByJackson (Falou de fatos interessantes sobre Broli)
+-Tenebrous (Falou de alguns Bugs)
+-FallenAngel (Ajudou a torná-lo menos apelão,mesmo se ainda for!)
+
+*Ao Pioupiou, por todos aqueles efeitos especiais e sons (olhe o tamanho do
+arquivo de som!)
+
+----------
+Credits:
+----------
+
+Autor: Kuzu-bei
+Site: http://www.fortunecity.com/westwood/artwork/198/
+E-mail: kuzubei@fcmail.com
+
+Update: The Necromancer
+Site: http://clix.to/abyss
+E-mail: demon_nightmare@hotmail.com
+
+Esse personagem não deve ser distribuído em qualquer outro site, a não ser
+os da Mugen Elite ou citado nesse Leia-Me. Se você o baixou de outro site,
+mande um email a "The Necromancer". Tutoriais contidos nesse personagem são
+propriedades da Mugen Elite.
+

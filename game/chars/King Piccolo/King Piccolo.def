@@ -1,0 +1,30 @@
+;==============================================================================================================
+
+[Info]
+name ="piccolo daimao by  Franciynaldo"        
+displayname ="King Piccolo" 
+versiondate =29,3,2008    
+mugenversion =04,14,2002   
+author ="FRS GAMES"         
+pal.defaults =1,2    
+
+[Files]
+cmd     =pdm.cmd   
+cns     =pdm.cns   
+st      =pdm.cns  
+stcommon =common1.cns 
+sprite  =pdm.sff   
+anim    =pdm.air   
+sound   =pdm.snd   
+pal1=pdm.act
+pal2=pdm2.act
+
+[Arcade]
+intro.storyboard =
+ending.storyboard=..\data\final.def
+;...........................................................................................
+
+                                ; Feito no Brasil           
+;                              Autor: equipe FRS GAMES
+
+;[[[[[[[[[[[[[[[[[[[[[[E-mail& msn: superkakarotto@hotmail.com]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

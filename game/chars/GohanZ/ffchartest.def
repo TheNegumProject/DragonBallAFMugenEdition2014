@@ -1,0 +1,24 @@
+[Info]
+name="GohanZ"
+displayname="Sword Gohan"
+versiondate=
+mugenversion=
+author="Marcus & The Virus(DMC)"
+pal.defaults=
+[Files]
+sprite=GohanZ.sff
+sound=GohanZ.snd
+anim=GohanZ.air
+cmd=GohanZ.cmd
+cns=GohanZ.cns
+st=GohanZ.cns
+stcommon=common1.cns
+pal1=1
+pal2=2
+pal3=SSJ
+pal4=Seila
+pal5=ssjjg
+pal6=Fblade
+[Arcade]
+intro.storyboard=
+ending.storyboard=
